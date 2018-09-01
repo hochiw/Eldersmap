@@ -4,6 +4,11 @@
     android:height="108dp"
     android:viewportHeight="108"
     android:viewportWidth="108">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/custom_marker" />
     <path
         android:fillColor="#26A69A"
         android:pathData="M0,0h108v108h-108z" />

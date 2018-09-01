@@ -1,31 +1,44 @@
 package com.example.kallyruan.eldermap.NearbyLankmarkPkg;
 import com.example.kallyruan.eldermap.LocationPkg.Location;
 
-public class Landmark{
-    private String name;
-    private int mark;
-    private int cost;
-    private Location location;
+import java.util.Comparator;
 
-    Landmark(String name, int mark, int cost, Location location){
+public class Landmark {
+
+    private String name;
+    private String address;
+    private float rating;
+    private Location location;
+    private double distance;
+
+    Landmark(String name, String address, float rating, Location location, Double distance){
         this.name = name;
-        this.mark = mark;
-        this.cost = cost;
+        this.address = address;
+        this.rating = rating;
         this.location = location;
+        this.distance = distance;
     }
+
+    //Getters and setters
     public String getName(){
         return name;
     }
 
-    public int getMark(){
-        return mark;
+    public float getRating(){
+        return rating;
     }
 
-    public int getCost(){
-        return cost;
+    public String getAddress(){
+        return address;
     }
 
     public Location getLocation(){
         return location;
+    }
+}
+
+class Sortbyrating implements Comparator<Landmark>{
+    public int compare(Landmark land1, Landmark land2){
+        return (int) (land2.getRating()-land1.getRating());
     }
 }

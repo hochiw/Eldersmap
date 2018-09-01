@@ -1,7 +1,6 @@
 package com.example.kallyruan.eldermap.NearbyLankmarkPkg;
 
 import android.Manifest;
-import android.location.Criteria;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.LocationListener;
@@ -10,6 +9,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import com.example.kallyruan.eldermap.LocationPkg.*;
 
 
 public class GPSTracker implements LocationListener {
@@ -40,9 +40,7 @@ public class GPSTracker implements LocationListener {
                 if (locationManager != null) {
                     location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                     if (location != null) {
-                        return new com.example.kallyruan.eldermap.NearbyLankmarkPkg.Location(
-                                location.getLatitude(),location.getLongitude()
-                         );
+                        return Location.getInstance((Double)location.getLatitude(),(Double)location.getLongitude());
                         }
                     }
                 } else if (networkEnabled) {
@@ -50,9 +48,7 @@ public class GPSTracker implements LocationListener {
                 if (locationManager != null) {
                     location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                     if (location != null) {
-                        return new com.example.kallyruan.eldermap.NearbyLankmarkPkg.Location(
-                                location.getLatitude(),location.getLongitude()
-                            );
+                        return Location.getInstance(location.getLatitude(),location.getLongitude());
                         }
                     }
                 }

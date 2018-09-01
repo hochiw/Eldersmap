@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Kah Chun\\Documents\\GitHub\\ElderMaps\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-pt-rPT\\values-pt-rPT.xml",
+            "outputFile": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-pt-rPT/values-pt-rPT.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Kah Chun\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\6b9d7ed6fc6505c9662f99f240ab9ce1\\res\\values-pt-rPT\\values-pt-rPT.xml",
+                    "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/ad872fc7c5bce4174e70da372dc0e688/res/values-pt-rPT/values-pt-rPT.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Kah Chun\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\1cc167b5aca7afddc993a7f8a2edd049\\res\\values-pt-rPT\\values-pt-rPT.xml",
+                    "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/b43f384c104e05100f556957e071ec82/res/values-pt-rPT/values-pt-rPT.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

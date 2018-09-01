@@ -57,8 +57,8 @@ public class LandmarkListAdapter extends BaseAdapter {
         final Landmark place = places.get(position);
         System.out.print(place.getName());
         name.setText(place.getName());
-        mark.setText(Integer.toString(place.getMark()));
-        cost.setText(Integer.toString(place.getCost()));
+        mark.setText(Float.toString(place.getRating()));
+        cost.setText("0.0");
         distance.setText(Integer.toString(calcuateDistance(place)));
 
         return createdView;

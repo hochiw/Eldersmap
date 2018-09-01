@@ -1,5 +1,7 @@
 package com.example.kallyruan.eldermap.NearbyLankmarkPkg;
 
+import com.example.kallyruan.eldermap.LocationPkg.Location;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,7 +26,7 @@ public class SearchAlg {
     public ArrayList<Landmark> filterList(JSONArray inList) throws JSONException {
         for (int i = 0; i < inList.length(); i++){
             JSONObject currentObj = inList.getJSONObject(i);
-            Location currentLoc = new Location((Double) currentObj.getJSONObject("location").get("lat"), (Double) currentObj.getJSONObject("location").get("lng"));
+            Location currentLoc = Location.getInstance((Double) currentObj.getJSONObject("location").get("lat"), (Double) currentObj.getJSONObject("location").get("lng"));
             Landmark curLandmark = new Landmark((String)currentObj.get("name"), (String)currentObj.get("address"), (float)currentObj.get("rating"), currentLoc, 0.0);
             returnList.add(curLandmark);
         }

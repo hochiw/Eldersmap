@@ -1,5 +1,4 @@
 package com.example.kallyruan.eldermap.NearbyLankmarkPkg;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,36 +8,41 @@ import android.widget.ListView;
 
 import com.example.kallyruan.eldermap.R;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class LandmarkListActivity extends Activity {
     //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
     ArrayAdapter<Integer> adapter_id;
     private int action_index;
+    private SearchAlg searchAlg = new SearchAlg();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landmark_list);
         //display the list of landmarks
-        showLandmarkList();
+        try {
+            showLandmarkList();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
 
     /**
      * Shows the list of nearby landmarks
      */
-    public void showLandmarkList() {
+    public void showLandmarkList() throws IOException, JSONException {
         ListView listView = (ListView) findViewById(R.id.landmark_list);
-        Landmark example = new Landmark("test", 5, 5, new Location(1.0,2.0));
-        ArrayList<Landmark> list = new ArrayList<Landmark>();
+        //Data Input
+        ArrayList<Landmark> list = searchAlg.filterList(APICommunicator.parseJSON("http://eldersmapapi.herokuapp.com/api/search?location=-33.8670522%2C151.1957362&radius=1500&pType=library")) ;
 
-        // for test display
-        for (int i = 0; i<20 ; i++){
-            list.add(example);
-        }
-        System.out.print(list);
+
         LandmarkListAdapter adapter = new LandmarkListAdapter(this, list);
         listView.setAdapter(adapter);
     }

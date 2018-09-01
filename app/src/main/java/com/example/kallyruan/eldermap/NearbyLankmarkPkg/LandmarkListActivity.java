@@ -1,16 +1,14 @@
 package com.example.kallyruan.eldermap.NearbyLankmarkPkg;
+import com.example.kallyruan.eldermap.LocationPkg.Location;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.kallyruan.eldermap.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class LandmarkListActivity extends Activity {
     //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
@@ -31,7 +29,8 @@ public class LandmarkListActivity extends Activity {
      */
     public void showLandmarkList() {
         ListView listView = (ListView) findViewById(R.id.landmark_list);
-        Landmark example = new Landmark("test", 5, 5, new Location(1.0,2.0));
+        Location user = Location.getInstance(1.0,2.0);
+        Landmark example = new Landmark("test", 5, 5, user);
         ArrayList<Landmark> list = new ArrayList<Landmark>();
 
         // for test display

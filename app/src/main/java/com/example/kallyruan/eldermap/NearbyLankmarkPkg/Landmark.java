@@ -1,6 +1,7 @@
 package com.example.kallyruan.eldermap.NearbyLankmarkPkg;
+import com.example.kallyruan.eldermap.LocationPkg.Location;
 
-public class Landmark {
+public class Landmark{
     private String name;
     private int mark;
     private int cost;

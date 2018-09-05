@@ -39,6 +39,6 @@ public class Landmark {
 
 class Sortbyrating implements Comparator<Landmark>{
     public int compare(Landmark land1, Landmark land2){
-        return (int) (land2.getRating()-land1.getRating());
+        return (int) ((land2.getRating()*10) - (land1.getRating()*10));
     }
 }

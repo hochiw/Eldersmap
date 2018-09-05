@@ -12,7 +12,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.stream.Collectors;
 
-public class HTTPPostRequest extends AsyncTask<JSONObject,Void,String> {
+public class HTTPPostRequest extends AsyncTask<JSONObject,Void,JSONObject> {
     private String url;
 
     public HTTPPostRequest(String url) {
@@ -20,7 +20,7 @@ public class HTTPPostRequest extends AsyncTask<JSONObject,Void,String> {
     }
 
     @Override
-    protected String doInBackground(JSONObject... params) {
+    protected JSONObject doInBackground(JSONObject... params) {
         try {
             URL _url = new URL(url);
             HttpURLConnection urlconnection = (HttpURLConnection) _url.openConnection();
@@ -51,7 +51,7 @@ public class HTTPPostRequest extends AsyncTask<JSONObject,Void,String> {
                 }
                 br.close();
 
-                return result.toString();
+                return new JSONObject(result.toString());
             }
 
         } catch (Exception e) {

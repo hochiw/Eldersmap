@@ -1,4 +1,4 @@
-#Sat Sep 01 19:51:20 AEST 2018
-base.0=/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/transforms/dexMerger/debug/10
+#Wed Sep 05 16:36:05 AEST 2018
+base.0=C\:\\Users\\Kah Chun\\Documents\\GitHub\\ElderMaps\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\11
 path.0=classes.dex
 renamed.0=classes.dex

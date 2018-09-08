@@ -1,24 +1,14 @@
 package com.example.kallyruan.eldermap.NavigationPkg;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.kallyruan.eldermap.LocationPkg.Location;
-import com.example.kallyruan.eldermap.NearbyLankmarkPkg.ImageAdapter;
-import com.example.kallyruan.eldermap.NearbyLankmarkPkg.MenuActivity;
-import com.example.kallyruan.eldermap.NearbyLankmarkPkg.SearchAlg;
 import com.example.kallyruan.eldermap.R;
 
-import org.json.JSONException;
-
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class DisplayActivity extends AppCompatActivity {

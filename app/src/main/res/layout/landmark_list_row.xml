@@ -16,7 +16,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/address"
+        android:id="@+id/reviewMark"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -26,7 +26,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/rating"
+        android:id="@+id/cost"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"

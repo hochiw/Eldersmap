@@ -21,14 +21,16 @@ public class LandmarkListActivity extends Activity {
     ArrayAdapter<Integer> adapter_id;
     private int action_index;
     private SearchAlg searchAlg = new SearchAlg();
+    // User click.
+    private String targetName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landmark_list);
-        //display the list of landmarks
+        //display the list of landmarks. Need to receive a string(user selection).
         try {
-            showLandmarkList();
+            showLandmarkList(targetName);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -36,14 +38,16 @@ public class LandmarkListActivity extends Activity {
 
 
     /**
-     * Shows the list of nearby landmarks
+     * Shows the list of nearby landmarks that are requested by the user.
      */
-    public void showLandmarkList() throws  JSONException, ExecutionException, InterruptedException {
+    public void showLandmarkList(String target) throws  JSONException, ExecutionException, InterruptedException {
+
         ListView listView = (ListView) findViewById(R.id.landmark_list);
         ArrayList<Landmark> list = new ArrayList<>();
         //Data Input
         Location userLoc = new GPSTracker(getApplicationContext()).getLocation();
-        JSONObject userData = JSONFactory.userDataJSONMaker(userLoc, "");
+        // Need to get the user selection.
+        JSONObject userData = JSONFactory.userDataJSONMaker(userLoc, target);
         //ArrayList<Landmark> list = searchAlg.filterList(JSONFactory.parseJSON("http://eldersmapapi.herokuapp.com/api/search"));
         JSONObject result = new HTTPPostRequest("http://eldersmapapi.herokuapp.com/api/search").execute(userData).get();
         if(result.get("status").toString().equals("OK")){

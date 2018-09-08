@@ -1,43 +1,55 @@
 package com.example.kallyruan.eldermap.NearbyLankmarkPkg;
-import com.example.kallyruan.eldermap.LocationPkg.Location;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.kallyruan.eldermap.LocationPkg.Location;
 import com.example.kallyruan.eldermap.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class LandmarkListActivity extends Activity {
     //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
     ArrayAdapter<Integer> adapter_id;
     private int action_index;
+    private SearchAlg searchAlg = new SearchAlg();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landmark_list);
         //display the list of landmarks
-        showLandmarkList();
+        try {
+            showLandmarkList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
     /**
      * Shows the list of nearby landmarks
      */
-    public void showLandmarkList() {
+    public void showLandmarkList() throws  JSONException, ExecutionException, InterruptedException {
         ListView listView = (ListView) findViewById(R.id.landmark_list);
-        Location user = Location.getInstance(1.0,2.0);
-        Landmark example = new Landmark("test", 5, 5, user);
-        ArrayList<Landmark> list = new ArrayList<Landmark>();
-
-        // for test display
-        for (int i = 0; i<20 ; i++){
-            list.add(example);
+        ArrayList<Landmark> list = new ArrayList<>();
+        //Data Input
+        Location userLoc = new GPSTracker(getApplicationContext()).getLocation();
+        JSONObject userData = JSONFactory.userDataJSONMaker(userLoc, "");
+        //ArrayList<Landmark> list = searchAlg.filterList(JSONFactory.parseJSON("http://eldersmapapi.herokuapp.com/api/search"));
+        JSONObject result = new HTTPPostRequest("http://eldersmapapi.herokuapp.com/api/search").execute(userData).get();
+        if(result.get("status").toString().equals("OK")){
+            list = searchAlg.filterList(result);
         }
-        System.out.print(list);
+        Log.d("test",list.toString());
         LandmarkListAdapter adapter = new LandmarkListAdapter(this, list);
         listView.setAdapter(adapter);
     }

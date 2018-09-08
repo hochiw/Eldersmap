@@ -47,11 +47,7 @@ public class LandmarkListActivity extends Activity {
         //display the list of landmarks
         try {
             showLandmarkList();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         checkButtonClick();
@@ -152,5 +148,25 @@ public class LandmarkListActivity extends Activity {
 //        LandmarkListAdapter adapter = new LandmarkListAdapter(this, testList);
 //        listView.setAdapter(adapter);
 //    }
+
+    /**
+     * Shows the list of nearby landmarks
+     */
+    public void showLandmarkList() throws  JSONException, ExecutionException, InterruptedException {
+        ListView listView = (ListView) findViewById(R.id.landmark_list);
+        ArrayList<Landmark> list = new ArrayList<>();
+        //Data Input
+        Location userLoc = new GPSTracker(getApplicationContext()).getLocation();
+        JSONObject userData = JSONFactory.userDataJSONMaker(userLoc, "");
+        Log.d("tests", userLoc.getLatitude().toString());
+        //ArrayList<Landmark> list = searchAlg.filterList(JSONFactory.parseJSON("http://eldersmapapi.herokuapp.com/api/search"));
+        JSONObject result = new HTTPPostRequest("http://eldersmapapi.herokuapp.com/api/search").execute(userData).get();
+        if(result.get("status").toString().equals("OK")){
+            list = searchAlg.filterList(result);
+        }
+        Log.d("test",list.toString());
+        LandmarkListAdapter adapter = new LandmarkListAdapter(this, list);
+        listView.setAdapter(adapter);
+    }
 }
 

@@ -1,63 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
     abi="x86"
-    api-level="23"
+    api-level="24"
     build-mode="COLD"
-    density="560dpi"
+    density="xxxhdpi"
     format="10"
-    ir-eligibility="COMPATIBLE"
+    ir-eligibility="METHOD_ADDED"
     plugin-version="3.1.4"
-    timestamp="1536132328358"
+    timestamp="1536388562564"
     token="5525656776014807960"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="220" />
+        duration="1617" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="17" />
+        duration="107" />
     <task
         name="verifier"
-        duration="5" />
+        duration="30" />
 
     <artifact
         location="C:\Users\Kah Chun\Documents\GitHub\ElderMaps\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
         type="SPLIT" />
-    <artifact
-        location="C:\Users\Kah Chun\Documents\GitHub\ElderMaps\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
-        type="SPLIT_MAIN" />
 
     <build
         build-mode="FULL"
-        timestamp="1536129356216"
+        timestamp="1536386887433"
         verifier="FULL_BUILD_REQUESTED" >
-        <artifact
-            location="C:\Users\Kah Chun\Documents\GitHub\ElderMaps\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
-            type="SPLIT" />
         <artifact
             location="C:\Users\Kah Chun\Documents\GitHub\ElderMaps\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Kah Chun\Documents\GitHub\ElderMaps\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Kah Chun\Documents\GitHub\ElderMaps\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Kah Chun\Documents\GitHub\ElderMaps\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Kah Chun\Documents\GitHub\ElderMaps\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Kah Chun\Documents\GitHub\ElderMaps\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Kah Chun\Documents\GitHub\ElderMaps\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Kah Chun\Documents\GitHub\ElderMaps\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
@@ -69,29 +48,35 @@
             location="C:\Users\Kah Chun\Documents\GitHub\ElderMaps\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Kah Chun\Documents\GitHub\ElderMaps\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
-            type="SPLIT_MAIN" />
-    </build>
-    <build
-        build-mode="COLD"
-        ir-eligibility="COMPATIBLE"
-        timestamp="1536132222286"
-        verifier="COLD_SWAP_REQUESTED" >
+            location="C:\Users\Kah Chun\Documents\GitHub\ElderMaps\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
+            type="SPLIT" />
         <artifact
-            location="C:\Users\Kah Chun\Documents\GitHub\ElderMaps\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
-            type="SPLIT_MAIN" />
-    </build>
-    <build
-        build-mode="COLD"
-        ir-eligibility="COMPATIBLE"
-        timestamp="1536132328358"
-        verifier="COLD_SWAP_REQUESTED" >
+            location="C:\Users\Kah Chun\Documents\GitHub\ElderMaps\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            type="SPLIT" />
         <artifact
-            location="C:\Users\Kah Chun\Documents\GitHub\ElderMaps\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            location="C:\Users\Kah Chun\Documents\GitHub\ElderMaps\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Kah Chun\Documents\GitHub\ElderMaps\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Kah Chun\Documents\GitHub\ElderMaps\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Kah Chun\Documents\GitHub\ElderMaps\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Kah Chun\Documents\GitHub\ElderMaps\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
             type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="METHOD_ADDED"
+        timestamp="1536388562564"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="C:\Users\Kah Chun\Documents\GitHub\ElderMaps\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            type="SPLIT" />
     </build>
 
 </instant-run>

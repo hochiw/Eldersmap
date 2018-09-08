@@ -14,7 +14,7 @@ public class Location {
     }
 
     public void setLongitude(Double y){
-        this.latitude = y;
+        this.longitude = y;
     }
 
     public Double getLatitude(){

@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -28,6 +29,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.concurrent.ExecutionException;
 
 public class LandmarkListActivity extends Activity {
     //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
@@ -45,12 +47,14 @@ public class LandmarkListActivity extends Activity {
         //display the list of landmarks
         try {
             showLandmarkList();
-            checkButtonClick();
-        } catch (IOException e) {
-            e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+        checkButtonClick();
     }
 
     //check whether users click on a landmark
@@ -127,26 +131,26 @@ public class LandmarkListActivity extends Activity {
     }
 
 
-    /**
-     * Shows the list of nearby landmarks
-     */
-    public void showLandmarkList() throws IOException, JSONException {
-        ListView listView = (ListView) findViewById(R.id.landmark_list);
-
-
-        //Data Input(current connection broke so use the test list instead)
-        //ArrayList<Landmark> list = searchAlg.filterList(APICommunicator.parseJSON("http://eldersmapapi.herokuapp.com/api/search?location=-33.8670522%2C151.1957362&radius=1500&pType=library")) ;
-
-        // test list since the API connection is not working now
-        ArrayList<Landmark> testList = new ArrayList<>();
-            for (int i = 0; i < 10; i++){
-                Location currentLoc = Location.getInstance(2.0,3.0);
-                Landmark curLandmark = new Landmark("testPlace", "757 swanston street", 1, currentLoc, 0.0);
-                testList.add(curLandmark);
-            }
-
-        LandmarkListAdapter adapter = new LandmarkListAdapter(this, testList);
-        listView.setAdapter(adapter);
-    }
+//    /**
+//     * Shows the list of nearby landmarks
+//     */
+//    public void showLandmarkList() throws IOException, JSONException {
+//        ListView listView = (ListView) findViewById(R.id.landmark_list);
+//
+//
+//        //Data Input(current connection broke so use the test list instead)
+//        //ArrayList<Landmark> list = searchAlg.filterList(APICommunicator.parseJSON("http://eldersmapapi.herokuapp.com/api/search?location=-33.8670522%2C151.1957362&radius=1500&pType=library")) ;
+//
+//        // test list since the API connection is not working now
+//        ArrayList<Landmark> testList = new ArrayList<>();
+//            for (int i = 0; i < 10; i++){
+//                Location currentLoc = Location.getInstance(2.0,3.0);
+//                Landmark curLandmark = new Landmark("testPlace", "757 swanston street", 1, currentLoc, 0.0);
+//                testList.add(curLandmark);
+//            }
+//
+//        LandmarkListAdapter adapter = new LandmarkListAdapter(this, testList);
+//        listView.setAdapter(adapter);
+//    }
 }
 

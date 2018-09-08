@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.kallyruan.eldermap.LocationPkg.Location;
 import com.example.kallyruan.eldermap.R;
 
 import java.util.ArrayList;
@@ -15,8 +16,8 @@ public class LandmarkListAdapter extends BaseAdapter {
     private Activity mActivity;
     private ArrayList<Landmark> places;
     private TextView name;
-    private TextView mark;
-    private TextView cost;
+    private TextView address;
+    private TextView rating;
     private TextView distance;
 
     public LandmarkListAdapter(Activity activity, ArrayList<Landmark> group){
@@ -47,31 +48,20 @@ public class LandmarkListAdapter extends BaseAdapter {
         if(view == null){
             createdView = inflater.inflate(R.layout.landmark_list_row,null);
             name = (TextView) createdView.findViewById(R.id.locationName);
-            mark = (TextView) createdView.findViewById(R.id.reviewMark);
-            cost = (TextView) createdView.findViewById(R.id.cost);
+            address = (TextView) createdView.findViewById(R.id.address);
+            rating = (TextView) createdView.findViewById(R.id.rating);
             distance = (TextView) createdView.findViewById(R.id.distance);
         } else {
             createdView = view;
         }
 
         final Landmark place = places.get(position);
-        System.out.print(place.getName());
         name.setText(place.getName());
-        mark.setText(Integer.toString(place.getMark()));
-        cost.setText(Integer.toString(place.getCost()));
-        distance.setText(Integer.toString(calcuateDistance(place)));
+        address.setText(place.getAddress());
+        rating.setText(Float.toString(place.getRating()));
+        distance.setText(Double.toString(place.getDistance()));
 
         return createdView;
     }
 
-    /**
-     * Calculate the distance based on User GPS and landmark locations
-     * @param destination
-     * @return
-     */
-    public int calcuateDistance(Landmark destination){
-
-
-        return 0;
-    }
 }

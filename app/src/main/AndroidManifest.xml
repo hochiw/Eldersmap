@@ -4,7 +4,6 @@
     
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -28,7 +27,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".NearbyLankmarkPkg.LandmarkListActivity"/>
-        <service android:name=".NearbyLankmarkPkg.GPSTracker"/>
+        <activity android:name=".NavigationPkg.DisplayActivity"/>
+        <activity android:name=".NavigationPkg.ScheduleTimeActivity"/>
     </application>
 
 </manifest>

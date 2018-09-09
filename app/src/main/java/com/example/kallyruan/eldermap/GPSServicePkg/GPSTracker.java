@@ -27,7 +27,6 @@ public class GPSTracker extends Service implements LocationListener {
     private Location mLocation;
 
     IBinder mBinder = new binder();
-    LocationListener mLocationListener;
 
     @Override
     public void onLocationChanged(android.location.Location location) {

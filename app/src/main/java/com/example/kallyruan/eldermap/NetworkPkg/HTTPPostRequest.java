@@ -1,4 +1,4 @@
-package com.example.kallyruan.eldermap.NearbyLankmarkPkg;
+package com.example.kallyruan.eldermap.NetworkPkg;
 
 import android.os.AsyncTask;
 

@@ -1,8 +1,12 @@
 package com.example.kallyruan.eldermap.NearbyLankmarkPkg;
+import com.example.kallyruan.eldermap.LocationPkg.Location;
+
+import java.util.Comparator;
 
 import java.util.Comparator;
 
 public class Landmark {
+
     private String name;
     private String address;
     private float rating;
@@ -32,6 +36,20 @@ public class Landmark {
 
     public Location getLocation(){
         return location;
+    }
+
+    public void setRating(float newValue){ this.rating = newValue;}
+}
+
+class Sortbyrating implements Comparator<Landmark>{
+    public int compare(Landmark land1, Landmark land2){
+        if (Float.isNaN(land1.getRating())){
+            land1.setRating(0.0f);
+        }
+        if (Float.isNaN(land2.getRating())){
+            land2.setRating(0.0f);
+        }
+        return (int) ((land2.getRating()*10) - (land1.getRating()*10));
     }
 }
 

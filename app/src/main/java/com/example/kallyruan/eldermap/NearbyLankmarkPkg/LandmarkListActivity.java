@@ -189,7 +189,7 @@ public class LandmarkListActivity extends Activity {
         ArrayList<Landmark> list = new ArrayList<>();
         //Data Input
         Location userLoc = gps.getLoc();
-        JSONObject userData = JSONFactory.userDataJSONMaker(userLoc, "hospital");
+        JSONObject userData = JSONFactory.userDataJSONMaker(userLoc, targetLoc);
         Log.d("Uer ", userLoc.getLatitude().toString());
         //ArrayList<Landmark> list = searchAlg.filterList(JSONFactory.parseJSON("http://eldersmapapi.herokuapp.com/api/search"));
         JSONObject result = new HTTPPostRequest("http://eldersmapapi.herokuapp.com/api/search").execute(userData).get();

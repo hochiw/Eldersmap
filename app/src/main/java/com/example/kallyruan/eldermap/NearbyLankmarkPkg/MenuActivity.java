@@ -26,9 +26,16 @@ public class MenuActivity extends Activity {
         gridview.setAdapter(new ImageAdapter(this));
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            String category;
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int location, long l) {
                 listlandmark(location);
+                switch (location){
+                    case 0:
+                        category = "hospital";
+                        break;
+                }
+                LandmarkListActivity.destination = category;
             }
         });
     }

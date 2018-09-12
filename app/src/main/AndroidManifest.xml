@@ -30,8 +30,8 @@
         <activity android:name=".NearbyLankmarkPkg.LandmarkListActivity"/>
         <activity android:name=".NavigationPkg.DisplayActivity"/>
         <activity android:name=".NavigationPkg.ScheduleTimeActivity"/>
-        <activity android:name=".AppMenuActivity"/>
         <service android:name=".GPSServicePkg.GPSTracker"/>
+        <activity android:name=".AppMenuActivity"/>
     </application>
 
 </manifest>

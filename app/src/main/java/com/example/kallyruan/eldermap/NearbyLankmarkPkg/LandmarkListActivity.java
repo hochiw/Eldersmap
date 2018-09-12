@@ -5,30 +5,30 @@ import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.GridView;
 import android.widget.ListView;
 
+import com.example.kallyruan.eldermap.GPSServicePkg.GPSTracker;
 import com.example.kallyruan.eldermap.LocationPkg.Location;
-import com.example.kallyruan.eldermap.MainActivity;
 import com.example.kallyruan.eldermap.NavigationPkg.DisplayActivity;
 import com.example.kallyruan.eldermap.NavigationPkg.ScheduleTimeActivity;
+import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
 import com.example.kallyruan.eldermap.R;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.concurrent.ExecutionException;
 
 public class LandmarkListActivity extends Activity {
@@ -39,19 +39,50 @@ public class LandmarkListActivity extends Activity {
     int locationIndex;
     NotificationManager manager;
     Notification myNotication;
+    private boolean serviceAlive = false;
+    private GPSTracker gps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landmark_list);
-        //display the list of landmarks
-        try {
-            showLandmarkList();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        // Connect to the GPS Service
+        Intent i = new Intent(this,GPSTracker.class);
+        startService(i);
+        bindService(i,mServiceConn,Context.BIND_AUTO_CREATE);
+        Log.d("test",Boolean.toString(serviceAlive));
         checkButtonClick();
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (serviceAlive) {
+            unbindService(mServiceConn);
+            serviceAlive = false;
+        }
+    }
+
+    private ServiceConnection mServiceConn = new ServiceConnection() {
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            serviceAlive = false;
+        }
+
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+
+            GPSTracker.binder mBinder = (GPSTracker.binder) service;
+            gps = mBinder.getInstance();
+            serviceAlive = true;
+            try {
+                showLandmarkList();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    };
 
     //check whether users click on a landmark
     public void checkButtonClick() {
@@ -156,7 +187,7 @@ public class LandmarkListActivity extends Activity {
         ListView listView = (ListView) findViewById(R.id.landmark_list);
         ArrayList<Landmark> list = new ArrayList<>();
         //Data Input
-        Location userLoc = new GPSTracker(getApplicationContext()).getLocation();
+        Location userLoc = gps.getLoc();
         JSONObject userData = JSONFactory.userDataJSONMaker(userLoc, "");
         Log.d("tests", userLoc.getLatitude().toString());
         //ArrayList<Landmark> list = searchAlg.filterList(JSONFactory.parseJSON("http://eldersmapapi.herokuapp.com/api/search"));

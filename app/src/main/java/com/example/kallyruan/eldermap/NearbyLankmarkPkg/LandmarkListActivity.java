@@ -41,7 +41,9 @@ public class LandmarkListActivity extends Activity {
     Notification myNotication;
     private boolean serviceAlive = false;
     private GPSTracker gps;
+
     public static String destination;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +71,7 @@ public class LandmarkListActivity extends Activity {
         @Override
         public void onServiceDisconnected(ComponentName name) {
             serviceAlive = false;
+
         }
 
         @Override
@@ -83,6 +86,7 @@ public class LandmarkListActivity extends Activity {
                 e.printStackTrace();
             }
         }
+
     };
 
     //check whether users click on a landmark
@@ -189,8 +193,10 @@ public class LandmarkListActivity extends Activity {
         ArrayList<Landmark> list = new ArrayList<>();
         //Data Input
         Location userLoc = gps.getLoc();
+
         JSONObject userData = JSONFactory.userDataJSONMaker(userLoc, targetLoc);
         Log.d("Uer ", userLoc.getLatitude().toString());
+
         //ArrayList<Landmark> list = searchAlg.filterList(JSONFactory.parseJSON("http://eldersmapapi.herokuapp.com/api/search"));
         JSONObject result = new HTTPPostRequest("http://eldersmapapi.herokuapp.com/api/search").execute(userData).get();
         if(result.get("status").toString().equals("OK")){

@@ -52,6 +52,11 @@ public class LandmarkListActivity extends Activity {
     ListView landmarkList;
     RelativeLayout loading;
     private static Location destination; // the target destination
+    private static String destinationName;
+
+    public static String getDestinationName() {
+        return destinationName;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +65,7 @@ public class LandmarkListActivity extends Activity {
         landmarkList = (ListView) findViewById(R.id.landmark_list);
         loading = (RelativeLayout) findViewById(R.id.loadingPanel);
         landmarkList.setVisibility(View.INVISIBLE);
+        // Connect to the GPS Service
         Intent i = new Intent(getApplicationContext(),GPSTracker.class);
         startService(i);
         bindService(i,mServiceConn,Context.BIND_AUTO_CREATE);
@@ -76,10 +82,6 @@ public class LandmarkListActivity extends Activity {
         }, 1500);
 
         checkButtonClick();
-        // Connect to the GPS Service
-
-
-
     }
 
     @Override

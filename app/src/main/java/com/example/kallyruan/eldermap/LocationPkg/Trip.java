@@ -1,22 +1,18 @@
-package com.example.kallyruan.eldermap.NavigationPkg;
+package com.example.kallyruan.eldermap.LocationPkg;
 
-import com.example.kallyruan.eldermap.LocationPkg.Location;
-
-public class ScheduleTrip {
+public class Trip {
     private int targetDay;
     private int targetMonth;
     private int targetYear;
-    private int targetHour;
-    private int targetMinute;
     private Location destination;
+    private String name;
 
-    ScheduleTrip(int day,int month, int year, int hour, int minute, Location address){
+    Trip(int day, int month, int year, Location address, String name){
         this.targetDay = day;
         this.targetMonth = month;
         this.targetYear = year;
-        this.targetHour = hour;
-        this.targetMinute = minute;
         this.destination = address;
+        this.name = name;
     }
 
     public int getTargetDay() {
@@ -43,27 +39,19 @@ public class ScheduleTrip {
         this.targetYear = targetYear;
     }
 
-    public int getTargetHour() {
-        return targetHour;
-    }
-
-    public void setTargetHour(int targetHour) {
-        this.targetHour = targetHour;
-    }
-
-    public int getTargetMinute() {
-        return targetMinute;
-    }
-
-    public void setTargetMinute(int targetMinute) {
-        this.targetMinute = targetMinute;
-    }
-
     public Location getDestination() {
         return destination;
     }
 
     public void setDestination(Location destination) {
         this.destination = destination;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

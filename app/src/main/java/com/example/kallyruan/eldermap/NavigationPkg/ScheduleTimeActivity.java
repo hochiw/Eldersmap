@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.CalendarView;
 import android.widget.TimePicker;
 
+import com.example.kallyruan.eldermap.LocationPkg.ScheduledTrip;
 import com.example.kallyruan.eldermap.NearbyLankmarkPkg.LandmarkListActivity;
+import com.example.kallyruan.eldermap.ProfilePkg.User;
 import com.example.kallyruan.eldermap.R;
 
 import java.sql.Time;
@@ -68,8 +70,9 @@ public class ScheduleTimeActivity extends Activity{
 
     //this function is to create an alert when this scheduled time arrives
     public void setSchedule(View view){
-        ScheduleTrip planTrip = new ScheduleTrip(targetDay,targetMonth, targetYear, targetHour, targetMinute,
-                                                    LandmarkListActivity.getDestination());
-        
+        ScheduledTrip planTrip = ScheduledTrip.getInstance(targetDay,targetMonth, targetYear,
+                targetHour, targetMinute,LandmarkListActivity.getDestination(),
+                LandmarkListActivity.getDestinationName());
+        User.addScheduledTrip(planTrip);
     }
 }

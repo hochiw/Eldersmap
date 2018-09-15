@@ -20,6 +20,7 @@ import java.util.concurrent.ExecutionException;
 public class NavigationChecker {
 
     private GPSTracker gps;
+    ArrayList<Position> list = new ArrayList<>();
     /**
      * Navigation with http request
      */
@@ -29,13 +30,14 @@ public class NavigationChecker {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
+                getUserLoc();
             }
-        }
-        ArrayList<Position> list = new ArrayList<>();
+        };
+
         JSONObject obj = new JSONObject();
         obj.put("curLatitude", userLoc.getLatitude());
         obj.put("curLongitude", userLoc.getLongitude());
-        //get destination coordinate?
+        //get destination coordinate after user chooses
         obj.put("desLatitude", 0.000000);
         obj.put("desLongitude", 0.000000);
         JSONObject jsonObject = new HTTPPostRequest("http://eldersmapapi.herokuapp.com/api/route").execute(obj).get();
@@ -62,9 +64,21 @@ public class NavigationChecker {
 
     }
 
-    public Location getUserLoc() {
+    public void getUserLoc() {
         Location userLoc = gps.getLoc();
-        return userLoc;
+        Iterator it1 = getPostions().iterator();
+        while(it1.hasNext()) {
+            if (userLoc.getLatitude() - list.get(0).getLatitude() < 0.001 &&
+                    userLoc.getLongitude() - list.get(0).getLongitude() < 0.001) {
+                it1.remove();
+            }else {
+                break;
+            }
+        }
+    }
+
+    public ArrayList<Position> getPostions() {
+        return list;
     }
 
 }

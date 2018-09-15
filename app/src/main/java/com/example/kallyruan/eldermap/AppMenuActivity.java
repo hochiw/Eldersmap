@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.kallyruan.eldermap.NearbyLankmarkPkg.MenuActivity;
+import com.example.kallyruan.eldermap.P2PPkg.ChatActivity;
 
 public class AppMenuActivity extends AppCompatActivity {
 
@@ -35,7 +36,7 @@ public class AppMenuActivity extends AppCompatActivity {
         conversationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                conversationAction();
+                chatAction();
             }
         });
 
@@ -58,8 +59,9 @@ public class AppMenuActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void conversationAction(){
-
+    public void chatAction(){
+        Intent i = new Intent(getApplicationContext(), ChatActivity.class);
+        startActivity(i);
     }
 
     public void profileAction(){

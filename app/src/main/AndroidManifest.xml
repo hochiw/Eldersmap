@@ -33,6 +33,7 @@
         <service android:name=".GPSServicePkg.GPSTracker"/>
         <activity android:name=".AppMenuActivity"/>
         <activity android:name=".LocationPkg.TripReviewActivity"/>
+        <activity android:name=".P2PPkg.ChatActivity"/>
     </application>
 
 </manifest>

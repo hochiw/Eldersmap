@@ -19,6 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 
 import com.example.kallyruan.eldermap.NearbyLankmarkPkg.MenuActivity;
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
                         .setTitle("Location Permission request")
                         .setMessage("In order to use this App properly, you need to approve " +
                                 "location Permission.")
-                        .setPositiveButton("Yes, I approve", new DialogInterface.OnClickListener() {
+                        .setPositiveButton("Yes, I acknowledge.", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 //Prompt the user once explanation has been shown
@@ -64,30 +65,14 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
                                         MY_PERMISSIONS_REQUEST_LOCATION);
                             }
                         })
-                        .setNegativeButton("No, not now.",null)
                         .create()
                         .show();
             } else {
                 Log.d("test: ","no explanation");
 //                // No explanation needed, we can request the permission.
-//                ActivityCompat.requestPermissions(this,
-//                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-//                        MY_PERMISSIONS_REQUEST_LOCATION);
-                //TESTING
-                new AlertDialog.Builder(this)
-                        .setTitle("test")
-                        .setMessage("message")
-                        .setPositiveButton("permission", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                //Prompt the user once explanation has been shown
-                                ActivityCompat.requestPermissions(MainActivity.this,
-                                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                                        MY_PERMISSIONS_REQUEST_LOCATION);
-                            }
-                        })
-                        .create()
-                        .show();
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        MY_PERMISSIONS_REQUEST_LOCATION);
             }
             return false;
             //if permission granted
@@ -106,26 +91,20 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Log.d("test: ","permission granted!");
-
-                    // permission was granted, yay! Do the
-                    // location-related task you need to do.
+                    // if get permission, then do the task
                     if (ContextCompat.checkSelfPermission(this,
                             Manifest.permission.ACCESS_FINE_LOCATION)
                             == PackageManager.PERMISSION_GRANTED) {
-
                         //Request location updates:
                         //locationManager.requestLocationUpdates(provider, 400, 1, this);
-
-                        //do the task
-                        startMenu();
                     }
-
                 } else {
-                    Log.d("test: ","permission denied");
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-
+                    // if permission denied, send user the alert message
+                    Toast.makeText(MainActivity.this,"App feature may not work without " +
+                                                                "permission!",Toast.LENGTH_SHORT).show();
                 }
+                // Whenever get permission from user, re-route user to menu page
+                startMenu();
                 return;
             }
 
@@ -133,14 +112,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
     }
 
     private void startMenu() {
-        //re-route user to nearby landmark menu page
-        new Handler().postDelayed(new Runnable() {
-            @Override public void run() {
-                final Intent mainIntent = new Intent(getApplicationContext(), AppMenuActivity.class);
-                startActivity(mainIntent);
-            }
-        }, 2000);
-
+        final Intent mainIntent = new Intent(getApplicationContext(), AppMenuActivity.class);
+        startActivity(mainIntent);
     }
 
     @Override

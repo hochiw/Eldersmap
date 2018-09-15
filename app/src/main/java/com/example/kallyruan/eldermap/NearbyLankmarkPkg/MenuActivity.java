@@ -1,13 +1,18 @@
 package com.example.kallyruan.eldermap.NearbyLankmarkPkg;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.RelativeLayout;
+
 import java.util.HashMap;
 
+import com.example.kallyruan.eldermap.AppMenuActivity;
 import com.example.kallyruan.eldermap.R;
 
 
@@ -68,7 +73,7 @@ public class MenuActivity extends Activity {
                         break;
 
                 }
-                LandmarkListActivity.destination = category;
+                LandmarkListActivity.category = category;
             }
         });
     }
@@ -78,8 +83,9 @@ public class MenuActivity extends Activity {
      * @param landmark
      */
     private void listlandmark(int landmark){
-        Intent intent = new Intent(this, LandmarkListActivity.class);
+        Intent intent = new Intent(getApplicationContext(), LandmarkListActivity.class);
         startActivity(intent);
+
     }
 
     private void initialiseIndexMap(){

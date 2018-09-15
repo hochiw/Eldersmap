@@ -51,17 +51,6 @@ public class NavigationChecker {
                     jsonArray.optJSONArray(i).getDouble(1),
                     jsonArray.optJSONArray(i).getDouble(0)));
         }
-
-        Iterator it2 = list.iterator();
-        while(it2.hasNext()) {
-            if (userLoc.getLatitude() - list.get(0).getLatitude() < 0.001 &&
-                    userLoc.getLongitude() - list.get(0).getLongitude() < 0.001) {
-                it2.remove();
-            }else {
-                break;
-            }
-        }
-
     }
 
     public void getUserLoc() {

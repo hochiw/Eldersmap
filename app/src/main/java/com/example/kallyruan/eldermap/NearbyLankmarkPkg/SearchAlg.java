@@ -36,6 +36,7 @@ public class SearchAlg {
                         (String)currentObj.get("address"), 0.0f, currentLoc, 0.0);
                 e.printStackTrace();
             }
+
             returnList.add(curLandmark);
         }
         Collections.sort(returnList, new Sortbyrating());

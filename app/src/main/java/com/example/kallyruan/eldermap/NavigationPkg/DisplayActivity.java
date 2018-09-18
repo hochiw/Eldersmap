@@ -4,9 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.kallyruan.eldermap.LocationPkg.TripReviewActivity;
+import com.example.kallyruan.eldermap.NearbyLankmarkPkg.LandmarkListActivity;
 import com.example.kallyruan.eldermap.R;
 
 import java.util.ArrayList;
@@ -53,9 +57,14 @@ public class DisplayActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    final Intent mainIntent = new Intent(getApplicationContext(), DisplayActivity.class);
-                    startActivity(mainIntent);
-                    displayIndex += 1;
+                    if (displayIndex < getInformation().size() - 1){
+                        final Intent mainIntent = new Intent(getApplicationContext(), DisplayActivity.class);
+                        startActivity(mainIntent);
+                        displayIndex += 1;
+                    }else{
+                        toTripReview();
+                        return;
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -111,6 +120,16 @@ public class DisplayActivity extends AppCompatActivity {
         String signText = String.format("%s %s, %s %d %s", move, direction,
                 transportationMethod, period, unit);
         sign.setText(signText);
+    }
+
+    public void endTrip(View view){
+        Intent intent = new Intent(getApplicationContext(), LandmarkListActivity.class);
+        startActivity(intent);
+    }
+
+    private void toTripReview() {
+        Intent intent = new Intent(getApplicationContext(),TripReviewActivity.class);
+        startActivity(intent);
     }
 }
 

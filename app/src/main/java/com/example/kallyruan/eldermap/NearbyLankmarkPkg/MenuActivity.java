@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+
 import java.util.HashMap;
 
 import com.example.kallyruan.eldermap.R;
@@ -68,7 +69,7 @@ public class MenuActivity extends Activity {
                         break;
 
                 }
-                LandmarkListActivity.destination = category;
+                LandmarkListActivity.category = category;
             }
         });
     }
@@ -78,8 +79,9 @@ public class MenuActivity extends Activity {
      * @param landmark
      */
     private void listlandmark(int landmark){
-        Intent intent = new Intent(this, LandmarkListActivity.class);
+        Intent intent = new Intent(getApplicationContext(), LandmarkListActivity.class);
         startActivity(intent);
+
     }
 
     private void initialiseIndexMap(){

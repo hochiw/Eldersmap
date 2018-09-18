@@ -28,6 +28,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".NearbyLankmarkPkg.LandmarkListActivity"/>
+        <activity android:name=".NavigationPkg.DisplayActivity"/>
+        <activity android:name=".NavigationPkg.ScheduleTimeActivity"/>
+        <service android:name=".GPSServicePkg.GPSTracker"/>
+        <activity android:name=".AppMenuActivity"/>
+        <activity android:name=".LocationPkg.TripReviewActivity"/>
+        <activity android:name=".P2PPkg.ChatActivity"/>
     </application>
 
 </manifest>

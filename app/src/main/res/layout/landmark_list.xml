@@ -86,4 +86,19 @@
         android:textSize="25dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/landmarkCost"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/loadingPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+        <ProgressBar
+            android:id="@+id/loading"
+            android:gravity="center"
+            android:layout_width="148dp"
+            android:layout_height="116dp"
+            android:indeterminate="true" />
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

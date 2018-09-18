@@ -11,6 +11,7 @@ public class Landmark {
     private Location location;
     private double distance;
 
+
     Landmark(String name, String address, float rating, Location location, Double distance){
         this.name = name;
         this.address = address;

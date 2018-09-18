@@ -3,10 +3,12 @@ package com.example.kallyruan.eldermap.LocationPkg;
 public class Location {
     private Double latitude;
     private Double longitude;
+    private float bearing;
 
-    Location(Double latitude, Double Longitude){
+    Location(Double latitude, Double longitude,float bearing){
         this.latitude = latitude;
-        this.longitude = Longitude;
+        this.longitude = longitude;
+        this.bearing = bearing;
     }
 
     public void setLatitude(Double x){
@@ -14,7 +16,11 @@ public class Location {
     }
 
     public void setLongitude(Double y){
-        this.latitude = y;
+        this.longitude = y;
+    }
+
+    public void setBearing(float z){
+        this.bearing = z;
     }
 
     public Double getLatitude(){
@@ -25,15 +31,19 @@ public class Location {
         return longitude;
     }
 
+    public float getBearing(){
+        return bearing;
+    }
+
+
     /**
      * This function is to let classes in other package instantiate and get a Location object.
      * @param x latitude
      * @param y longitude
      * @return Location object
      */
-    public static Location getInstance(Double x, Double y){
-        Location test = new Location(x, y);
-        return test;
+    public static Location getInstance(Double x, Double y, float z){
+        return new Location(x, y, z);
     }
 
 

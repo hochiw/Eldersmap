@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 
 import com.example.kallyruan.eldermap.LocationPkg.Location;
 
@@ -22,8 +23,6 @@ public class GPSTracker extends Service implements LocationListener {
     private boolean GPSEnabled = false;
     private boolean networkEnabled = false;
     private LocationManager locationManager;
-    private static final int INTERVAL = 1000;
-    private static final float DISTANCE = 10f;
     private Location mLocation;
 
     IBinder mBinder = new binder();
@@ -32,6 +31,8 @@ public class GPSTracker extends Service implements LocationListener {
     public void onLocationChanged(android.location.Location location) {
         mLocation.setLatitude(location.getLatitude());
         mLocation.setLongitude(location.getLongitude());
+        mLocation.setBearing(location.getBearing());
+        Log.d("test",Float.toString(location.getBearing()));
 
     }
 
@@ -71,7 +72,7 @@ public class GPSTracker extends Service implements LocationListener {
 
     @Override
     public void onCreate() {
-            mLocation = Location.getInstance(0.0,0.0);
+            mLocation = Location.getInstance(0.0,0.0,0.0f);
             if (locationManager == null) {
                 locationManager = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
             }

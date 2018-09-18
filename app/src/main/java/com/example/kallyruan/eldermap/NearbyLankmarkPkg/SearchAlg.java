@@ -23,7 +23,7 @@ public class SearchAlg {
         JSONArray array = new JSONArray(inList.get("results").toString());
         for (int i = 0; i < array.length(); i++){
             JSONObject currentObj = array.getJSONObject(i);
-            Location currentLoc = Location.getInstance((Double) currentObj.getJSONObject("location").get("lat"), (Double) currentObj.getJSONObject("location").get("lng"));
+            Location currentLoc = Location.getInstance((Double) currentObj.getJSONObject("location").get("lat"), (Double) currentObj.getJSONObject("location").get("lng"),0.0f);
             Landmark curLandmark = new Landmark((String)currentObj.get("name"), (String)currentObj.get("address"), ((Number)currentObj.get("rating")).floatValue(), currentLoc, 0.0);
             returnList.add(curLandmark);
         }

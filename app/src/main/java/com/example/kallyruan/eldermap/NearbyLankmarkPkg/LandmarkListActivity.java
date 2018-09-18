@@ -23,6 +23,7 @@ import com.example.kallyruan.eldermap.LocationPkg.Location;
 import com.example.kallyruan.eldermap.NavigationPkg.DisplayActivity;
 import com.example.kallyruan.eldermap.NavigationPkg.ScheduleTimeActivity;
 import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
+import com.example.kallyruan.eldermap.P2PPkg.P2PAdminActivity;
 import com.example.kallyruan.eldermap.R;
 
 import org.json.JSONException;
@@ -47,10 +48,10 @@ public class LandmarkListActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landmark_list);
         // Connect to the GPS Service
-        Intent i = new Intent(this,GPSTracker.class);
+        Intent i = new Intent(this, GPSTracker.class);
         startService(i);
-        bindService(i,mServiceConn,Context.BIND_AUTO_CREATE);
-        Log.d("test",Boolean.toString(serviceAlive));
+        bindService(i, mServiceConn, Context.BIND_AUTO_CREATE);
+        Log.d("test", Boolean.toString(serviceAlive));
         checkButtonClick();
     }
 
@@ -87,10 +88,10 @@ public class LandmarkListActivity extends Activity {
     //check whether users click on a landmark
     public void checkButtonClick() {
         ListView view = (ListView) findViewById(R.id.landmark_list);
-        view.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int location, long l) {
-                locationIndex= location;
+                locationIndex = location;
                 navigationToast();
             }
         });
@@ -106,7 +107,8 @@ public class LandmarkListActivity extends Activity {
                     public void onClick(DialogInterface dialog, int which) {
                         // do confirmed change nickname action
                         switchToNavigation();
-                    }})
+                    }
+                })
                 .setNeutralButton("Make a schedule", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -123,7 +125,7 @@ public class LandmarkListActivity extends Activity {
 
     // this method is to push a status bar notification
     @SuppressWarnings("deprecation")
-    public void showNotification(){
+    public void showNotification() {
         Intent intent = new Intent("com.rj.notitfications.SECACTIVITY");
         manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
@@ -147,13 +149,18 @@ public class LandmarkListActivity extends Activity {
 
     }
 
-    public void switchToNavigation(){
+    public void switchToNavigation() {
         Intent i = new Intent(this, DisplayActivity.class);
         startActivityForResult(i, 1);
     }
 
-    public void switchToSchedule(){
+    public void switchToSchedule() {
         Intent i = new Intent(this, ScheduleTimeActivity.class);
+        startActivityForResult(i, 1);
+    }
+
+    public void switchToUDP() {
+        Intent i = new Intent(this, P2PAdminActivity.class);
         startActivityForResult(i, 1);
     }
 
@@ -183,8 +190,9 @@ public class LandmarkListActivity extends Activity {
     /**
      * Shows the list of nearby landmarks
      */
-    public void showLandmarkList() throws  JSONException, ExecutionException, InterruptedException {
+    public void showLandmarkList() throws JSONException, ExecutionException, InterruptedException {
         ListView listView = (ListView) findViewById(R.id.landmark_list);
+        switchToUDP();
         ArrayList<Landmark> list = new ArrayList<>();
         //Data Input
         Location userLoc = gps.getLoc();
@@ -192,12 +200,13 @@ public class LandmarkListActivity extends Activity {
         Log.d("tests", userLoc.getLatitude().toString());
         //ArrayList<Landmark> list = searchAlg.filterList(JSONFactory.parseJSON("http://eldersmapapi.herokuapp.com/api/search"));
         JSONObject result = new HTTPPostRequest("http://eldersmapapi.herokuapp.com/api/search").execute(userData).get();
-        if(result.get("status").toString().equals("OK")){
+        if (result.get("status").toString().equals("OK")) {
             list = searchAlg.filterList(result);
         }
-        Log.d("test",list.toString());
+        Log.d("test", list.toString());
         LandmarkListAdapter adapter = new LandmarkListAdapter(this, list);
         listView.setAdapter(adapter);
+
     }
 }
 

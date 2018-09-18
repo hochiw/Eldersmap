@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat Sep 08 18:53:01 AEST 2018
+#Thu Sep 13 14:48:58 AEST 2018
 1.base=/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/transforms/dexMerger/debug/12
 2.path=classes.dex
 0.baseType=DIRECTORY

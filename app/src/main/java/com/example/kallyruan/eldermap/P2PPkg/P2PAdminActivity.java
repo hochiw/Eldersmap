@@ -17,10 +17,12 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 public class P2PAdminActivity extends AppCompatActivity {
     private ToggleButton ready;
     private UDPReceiver receiver;
+    private ArrayList<Message> messages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +48,12 @@ public class P2PAdminActivity extends AppCompatActivity {
     public void createReceiver() {
         String url = "http://eldersmapapi.herokuapp.com/api/sendQueue";
         try {
-            receiver = new UDPReceiver();
+            receiver = new UDPReceiver(new OnMessageReceive() {
+                @Override
+                public void onReceive(Message m) {
+                    messages.add(m);
+                }
+            });
             receiver.execute();
             int port = receiver.getPort();
             new HTTPPostRequest(url).execute(new JSONObject().put("port",port));

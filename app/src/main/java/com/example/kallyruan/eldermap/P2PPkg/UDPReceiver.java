@@ -12,9 +12,11 @@ import java.net.SocketException;
 
 public class UDPReceiver extends AsyncTask<Void,Void,Void> {
     private DatagramSocket socket;
+    private OnMessageReceive callback;
 
-    public UDPReceiver() throws SocketException {
-        socket = new DatagramSocket();
+    public UDPReceiver(OnMessageReceive callback) throws SocketException {
+        this.socket = new DatagramSocket();
+        this.callback = callback;
     }
 
     @Override
@@ -29,7 +31,11 @@ public class UDPReceiver extends AsyncTask<Void,Void,Void> {
 
                 String receivedMessage = new String(packet.getData(),0,packet.getLength());
 
-                Log.d("UDP",receivedMessage + " " + packet.getAddress().toString() + " " + packet.getPort());
+                if (receivedMessage.length() > 0) {
+
+                    callback.onReceive(new Message(packet.getAddress(),packet.getPort(),receivedMessage));
+
+                }
 
             } catch (IOException e) {
                 e.printStackTrace();

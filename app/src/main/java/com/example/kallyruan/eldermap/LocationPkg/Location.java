@@ -5,7 +5,7 @@ public class Location {
     private Double longitude;
     private float bearing;
 
-    Location(Double latitude, Double longitude,float bearing){
+    Location(Double latitude, Double longitude, float bearing){
         this.latitude = latitude;
         this.longitude = longitude;
         this.bearing = bearing;

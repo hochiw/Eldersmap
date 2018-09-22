@@ -12,7 +12,7 @@ public class Position {
     private String modifier;
     private JSONArray location;
 
-    Position (String instruction, String modifier, int bearing_after, int bearing_before, JSONArray location) throws JSONException{
+    Position(String instruction, String modifier, int bearing_after, int bearing_before, JSONArray location) throws JSONException{
         this.instruction = instruction;
         this.modifier = modifier;
         this.bearing_after = bearing_after;

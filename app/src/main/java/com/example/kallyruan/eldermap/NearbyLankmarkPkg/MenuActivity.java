@@ -7,16 +7,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
-import java.util.HashMap;
-
 import com.example.kallyruan.eldermap.R;
 
-
-
+import java.util.HashMap;
 
 
 public class MenuActivity extends Activity {
-    private HashMap<Integer, String> mapIndex;
+    private HashMap mapIndex;
 
     public final static int HOSPITSL = 0;
     public final static int PHARMACY = 1;

@@ -14,30 +14,12 @@ public class SocketClient {
 
     private Boolean alive = false;
     private WebSocketClient ws;
+    private ChatActivity ca;
 
-    public SocketClient(URI address) {
-        ws = new WebSocketClient(address) {
-            @Override
-            public void onOpen(ServerHandshake handshakedata) {
-                alive = true;
-            }
+    public SocketClient(URI address, ChatActivity ca) {
+        initiate(address);
+        this.ca = ca;
 
-            @Override
-            public void onMessage(String message) {
-                Log.d("WS",message);
-            }
-
-            @Override
-            public void onClose(int code, String reason, boolean remote) {
-
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-            }
-        };
-        ws.connect();
     }
 
     public void sendFile(String path) {
@@ -57,6 +39,31 @@ public class SocketClient {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void initiate(URI address) {
+        this.ws = new WebSocketClient(address) {
+            @Override
+            public void onOpen(ServerHandshake handshakedata) {
+                alive = true;
+            }
+
+            @Override
+            public void onMessage(String message) {
+                ca.newMessage(message);
+            }
+
+            @Override
+            public void onClose(int code, String reason, boolean remote) {
+
+            }
+
+            @Override
+            public void onError(Exception ex) {
+
+            }
+        };
+        ws.connect();
     }
 
     public WebSocketClient getInstance() {

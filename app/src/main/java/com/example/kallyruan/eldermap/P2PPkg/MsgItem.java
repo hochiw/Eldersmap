@@ -21,7 +21,7 @@ public class MsgItem {
     public MsgItem(String content, int type, int msgType) {
         this.content = content;
         this.msgType = type;
-        this.contentType = MESSAGE_TYPE_TEXT;
+        this.contentType = msgType;
     }
 
     public MsgItem(InetAddress ip, int port, String content, int msgtype, int contentType) {
@@ -30,14 +30,6 @@ public class MsgItem {
         this.content = content;
         this.msgType = msgtype;
         this.contentType = contentType;
-    }
-
-    public static int getTypeReceived() {
-        return TYPE_RECEIVED;
-    }
-
-    public static int getTypeSent() {
-        return TYPE_SENT;
     }
 
     public String getContent() {

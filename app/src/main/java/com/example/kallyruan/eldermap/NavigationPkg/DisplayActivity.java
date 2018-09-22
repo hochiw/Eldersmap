@@ -128,8 +128,7 @@ public class DisplayActivity extends AppCompatActivity {
         graph = (ImageView) findViewById(R.id.directionIcon);
         final String LEFT = "LEFT";
         final String RIGHT = "RIGHT";
-        final String BACKWARD = "BACKWARD";
-        final String FORWARD = "FORWARD";
+        final String FORWARD = "STRAIGHT";
         String direction = getInformation().get(i).getDirection();
         if (direction.toUpperCase().equals(LEFT)) {
             graph.setImageResource(R.mipmap.ic_arrow_left);
@@ -137,8 +136,6 @@ public class DisplayActivity extends AppCompatActivity {
             graph.setImageResource(R.mipmap.ic_arrow_right);
         } else if (direction.toUpperCase().equals(FORWARD)) {
             graph.setImageResource(R.mipmap.ic_arrow_up);
-        } else if (direction.toUpperCase().equals(BACKWARD)) {
-            graph.setImageResource(R.mipmap.ic_arrow_down);
         }
 
     }

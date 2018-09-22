@@ -1,11 +1,17 @@
 package com.example.kallyruan.eldermap.P2PPkg;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,14 +20,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
 import com.example.kallyruan.eldermap.R;
 
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.URI;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +42,8 @@ public class ChatActivity extends AppCompatActivity {
     private SocketClient client;
     private ArrayList<MsgItem> msgItems;
     private List<MsgItem> msgList = new ArrayList<MsgItem>();
+    public final int RESULT_LOAD_IMG = 1;
+    public final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 999;
 
     private EditText inputText;
 
@@ -45,6 +58,7 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // this following part are for UI view
         setContentView(R.layout.p2p_chatroom);
+
         initMsgs();
         inputText = (EditText) findViewById(R.id.input_text);
         send = (Button) findViewById(R.id.send);
@@ -85,7 +99,7 @@ public class ChatActivity extends AppCompatActivity {
         msgList.add(msgItem2);
         MsgItem msgItem3 = new MsgItem("This is Tom. Nice talking to you. ", MsgItem.TYPE_RECEIVED,MsgItem.MESSAGE_TYPE_TEXT);
         msgList.add(msgItem3);
-    }
+   }
 
 
 
@@ -106,46 +120,103 @@ public class ChatActivity extends AppCompatActivity {
         }
     }
 
-    public void getPicture(View view){
-        Intent gallery = new Intent(Intent.ACTION_GET_CONTENT);
-        gallery.setType("image/*");
-        startActivityForResult(gallery, 1);
+    public void getRichMedia(View view){
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/* video/*");
+        startActivityForResult(intent, RESULT_LOAD_IMG);
+    }
+
+    public void testText(View view){
+        MsgItem msgItem1 = new MsgItem("PLEASE WORK!", MsgItem.TYPE_RECEIVED,MsgItem.MESSAGE_TYPE_TEXT);
+        msgList.add(msgItem1);
+        // refresh the view
+        adapter.notifyItemInserted(msgList.size() - 1);
+        // nominate the view to the last message
+        msgRecyclerView.scrollToPosition(msgList.size() - 1);
+    }
+
+    public void getCall(View view){
+
+    }
+
+    private String getRealPathFromURI(Uri contentURI) {
+        String result;
+        Cursor cursor = getContentResolver().query(contentURI, null, null, null, null);
+        if (cursor == null) { // Source is Dropbox or other similar local file path
+            result = contentURI.getPath();
+        } else {
+            cursor.moveToFirst();
+            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            result = cursor.getString(idx);
+            cursor.close();
+        }
+        return result;
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        try {
-            if (resultCode == RESULT_OK) {
-                //this part is to get photo data
-                Uri selectedImage = intent.getData();
-                String[] filePathColumn = { MediaStore.Images.Media.DATA };
+        if (resultCode == RESULT_OK) {
+            //get file path
+            final Uri fileUri = intent.getData();
+            String path = getRealPathFromURI(fileUri);
 
-                Cursor cursor = getContentResolver().query(selectedImage,
-                        filePathColumn, null, null, null);
-                cursor.moveToFirst();
+            // check whether read Permission is granted
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
 
-                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                String picturePath = cursor.getString(columnIndex);
-                cursor.close();
-
-                // assign to image view
-                //ImageView imageView = (ImageView) findViewById(R.id.imgView);
-                //imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-
-                //add to the list
-                MsgItem msgItem = new MsgItem(picturePath, MsgItem.TYPE_SENT,MsgItem.MESSAGE_TYPE_GRAPH);
-                msgList.add(msgItem);
-
-
-                //send photo to server
-                if (client.getStatus()) {
-                    client.sendFile(intent.getData().getPath());
+                checkMediaFileType(path, intent);
+            } else {
+                // Should we show an explanation?
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                        Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                    // Show an explanation to the user *asynchronously* -- don't block
+                    // this thread waiting for the user's response! After the user
+                    // sees the explanation, try again to request the permission.
+                } else {
+                    // No explanation needed, we can request the permission.
+                    ActivityCompat.requestPermissions(this,
+                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                            MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+                    //show toast to let user try send again
+                    Toast.makeText(getApplicationContext(), "Please try again", Toast.LENGTH_LONG).show();
                 }
+
+            }
+        }
+    }
+
+    public void checkMediaFileType(String path,Intent intent){
+        File richMediaFile = new File(path);
+        if (richMediaFile.exists()) {
+            if(isImageFile(path)){
+                MsgItem msgItem = new MsgItem(path, MsgItem.TYPE_SENT, MsgItem.MESSAGE_TYPE_GRAPH);
+                addToList(msgItem,intent);
+            }else if (isVideoFile(path)){
+                MsgItem msgItem = new MsgItem(path, MsgItem.TYPE_SENT, MsgItem.MESSAGE_TYPE_VIDEO);
+                addToList(msgItem,intent);
             }
 
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-    };
+    }
+
+    public void addToList(MsgItem msgItem,Intent intent){
+        msgList.add(msgItem);
+        adapter.notifyItemInserted(msgList.size() - 1);
+        //send to server
+        if (client.getStatus()) {
+            client.sendFile(intent.getData().getPath());
+        }
+    }
+
+    public static boolean isImageFile(String path) {
+        String mimeType = URLConnection.guessContentTypeFromName(path);
+        return mimeType != null && mimeType.startsWith("image");
+    }
+
+    public static boolean isVideoFile(String path) {
+        String mimeType = URLConnection.guessContentTypeFromName(path);
+        return mimeType != null && mimeType.startsWith("video");
+    }
+
 
 }

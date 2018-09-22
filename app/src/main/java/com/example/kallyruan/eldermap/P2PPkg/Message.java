@@ -17,4 +17,12 @@ public class Message {
     public String getMessage() {
         return message;
     }
+
+    public String getIP() {
+        return ip.getHostAddress().toString();
+    }
+
+    public int getPort() {
+        return port;
+    }
 }

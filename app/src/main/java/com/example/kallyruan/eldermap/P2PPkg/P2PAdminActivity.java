@@ -54,7 +54,7 @@ public class P2PAdminActivity extends AppCompatActivity {
                     messages.add(m);
                 }
             });
-            receiver.execute();
+            receiver.start();
             int port = receiver.getPort();
             new HTTPPostRequest(url).execute(new JSONObject().put("port",port));
         } catch (Exception e) {

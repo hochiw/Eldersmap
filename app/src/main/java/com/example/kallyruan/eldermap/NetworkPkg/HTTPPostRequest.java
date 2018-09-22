@@ -31,7 +31,12 @@ public class HTTPPostRequest extends AsyncTask<JSONObject,Void,JSONObject> {
             urlconnection.setRequestProperty("Accept", "application/json");
 
             OutputStreamWriter output = new OutputStreamWriter(urlconnection.getOutputStream(), "UTF-8");
-            output.write(params[0].toString());
+            if (params.length > 0) {
+                output.write(params[0].toString());
+            } else {
+                output.write("");
+            }
+
             output.flush();
             output.close();
 

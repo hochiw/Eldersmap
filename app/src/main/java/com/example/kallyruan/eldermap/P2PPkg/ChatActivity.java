@@ -1,7 +1,11 @@
 package com.example.kallyruan.eldermap.P2PPkg;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
 import com.example.kallyruan.eldermap.R;
@@ -111,6 +116,28 @@ public class ChatActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         try {
             if (resultCode == RESULT_OK) {
+                //this part is to get photo data
+                Uri selectedImage = intent.getData();
+                String[] filePathColumn = { MediaStore.Images.Media.DATA };
+
+                Cursor cursor = getContentResolver().query(selectedImage,
+                        filePathColumn, null, null, null);
+                cursor.moveToFirst();
+
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                String picturePath = cursor.getString(columnIndex);
+                cursor.close();
+
+                // assign to image view
+                //ImageView imageView = (ImageView) findViewById(R.id.imgView);
+                //imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
+                //add to the list
+                MsgItem msgItem = new MsgItem(picturePath, MsgItem.TYPE_SENT,MsgItem.MESSAGE_TYPE_GRAPH);
+                msgList.add(msgItem);
+
+
+                //send photo to server
                 if (client.getStatus()) {
                     client.sendFile(intent.getData().getPath());
                 }

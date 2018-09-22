@@ -1,9 +1,12 @@
 package com.example.kallyruan.eldermap.P2PPkg;
 
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -22,8 +25,9 @@ public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.ViewHolder> {
         LinearLayout rightLayout;
 
         TextView leftMsg;
-
         TextView rightMsg;
+        ImageView leftImage;
+        ImageView rightImage;
 
         public ViewHolder(View view) {
             super(view);
@@ -31,6 +35,8 @@ public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.ViewHolder> {
             rightLayout = (LinearLayout) view.findViewById(R.id.right_layout);
             leftMsg = (TextView) view.findViewById(R.id.left_msg);
             rightMsg = (TextView) view.findViewById(R.id.right_msg);
+            leftImage = (ImageView) view.findViewById(R.id.left_image);
+            rightImage = (ImageView) view.findViewById(R.id.right_image);
         }
     }
 
@@ -60,16 +66,28 @@ public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         MsgItem msgItem = mMsgItemList.get(position);
+        // if this is a received message, then hide the right layout and show the left one
         if (msgItem.getType() == MsgItem.TYPE_RECEIVED) {
-            // if this is a received message, then hide the right layout and show the left one
             holder.leftLayout.setVisibility(View.VISIBLE);
             holder.rightLayout.setVisibility(View.GONE);
-            holder.leftMsg.setText(msgItem.getContent());
+            if (msgItem.getContentType() == MsgItem.MESSAGE_TYPE_TEXT){
+                holder.leftMsg.setText(msgItem.getContent());
+            }else if (msgItem.getContentType() == MsgItem.MESSAGE_TYPE_GRAPH){
+                String path = msgItem.getContent();
+                holder.leftImage.setImageBitmap(BitmapFactory.decodeFile(path));
+            }
+
+       // if this is a sent message, then hide the left layout and show the right one
         } else if (msgItem.getType() == MsgItem.TYPE_SENT) {
-            // if this is a sent message, then hide the left layout and show the right one
             holder.rightLayout.setVisibility(View.VISIBLE);
             holder.leftLayout.setVisibility(View.GONE);
-            holder.rightMsg.setText(msgItem.getContent());
+            if (msgItem.getContentType() == MsgItem.MESSAGE_TYPE_TEXT){
+                holder.rightMsg.setText(msgItem.getContent());
+            }else if (msgItem.getContentType() == MsgItem.MESSAGE_TYPE_GRAPH){
+                String path = msgItem.getContent();
+                holder.rightImage.setImageBitmap(BitmapFactory.decodeFile(path));
+            }
+
         }
     }
 

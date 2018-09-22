@@ -1,5 +1,6 @@
 package com.example.kallyruan.eldermap.P2PPkg;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,13 +16,14 @@ import com.example.kallyruan.eldermap.R;
 import org.json.JSONObject;
 
 import java.net.InetAddress;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ChatActivity extends AppCompatActivity {
 
     private UDPReceiver receiver;
-    private UDPClient client;
+    private SocketClient client;
     private ArrayList<MsgItem> msgItems;
     private List<MsgItem> msgList = new ArrayList<MsgItem>();
 
@@ -36,6 +38,7 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // this following part are for UI view
         setContentView(R.layout.p2p_chatroom);
         initMsgs();
         inputText = (EditText) findViewById(R.id.input_text);
@@ -62,19 +65,12 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
 
-//        msgItems = new ArrayList<MsgItem>();
-//        try {
-//            receiver = new UDPReceiver(new OnMessageReceive() {
-//                @Override
-//                public void onReceive(MsgItem m) {
-//                    msgItems.add(m);
-//                    Log.d("UDP",m.getContent());
-//                }
-//            });
-//            receiver.execute();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        //the following is with server connection..
+        try {
+            client = new SocketClient(new URI("ws://10.13.238.213:8080?type=client"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void initMsgs() {
@@ -92,13 +88,37 @@ public class ChatActivity extends AppCompatActivity {
         String url = "http://eldersmapapi.herokuapp.com/api/getQueue";
         try {
             JSONObject admin = new HTTPPostRequest(url).execute().get();
+            Log.d("UDP",admin.toString());
             if (admin.length() != 0) {
-                client = new UDPClient(admin.getString("ip"),admin.getInt("port"));
+                Log.d("UDP",admin.getString("ip"));
+                Log.d("UDP",Integer.toString(admin.getInt("port")));
+                //  client = new UDPClient(admin.getString("ip"),admin.getInt("port"));
+                // client.sendMessage("HI");
+
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    public void getPicture(View view){
+        Intent gallery = new Intent(Intent.ACTION_GET_CONTENT);
+        gallery.setType("image/*");
+        startActivityForResult(gallery, 1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        try {
+            if (resultCode == RESULT_OK) {
+                if (client.getStatus()) {
+                    client.sendFile(intent.getData().getPath());
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    };
 
 }

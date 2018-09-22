@@ -22,8 +22,6 @@ public class GPSTracker extends Service implements LocationListener {
     private boolean GPSEnabled = false;
     private boolean networkEnabled = false;
     private LocationManager locationManager;
-    private static final int INTERVAL = 1000;
-    private static final float DISTANCE = 10f;
 
     private Location mLocation;
 
@@ -33,6 +31,7 @@ public class GPSTracker extends Service implements LocationListener {
     public void onLocationChanged(android.location.Location location) {
         mLocation.setLatitude(location.getLatitude());
         mLocation.setLongitude(location.getLongitude());
+        mLocation.setBearing(location.getBearing());
 
     }
 
@@ -72,7 +71,7 @@ public class GPSTracker extends Service implements LocationListener {
 
     @Override
     public void onCreate() {
-            mLocation = Location.getInstance(0.0,0.0);
+            mLocation = Location.getInstance(0.0,0.0,0.0f);
             if (locationManager == null) {
                 locationManager = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
             }

@@ -1,6 +1,9 @@
 package com.example.kallyruan.eldermap.P2PPkg;
 
 import android.os.AsyncTask;
+import android.util.Log;
+
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -29,9 +32,8 @@ public class UDPReceiver extends AsyncTask<Void,Void,Void> {
                 String receivedMessage = new String(packet.getData(),0,packet.getLength());
 
                 if (receivedMessage.length() > 0) {
-                    // comment this for ui testing, should uncomment afterwards.
-                    //callback.onReceive(new MsgItem(packet.getAddress(),packet.getPort(),
-                                //receivedMessage,MsgItem.TYPE_RECEIVED,MsgItem.MESSAGE_TYPE_TEXT));
+
+                    callback.onReceive(new Message(packet.getAddress(),packet.getPort(),receivedMessage));
 
                 }
 

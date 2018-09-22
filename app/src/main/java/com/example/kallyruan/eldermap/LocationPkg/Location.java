@@ -5,9 +5,10 @@ public class Location {
     private Double longitude;
     private float bearing;
 
-    Location(Double latitude, Double longitude){
+    Location(Double latitude, Double longitude,float bearing){
         this.latitude = latitude;
         this.longitude = longitude;
+        this.bearing = bearing;
     }
 
     public void setLatitude(Double x){
@@ -18,12 +19,20 @@ public class Location {
         this.longitude = y;
     }
 
+    public void setBearing(float z){
+        this.bearing = z;
+    }
+
     public Double getLatitude(){
         return latitude;
     }
 
     public Double getLongitude(){
         return longitude;
+    }
+
+    public float getBearing(){
+        return bearing;
     }
 
 
@@ -33,8 +42,8 @@ public class Location {
      * @param y longitude
      * @return Location object
      */
-    public static Location getInstance(Double x, Double y){
-        return new Location(x, y);
+    public static Location getInstance(Double x, Double y, float z){
+        return new Location(x, y, z);
     }
 
 

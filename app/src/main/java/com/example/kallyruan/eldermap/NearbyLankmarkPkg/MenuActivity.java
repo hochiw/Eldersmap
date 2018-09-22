@@ -7,9 +7,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import java.util.HashMap;
+
 import com.example.kallyruan.eldermap.R;
 
-import java.util.HashMap;
+
+
 
 
 public class MenuActivity extends Activity {

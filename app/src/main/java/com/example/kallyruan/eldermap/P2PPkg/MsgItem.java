@@ -18,13 +18,13 @@ public class MsgItem {
 
     //this constructor is used now for demo purpose since I (Kally) have no idea about
     // InetAddress and port format
-    public MsgItem(String content, int type,int msgType) {
+    public MsgItem(String content, int type, int msgType) {
         this.content = content;
         this.msgType = type;
         this.contentType = MESSAGE_TYPE_TEXT;
     }
 
-    public MsgItem(InetAddress ip, int port,String content, int msgtype, int contentType) {
+    public MsgItem(InetAddress ip, int port, String content, int msgtype, int contentType) {
         this.ip = ip;
         this.port = port;
         this.content = content;

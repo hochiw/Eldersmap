@@ -2,18 +2,20 @@ package com.example.kallyruan.eldermap.NavigationPkg;
 
 import android.util.Log;
 
+import com.example.kallyruan.eldermap.NearbyLankmarkPkg.LandmarkListActivity;
+
 import com.example.kallyruan.eldermap.GPSServicePkg.GPSTracker;
 import com.example.kallyruan.eldermap.LocationPkg.Location;
 import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONArray;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.Iterator;
 import java.util.concurrent.ExecutionException;
 
 public class NavigationChecker {

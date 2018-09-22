@@ -2,20 +2,27 @@ package com.example.kallyruan.eldermap.P2PPkg;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ToggleButton;
 
 import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
 import com.example.kallyruan.eldermap.R;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 public class P2PAdminActivity extends AppCompatActivity {
     private ToggleButton ready;
     private UDPReceiver receiver;
-    private ArrayList<MsgItem> msgItems;
+    private ArrayList<Message> messages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +50,8 @@ public class P2PAdminActivity extends AppCompatActivity {
         try {
             receiver = new UDPReceiver(new OnMessageReceive() {
                 @Override
-                public void onReceive(MsgItem m) {
-                    msgItems.add(m);
+                public void onReceive(Message m) {
+                    messages.add(m);
                 }
             });
             receiver.execute();

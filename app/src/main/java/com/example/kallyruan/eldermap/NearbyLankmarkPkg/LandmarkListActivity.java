@@ -23,12 +23,12 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
-import com.example.kallyruan.eldermap.AppMenuActivity;
 import com.example.kallyruan.eldermap.GPSServicePkg.GPSTracker;
 import com.example.kallyruan.eldermap.LocationPkg.Location;
 import com.example.kallyruan.eldermap.NavigationPkg.DisplayActivity;
 import com.example.kallyruan.eldermap.NavigationPkg.ScheduleTimeActivity;
 import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
+
 import com.example.kallyruan.eldermap.R;
 
 import org.json.JSONException;
@@ -119,6 +119,7 @@ public class LandmarkListActivity extends Activity {
     //check whether users click on a landmark
     public void checkButtonClick() {
         ListView view = (ListView) findViewById(R.id.landmark_list);
+
         view.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int location, long l) {
@@ -205,6 +206,7 @@ public class LandmarkListActivity extends Activity {
         Log.d("test",list.toString());
         adapter = new LandmarkListAdapter(this, list);
         listView.setAdapter(adapter);
+
     }
 
     public static Location getDestination() {

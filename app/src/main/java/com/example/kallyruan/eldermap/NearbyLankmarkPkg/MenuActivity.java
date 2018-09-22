@@ -1,18 +1,14 @@
 package com.example.kallyruan.eldermap.NearbyLankmarkPkg;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.RelativeLayout;
 
 import java.util.HashMap;
 
-import com.example.kallyruan.eldermap.AppMenuActivity;
 import com.example.kallyruan.eldermap.R;
 
 
@@ -20,7 +16,7 @@ import com.example.kallyruan.eldermap.R;
 
 
 public class MenuActivity extends Activity {
-    private HashMap mapIndex;
+    private HashMap<Integer, String> mapIndex;
 
     public final static int HOSPITSL = 0;
     public final static int PHARMACY = 1;

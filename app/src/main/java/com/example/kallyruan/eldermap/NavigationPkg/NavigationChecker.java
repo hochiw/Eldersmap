@@ -39,7 +39,8 @@ public class NavigationChecker {
             }
         };
         timer.schedule(task, 5000);
-
+        
+        // user destination coordinate still needed, currently hard-coded
         JSONObject obj = new JSONObject();
         obj.put("curLatitude", userLoc.getLatitude());
         obj.put("curLongitude", userLoc.getLongitude());
@@ -84,7 +85,7 @@ public class NavigationChecker {
 
     /***
      * method used to check if user has gone the wrong way
-     *
+     * and run a check with the navigation list
      */
     private Boolean offRoute(Location userLoc, Position position) {
         CoorDist calCoor = new CoorDist(userLoc.getLatitude(), userLoc.getLongitude(),

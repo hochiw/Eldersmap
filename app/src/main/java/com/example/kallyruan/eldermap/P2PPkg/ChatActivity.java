@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -37,6 +38,8 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ChatActivity extends AppCompatActivity {
 
@@ -91,7 +94,7 @@ public class ChatActivity extends AppCompatActivity {
 
         //the following is with server connection..
         try {
-            client = new SocketClient(new URI("ws://eldermapswebsocket.herokuapp.com/?type=admin"),this);
+            client = new SocketClient(new URI("ws://eldermapswebsocket.herokuapp.com/?type=client"),this);
             chatThread = new Thread(client);
             chatThread.start();
         } catch (Exception e) {
@@ -99,7 +102,7 @@ public class ChatActivity extends AppCompatActivity {
         }
     }
 
-    public void newMessage(MsgItem message){
+    public void newMessage(final MsgItem message){
         try {
             if ((message.getContentType() == MsgItem.MESSAGE_TYPE_GRAPH || message.getContentType() == MsgItem.MESSAGE_TYPE_VIDEO) &&
                     message.getFileName() != null) {
@@ -111,11 +114,16 @@ public class ChatActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        msgList.add(message);
-        // refresh the view
-        adapter.notifyItemInserted(msgList.size() - 1);
-        // nominate the view to the last message
-        msgRecyclerView.scrollToPosition(msgList.size() - 1);
+        new Handler(getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                adapter.add(message);
+                // refresh the view
+                adapter.notifyDataSetChanged();
+                //  adapter.notifyItemInserted(adapter.getItemCount());
+                msgRecyclerView.smoothScrollToPosition(adapter.getItemCount());
+            }
+        });
     }
 
     public void getRichMedia(View view){

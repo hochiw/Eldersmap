@@ -75,7 +75,7 @@ public class NavigationChecker {
             }
             if (userLoc.getLatitude() - list.get(0).getLatitude() < 0.00001 &&
                     userLoc.getLongitude() - list.get(0).getLongitude() < 0.00001) {
-                it1.remove();
+                list.remove(0);
             }else {
                 break;
             }

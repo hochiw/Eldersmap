@@ -17,6 +17,8 @@ import com.example.kallyruan.eldermap.R;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
 
 public class DisplayActivity extends AppCompatActivity {
@@ -28,7 +30,11 @@ public class DisplayActivity extends AppCompatActivity {
     String unit;
     ImageView graph;
 
-    /*For navigation checker part*/
+    //variable for display instruction
+    NavigationChecker checker;
+    ArrayList<Position> poList = new ArrayList<>();
+
+    // connection used for navigation checker, binds gps
     private boolean serviceAlive = false;
     private GPSTracker gps;
 
@@ -60,6 +66,17 @@ public class DisplayActivity extends AppCompatActivity {
         Intent i = new Intent(this,GPSTracker.class);
         startService(i);
         bindService(i,mServiceConn, Context.BIND_AUTO_CREATE);
+
+        //timer task to get the latest arraylist
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                refreshList(checker.getPositions());
+            }
+        };
+        timer.schedule(task, 10000);
+
         //refresh();
     }
 
@@ -87,7 +104,7 @@ public class DisplayActivity extends AppCompatActivity {
             gps = mBinder.getInstance();
             serviceAlive = true;
             try {
-                NavigationChecker checker = new NavigationChecker(gps);
+                checker = new NavigationChecker(gps);
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
@@ -164,6 +181,11 @@ public class DisplayActivity extends AppCompatActivity {
         String signText = String.format("%s %s, %s %d %s", move, direction,
                 transportationMethod, period, unit);
         sign.setText(signText);
+    }
+
+    // method used in timertask to refresh arraylist
+    private void refreshList(ArrayList<Position> List) {
+        this.poList = List;
     }
 }
 

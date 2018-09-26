@@ -16,7 +16,8 @@ import java.util.List;
 
 public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.ViewHolder> {
 
-    private List<MsgItem> mMsgItemList;
+    public List<MsgItem> mMsgItemList;
+
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -28,6 +29,7 @@ public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.ViewHolder> {
         TextView rightMsg;
         ImageView leftImage;
         ImageView rightImage;
+
 
         public ViewHolder(View view) {
             super(view);

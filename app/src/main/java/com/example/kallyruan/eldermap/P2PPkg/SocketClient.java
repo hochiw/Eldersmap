@@ -10,16 +10,16 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.net.URI;
 
-public class SocketClient {
+public class SocketClient implements Runnable{
 
     private Boolean alive = false;
     private WebSocketClient ws;
     private ChatActivity ca;
+    private URI address;
 
     public SocketClient(URI address, ChatActivity ca) {
-        initiate(address);
+        this.address = address;
         this.ca = ca;
-
     }
 
     public void sendFile(String path) {
@@ -41,7 +41,7 @@ public class SocketClient {
         return null;
     }
 
-    public void initiate(URI address) {
+    public void run() {
         this.ws = new WebSocketClient(address) {
             @Override
             public void onOpen(ServerHandshake handshakedata) {

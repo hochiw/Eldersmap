@@ -46,6 +46,8 @@ public class ChatActivity extends AppCompatActivity {
 
     private MsgAdapter adapter;
 
+    private Thread chatThread;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,21 +83,18 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
         try {
-            client = new SocketClient(new URI("ws://10.13.238.213:8080?type=client"),this);
+            client = new SocketClient(new URI("ws://172.16.8.249:8080?type=client"),this);
+            chatThread = new Thread(client);
+            chatThread.start();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void newMessage(String message) {
-        MsgItem msgItem = new MsgItem(message, MsgItem.TYPE_RECEIVED,MsgItem.MESSAGE_TYPE_TEXT);
-        msgList.add(msgItem);
-        for (MsgItem i:msgList) {
-            Log.d("WS",i.getContent());
-        }
-
+        msgList.add(new MsgItem(message, MsgItem.TYPE_RECEIVED,MsgItem.MESSAGE_TYPE_TEXT));
         adapter.notifyItemInserted(msgList.size() - 1);
-
+        msgRecyclerView.scrollToPosition(msgList.size() - 1);
     }
 
     public void getPicture (View view) {

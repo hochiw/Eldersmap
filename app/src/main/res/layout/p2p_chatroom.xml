@@ -29,21 +29,23 @@
                 android:layout_height="wrap_content"
                 android:text="Send Location" />
             <Button
-                android:id="@+id/graph_button"
+                android:id="@+id/richMedia_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Graph"
-                android:onClick="getPicture"/>
-            <Button
-                android:id="@+id/video_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Video" />
+                android:text="Rich Media"
+                android:onClick="getRichMedia"/>
             <Button
                 android:id="@+id/call_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="getCall"
                 android:text="Call" />
+            <Button
+                android:id="@+id/test_Text_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testText"
+                android:text="testText" />
         </LinearLayout>
 
 

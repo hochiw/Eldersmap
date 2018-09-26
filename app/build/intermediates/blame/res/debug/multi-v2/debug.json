@@ -727,38 +727,6 @@
             ]
         },
         {
-            "outputFile": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/values-hi_values-hi.arsc.flat",
-            "map": [
-                {
-                    "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/ad872fc7c5bce4174e70da372dc0e688/res/values-hi/values-hi.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,211,308,418,504,606,728,805,883,973,1082,1185,1287,1397,1498,1613,1775,1876",
-                        "endColumns": "105,96,109,85,101,121,76,77,89,108,102,101,109,100,114,161,100,79",
-                        "endOffsets": "206,303,413,499,601,723,800,878,968,1077,1180,1282,1392,1493,1608,1770,1871,1951"
-                    }
-                },
-                {
-                    "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/b43f384c104e05100f556957e071ec82/res/values-hi/values-hi.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "20",
-                        "startColumns": "4",
-                        "startOffsets": "1956",
-                        "endColumns": "100",
-                        "endOffsets": "2052"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/values-hu_values-hu.arsc.flat",
             "map": [
                 {
@@ -791,10 +759,20 @@
             ]
         },
         {
-            "outputFile": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/values-pa_values-pa.arsc.flat",
+            "outputFile": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/values-hi_values-hi.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/b43f384c104e05100f556957e071ec82/res/values-pa/values-pa.xml",
+                    "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/ad872fc7c5bce4174e70da372dc0e688/res/values-hi/values-hi.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,211,308,418,504,606,728,805,883,973,1082,1185,1287,1397,1498,1613,1775,1876",
+                        "endColumns": "105,96,109,85,101,121,76,77,89,108,102,101,109,100,114,161,100,79",
+                        "endOffsets": "206,303,413,499,601,723,800,878,968,1077,1180,1282,1392,1493,1608,1770,1871,1951"
+                    }
+                },
+                {
+                    "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/b43f384c104e05100f556957e071ec82/res/values-hi/values-hi.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -805,19 +783,9 @@
                     "to": {
                         "startLines": "20",
                         "startColumns": "4",
-                        "startOffsets": "1900",
+                        "startOffsets": "1956",
                         "endColumns": "100",
-                        "endOffsets": "1996"
-                    }
-                },
-                {
-                    "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/ad872fc7c5bce4174e70da372dc0e688/res/values-pa/values-pa.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,208,305,410,496,596,709,786,862,941,1042,1146,1243,1352,1451,1561,1720,1820",
-                        "endColumns": "102,96,104,85,99,112,76,75,78,100,103,96,108,98,109,158,99,79",
-                        "endOffsets": "203,300,405,491,591,704,781,857,936,1037,1141,1238,1347,1446,1556,1715,1815,1895"
+                        "endOffsets": "2052"
                     }
                 }
             ]
@@ -852,6 +820,38 @@
                         "endLines": "6",
                         "endColumns": "12",
                         "endOffsets": "289"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/values-pa_values-pa.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/b43f384c104e05100f556957e071ec82/res/values-pa/values-pa.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "20",
+                        "startColumns": "4",
+                        "startOffsets": "1900",
+                        "endColumns": "100",
+                        "endOffsets": "1996"
+                    }
+                },
+                {
+                    "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/ad872fc7c5bce4174e70da372dc0e688/res/values-pa/values-pa.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,208,305,410,496,596,709,786,862,941,1042,1146,1243,1352,1451,1561,1720,1820",
+                        "endColumns": "102,96,104,85,99,112,76,75,78,100,103,96,108,98,109,158,99,79",
+                        "endOffsets": "203,300,405,491,591,704,781,857,936,1037,1141,1238,1347,1446,1556,1715,1815,1895"
                     }
                 }
             ]

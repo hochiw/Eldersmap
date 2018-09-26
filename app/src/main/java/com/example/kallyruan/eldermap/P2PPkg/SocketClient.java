@@ -1,14 +1,18 @@
 package com.example.kallyruan.eldermap.P2PPkg;
 
 
+import android.util.Base64;
 import android.util.Log;
 
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
+import org.json.JSONException;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.URI;
+import java.util.Arrays;
 
 public class SocketClient implements Runnable{
 
@@ -23,22 +27,17 @@ public class SocketClient implements Runnable{
     }
 
     public void sendFile(String path) {
-        byte[] data = convertFileToByte(new File(path));
+        File file = new File(path);
+        byte[] data = FileEncoder.convertFileToByte(file);
         if (data != null) {
-            ws.send(data);
+            try {
+                MsgItem message = new MsgItem(FileEncoder.byteToBase64(data),MsgItem.TYPE_SENT,MsgItem.MESSAGE_TYPE_GRAPH);
+                message.setFileName(file.getName());
+                ws.send(MsgCoder.encode(message));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
-    }
-
-    public byte[] convertFileToByte(File file) {
-        try {
-            FileInputStream fs = new FileInputStream(file);
-            byte[] bytes = new byte[(int)file.length()];
-            fs.read(bytes,0,(int) file.length());
-            return bytes;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     public void run() {
@@ -50,7 +49,17 @@ public class SocketClient implements Runnable{
 
             @Override
             public void onMessage(String message) {
-                ca.newMessage(message);
+                Log.d("TEST",message);
+                try {
+                    if (MsgCoder.decode(message) != null) {
+                        ca.newMessage(MsgCoder.decode(message));
+                    } else {
+                        throw new JSONException("Unable to decode");
+                    }
+                } catch (JSONException e) {
+                    ca.newMessage(new MsgItem(message,MsgItem.TYPE_RECEIVED,MsgItem.MESSAGE_TYPE_TEXT));
+                }
+
             }
 
             @Override

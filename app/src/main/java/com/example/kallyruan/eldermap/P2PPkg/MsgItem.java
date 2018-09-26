@@ -15,29 +15,15 @@ public class MsgItem {
     private String content;
     private int msgType;
     private int contentType;
+    private String fileName;
 
     //this constructor is used now for demo purpose since I (Kally) have no idea about
     // InetAddress and port format
     public MsgItem(String content, int type, int msgType) {
         this.content = content;
         this.msgType = type;
-        this.contentType = MESSAGE_TYPE_TEXT;
-    }
-
-    public MsgItem(InetAddress ip, int port, String content, int msgtype, int contentType) {
-        this.ip = ip;
-        this.port = port;
-        this.content = content;
-        this.msgType = msgtype;
-        this.contentType = contentType;
-    }
-
-    public static int getTypeReceived() {
-        return TYPE_RECEIVED;
-    }
-
-    public static int getTypeSent() {
-        return TYPE_SENT;
+        this.contentType = msgType;
+        this.fileName = null;
     }
 
     public String getContent() {
@@ -64,19 +50,10 @@ public class MsgItem {
         this.contentType = contentType;
     }
 
-    public InetAddress getIp() {
-        return ip;
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
-    public void setIp(InetAddress ip) {
-        this.ip = ip;
-    }
+    public String getFileName() {return fileName;}
 
-    public int getPort() {
-        return port;
-    }
-
-    public void setPort(int port) {
-        this.port = port;
-    }
 }

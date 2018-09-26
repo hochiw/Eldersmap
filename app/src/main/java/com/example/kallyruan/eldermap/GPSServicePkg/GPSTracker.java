@@ -71,25 +71,25 @@ public class GPSTracker extends Service implements LocationListener {
 
     @Override
     public void onCreate() {
-            mLocation = Location.getInstance(0.0,0.0,0.0f);
-            if (locationManager == null) {
-                locationManager = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
-            }
-            GPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-            networkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        mLocation = Location.getInstance(0.0,0.0,0.0f);
+        if (locationManager == null) {
+            locationManager = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
+        }
+        GPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        networkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
-            if (ContextCompat.checkSelfPermission( getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION ) == PackageManager.PERMISSION_GRANTED &&
-                    ContextCompat.checkSelfPermission( getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION ) == PackageManager.PERMISSION_GRANTED) {
-                try {
-                    if (GPSEnabled) {
-                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,this);
-                    } else if (networkEnabled) {
-                        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,0,0,this);
-                    }
-                } catch (Exception e){
-                    e.printStackTrace();
+        if (ContextCompat.checkSelfPermission( getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION ) == PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission( getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION ) == PackageManager.PERMISSION_GRANTED) {
+            try {
+                if (GPSEnabled) {
+                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,this);
+                } else if (networkEnabled) {
+                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,0,0,this);
                 }
+            } catch (Exception e){
+                e.printStackTrace();
             }
+        }
     }
 
     public Location getLoc() {

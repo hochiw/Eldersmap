@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:2:1-40:12
-INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:2:1-40:12
-INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:2:1-40:12
-INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:2:1-40:12
+ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:2:1-41:12
 MERGED from [com.android.support:design:27.1.1] /Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/a603fc35570d14f09d7f4574f27f1a40/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/ad872fc7c5bce4174e70da372dc0e688/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support.constraint:constraint-layout:1.1.2] /Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.2.aar/c1d42147a76c84317a5c2eb39277717a/AndroidManifest.xml:2:1-11:12
@@ -21,20 +21,20 @@ MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/TakoYaki/.gradle
 MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/6ff3a988b91f4b27c48092f088487110/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/4bc7cd856bd4779848c9ac671ace51d4/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.0] /Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/ca450d2c04b1574e4a6688434220fd0a/AndroidManifest.xml:17:1-22:12
-INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:2:1-40:12
-INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:2:1-40:12
-INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:2:1-40:12
+INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:2:1-41:12
 	package
 		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:3:5-45
 		INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml
-		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:2:1-40:12
+		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:2:1-41:12
 		INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml
-		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:2:1-40:12
+		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:2:1-41:12
 		INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:2:11-69
@@ -54,68 +54,72 @@ uses-permission#android.permission.READ_EXTERNAL_STORAGE
 ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:8:5-79
 	android:name
 		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:8:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:9:5-80
+	android:name
+		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:9:22-78
 application
-ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:9:5-38:19
+ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:10:5-39:19
 MERGED from [com.android.support.constraint:constraint-layout:1.1.2] /Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.2.aar/c1d42147a76c84317a5c2eb39277717a/AndroidManifest.xml:9:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.2] /Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.2.aar/c1d42147a76c84317a5c2eb39277717a/AndroidManifest.xml:9:5-20
 	android:supportsRtl
-		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:14:9-35
+		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:15:9-35
 	android:label
-		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:12:9-41
+		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:13:9-41
 	android:roundIcon
-		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:13:9-54
+		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:14:9-54
 	android:icon
-		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:11:9-43
+		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:12:9-43
 	android:allowBackup
-		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:10:9-35
+		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:11:9-35
 	android:theme
-		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:15:9-40
+		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:16:9-40
 activity#com.example.kallyruan.eldermap.MainActivity
-ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:16:9-22:20
+ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:17:9-23:20
 	android:name
-		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:16:19-47
+		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:17:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:17:13-21:29
+ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:18:13-22:29
 action#android.intent.action.MAIN
-ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:18:17-69
+ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:19:17-69
 	android:name
-		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:18:25-66
+		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:19:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:20:17-77
+ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:21:17-77
 	android:name
-		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:20:27-74
+		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:21:27-74
 activity#com.example.kallyruan.eldermap.NearbyLankmarkPkg.MenuActivity
-ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:24:9-30:20
+ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:25:9-31:20
 	android:name
-		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:24:19-65
+		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:25:19-65
 activity#com.example.kallyruan.eldermap.NearbyLankmarkPkg.LandmarkListActivity
-ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:31:9-75
+ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:32:9-75
 	android:name
-		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:31:19-73
+		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:32:19-73
 activity#com.example.kallyruan.eldermap.NavigationPkg.DisplayActivity
-ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:32:9-66
+ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:33:9-66
 	android:name
-		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:32:19-64
+		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:33:19-64
 activity#com.example.kallyruan.eldermap.NavigationPkg.ScheduleTimeActivity
-ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:33:9-71
+ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:34:9-71
 	android:name
-		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:33:19-69
+		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:34:19-69
 service#com.example.kallyruan.eldermap.GPSServicePkg.GPSTracker
-ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:34:9-60
+ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:35:9-60
 	android:name
-		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:34:18-58
+		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:35:18-58
 activity#com.example.kallyruan.eldermap.AppMenuActivity
-ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:35:9-52
+ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:36:9-52
 	android:name
-		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:35:19-50
+		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:36:19-50
 activity#com.example.kallyruan.eldermap.LocationPkg.TripReviewActivity
-ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:36:9-67
+ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:37:9-67
 	android:name
-		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:36:19-65
+		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:37:19-65
 activity#com.example.kallyruan.eldermap.P2PPkg.ChatActivity
-ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:37:9-56
+ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:38:9-56
 	android:name
-		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:37:19-54
+		ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:38:19-54
 uses-sdk
 INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml

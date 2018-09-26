@@ -1,19 +1,23 @@
 package com.example.kallyruan.eldermap.NavigationPkg;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
-
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.kallyruan.eldermap.LocationPkg.TripReviewActivity;
-import com.example.kallyruan.eldermap.NearbyLankmarkPkg.LandmarkListActivity;
+import com.example.kallyruan.eldermap.GPSServicePkg.GPSTracker;
 import com.example.kallyruan.eldermap.R;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class DisplayActivity extends AppCompatActivity {
     TextView sign;
@@ -23,6 +27,10 @@ public class DisplayActivity extends AppCompatActivity {
     int period;
     String unit;
     ImageView graph;
+
+    /*For navigation checker part*/
+    private boolean serviceAlive = false;
+    private GPSTracker gps;
 
 
     // sample index for tracking demo display
@@ -48,8 +56,49 @@ public class DisplayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_display);
         setInformation(displayIndex);
-        refresh();
+        // Connect to the GPS Service
+        Intent i = new Intent(this,GPSTracker.class);
+        startService(i);
+        bindService(i,mServiceConn, Context.BIND_AUTO_CREATE);
+        //refresh();
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (serviceAlive) {
+            unbindService(mServiceConn);
+            serviceAlive = false;
+        }
+    }
+
+    private ServiceConnection mServiceConn = new ServiceConnection() {
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            serviceAlive = false;
+
+        }
+
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+
+            GPSTracker.binder mBinder = (GPSTracker.binder) service;
+            gps = mBinder.getInstance();
+            serviceAlive = true;
+            try {
+                NavigationChecker checker = new NavigationChecker(gps);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+    };
 
     // for the present demo, assume the navigation page would refresh every two seconds
     public void refresh() {
@@ -57,14 +106,9 @@ public class DisplayActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    if (displayIndex < getInformation().size() - 1){
-                        final Intent mainIntent = new Intent(getApplicationContext(), DisplayActivity.class);
-                        startActivity(mainIntent);
-                        displayIndex += 1;
-                    }else{
-                        toTripReview();
-                        return;
-                    }
+                    final Intent mainIntent = new Intent(getApplicationContext(), DisplayActivity.class);
+                    startActivity(mainIntent);
+                    displayIndex += 1;
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -84,8 +128,7 @@ public class DisplayActivity extends AppCompatActivity {
         graph = (ImageView) findViewById(R.id.directionIcon);
         final String LEFT = "LEFT";
         final String RIGHT = "RIGHT";
-        final String BACKWARD = "BACKWARD";
-        final String FORWARD = "FORWARD";
+        final String FORWARD = "STRAIGHT";
         String direction = getInformation().get(i).getDirection();
         if (direction.toUpperCase().equals(LEFT)) {
             graph.setImageResource(R.mipmap.ic_arrow_left);
@@ -93,8 +136,6 @@ public class DisplayActivity extends AppCompatActivity {
             graph.setImageResource(R.mipmap.ic_arrow_right);
         } else if (direction.toUpperCase().equals(FORWARD)) {
             graph.setImageResource(R.mipmap.ic_arrow_up);
-        } else if (direction.toUpperCase().equals(BACKWARD)) {
-            graph.setImageResource(R.mipmap.ic_arrow_down);
         }
 
     }
@@ -121,15 +162,4 @@ public class DisplayActivity extends AppCompatActivity {
                 transportationMethod, period, unit);
         sign.setText(signText);
     }
-
-    public void endTrip(View view){
-        Intent intent = new Intent(getApplicationContext(), LandmarkListActivity.class);
-        startActivity(intent);
-    }
-
-    private void toTripReview() {
-        Intent intent = new Intent(getApplicationContext(),TripReviewActivity.class);
-        startActivity(intent);
-    }
 }
-

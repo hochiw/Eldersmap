@@ -1,5 +1,8 @@
 package com.example.kallyruan.eldermap.NavigationPkg;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 public class Position {
     private String instruction;
     private int bearing_before;
@@ -7,14 +10,15 @@ public class Position {
     private double latitude;
     private double longitude;
     private String modifier;
+    private JSONArray location;
 
-    Position (String instruction, String modifier, int bearing_after, int bearing_before, double latitude, double longitude) {
+    Position (String instruction, String modifier, int bearing_after, int bearing_before, JSONArray location) throws JSONException{
         this.instruction = instruction;
         this.modifier = modifier;
         this.bearing_after = bearing_after;
         this.bearing_before = bearing_before;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.location = location;
+        parseJSON(this.location);
     }
 
     public String getInstruction(){ return instruction;}
@@ -23,4 +27,9 @@ public class Position {
     public int getBearing_before() { return bearing_before; }
     public double getLatitude() { return latitude; }
     public double getLongitude() { return longitude; }
+
+    private void parseJSON(JSONArray location) throws JSONException {
+        this.latitude = location.getDouble(1);
+        this.longitude = location.getDouble(0);
+    }
 }

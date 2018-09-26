@@ -64,7 +64,7 @@ public class NavigationChecker {
      * use method as a timer task, so the checker constantly get acknowledged of user latest location
      * and run a check with the navigation list
      */
-    public void getUserLoc() {
+    private void getUserLoc() {
         Location userLoc = gps.getLoc();
         Iterator it1 = getPositions().iterator();
         while(it1.hasNext()) {
@@ -86,7 +86,7 @@ public class NavigationChecker {
      * method used to check if user has gone the wrong way
      *
      */
-    public Boolean offRoute(Location userLoc, Position position) {
+    private Boolean offRoute(Location userLoc, Position position) {
         CoorDist calCoor = new CoorDist(userLoc.getLatitude(), userLoc.getLongitude(),
                 position.getLatitude(), position.getLongitude());
         // pre-set off road distant, we will detect if user is 'this far away' from the destined

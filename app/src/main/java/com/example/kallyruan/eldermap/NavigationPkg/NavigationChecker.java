@@ -24,7 +24,9 @@ public class NavigationChecker {
 
     ArrayList<Position> list = new ArrayList<>();
     /**
-     * Navigation with http request
+     * This class is used to check user current location and compares with navigation instruction,
+     * doing so with timer task will provide a checker that constantly checking user location
+     * to make sure the app delivers accurate navigation
      */
     NavigationChecker(GPSTracker gps) throws JSONException, ExecutionException, InterruptedException {
         this.gps = gps;
@@ -57,10 +59,18 @@ public class NavigationChecker {
 
     }
 
+
+    /**
+     * use method as a timer task, so the checker constantly get acknowledged of user latest location
+     * and run a check with the navigation list
+     */
     public void getUserLoc() {
         Location userLoc = gps.getLoc();
-        Iterator it1 = getPostions().iterator();
+        Iterator it1 = getPositions().iterator();
         while(it1.hasNext()) {
+            if (offRoute(userLoc, list.get(0))) {
+                break;
+            }
             if (userLoc.getLatitude() - list.get(0).getLatitude() < 0.00001 &&
                     userLoc.getLongitude() - list.get(0).getLongitude() < 0.00001) {
                 it1.remove();
@@ -71,7 +81,27 @@ public class NavigationChecker {
         Log.d("testing", list.toString());
     }
 
-    public ArrayList<Position> getPostions() {
+    /***
+     * method used to check if user has gone the wrong way
+     *
+     */
+    public Boolean offRoute(Location userLoc, Position position) {
+        CoorDist calCoor = new CoorDist(userLoc.getLatitude(), userLoc.getLongitude(),
+                position.getLatitude(), position.getLongitude());
+        // pre-set off road distant, we will detect if user is 'this far away' from the destined
+        // position
+        if (calCoor.getDist() > 30.00000 && userLoc.getBearing() - position.getBearing_before() > 90) {
+            Log.d("offRoute", "Wrong direction, please remain course");
+            return true;
+        }
+        return false;
+    }
+
+    /***
+     * get method
+     * @return arraylist
+     */
+    public ArrayList<Position> getPositions() {
         return list;
     }
 

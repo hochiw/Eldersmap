@@ -69,6 +69,7 @@ public class NavigationChecker {
         Iterator it1 = getPositions().iterator();
         while(it1.hasNext()) {
             if (offRoute(userLoc, list.get(0))) {
+                Log.d("offRoute", "Wrong direction, please remain course");
                 break;
             }
             if (userLoc.getLatitude() - list.get(0).getLatitude() < 0.00001 &&
@@ -91,7 +92,6 @@ public class NavigationChecker {
         // pre-set off road distant, we will detect if user is 'this far away' from the destined
         // position
         if (calCoor.getDist() > 30.00000 && userLoc.getBearing() - position.getBearing_before() > 90) {
-            Log.d("offRoute", "Wrong direction, please remain course");
             return true;
         }
         return false;

@@ -22,7 +22,9 @@ import android.view.View;
 import android.widget.Toast;
 
 
+import com.example.kallyruan.eldermap.NavigationPkg.DisplayActivity;
 import com.example.kallyruan.eldermap.NearbyLankmarkPkg.MenuActivity;
+import com.example.kallyruan.eldermap.ProfilePkg.SignupActivity;
 
 public class MainActivity extends AppCompatActivity implements LocationListener{
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
@@ -35,9 +37,21 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         provider = locationManager.getBestProvider(new Criteria(), false);
-        checkLocationPermission();
-        Log.d("test: ","try check location");
 
+        //check whether user exists, if yes then continue, otherwise re-direct to sign-up page
+        if(checkUserExist()){
+            checkLocationPermission();
+        }else{
+            Intent i = new Intent(getApplicationContext(), SignupActivity.class);
+            startActivity(i);
+        }
+
+    }
+
+    // check whether user exists in the database
+    private boolean checkUserExist() {
+
+        return false;
     }
 
     public boolean checkLocationPermission() {

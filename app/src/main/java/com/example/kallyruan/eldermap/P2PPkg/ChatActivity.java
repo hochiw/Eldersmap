@@ -135,7 +135,10 @@ public class ChatActivity extends AppCompatActivity {
         msgRecyclerView.scrollToPosition(msgList.size() - 1);
     }
 
+
     public void getCall(View view){
+        //switch to call page
+        setContentView(R.layout.p2p_call);
 
     }
 
@@ -166,6 +169,7 @@ public class ChatActivity extends AppCompatActivity {
 
                 checkMediaFileType(path, intent);
             } else {
+                Log.d("p2p","no read permission");
                 // Should we show an explanation?
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                         Manifest.permission.READ_EXTERNAL_STORAGE)) {

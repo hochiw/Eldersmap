@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You are not our member yet. Would you like to sign up now?"
+            android:textSize="30dp"
+            android:layout_marginBottom="30dp" />
+
+        <Button
+            android:id="@+id/signup_yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="startSurvey"
+            android:textSize="25dp"
+            android:text="Yes" />
+
+        <Button
+            android:id="@+id/signup_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="refuseAlert"
+            android:textSize="25dp"
+            android:text="No" />
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:text="*EXISTED USER*"
+            android:onClick="backActivity"/>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

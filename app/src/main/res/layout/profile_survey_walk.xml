@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/survey_walking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="How comfortable are you walking? (Minutes)"
+            android:textSize="35dp"
+            android:layout_marginBottom="30dp"/>
+
+        <Button
+            android:id="@+id/walking_uncomfortable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Not comfortable"
+            android:textSize="30dp"
+            android:onClick="recordWalkingPreference"/>
+
+        <Button
+            android:id="@+id/walking_5mins"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="up to 5 minutes"
+            android:textSize="30dp"
+            android:onClick="recordWalkingPreference"/>
+
+        <Button
+            android:id="@+id/walking_10mins"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="up to 10 minutes"
+            android:textSize="30dp"
+            android:onClick="recordWalkingPreference"/>
+        <Button
+            android:id="@+id/walking_15mins"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="up to 15 minutes"
+            android:textSize="30dp"
+            android:onClick="recordWalkingPreference"/>
+        <Button
+            android:id="@+id/walking_20mins"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="up to 20 minutes"
+            android:textSize="30dp"
+            android:onClick="recordWalkingPreference"/>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

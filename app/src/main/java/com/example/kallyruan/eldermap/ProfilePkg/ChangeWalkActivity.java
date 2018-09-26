@@ -1,6 +1,5 @@
 package com.example.kallyruan.eldermap.ProfilePkg;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,7 +9,7 @@ import com.example.kallyruan.eldermap.R;
 
 import java.util.Objects;
 
-public class ChangeWalkActivity extends Activity {
+public class ChangeWalkActivity extends BaseActivity {
     final int FIVEMINUTES = 5;
     final int TENMINUTES = 10;
     final int FIFTEENMINUTES = 15;

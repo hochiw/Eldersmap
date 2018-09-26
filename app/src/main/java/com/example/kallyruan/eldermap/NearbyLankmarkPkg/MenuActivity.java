@@ -9,13 +9,14 @@ import android.widget.GridView;
 
 import java.util.HashMap;
 
+import com.example.kallyruan.eldermap.ProfilePkg.BaseActivity;
 import com.example.kallyruan.eldermap.R;
 
 
 
 
 
-public class MenuActivity extends Activity {
+public class MenuActivity extends BaseActivity {
     private HashMap mapIndex;
 
     public final static int HOSPITSL = 0;

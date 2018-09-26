@@ -8,12 +8,7 @@ import android.view.View;
 
 import com.example.kallyruan.eldermap.R;
 
-public class SurveySizeActivity extends Activity {
-    public final static int SMALL = 25;
-    public final static int MEDIUM = 30;
-    public final static int LARGE = 35;
-    public final static int EXTRALARGE = 40;
-    public final static int INVALID = 0;
+public class SurveySizeActivity extends BaseActivity {
     final static String SURVEYACTIVITY = "com.example.kallyruan.eldermap.ProfilePkg.SignupActivity";
 
     @Override
@@ -23,25 +18,26 @@ public class SurveySizeActivity extends Activity {
     }
 
     public void recordSizePreference(View view){
-        int textSizePreference = INVALID;
+        int textSizePreference = BaseActivity.INVALID;
         switch (view.getId()) {
             case R.id.text_small:
-                textSizePreference = SMALL;
+                textSizePreference = BaseActivity.SMALL;
                 break;
             case R.id.text_medium:
-                textSizePreference = MEDIUM;
+                textSizePreference = BaseActivity.MEDIUM;
                 break;
             case R.id.text_large:
-                textSizePreference = LARGE;
+                textSizePreference = BaseActivity.LARGE;
                 break;
             case R.id.text_extraLarge:
-                textSizePreference = EXTRALARGE;
+                textSizePreference = BaseActivity.EXTRALARGE;
                 break;
         }
         //check get button clicked and calling activity
-        if(textSizePreference != INVALID){
+        if(textSizePreference != BaseActivity.INVALID){
             Log.d("test size: ", Integer.toString(textSizePreference));
             saveSizeToDatabase(textSizePreference);
+            User.notifytextSizeChange();
             if(this.getCallingActivity().getClassName().equals(SURVEYACTIVITY)){
                 //re-direct to survey - walking length page
                 Intent i = new Intent(getApplicationContext(), ChangeWalkActivity.class);

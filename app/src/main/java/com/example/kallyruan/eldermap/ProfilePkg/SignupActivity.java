@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.example.kallyruan.eldermap.AppMenuActivity;
 import com.example.kallyruan.eldermap.R;
 
-public class SignupActivity extends Activity{
+public class SignupActivity extends BaseActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

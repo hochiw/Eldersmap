@@ -15,24 +15,24 @@
             android:id="@+id/survey_textsize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="?menuTitle"
             android:text="For us to improve your user experience, your user data would be collected."
-            android:textSize="35dp"
             android:layout_marginBottom="30dp"/>
 
         <Button
             android:id="@+id/permission_agree"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="?menu"
             android:text="Agree"
-            android:textSize="30dp"
             android:onClick="recordPermissionPreference" />
 
         <Button
             android:id="@+id/permission_disagree"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="?menu"
             android:text="Disagree"
-            android:textSize="30dp"
             android:onClick="recordPermissionPreference"/>
 
 

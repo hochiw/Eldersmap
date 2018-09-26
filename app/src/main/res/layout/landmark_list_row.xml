@@ -12,7 +12,7 @@
         android:layout_marginLeft="10dp"
         android:focusable="false"
         android:focusableInTouchMode="false"
-        android:textSize="20dp"
+        android:textSize="?textsize"
         android:textStyle="bold" />
 
     <TextView
@@ -22,7 +22,7 @@
         android:layout_marginLeft="10dp"
         android:focusable="false"
         android:focusableInTouchMode="false"
-        android:textSize="20dp"
+        android:textSize="?textsize"
         android:textStyle="bold" />
 
     <TextView
@@ -32,7 +32,7 @@
         android:layout_marginLeft="10dp"
         android:focusable="false"
         android:focusableInTouchMode="false"
-        android:textSize="20dp"
+        android:textSize="?textsize"
         android:textStyle="bold" />
 
     <TextView
@@ -42,7 +42,7 @@
         android:layout_marginLeft="10dp"
         android:focusable="false"
         android:focusableInTouchMode="false"
-        android:textSize="20dp"
+        android:textSize="?textsize"
         android:textStyle="bold" />
 
 </LinearLayout>

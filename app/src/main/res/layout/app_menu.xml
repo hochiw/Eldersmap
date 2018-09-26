@@ -5,37 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/nearby_button"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="126dp"
-        android:text="Nearby Landmark"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:layout_marginTop="80dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Menu"
+            android:gravity="center"
+            android:textSize="?menuTitle"/>
+        <Button
+            android:id="@+id/nearby_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Nearby Landmark"
+            android:textSize="?title" />
 
-    <Button
-        android:id="@+id/conversation_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="47dp"
-        android:text="conversation"
-        android:textSize="30dp"
-        app:layout_constraintStart_toStartOf="@+id/nearby_button"
-        app:layout_constraintTop_toBottomOf="@+id/nearby_button" />
+        <Button
+            android:id="@+id/conversation_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="conversation"
+            android:textSize="?title" />
 
-    <Button
-        android:id="@+id/profile_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="Profile"
-        android:textSize="30dp"
-        android:onClick="profileAction"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/conversation_button" />
+        <Button
+            android:id="@+id/profile_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:textSize="?title"
+            android:onClick="profileAction" />
+
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

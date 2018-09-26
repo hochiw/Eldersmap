@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.kallyruan.eldermap.GPSServicePkg.GPSTracker;
+import com.example.kallyruan.eldermap.ProfilePkg.BaseActivity;
 import com.example.kallyruan.eldermap.R;
 
 import org.json.JSONException;
@@ -19,7 +20,7 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-public class DisplayActivity extends AppCompatActivity {
+public class DisplayActivity extends BaseActivity {
     TextView sign;
     String move;
     String direction;

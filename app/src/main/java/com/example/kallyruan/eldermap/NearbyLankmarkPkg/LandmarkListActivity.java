@@ -29,6 +29,7 @@ import com.example.kallyruan.eldermap.NavigationPkg.DisplayActivity;
 import com.example.kallyruan.eldermap.NavigationPkg.ScheduleTimeActivity;
 import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
 
+import com.example.kallyruan.eldermap.ProfilePkg.BaseActivity;
 import com.example.kallyruan.eldermap.R;
 
 import org.json.JSONException;
@@ -37,7 +38,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-public class LandmarkListActivity extends Activity {
+public class LandmarkListActivity extends BaseActivity {
     //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
     ArrayAdapter<Integer> adapter_id;
     private int action_index;

@@ -8,10 +8,11 @@ import android.widget.Button;
 
 import com.example.kallyruan.eldermap.NearbyLankmarkPkg.MenuActivity;
 import com.example.kallyruan.eldermap.P2PPkg.ChatActivity;
+import com.example.kallyruan.eldermap.ProfilePkg.BaseActivity;
 import com.example.kallyruan.eldermap.ProfilePkg.SettingActivity;
 import com.example.kallyruan.eldermap.ProfilePkg.SignupActivity;
 
-public class AppMenuActivity extends AppCompatActivity {
+public class AppMenuActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

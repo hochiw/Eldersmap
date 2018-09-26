@@ -3,6 +3,7 @@ package com.example.kallyruan.eldermap.NavigationPkg;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.CalendarView;
@@ -16,7 +17,7 @@ import com.example.kallyruan.eldermap.R;
 import java.sql.Time;
 import java.util.Date;
 
-public class ScheduleTimeActivity extends Activity{
+public class ScheduleTimeActivity extends AppCompatActivity{
     public static int targetDay;
     public static int targetMonth;
     public static int targetYear;

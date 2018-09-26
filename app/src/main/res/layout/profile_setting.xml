@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,7 +19,7 @@
             android:layout_height="wrap_content"
             android:text="Profile setting"
             android:gravity="center"
-            android:textSize="30dp"
+            android:textSize="?menuTitle"
             android:layout_marginBottom="30dp" />
 
         <Button
@@ -26,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="changeSize"
-            android:textSize="25dp"
+            android:textSize="?menu"
             android:text="TextSize preference" />
 
         <Button
@@ -34,23 +35,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="changeWalking"
-            android:textSize="25dp"
+            android:textSize="?menu"
             android:text="Walking preference" />
 
         <Button
             android:id="@+id/setting_data"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="25dp"
+            android:textSize="?menu"
             android:text="Data collection preference"
             android:onClick="changeData"/>
         <Button
             android:id="@+id/setting_priviledge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="25dp"
+            android:textSize="?menu"
             android:text="Change Privilege"
             android:onClick="changePrivilege"/>
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="?menu"
+            android:text="back"
+            android:onClick="backToMenu"/>
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

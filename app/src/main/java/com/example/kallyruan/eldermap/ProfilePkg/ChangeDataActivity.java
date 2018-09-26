@@ -8,7 +8,7 @@ import android.view.View;
 import com.example.kallyruan.eldermap.MainActivity;
 import com.example.kallyruan.eldermap.R;
 
-public class ChangeDataActivity extends Activity {
+public class ChangeDataActivity extends BaseActivity {
     final int AGREE = 1;
     final int DISAGREE= 2;
     final int INVALID = 0;

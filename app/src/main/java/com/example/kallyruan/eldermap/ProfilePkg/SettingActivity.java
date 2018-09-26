@@ -5,10 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.kallyruan.eldermap.AppMenuActivity;
 import com.example.kallyruan.eldermap.R;
 
 
-public class SettingActivity extends Activity {
+public class SettingActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +33,11 @@ public class SettingActivity extends Activity {
 
     public void changePrivilege(View view){
         Intent i = new Intent(getApplicationContext(), ChangePrivilegeActivity.class);
+        startActivityForResult(i,1);
+    }
+
+    public void backToMenu(View view){
+        Intent i = new Intent(getApplicationContext(), AppMenuActivity.class);
         startActivityForResult(i,1);
     }
 }

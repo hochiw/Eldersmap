@@ -6,7 +6,7 @@ import android.os.Bundle;
 import com.example.kallyruan.eldermap.R;
 
 
-public class ChangePrivilegeActivity extends Activity {
+public class ChangePrivilegeActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -8,10 +8,34 @@ import java.util.ArrayList;
 public class User {
     private static ArrayList<ScheduledTrip> scheduledTripList = new ArrayList<>();
     private static ArrayList<FinishedTrip> historyTripList = new ArrayList<>();
-
+    public final static int INVALID = 0;
+    private static int textSize = INVALID;
 
     public static ArrayList<ScheduledTrip> getScheduledTripList() {
         return scheduledTripList;
+    }
+
+
+    public static int getTextSize() {
+        //get user preferred textsize from database
+        if(textSize == INVALID){
+            textSize = retrieveUserTextSize();
+        }
+        return textSize;
+    }
+
+    //retrieve user textsize from database
+    private static int retrieveUserTextSize() {
+
+
+
+        //default size is MEDIUM
+        return BaseActivity.MEDIUM;
+    }
+
+    // update the latest textsize based on user option
+    public static void notifytextSizeChange(){
+        textSize = retrieveUserTextSize();
     }
 
     public static void setScheduledTripList(ArrayList<ScheduledTrip> scheduledTripList) {

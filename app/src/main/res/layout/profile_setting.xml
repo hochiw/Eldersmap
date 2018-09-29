@@ -17,9 +17,9 @@
             android:id="@+id/setting_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="?menuTitle"
             android:text="Profile setting"
             android:gravity="center"
-            android:textSize="?menuTitle"
             android:layout_marginBottom="30dp" />
 
         <Button
@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="changeSize"
-            android:textSize="?menu"
+            android:textSize="?title"
             android:text="TextSize preference" />
 
         <Button
@@ -35,21 +35,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="changeWalking"
-            android:textSize="?menu"
+            android:textSize="?title"
             android:text="Walking preference" />
 
         <Button
             android:id="@+id/setting_data"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="?menu"
+            android:textSize="?title"
             android:text="Data collection preference"
             android:onClick="changeData"/>
         <Button
             android:id="@+id/setting_priviledge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="?menu"
+            android:textSize="?title"
             android:text="Change Privilege"
             android:onClick="changePrivilege"/>
 
@@ -57,7 +57,7 @@
             android:id="@+id/back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="?menu"
+            android:textSize="?title"
             android:text="back"
             android:onClick="backToMenu"/>
 

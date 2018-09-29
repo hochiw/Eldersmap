@@ -21,6 +21,7 @@ public class User {
         if(textSize == INVALID){
             textSize = retrieveUserTextSize();
         }
+
         return textSize;
     }
 
@@ -28,14 +29,20 @@ public class User {
     private static int retrieveUserTextSize() {
 
 
-
         //default size is MEDIUM
         return BaseActivity.MEDIUM;
     }
 
     // update the latest textsize based on user option
-    public static void notifytextSizeChange(){
-        textSize = retrieveUserTextSize();
+    public static void notifytextSizeChange(int textSizePreference){
+        textSize = textSizePreference;
+
+        saveSizeToDatabase(textSizePreference);
+    }
+
+    // this method is to upload user preference to database
+    private static void saveSizeToDatabase(int textSize) {
+
     }
 
     public static void setScheduledTripList(ArrayList<ScheduledTrip> scheduledTripList) {

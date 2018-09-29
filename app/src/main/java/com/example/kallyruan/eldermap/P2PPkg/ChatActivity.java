@@ -4,9 +4,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -19,7 +16,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
@@ -28,9 +24,6 @@ import com.example.kallyruan.eldermap.R;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.net.InetAddress;
 import java.net.URI;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -40,7 +33,6 @@ public class ChatActivity extends AppCompatActivity {
 
     private UDPReceiver receiver;
     private SocketClient client;
-    private ArrayList<MsgItem> msgItems;
     private List<MsgItem> msgList = new ArrayList<MsgItem>();
     public final int RESULT_LOAD_IMG = 1;
     public final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 999;
@@ -65,7 +57,26 @@ public class ChatActivity extends AppCompatActivity {
         msgRecyclerView = (RecyclerView) findViewById(R.id.msg_recycle_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         msgRecyclerView.setLayoutManager(layoutManager);
-        adapter = new MsgAdapter(msgList);
+
+        //adapter = new MsgAdapter(msgList);
+
+        //check whether click on video to play
+        adapter = new MsgAdapter(getApplicationContext(),msgList, new CustomItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Log.d("test all item", Integer.toString(msgList.size()));
+                Log.d("test click item", Integer.toString(position));
+                String path = msgList.get(position).getContent();
+                Boolean isVideo = isVideoFile(path);
+                if(isVideo){
+                    VideoDisplayActivity.setDir(path);
+                    Intent i = new Intent(getApplicationContext(),VideoDisplayActivity.class);
+                    startActivityForResult(i,1);
+                }
+            }
+        });
+
+
         msgRecyclerView.setAdapter(adapter);
         send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +101,10 @@ public class ChatActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
     }
+
 
     private void initMsgs() {
         MsgItem msgItem1 = new MsgItem("Hello guy.", MsgItem.TYPE_RECEIVED,MsgItem.MESSAGE_TYPE_TEXT);
@@ -136,11 +150,11 @@ public class ChatActivity extends AppCompatActivity {
     }
 
 
-    public void getCall(View view){
-        //switch to call page
-        setContentView(R.layout.p2p_call);
-
+    public void startCall(View view){
+        Intent i = new Intent(getApplicationContext(), CallActivity.class);
+        startActivityForResult(i,1);
     }
+
 
     private String getRealPathFromURI(Uri contentURI) {
         String result;
@@ -193,15 +207,19 @@ public class ChatActivity extends AppCompatActivity {
         File richMediaFile = new File(path);
         if (richMediaFile.exists()) {
             if(isImageFile(path)){
+                Log.d("test file type","image");
                 MsgItem msgItem = new MsgItem(path, MsgItem.TYPE_SENT, MsgItem.MESSAGE_TYPE_GRAPH);
                 addToList(msgItem,intent);
             }else if (isVideoFile(path)){
+                Log.d("test file type","video");
                 MsgItem msgItem = new MsgItem(path, MsgItem.TYPE_SENT, MsgItem.MESSAGE_TYPE_VIDEO);
                 addToList(msgItem,intent);
             }
 
         }
     }
+
+
 
     public void addToList(MsgItem msgItem,Intent intent){
         msgList.add(msgItem);
@@ -221,6 +239,8 @@ public class ChatActivity extends AppCompatActivity {
         String mimeType = URLConnection.guessContentTypeFromName(path);
         return mimeType != null && mimeType.startsWith("video");
     }
+
+
 
 
 }

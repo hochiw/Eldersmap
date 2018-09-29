@@ -2,6 +2,7 @@ package com.example.kallyruan.eldermap.ProfilePkg;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.kallyruan.eldermap.R;
 
@@ -15,9 +16,10 @@ public class BaseActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         textSize= User.getTextSize();
+        Log.d("test textsize",Integer.toString(textSize));
+
         if (textSize == SMALL) {
             setTheme(R.style.Default_TextSize_Small);
         } else if (textSize == MEDIUM) {

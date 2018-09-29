@@ -16,32 +16,32 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="?menuTitle"
             android:text="You are not our member yet. Would you like to sign up now?"
+            android:textSize="?menuTitle"
             android:layout_marginBottom="30dp" />
 
         <Button
             android:id="@+id/signup_yes"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="?menu"
+            android:textSize="?menuTitle"
             android:onClick="startSurvey"
             android:text="Yes" />
 
         <Button
             android:id="@+id/signup_no"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="refuseAlert"
-            android:textSize="?menu"
+            android:textSize="?menuTitle"
             android:text="No" />
 
         <Button
             android:id="@+id/back"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="?menu"
             android:text="*EXISTED USER*"
+            android:textSize="?menuTitle"
             android:onClick="backActivity"/>
 
     </LinearLayout>

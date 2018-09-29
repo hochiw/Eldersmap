@@ -41,4 +41,13 @@
             android:onClick="profileAction" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="check video"
+        android:onClick="testVideo"
+        tools:layout_editor_absoluteX="162dp"
+        tools:layout_editor_absoluteY="381dp" />
 </android.support.constraint.ConstraintLayout>

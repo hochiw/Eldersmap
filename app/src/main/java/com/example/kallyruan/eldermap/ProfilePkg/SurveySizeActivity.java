@@ -36,8 +36,7 @@ public class SurveySizeActivity extends BaseActivity {
         //check get button clicked and calling activity
         if(textSizePreference != BaseActivity.INVALID){
             Log.d("test size: ", Integer.toString(textSizePreference));
-            saveSizeToDatabase(textSizePreference);
-            User.notifytextSizeChange();
+            User.notifytextSizeChange(textSizePreference);
             if(this.getCallingActivity().getClassName().equals(SURVEYACTIVITY)){
                 //re-direct to survey - walking length page
                 Intent i = new Intent(getApplicationContext(), ChangeWalkActivity.class);
@@ -48,11 +47,6 @@ public class SurveySizeActivity extends BaseActivity {
                 startActivityForResult(i,1);
             }
         }
-
-    }
-
-    // this method is to upload user preference to database
-    private void saveSizeToDatabase(int textSize) {
 
     }
 

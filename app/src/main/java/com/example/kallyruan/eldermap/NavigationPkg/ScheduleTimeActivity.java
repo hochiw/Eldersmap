@@ -71,9 +71,16 @@ public class ScheduleTimeActivity extends AppCompatActivity{
 
     //this function is to create an alert when this scheduled time arrives
     public void setSchedule(View view){
-        ScheduledTrip planTrip = ScheduledTrip.getInstance(targetDay,targetMonth, targetYear,
+        ScheduledTrip planTrip = ScheduledTrip.getInstance(createUniqueID(),targetDay,targetMonth, targetYear,
                 targetHour, targetMinute,LandmarkListActivity.getDestination(),
                 LandmarkListActivity.getDestinationName());
         User.addScheduledTrip(planTrip);
+    }
+
+    //create a id different from database history
+    public int createUniqueID(){
+
+
+        return 1;
     }
 }

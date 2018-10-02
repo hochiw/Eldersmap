@@ -21,6 +21,11 @@ public class ChangeDataActivity extends BaseActivity {
         setContentView(R.layout.profile_survey_data);
     }
 
+    /**
+     * a method to get user collection preference from user action. This method would re-direct
+     * to different activities afterwards depending on its calling activity.
+     * @param view
+     */
     public void recordPermissionPreference(View view){
         switch (view.getId()) {
             case R.id.permission_agree:
@@ -45,7 +50,10 @@ public class ChangeDataActivity extends BaseActivity {
         }
     }
 
-    // this method is to upload user preference to database
+    /** this method is to upload user preference to database
+     *
+     * @param permissionPreference
+     */
     private void savePermissionToDatabase(int permissionPreference) {
 
     }

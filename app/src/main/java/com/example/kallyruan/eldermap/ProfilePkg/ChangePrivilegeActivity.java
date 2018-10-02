@@ -13,4 +13,9 @@ public class ChangePrivilegeActivity extends BaseActivity {
         setContentView(R.layout.profile_privilege);
     }
 
+    /**
+     * this activity is for user request an admin privilege. The request would be processed through
+     * backend changes
+     */
+
 }

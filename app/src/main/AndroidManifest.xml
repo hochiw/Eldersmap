@@ -41,11 +41,12 @@
         <activity android:name=".P2PPkg.ChatActivity"/>
         <activity android:name=".ProfilePkg.SignupActivity"/>
         <activity android:name=".ProfilePkg.ChangeWalkActivity"/>
-        <activity android:name=".ProfilePkg.SurveySizeActivity"/>
+        <activity android:name=".ProfilePkg.ChangeSizeActivity"/>
         <activity android:name=".ProfilePkg.ChangeDataActivity"/>
         <activity android:name=".ProfilePkg.SettingActivity" />
         <activity android:name=".P2PPkg.CallActivity" />
         <activity android:name=".P2PPkg.VideoDisplayActivity"/>
+        <activity android:name=".LocationPkg.HistoryActivity" />
     </application>
 
 </manifest>

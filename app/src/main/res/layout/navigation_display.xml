@@ -37,7 +37,7 @@
         android:layout_marginTop="0dp"
         android:background="#FF0000"
         android:text="HELP!"
-        android:textSize="?menuTitle"
+        android:textSize="45dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

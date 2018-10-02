@@ -18,7 +18,7 @@ public class ChangeWalkActivity extends BaseActivity {
     final int EXTRAHELP = -1;
     final int SECRET = -3;
     final int INVALID = 0;
-    final static String SURVEYACTIVITY = "com.example.kallyruan.eldermap.ProfilePkg.SurveySizeActivity";
+    final static String SURVEYACTIVITY = "com.example.kallyruan.eldermap.ProfilePkg.ChangeSizeActivity";
     //local variables
     String callingActivity;
     int walkingPreference = INVALID;
@@ -29,7 +29,12 @@ public class ChangeWalkActivity extends BaseActivity {
         setContentView(R.layout.profile_survey_walk);
     }
 
-
+    /**
+     * this method is to record user walking time preference from user action. This data would be
+     * used for destination recommendation algorithm. It would re-direct
+     * to different activities afterwards depending on its calling activity.
+     * @param view
+     */
     public void recordWalkingPreference(View view) {
         callingActivity = Objects.requireNonNull(this.getCallingActivity()).getClassName();
         switch (view.getId()) {
@@ -50,17 +55,24 @@ public class ChangeWalkActivity extends BaseActivity {
                 break;
         }
 
-        //check get button clicked and calling activity
+        //check calling activity and re-direct to the next activity
         checkCallingActivity(walkingPreference);
 
     }
 
 
-    // this method is to upload user preference to database
+    /**
+     * this method is to upload user preference to database
+     */
     private void saveToDatabase(int walkingPreference) {
 
     }
 
+    /**
+     * this method is called to check the previous calling activity, different activities would be
+     * re-directed to based on the checking result.
+     * @param walkingPreference
+     */
     public void checkCallingActivity(int walkingPreference){
         if(walkingPreference != INVALID){
             Log.d("test walking: ", Integer.toString(walkingPreference));
@@ -77,6 +89,11 @@ public class ChangeWalkActivity extends BaseActivity {
         }
     }
 
+    /**
+     * this is a deeper investigation of walking disability if user clicked on "uncomfortable about
+     * walking". Data would be saved to database and re-direct to responding new activity.
+     * @param view
+     */
     public void recordDisabilityPreference(View view){
         int walkingPreference = INVALID;
         switch (view.getId()) {

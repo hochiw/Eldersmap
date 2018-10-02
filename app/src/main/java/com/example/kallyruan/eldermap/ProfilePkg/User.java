@@ -25,7 +25,10 @@ public class User {
         return textSize;
     }
 
-    //retrieve user textsize from database
+    /**
+     * this method is to retrieve user textsize from database
+     * @return
+     */
     private static int retrieveUserTextSize() {
 
 
@@ -33,14 +36,17 @@ public class User {
         return BaseActivity.MEDIUM;
     }
 
-    // update the latest textsize based on user option
+    /**
+     * this method is to update the latest textsize based on user option
+     * @param textSizePreference
+     */
     public static void notifytextSizeChange(int textSizePreference){
         textSize = textSizePreference;
 
         saveSizeToDatabase(textSizePreference);
     }
 
-    // this method is to upload user preference to database
+
     private static void saveSizeToDatabase(int textSize) {
 
     }
@@ -49,11 +55,20 @@ public class User {
         scheduledTripList = scheduledTripList;
     }
 
+    /**
+     * this method is to add a ScheduledTrip to the scheduledTripList ArrayList
+     * @param trip
+     */
     public static void addScheduledTrip(ScheduledTrip trip){
         scheduledTripList.add(trip);
-        //sort after each adding
+        //sort after each adding according on departing time
+
     }
 
+    /**
+     * this method is to add a FinishedTrip to the historyTripList ArrayList
+     * @param trip
+     */
     public static void addHistoryTrip(FinishedTrip trip) {
         historyTripList.add(trip);
     }

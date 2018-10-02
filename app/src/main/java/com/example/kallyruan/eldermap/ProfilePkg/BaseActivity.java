@@ -14,6 +14,11 @@ public class BaseActivity extends Activity {
     public final static int INVALID = 0;
     private int textSize;
 
+    /**
+     * this method is to set the display pattern with four available textsize. Each specific font
+     * style is defined in res/values/styles.xml
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

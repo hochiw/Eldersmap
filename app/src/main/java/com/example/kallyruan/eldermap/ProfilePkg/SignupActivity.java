@@ -1,9 +1,7 @@
 package com.example.kallyruan.eldermap.ProfilePkg;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -19,19 +17,26 @@ public class SignupActivity extends BaseActivity{
         setContentView(R.layout.profile_signup);
     }
 
-
+    /**
+     * this method would pop up a message toast and re-direct to ChangSizeActivity page
+     * @param view
+     */
     public void startSurvey(View view){
+        //show a message toast on UI
         Toast message = Toast.makeText(this, "Only a short survey to go!",
                                                                             Toast.LENGTH_SHORT);
         message.show();
         setToastFrontSize(message);
 
-
         //re-direct to survey textsize page
-        Intent i = new Intent(getApplicationContext(), SurveySizeActivity.class);
+        Intent i = new Intent(getApplicationContext(), ChangeSizeActivity.class);
         startActivityForResult(i,1);
     }
 
+    /**
+     * this is to show an alert message to users for signing up
+     * @param view
+     */
     public void refuseAlert(View view){
         Toast message = Toast.makeText(getApplicationContext(),
                             "You need to sign up for using this app.", Toast.LENGTH_SHORT);
@@ -39,6 +44,10 @@ public class SignupActivity extends BaseActivity{
         setToastFrontSize(message);
     }
 
+    /**
+     * this method is to set message textsize
+     * @param message
+     */
     public void setToastFrontSize(Toast message){
         ViewGroup group = (ViewGroup) message.getView();
         TextView messageTextView = (TextView) group.getChildAt(0);

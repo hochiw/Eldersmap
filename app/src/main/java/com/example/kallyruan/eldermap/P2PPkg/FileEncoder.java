@@ -2,6 +2,7 @@ package com.example.kallyruan.eldermap.P2PPkg;
 
 import android.os.Environment;
 import android.util.Base64;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -38,10 +39,12 @@ public class FileEncoder {
         if (data != null) {
             String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) + File.separator + "eldermaps";
             File dir = new File(path);
+
             if (!dir.exists()) {
                 dir.mkdir();
             }
             File file = new File(path + "/" + fileName);
+            Log.d("wew",file.getAbsolutePath());
             file.createNewFile();
             FileOutputStream out = new FileOutputStream(file);
 

@@ -30,15 +30,9 @@
                 android:id="@+id/waiting_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Waiting for Help Centre connection..."
+                android:text=""
                 android:textSize="25dp" />
 
-            <TextView
-                android:id="@+id/calling_message"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Connected to Help Centre."
-                android:textSize="25dp" />
         </LinearLayout>
 
         <Button

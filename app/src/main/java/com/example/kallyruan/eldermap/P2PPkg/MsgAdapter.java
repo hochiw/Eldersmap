@@ -152,4 +152,8 @@ public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.ViewHolder> {
     public int getItemCount() {
         return mMsgItemList.size();
     }
+
+    public void add(MsgItem message) {
+        mMsgItemList.add(message);
+    }
 }

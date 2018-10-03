@@ -19,59 +19,46 @@ import com.sinch.android.rtc.calling.CallListener;
 import java.util.List;
 
 public class VoiceCall {
-    private SinchClient voiceClient;
-    private Call call;
+    private static SinchClient voiceClient = null;
+    private static Call call;
+    private static String userID;
+    private static Context context;
 
     public VoiceCall(String userID,Context context) {
-        voiceClient = Sinch.getSinchClientBuilder().context(context)
-                .applicationKey("30a63ef6-ba48-44ef-8a74-e88f95afe18d")
-                .applicationSecret("dACaiFAER0aJfl5/vPyV+w==")
-                .environmentHost("clientapi.sinch.com")
-                .userId(userID)
-                .build();
-
-        voiceClient.setSupportCalling(true);
-        voiceClient.startListeningOnActiveConnection();
-
-        voiceClient.start();
-
-        voiceClient.getCallClient().addCallClientListener(new SinchCallClientListener());
+        this.userID = userID;
+        this.context = context;
     }
 
-    public CallClient getCallClient() {
-        return voiceClient.getCallClient();
+    public static SinchClient getInstance() {
+            voiceClient = Sinch.getSinchClientBuilder().context(context)
+                    .applicationKey("30a63ef6-ba48-44ef-8a74-e88f95afe18d")
+                    .applicationSecret("dACaiFAER0aJfl5/vPyV+w==")
+                    .environmentHost("clientapi.sinch.com")
+                    .userId(userID)
+                    .build();
+
+            voiceClient.setSupportCalling(true);
+            voiceClient.setSupportActiveConnectionInBackground(true);
+            voiceClient.startListeningOnActiveConnection();
+
+            voiceClient.start();
+
+        return voiceClient;
     }
 
-    private class SinchCallListener implements CallListener {
-
-        @Override
-        public void onCallProgressing(Call call) {
-
-        }
-
-        @Override
-        public void onCallEstablished(Call call) {
-
-        }
-
-        @Override
-        public void onCallEnded(Call call) {
-
-        }
-
-        @Override
-        public void onShouldSendPushNotification(Call call, List<PushPair> list) {
-
-        }
+    public static SinchClient getClient() {
+        return voiceClient;
     }
 
-    private class SinchCallClientListener implements CallClientListener {
+    public static void setCall(Call incomingCall) {
+        call = incomingCall;
+    }
 
-        @Override
-        public void onIncomingCall(CallClient callClient, Call incomingCall) {
-            call = incomingCall;
-            call.answer();
+    public static Call getCall() {
+        if (call != null) {
+            return call;
         }
+        return null;
     }
 
 }

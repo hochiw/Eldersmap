@@ -54,6 +54,14 @@
         <activity android:name="com.example.kallyruan.eldermap.AppMenuActivity" />
         <activity android:name="com.example.kallyruan.eldermap.LocationPkg.TripReviewActivity" />
         <activity android:name="com.example.kallyruan.eldermap.P2PPkg.ChatActivity" />
+        <activity android:name="com.example.kallyruan.eldermap.ProfilePkg.SignupActivity" />
+        <activity android:name="com.example.kallyruan.eldermap.ProfilePkg.ChangeWalkActivity" />
+        <activity android:name="com.example.kallyruan.eldermap.ProfilePkg.ChangeSizeActivity" />
+        <activity android:name="com.example.kallyruan.eldermap.ProfilePkg.ChangeDataActivity" />
+        <activity android:name="com.example.kallyruan.eldermap.ProfilePkg.SettingActivity" />
+        <activity android:name="com.example.kallyruan.eldermap.P2PPkg.CallActivity" />
+        <activity android:name="com.example.kallyruan.eldermap.P2PPkg.VideoDisplayActivity" />
+        <activity android:name="com.example.kallyruan.eldermap.LocationPkg.HistoryActivity" />
 
         <service android:name="com.sinch.android.rtc.internal.client.fcm.InstanceIDTokenService" >
             <intent-filter>

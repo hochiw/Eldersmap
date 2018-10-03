@@ -53,9 +53,11 @@ public class ChatActivity extends AppCompatActivity {
 
     private String userID;
 
-    private String userType = "client";
+    private String userType = "admin";
 
     private SinchClient sinchClient;
+
+
 
 
     @Override
@@ -118,7 +120,7 @@ public class ChatActivity extends AppCompatActivity {
 
         //the following is with server connection..
         try {
-            client = new SocketClient(new URI("ws://172.16.1.26:8080?type=" + userType),this);
+            client = new SocketClient(new URI("ws://eldermapswebsocket.herokuapp.com/?type=" + userType),this);
             Thread wsClient = new Thread(client);
             wsClient.start();
         } catch (Exception e) {
@@ -127,6 +129,18 @@ public class ChatActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (client != null) {
+            client.getInstance().close();
+        }
+    }
+
+
+
+
 
 
     public void getRichMedia(View view){

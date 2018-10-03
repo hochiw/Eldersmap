@@ -17,5 +17,8 @@ public class ChangePrivilegeActivity extends BaseActivity {
      * this activity is for user request an admin privilege. The request would be processed through
      * backend changes
      */
+    private void requestAdmin(){
+
+    }
 
 }

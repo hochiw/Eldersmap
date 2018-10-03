@@ -120,7 +120,7 @@ public class ChatActivity extends AppCompatActivity {
     public void requestForHelp() {
         String url = "http://eldersmapapi.herokuapp.com/api/getQueue";
         try {
-            JSONObject admin = new HTTPPostRequest(url).execute().get();
+            JSONObject admin = new JSONObject(new HTTPPostRequest(url).execute().get());
             Log.d("UDP",admin.toString());
             if (admin.length() != 0) {
                 Log.d("UDP",admin.getString("ip"));

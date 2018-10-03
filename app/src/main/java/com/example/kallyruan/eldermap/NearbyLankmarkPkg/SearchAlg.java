@@ -42,6 +42,10 @@ public class SearchAlg {
         for (int i = 0;i < returnList.size();i++) {
             Log.d("test",Float.toString(returnList.get(i).getRating()));
         }
+        int k = returnList.size();
+        if(k>8){
+            returnList.subList(8,k).clear();
+        }
         return returnList;
     }
 

@@ -1,9 +1,6 @@
 package com.example.kallyruan.eldermap.NearbyLankmarkPkg;
 
 import android.content.Context;
-import android.media.Image;
-import android.test.mock.MockContext;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -11,40 +8,41 @@ import com.example.kallyruan.eldermap.R;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.hamcrest.CoreMatchers.isA;
-import static org.junit.Assert.*;
-import static org.hamcrest.MatcherAssert.assertThat;
-
-import static org.hamcrest.CoreMatchers.*;
-import static org.mockito.Mockito.*;
-import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.mockito.runners.MockitoJUnitRunner;
-import android.content.SharedPreferences;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.mock;
 
 /*@Mock needs to be used with initMock*/
-
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(  {ImageAdapter.class} )
 public class ImageAdapterTest {
 
 
     @Mock
-    private Context context;
+    private Context mContext;
 
-    private   View convertView;
 
-    private ViewGroup parent;
-    // Dependency on adapter.
-    @InjectMocks
-    private ImageAdapter adapter;
 
     @Mock
-    ImageView imageView;
+    ImageView convertView;
+
+    @Mock
+    ViewGroup parent;
+
+
+
+    // Dependency on adapter.
+
+    private ImageAdapter adapter;
+    private int position = 0;
+
+
 
     private Integer[] mThumbIds = {
             R.mipmap.ic_hospital, R.mipmap.ic_pharmacy,
@@ -55,15 +53,9 @@ public class ImageAdapterTest {
     @Before
     public void setup(){
 
-        MockitoAnnotations.initMocks(this);
-        context = mock(Context.class);
-        adapter = new ImageAdapter(context);
-
-
-        //c = mock(Context.class);
-        //adapter = new ImageAdapter(c);
-        //convertView = mock(View.class);
-
+        //MockitoAnnotations.initMocks(this);
+        //context = mock(Context.class);
+        adapter = new ImageAdapter(mContext);
     }
 
     @Test
@@ -86,28 +78,33 @@ public class ImageAdapterTest {
     // to cover two conditions.
     @Test
     public void getView() {
-        ImageView iv = mock(ImageView.class);
+        //ImageView mockImageView = PowerMock.createMock(ImageView.class);
+        //ImageView mockImageView = Mockito.mock(ImageView.class);
 
 
-        ImageView expectedImaView;
-        int expectedPosition = 0;
+        ImageView imageViewMock = mock(ImageView.class);
+        doNothing().when(imageViewMock).setImageResource(mThumbIds[position]);
+        assertNotNull(adapter.getView(position,convertView,parent));
 
-        System.out.println(context);
-        System.out.println(convertView);
-
-        ImageView imageView;
-               imageView =  (ImageView) adapter.getView(expectedPosition,
-                        convertView, parent);
-        System.out.println(imageView);
+        doNothing().when(imageViewMock).setScaleType(ImageView.ScaleType.CENTER_CROP);
+        doNothing().when(imageViewMock).setPadding(8,8,8,8);
+        assertNotNull(adapter.getView(position, null, parent));
 
 
+        //assertEquals(View.class,(View)adapter.getView(position, convertView,parent));
+
+        /* 9.29 Mockito Try version.
+
+        View imageView = Mockito.mock(ImageView.class);
+
+        //Mockito.doThrow(new Exception()).when((ImageView)imageView).setImageResource(mThumbIds[0]);
+
+        Mockito.when(adapter.getView(position, convertView, parent)).thenReturn(imageView);
 
 
-        //assertThat(imageView, isA(View.class));
+        assertEquals(View.class,adapter.getView(position,convertView,parent));*/
+        //PowerMock.expectNew(ImageView.class).andReturn(mockImageView);
 
-        //assertEquals(null, adapter.getView(expectedPosition, null, parent));
-        //assertEquals(ImageView.ScaleType.CENTER_CROP, imageView.getScaleType());
-        //assertEquals(8, imageView.getPaddingBottom());
 
     }
 }

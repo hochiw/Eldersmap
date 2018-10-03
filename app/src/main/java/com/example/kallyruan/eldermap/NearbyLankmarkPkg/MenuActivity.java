@@ -52,10 +52,8 @@ public class MenuActivity extends Activity {
                     case PHARMACY:
                         category = "pharmacy";
                         break;
-                        // There is problem about market.
-                    //       Everything else is fine.
                     case MARKET:
-                        category = "market";
+                        category = "library"; //2    Change to library.
                         break;
                     case SUPERMARKET:
                         category = "supermarket";

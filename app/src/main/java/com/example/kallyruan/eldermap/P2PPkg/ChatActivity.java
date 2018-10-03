@@ -7,6 +7,9 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.media.AudioFormat;
+import android.media.AudioManager;
+import android.media.AudioTrack;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,9 +28,13 @@ import android.widget.Toast;
 
 import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
 import com.example.kallyruan.eldermap.R;
+import com.sinch.android.rtc.Sinch;
+import com.sinch.android.rtc.SinchClient;
 
 import org.json.JSONObject;
 
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -58,6 +65,12 @@ public class ChatActivity extends AppCompatActivity {
     private MsgAdapter adapter;
 
     private Thread chatThread;
+
+    private String userID = null;
+
+    private String userType = "client";
+
+    private VoiceCall callClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +107,7 @@ public class ChatActivity extends AppCompatActivity {
 
         //the following is with server connection..
         try {
-            client = new SocketClient(new URI("ws://eldermapswebsocket.herokuapp.com/?type=client"),this);
+            client = new SocketClient(new URI("ws://10.13.234.173:8080?type=" + userType),this);
             chatThread = new Thread(client);
             chatThread.start();
         } catch (Exception e) {
@@ -107,23 +120,33 @@ public class ChatActivity extends AppCompatActivity {
             if ((message.getContentType() == MsgItem.MESSAGE_TYPE_GRAPH || message.getContentType() == MsgItem.MESSAGE_TYPE_VIDEO) &&
                     message.getFileName() != null) {
                 byte[] byteArray = FileEncoder.base64ToByte(message.getContent());
-                message.setContent(FileEncoder.writeToFile(byteArray,message.getFileName()));
+                message.setContent(FileEncoder.writeToFile(byteArray, message.getFileName()));
 
+            } else if (message.getContentType() == MsgItem.MESSAGE_TYPE_USER) {
+                userID = message.getContent();
+                new Handler(getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        callClient = new VoiceCall(userID,getApplicationContext());
+                    }
+                });
+            }
+
+            if (message.getContentType() != MsgItem.MESSAGE_TYPE_USER) {
+                new Handler(getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        adapter.add(message);
+                        // refresh the view
+                        adapter.notifyDataSetChanged();
+                        //  adapter.notifyItemInserted(adapter.getItemCount());
+                        msgRecyclerView.smoothScrollToPosition(adapter.getItemCount());
+                    }
+                });
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        new Handler(getMainLooper()).post(new Runnable() {
-            @Override
-            public void run() {
-                adapter.add(message);
-                // refresh the view
-                adapter.notifyDataSetChanged();
-                //  adapter.notifyItemInserted(adapter.getItemCount());
-                msgRecyclerView.smoothScrollToPosition(adapter.getItemCount());
-            }
-        });
     }
 
     public void getRichMedia(View view){
@@ -134,7 +157,10 @@ public class ChatActivity extends AppCompatActivity {
 
 
     public void getCall(View view){
-
+        Log.d("CALL",Boolean.toString(callClient != null));
+        if (callClient != null) {
+            callClient.getCallClient().callUser("admin0");
+        }
     }
 
     private String getRealPathFromURI(Uri contentURI) {
@@ -157,7 +183,6 @@ public class ChatActivity extends AppCompatActivity {
             //get file path
             final Uri fileUri = intent.getData();
             String path = getRealPathFromURI(fileUri);
-            Log.d("File",path);
 
             // check whether read Permission is granted
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)

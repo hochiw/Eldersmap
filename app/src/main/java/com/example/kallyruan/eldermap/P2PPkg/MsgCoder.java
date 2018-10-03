@@ -22,14 +22,17 @@ public class MsgCoder {
         MsgItem result = null;
         try {
             JSONObject JsonMsg = new JSONObject(message);
-            if (JsonMsg.get("type") != null && JsonMsg.get("content") != null) {
+            if (JsonMsg.has("type") && JsonMsg.has("content")) {
                 if (Integer.parseInt(JsonMsg.get("type").toString()) == MsgItem.MESSAGE_TYPE_TEXT) {
                     result = new MsgItem(JsonMsg.get("content").toString(),MsgItem.TYPE_RECEIVED,MsgItem.MESSAGE_TYPE_TEXT);
                 } else if (Integer.parseInt(JsonMsg.get("type").toString()) == MsgItem.MESSAGE_TYPE_GRAPH) {
                     result = new MsgItem(JsonMsg.get("content").toString(),MsgItem.TYPE_RECEIVED,MsgItem.MESSAGE_TYPE_GRAPH);
+                } else if (Integer.parseInt(JsonMsg.get("type").toString()) == MsgItem.MESSAGE_TYPE_USER) {
+
+                    result = new MsgItem(JsonMsg.get("content").toString(),MsgItem.TYPE_RECEIVED,MsgItem.MESSAGE_TYPE_USER);
                 }
 
-                if (JsonMsg.get("filename") != null) {
+                if (JsonMsg.has("filename")) {
                     result.setFileName(JsonMsg.get("filename").toString());
                 }
 

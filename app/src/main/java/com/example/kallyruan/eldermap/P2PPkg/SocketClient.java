@@ -49,7 +49,6 @@ public class SocketClient implements Runnable{
 
             @Override
             public void onMessage(String message) {
-                Log.d("TEST",message);
                 try {
                     if (MsgCoder.decode(message) != null) {
                         ca.newMessage(MsgCoder.decode(message));

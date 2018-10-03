@@ -9,6 +9,7 @@ public class MsgItem {
     public static final int MESSAGE_TYPE_GRAPH = 3;
     public static final int MESSAGE_TYPE_VIDEO = 4;
     public static final int MESSAGE_TYPE_VOICE = 5;
+    public static final int MESSAGE_TYPE_USER = 6;
 
     private InetAddress ip;
     private int port;

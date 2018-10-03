@@ -54,10 +54,26 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation 'junit:junit:4.12'
+    //testImplementation 'org.mockito:mockito-core:1.9.5'
+    // TODO: Remove mockito to see if it works
+    //testImplementation 'org.mockito:mockito-core:2.8.0'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+    // PowerMock
+    testImplementation 'org.powermock:powermock-core:1.7.0'
+    testImplementation 'org.powermock:powermock-module-junit4:1.7.0'
+    testImplementation 'org.powermock:powermock-api-mockito2:1.7.0'
+    // EasyMock-PowerMock
+    testImplementation 'org.powermock:powermock-api-easymock:1.6.2'
+    // EasyMock
+    testImplementation 'org.easymock:easymock:3.3.1'
+    // Final class
+    testImplementation 'org.mockito:mockito-inline:2.13.0'
+
+
     // Required for instrumented tests
-    androidTestImplementation 'com.android.support:support-annotations:24.0.0'
+    androidTestImplementation 'com.android.support:support-annotations:28.0.0'
+    androidTestImplementation 'org.hamcrest:hamcrest-library:1.3'
 
 }

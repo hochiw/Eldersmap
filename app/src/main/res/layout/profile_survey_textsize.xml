@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/survey_textsize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="?menuTitle"
+            android:text="Which text size suits you the best?"
+            android:layout_marginBottom="30dp"/>
+
+        <Button
+            android:id="@+id/text_small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="This Size"
+            android:textSize="25dp"
+            android:onClick="recordSizePreference"/>
+
+        <Button
+            android:id="@+id/text_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="This Size"
+            android:textSize="30dp"
+            android:onClick="recordSizePreference"/>
+
+        <Button
+            android:id="@+id/text_large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="This Size"
+            android:textSize="35dp"
+            android:onClick="recordSizePreference"/>
+        <Button
+            android:id="@+id/text_extraLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="This Size"
+            android:textSize="40dp"
+            android:onClick="recordSizePreference"/>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

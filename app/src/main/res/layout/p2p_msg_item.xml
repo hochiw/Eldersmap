@@ -16,26 +16,12 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:textColor="#000"/>
-
-        <FrameLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/left_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleType="fitCenter"
-                android:visibility="gone"/>
-
-            <VideoView
-                android:id="@+id/left_video"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center"
-                android:padding="5dp"
-                android:visibility="gone"/>
-        </FrameLayout>
+        <ImageView
+            android:id="@+id/left_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:visibility="gone" />
 
     </LinearLayout>
 
@@ -51,25 +37,12 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:textColor="#000"/>
-
-        <FrameLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/right_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleType="fitCenter"
-                android:visibility="gone"/>
-            <VideoView
-                android:id="@+id/right_video"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center"
-                android:padding="5dp"
-                android:visibility="gone"/>
-        </FrameLayout>
+        <ImageView
+            android:id="@+id/right_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:visibility="gone"/>
 
     </LinearLayout>
 

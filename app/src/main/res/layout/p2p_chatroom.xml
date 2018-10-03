@@ -23,29 +23,34 @@
             android:id="@+id/tool_box"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <Button
                 android:id="@+id/location_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Send Location" />
+
             <Button
                 android:id="@+id/richMedia_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rich Media"
                 android:onClick="getRichMedia"/>
+
             <Button
                 android:id="@+id/call_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="getCall"
+                android:onClick="startCall"
                 android:text="Call" />
+
             <Button
                 android:id="@+id/test_Text_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="testText"
                 android:text="testText" />
+
         </LinearLayout>
 
 
@@ -59,7 +64,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Type someThing Here"
+                android:hint= "Type someThing Here"
                 android:maxLines="2" />
 
             <Button

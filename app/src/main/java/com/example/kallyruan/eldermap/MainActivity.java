@@ -22,7 +22,9 @@ import android.view.View;
 import android.widget.Toast;
 
 
+import com.example.kallyruan.eldermap.NavigationPkg.DisplayActivity;
 import com.example.kallyruan.eldermap.NearbyLankmarkPkg.MenuActivity;
+import com.example.kallyruan.eldermap.ProfilePkg.SignupActivity;
 
 public class MainActivity extends AppCompatActivity implements LocationListener{
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
@@ -35,23 +37,39 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         provider = locationManager.getBestProvider(new Criteria(), false);
-        checkLocationPermission();
-        Log.d("test: ","try check location");
+
+        //check whether user exists, if yes then continue, otherwise re-direct to sign-up page
+        if(checkUserExist()){
+            checkLocationPermission();
+        }else{
+            Intent i = new Intent(getApplicationContext(), SignupActivity.class);
+            startActivity(i);
+        }
 
     }
 
-    public boolean checkLocationPermission() {
-        //if permission not granted
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION)
+    /**
+     * this method is to check whether user exists in the database
+     */
+
+    private boolean checkUserExist() {
+
+        return false;
+    }
+
+    /**
+     * this method is to check whether user Location service permission is granted. If not, pop up an
+     * acknowledge message and request for permission.
+     */
+    public void checkLocationPermission() {
+        //if permission not granted, promote for permission request
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
             Log.d("test: ","check location permission");
-            // Should we show an explanation?
+            // This is to check whether we should show an explanation
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.ACCESS_FINE_LOCATION)) {
-                // Show an explanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
+                // Show an explanation to the user and then request the permission.
                 new AlertDialog.Builder(this)
                         .setTitle("Location Permission request")
                         .setMessage("In order to use this App properly, you need to approve " +
@@ -59,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
                         .setPositiveButton("Yes, I acknowledge.", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                //Prompt the user once explanation has been shown
+                                //Request the permission once explanation has been shown
                                 ActivityCompat.requestPermissions(MainActivity.this,
                                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                                         MY_PERMISSIONS_REQUEST_LOCATION);
@@ -69,19 +87,24 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
                         .show();
             } else {
                 Log.d("test: ","no explanation");
-//                // No explanation needed, we can request the permission.
+               // No explanation needed, we can request the permission.
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                         MY_PERMISSIONS_REQUEST_LOCATION);
             }
-            return false;
-            //if permission granted
+        //if location permission is granted, continue to AppMenu page
         } else {
             startMenu();
-            return true;
         }
     }
 
+    /**
+     * this method is an override message to react with user permission decision. If users refuse to
+     * grant the permission, an alert would pop up.
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
@@ -111,6 +134,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         }
     }
 
+    /**
+     * this method would re-direct to App main menu page
+     */
     private void startMenu() {
         final Intent mainIntent = new Intent(getApplicationContext(), AppMenuActivity.class);
         startActivity(mainIntent);

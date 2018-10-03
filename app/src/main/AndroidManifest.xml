@@ -21,7 +21,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:debuggable="true">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,6 +45,14 @@
         <activity android:name=".AppMenuActivity"/>
         <activity android:name=".LocationPkg.TripReviewActivity"/>
         <activity android:name=".P2PPkg.ChatActivity"/>
+        <activity android:name=".ProfilePkg.SignupActivity"/>
+        <activity android:name=".ProfilePkg.ChangeWalkActivity"/>
+        <activity android:name=".ProfilePkg.ChangeSizeActivity"/>
+        <activity android:name=".ProfilePkg.ChangeDataActivity"/>
+        <activity android:name=".ProfilePkg.SettingActivity" />
+        <activity android:name=".P2PPkg.CallActivity" />
+        <activity android:name=".P2PPkg.VideoDisplayActivity"/>
+        <activity android:name=".LocationPkg.HistoryActivity" />
     </application>
 
 </manifest>

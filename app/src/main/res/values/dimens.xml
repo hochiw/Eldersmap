@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tset_small">20dp</dimen>
+    <dimen name="tset_middle">25dp</dimen>
+    <dimen name="tset_big">30dp</dimen>
+
+    <dimen name="tset_small2">25dp</dimen>
+    <dimen name="tset_middle2">30dp</dimen>
+    <dimen name="tset_big2">35dp</dimen>
+
+    <dimen name="tset_small3">30dp</dimen>
+    <dimen name="tset_middle3">35dp</dimen>
+    <dimen name="tset_big3">40dp</dimen>
+
+    <dimen name="tset_small4">35dp</dimen>
+    <dimen name="tset_middle4">40dp</dimen>
+    <dimen name="tset_big4">45dp</dimen>
+</resources>

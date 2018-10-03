@@ -3,6 +3,7 @@ package com.example.kallyruan.eldermap.NavigationPkg;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.CalendarView;
@@ -16,7 +17,7 @@ import com.example.kallyruan.eldermap.R;
 import java.sql.Time;
 import java.util.Date;
 
-public class ScheduleTimeActivity extends Activity{
+public class ScheduleTimeActivity extends AppCompatActivity{
     public static int targetDay;
     public static int targetMonth;
     public static int targetYear;
@@ -70,9 +71,16 @@ public class ScheduleTimeActivity extends Activity{
 
     //this function is to create an alert when this scheduled time arrives
     public void setSchedule(View view){
-        ScheduledTrip planTrip = ScheduledTrip.getInstance(targetDay,targetMonth, targetYear,
+        ScheduledTrip planTrip = ScheduledTrip.getInstance(createUniqueID(),targetDay,targetMonth, targetYear,
                 targetHour, targetMinute,LandmarkListActivity.getDestination(),
                 LandmarkListActivity.getDestinationName());
         User.addScheduledTrip(planTrip);
+    }
+
+    //create a id different from database history
+    public int createUniqueID(){
+
+
+        return 1;
     }
 }

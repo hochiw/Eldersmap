@@ -9,13 +9,14 @@ import android.widget.GridView;
 
 import java.util.HashMap;
 
+import com.example.kallyruan.eldermap.ProfilePkg.BaseActivity;
 import com.example.kallyruan.eldermap.R;
 
 
 
 
 
-public class MenuActivity extends Activity {
+public class MenuActivity extends BaseActivity {
     private HashMap mapIndex;
 
     public final static int HOSPITSL = 0;
@@ -53,7 +54,7 @@ public class MenuActivity extends Activity {
                     case PHARMACY:
                         category = "pharmacy";
                         break;
-                    // There is problem about market.
+                        // There is problem about market.
                     //       Everything else is fine.
                     case MARKET:
                         category = "market";

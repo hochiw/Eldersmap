@@ -1,27 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#f0ffff"
-    tools:layout_editor_absoluteY="81dp">
-
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
         <TextView
-            android:id="@+id/landmark_list_title"
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="List of Landmark"
+            android:gravity="center"
             android:textSize="?menuTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="History Trip Marks" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Name"
+                android:text="Destination"
                 android:textSize="?textsize" />
 
             <TextView
@@ -39,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Mark"
+                android:text="Date"
                 android:textSize="?textsize" />
 
             <TextView
@@ -47,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Cost"
+                android:text="Destionation"
                 android:textSize="?textsize" />
 
             <TextView
@@ -55,37 +46,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Distance"
+                android:text="Navigation"
                 android:textSize="?textsize" />
         </LinearLayout>
 
         <ListView
-            android:id="@+id/similar_destination"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:ignore="MissingConstraints">
+            android:id="@+id/history_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
         </ListView>
 
-        <ListView
-            android:id="@+id/landmark_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:ignore="MissingConstraints">
-        </ListView>
 
     </LinearLayout>
-
-
 
     <RelativeLayout
         android:id="@+id/loadingPanel"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:gravity="center">
         <ProgressBar
             android:id="@+id/loading"
             android:gravity="center"
@@ -93,4 +71,5 @@
             android:layout_height="116dp"
             android:indeterminate="true" />
     </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>

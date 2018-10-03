@@ -4,8 +4,8 @@ public class ScheduledTrip extends Trip {
     private int targetHour;
     private int targetMinute;
 
-    ScheduledTrip(int day, int month, int year, int hour, int minute, Location address, String name){
-        super(day,month,year,address,name);
+    ScheduledTrip(int id, int day, int month, int year, int hour, int minute, Location address, String name){
+        super(id, day,month,year,address,name);
         this.targetHour = hour;
         this.targetMinute = minute;
     }
@@ -26,9 +26,9 @@ public class ScheduledTrip extends Trip {
         this.targetMinute = targetMinute;
     }
 
-    public static ScheduledTrip getInstance(int day, int month, int year, int hour, int minute ,
+    public static ScheduledTrip getInstance(int id, int day, int month, int year, int hour, int minute ,
                                             Location address, String name){
-        return new ScheduledTrip(day,month, year, hour, minute,address, name);
+        return new ScheduledTrip(id, day,month, year, hour, minute,address, name);
     }
 
 }

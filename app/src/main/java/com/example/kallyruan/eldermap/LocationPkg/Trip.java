@@ -1,13 +1,15 @@
 package com.example.kallyruan.eldermap.LocationPkg;
 
 public class Trip {
+    private int tripID;
     private int targetDay;
     private int targetMonth;
     private int targetYear;
     private Location destination;
     private String name;
 
-    Trip(int day, int month, int year, Location address, String name){
+    Trip(int id,int day, int month, int year, Location address, String name){
+        this.tripID = id;
         this.targetDay = day;
         this.targetMonth = month;
         this.targetYear = year;
@@ -53,5 +55,17 @@ public class Trip {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDate(){
+        return String.format("%2d/%2d/%4d", targetDay, targetMonth,targetYear);
+    }
+
+    public int getTripID() {
+        return tripID;
+    }
+
+    public void setTripID(int tripID) {
+        this.tripID = tripID;
     }
 }

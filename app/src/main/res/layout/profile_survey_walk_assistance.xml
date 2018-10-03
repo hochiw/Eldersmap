@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/survey_disability"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Walking Disability Survey (Optional)"
+            android:textSize="?menuTitle"
+            android:layout_marginBottom="30dp"/>
+
+        <Button
+            android:id="@+id/walking_wheelchair"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I travel with my wheelchair"
+            android:textSize="?menu"
+            android:onClick="recordDisabilityPreference" />
+
+        <Button
+            android:id="@+id/walking_extraHelp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I need extra help"
+            android:textSize="?menu"
+            android:onClick="recordDisabilityPreference"/>
+
+        <Button
+            android:id="@+id/walking_secret"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Prefer not to tell"
+            android:textSize="?menu"
+            android:onClick="recordDisabilityPreference"/>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

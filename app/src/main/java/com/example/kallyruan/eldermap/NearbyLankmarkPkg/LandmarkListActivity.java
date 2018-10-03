@@ -29,6 +29,7 @@ import com.example.kallyruan.eldermap.NavigationPkg.DisplayActivity;
 import com.example.kallyruan.eldermap.NavigationPkg.ScheduleTimeActivity;
 import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
 
+import com.example.kallyruan.eldermap.ProfilePkg.BaseActivity;
 import com.example.kallyruan.eldermap.R;
 
 import org.json.JSONException;
@@ -37,7 +38,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-public class LandmarkListActivity extends Activity {
+public class LandmarkListActivity extends BaseActivity {
     //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
     ArrayAdapter<Integer> adapter_id;
     private int action_index;
@@ -48,7 +49,9 @@ public class LandmarkListActivity extends Activity {
     private GPSTracker gps;
     public static String category; // show the list of nearby landmarks info
     ArrayList<Landmark> list = new ArrayList<>(); // returned list of landmarks
+    ArrayList<Landmark> similarlist = new ArrayList<>(); // returned list of similar landmarks based on history
     LandmarkListAdapter adapter;
+    LandmarkListAdapter similarAdapter;
     ListView landmarkList;
     RelativeLayout loading;
     private static Location destination; // the target destination
@@ -153,7 +156,7 @@ public class LandmarkListActivity extends Activity {
         dialog.show();
     }
 
-    // this method is to push a status bar notification
+    // this method is to push a status bar notification (should be inside scheduleTimeActivity)
     @SuppressWarnings("deprecation")
     public void showNotification(){
         Intent intent = new Intent("com.rj.notitfications.SECACTIVITY");
@@ -199,13 +202,16 @@ public class LandmarkListActivity extends Activity {
         Log.d("Uer ", userLoc.getLatitude().toString());
 
         //ArrayList<Landmark> list = searchAlg.filterList(JSONFactory.parseJSON("http://eldersmapapi.herokuapp.com/api/search"));
-        JSONObject result = new JSONObject(new HTTPPostRequest("http://eldersmapapi.herokuapp.com/api/search").execute(userData).get());
+        JSONObject result = new HTTPPostRequest("http://eldersmapapi.herokuapp.com/api/search").execute(userData).get();
         if(result.get("status").toString().equals("OK")){
             list = searchAlg.filterList(result);
         }
         Log.d("test",list.toString());
         adapter = new LandmarkListAdapter(this, list);
         listView.setAdapter(adapter);
+
+        //check whether there exists a similar destination based on user history
+        similarDestination();
 
     }
 
@@ -217,11 +223,31 @@ public class LandmarkListActivity extends Activity {
         destination = destination;
     }
 
-    // curLatitude curLongtitude
 
-    // desLatitude desLongtitude
+    public void similarDestination(){
+        ListView similarView = (ListView) findViewById(R.id.similar_destination);
 
-    //http://eldersmapapi.herokuapp.com/api/route.
+        similarlist = similarityAlg();
+
+        //here should check where is a recommendation based on our algorithm
+        if(similarlist != null){
+            adapter = new LandmarkListAdapter(this, similarlist);
+            similarView.setAdapter(similarAdapter);
+            similarView.setVisibility(View.VISIBLE);
+        }else{
+            similarView.setVisibility(View.INVISIBLE);
+        }
+
+    }
+
+    // this method implements our similarity comparision algorithm
+    public ArrayList<Landmark> similarityAlg(){
+
+        //default not available
+        return null;
+    }
+
+
 
 }
 

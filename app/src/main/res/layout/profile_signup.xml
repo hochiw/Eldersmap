@@ -5,49 +5,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center">
+
         <TextView
-            android:layout_marginTop="80dp"
+            android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Menu"
-            android:gravity="center"
-            android:textSize="?menuTitle"/>
-        <Button
-            android:id="@+id/nearby_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="Nearby Landmark"
-            android:textSize="?title" />
+            android:text="You are not our member yet. Would you like to sign up now?"
+            android:textSize="?menuTitle"
+            android:layout_marginBottom="30dp" />
 
         <Button
-            android:id="@+id/conversation_button"
+            android:id="@+id/signup_yes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="conversation"
-            android:textSize="?title" />
+            android:textSize="?menuTitle"
+            android:onClick="startSurvey"
+            android:text="Yes" />
 
         <Button
-            android:id="@+id/history_button"
+            android:id="@+id/signup_no"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="History"
-            android:textSize="?title"
-            android:onClick="historyAction" />
+            android:onClick="refuseAlert"
+            android:textSize="?menuTitle"
+            android:text="No" />
 
         <Button
-            android:id="@+id/profile_button"
+            android:id="@+id/back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Profile"
-            android:textSize="?title"
-            android:onClick="profileAction" />
+            android:text="*EXISTED USER*"
+            android:textSize="?menuTitle"
+            android:onClick="backActivity"/>
 
     </LinearLayout>
-
 </android.support.constraint.ConstraintLayout>

@@ -27,6 +27,7 @@ public class MsgItem {
         this.fileName = null;
     }
 
+
     public String getContent() {
         return content;
     }

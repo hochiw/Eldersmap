@@ -91,19 +91,6 @@ public class ImageAdapterTest {
         assertNotNull(adapter.getView(position, null, parent));
 
 
-        //assertEquals(View.class,(View)adapter.getView(position, convertView,parent));
-
-        /* 9.29 Mockito Try version.
-
-        View imageView = Mockito.mock(ImageView.class);
-
-        //Mockito.doThrow(new Exception()).when((ImageView)imageView).setImageResource(mThumbIds[0]);
-
-        Mockito.when(adapter.getView(position, convertView, parent)).thenReturn(imageView);
-
-
-        assertEquals(View.class,adapter.getView(position,convertView,parent));*/
-        //PowerMock.expectNew(ImageView.class).andReturn(mockImageView);
 
 
     }

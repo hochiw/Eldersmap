@@ -12,6 +12,7 @@ import java.net.URL;
 
 public class HTTPPostRequest extends AsyncTask<JSONObject,Void,String> {
     private String url;
+    private int resultCode;
 
     public HTTPPostRequest(String url) {
         this.url = url;
@@ -40,7 +41,7 @@ public class HTTPPostRequest extends AsyncTask<JSONObject,Void,String> {
             output.flush();
             output.close();
 
-            int resultCode = urlconnection.getResponseCode();
+            resultCode = urlconnection.getResponseCode();
 
             StringBuilder result = new StringBuilder();
             if (resultCode == HttpURLConnection.HTTP_OK) {
@@ -62,5 +63,9 @@ public class HTTPPostRequest extends AsyncTask<JSONObject,Void,String> {
         }
         return null;
 
+    }
+
+    public int getStatusCode() {
+        return resultCode;
     }
 }

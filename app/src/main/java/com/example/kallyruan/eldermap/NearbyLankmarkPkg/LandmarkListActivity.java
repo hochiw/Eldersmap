@@ -5,15 +5,18 @@ import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.support.v4.content.LocalBroadcastManager;
 import android.text.Layout;
 import android.util.Log;
 import android.view.View;
@@ -23,7 +26,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
-import com.example.kallyruan.eldermap.GPSServicePkg.GPSTracker;
+import com.example.kallyruan.eldermap.GPSServicePkg.GPS;;
 import com.example.kallyruan.eldermap.LocationPkg.Location;
 import com.example.kallyruan.eldermap.NavigationPkg.DisplayActivity;
 import com.example.kallyruan.eldermap.NavigationPkg.ScheduleTimeActivity;
@@ -45,8 +48,8 @@ public class LandmarkListActivity extends BaseActivity {
     private SearchAlg searchAlg = new SearchAlg();
     NotificationManager manager;
     Notification myNotication;
-    private boolean serviceAlive = false;
-    private GPSTracker gps;
+    private boolean firstUpdate = true;
+    private GPS gps;
     public static String category; // show the list of nearby landmarks info
     ArrayList<Landmark> list = new ArrayList<>(); // returned list of landmarks
     ArrayList<Landmark> similarlist = new ArrayList<>(); // returned list of similar landmarks based on history
@@ -54,8 +57,10 @@ public class LandmarkListActivity extends BaseActivity {
     LandmarkListAdapter similarAdapter;
     ListView landmarkList;
     RelativeLayout loading;
+    private Location currentLocation;
     private static Location destination; // the target destination
     private static String destinationName;
+
 
     public static String getDestinationName() {
         return destinationName;
@@ -68,11 +73,13 @@ public class LandmarkListActivity extends BaseActivity {
         landmarkList = (ListView) findViewById(R.id.landmark_list);
         loading = (RelativeLayout) findViewById(R.id.loadingPanel);
         landmarkList.setVisibility(View.INVISIBLE);
+
+        currentLocation = Location.getInstance(0.0,0.0,0.0f);
         // Connect to the GPS Service
-        Intent i = new Intent(getApplicationContext(),GPSTracker.class);
+        Intent i = new Intent(getApplicationContext(),GPS.class);
+        IntentFilter intentFilter = new IntentFilter("LocationUpdate");
         startService(i);
-        bindService(i,mServiceConn,Context.BIND_AUTO_CREATE);
-        Log.d("test",Boolean.toString(serviceAlive));
+        registerReceiver(new LocationReceiver(),intentFilter);
 
         //If disconnected with service, show with only loading panel and hence listview invisiable
         Handler handler = new Handler();
@@ -83,41 +90,30 @@ public class LandmarkListActivity extends BaseActivity {
                 landmarkList.setVisibility(View.VISIBLE);
             }
         }, 1500);
-
         checkButtonClick();
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if (serviceAlive) {
-            unbindService(mServiceConn);
-            serviceAlive = false;
+    private class LocationReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            currentLocation.setLatitude(intent.getDoubleExtra("Latitude",0.0));
+            currentLocation.setLongitude(intent.getDoubleExtra("Longitude",0.0));
+            currentLocation.setBearing(intent.getFloatExtra("Bearing",0.0f));
+
+            if (firstUpdate) {
+                try {
+                    //if connected to server, make loading pannel view gone and show result list
+                    showLandmarkList(category);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                firstUpdate = false;
+            }
         }
     }
 
-    private ServiceConnection mServiceConn = new ServiceConnection() {
 
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-            serviceAlive = false;
-
-        }
-
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-
-            GPSTracker.binder mBinder = (GPSTracker.binder) service;
-            gps = mBinder.getInstance();
-            serviceAlive = true;
-            try {
-                //if connected to server, make loading pannel view gone and show result list
-                showLandmarkList(category);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    };
 
     //check whether users click on a landmark
     public void checkButtonClick() {
@@ -196,10 +192,9 @@ public class LandmarkListActivity extends BaseActivity {
         ListView listView = (ListView) findViewById(R.id.landmark_list);
 
         //Data Input
-        Location userLoc = gps.getLoc();
-
+        Location userLoc = currentLocation;
+        Log.d("WTF",Double.toString(userLoc.getLatitude()));
         JSONObject userData = JSONFactory.userDataJSONMaker(userLoc, targetLoc);
-        Log.d("Uer ", userLoc.getLatitude().toString());
 
         //ArrayList<Landmark> list = searchAlg.filterList(JSONFactory.parseJSON("http://eldersmapapi.herokuapp.com/api/search"));
         JSONObject result = new JSONObject(new HTTPPostRequest("http://eldersmapapi.herokuapp.com/api/search").execute(userData).get());

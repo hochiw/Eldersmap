@@ -40,7 +40,13 @@ public class ChangeSizeActivity extends BaseActivity {
                 textSizePreference = BaseActivity.EXTRALARGE;
                 break;
         }
+        User.saveSizeToDatabase(textSizePreference);
 
+        checkCallingActivity(textSizePreference);
+
+    }
+
+    public void checkCallingActivity(int textSizePreference) {
         //check whether buttons get clicked and what the calling activity is
         if(textSizePreference != BaseActivity.INVALID){
             Log.d("test size: ", Integer.toString(textSizePreference));
@@ -55,7 +61,6 @@ public class ChangeSizeActivity extends BaseActivity {
                 startActivityForResult(i,1);
             }
         }
-
     }
 
 

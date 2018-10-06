@@ -24,12 +24,20 @@ import android.widget.Toast;
 
 import com.example.kallyruan.eldermap.NavigationPkg.DisplayActivity;
 import com.example.kallyruan.eldermap.NearbyLankmarkPkg.MenuActivity;
+import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
 import com.example.kallyruan.eldermap.ProfilePkg.SignupActivity;
+import com.example.kallyruan.eldermap.ProfilePkg.User;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity implements LocationListener{
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+    public static String ANDROID_ID;
+
     LocationManager locationManager;
     String provider;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         provider = locationManager.getBestProvider(new Criteria(), false);
+        ANDROID_ID = Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                Settings.Secure.ANDROID_ID);
 
         //check whether user exists, if yes then continue, otherwise re-direct to sign-up page
         if(checkUserExist()){
@@ -53,6 +63,22 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
      */
 
     private boolean checkUserExist() {
+        if (ANDROID_ID != null) {
+            try {
+
+                HTTPPostRequest request = new HTTPPostRequest(User.profileUrl);
+                JSONObject result = new JSONObject(request.execute(new JSONObject().put("userID", ANDROID_ID)).get());
+
+                if (request.getStatusCode() == 200) {
+                    if (result.getJSONObject("survey").getInt("completed") == 1) {
+                        return true;
+                    }
+                }
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
         return false;
     }

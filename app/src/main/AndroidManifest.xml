@@ -41,7 +41,6 @@
         <activity android:name=".NearbyLankmarkPkg.LandmarkListActivity"/>
         <activity android:name=".NavigationPkg.DisplayActivity"/>
         <activity android:name=".NavigationPkg.ScheduleTimeActivity"/>
-        <service android:name=".GPSServicePkg.GPSTracker"/>
         <activity android:name=".AppMenuActivity"/>
         <activity android:name=".LocationPkg.TripReviewActivity"/>
         <activity android:name=".P2PPkg.ChatActivity"/>
@@ -53,6 +52,8 @@
         <activity android:name=".P2PPkg.CallActivity" />
         <activity android:name=".P2PPkg.VideoDisplayActivity"/>
         <activity android:name=".LocationPkg.HistoryActivity" />
+
+        <service android:name=".GPSServicePkg.GPS"/>
     </application>
 
 </manifest>

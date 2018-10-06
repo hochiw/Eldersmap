@@ -54,7 +54,7 @@ public class ChangeWalkActivity extends BaseActivity {
                 walkingPreference = TWENTYMINUTES;
                 break;
         }
-
+        saveToDatabase(walkingPreference);
         //check calling activity and re-direct to the next activity
         checkCallingActivity(walkingPreference);
 
@@ -65,7 +65,7 @@ public class ChangeWalkActivity extends BaseActivity {
      * this method is to upload user preference to database
      */
     private void saveToDatabase(int walkingPreference) {
-
+        User.saveToDatabase("walking",walkingPreference);
     }
 
     /**

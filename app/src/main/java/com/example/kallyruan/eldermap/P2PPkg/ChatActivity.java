@@ -20,7 +20,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.kallyruan.eldermap.MainActivity;
 import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
+import com.example.kallyruan.eldermap.ProfilePkg.User;
 import com.example.kallyruan.eldermap.R;
 import com.sinch.android.rtc.SinchClient;
 import com.sinch.android.rtc.calling.Call;
@@ -34,6 +36,7 @@ import java.io.File;
 import java.net.URI;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ChatActivity extends AppCompatActivity {
@@ -53,7 +56,7 @@ public class ChatActivity extends AppCompatActivity {
 
     private String userID;
 
-    private String userType = "admin";
+    private String userType = null;
 
     private SinchClient sinchClient;
 
@@ -71,6 +74,10 @@ public class ChatActivity extends AppCompatActivity {
         msgRecyclerView = (RecyclerView) findViewById(R.id.msg_recycle_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         msgRecyclerView.setLayoutManager(layoutManager);
+
+        // Get user type
+        userType = User.getUserType();
+
 
         //adapter = new MsgAdapter(msgList);
 
@@ -137,9 +144,6 @@ public class ChatActivity extends AppCompatActivity {
             client.getInstance().close();
         }
     }
-
-
-
 
 
 

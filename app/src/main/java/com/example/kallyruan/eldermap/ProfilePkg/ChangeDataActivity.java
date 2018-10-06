@@ -1,12 +1,16 @@
 package com.example.kallyruan.eldermap.ProfilePkg;
 
+import android.accounts.NetworkErrorException;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.kallyruan.eldermap.MainActivity;
+import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
 import com.example.kallyruan.eldermap.R;
+
+import org.json.JSONObject;
 
 public class ChangeDataActivity extends BaseActivity {
     final int AGREE = 1;
@@ -35,6 +39,14 @@ public class ChangeDataActivity extends BaseActivity {
                 permissionPreference = DISAGREE;
                 break;
         }
+
+        savePermissionToDatabase(permissionPreference);
+        User.saveToDatabase("completed",1);
+        checkCallingActivity(permissionPreference);
+
+    }
+
+    private void checkCallingActivity(int permissionPreference) {
         //check get button clicked and calling activity
         if(permissionPreference != INVALID){
             savePermissionToDatabase(permissionPreference);
@@ -55,7 +67,7 @@ public class ChangeDataActivity extends BaseActivity {
      * @param permissionPreference
      */
     private void savePermissionToDatabase(int permissionPreference) {
-
+        User.saveToDatabase("userData",permissionPreference);
     }
 
 

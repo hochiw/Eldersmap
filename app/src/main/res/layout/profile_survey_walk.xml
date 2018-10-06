@@ -24,7 +24,7 @@
             android:id="@+id/walking_uncomfortable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="?menu"
+            android:textSize="?title"
             android:text="Not comfortable"
             android:onClick="recordWalkingPreference"/>
 
@@ -32,7 +32,7 @@
             android:id="@+id/walking_5mins"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="?menu"
+            android:textSize="?title"
             android:text="up to 5 minutes"
             android:onClick="recordWalkingPreference"/>
 
@@ -40,21 +40,21 @@
             android:id="@+id/walking_10mins"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="?menu"
+            android:textSize="?title"
             android:text="up to 10 minutes"
             android:onClick="recordWalkingPreference"/>
         <Button
             android:id="@+id/walking_15mins"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="?menu"
+            android:textSize="?title"
             android:text="up to 15 minutes"
             android:onClick="recordWalkingPreference"/>
         <Button
             android:id="@+id/walking_20mins"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="?menu"
+            android:textSize="?title"
             android:text="up to 20 minutes"
             android:onClick="recordWalkingPreference"/>
 

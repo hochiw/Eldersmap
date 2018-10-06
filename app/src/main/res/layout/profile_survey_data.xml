@@ -23,7 +23,7 @@
             android:id="@+id/permission_agree"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="?menu"
+            android:textSize="?title"
             android:text="Agree"
             android:onClick="recordPermissionPreference" />
 
@@ -31,7 +31,7 @@
             android:id="@+id/permission_disagree"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="?menu"
+            android:textSize="?title"
             android:text="Disagree"
             android:onClick="recordPermissionPreference"/>
 

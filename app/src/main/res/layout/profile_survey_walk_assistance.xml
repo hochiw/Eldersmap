@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="I travel with my wheelchair"
-            android:textSize="?menu"
+            android:textSize="?title"
             android:onClick="recordDisabilityPreference" />
 
         <Button
@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="I need extra help"
-            android:textSize="?menu"
+            android:textSize="?title"
             android:onClick="recordDisabilityPreference"/>
 
         <Button
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Prefer not to tell"
-            android:textSize="?menu"
+            android:textSize="?title"
             android:onClick="recordDisabilityPreference"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

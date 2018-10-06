@@ -1,15 +1,25 @@
 package com.example.kallyruan.eldermap.NavigationPkg;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.kallyruan.eldermap.GPSServicePkg.GPSTracker;
 import com.example.kallyruan.eldermap.R;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.ExecutionException;
 
 public class DisplayActivity extends AppCompatActivity {
     TextView sign;
@@ -19,6 +29,14 @@ public class DisplayActivity extends AppCompatActivity {
     int period;
     String unit;
     ImageView graph;
+
+    //variable for display instruction
+    NavigationChecker checker;
+    ArrayList<Position> poList = new ArrayList<>();
+
+    // connection used for navigation checker, binds gps
+    private boolean serviceAlive = false;
+    private GPSTracker gps;
 
 
     // sample index for tracking demo display
@@ -44,8 +62,60 @@ public class DisplayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_display);
         setInformation(displayIndex);
-        refresh();
+        // Connect to the GPS Service
+        Intent i = new Intent(this,GPSTracker.class);
+        startService(i);
+        bindService(i,mServiceConn, Context.BIND_AUTO_CREATE);
+
+        //timer task to get the latest arraylist
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                refreshList(checker.getPositions());
+            }
+        };
+        timer.schedule(task, 10000);
+
+        //refresh();
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (serviceAlive) {
+            unbindService(mServiceConn);
+            serviceAlive = false;
+        }
+    }
+
+    private ServiceConnection mServiceConn = new ServiceConnection() {
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            serviceAlive = false;
+
+        }
+
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+
+            GPSTracker.binder mBinder = (GPSTracker.binder) service;
+            gps = mBinder.getInstance();
+            serviceAlive = true;
+            try {
+                checker = new NavigationChecker(gps);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+    };
 
     // for the present demo, assume the navigation page would refresh every two seconds
     public void refresh() {
@@ -111,6 +181,11 @@ public class DisplayActivity extends AppCompatActivity {
         String signText = String.format("%s %s, %s %d %s", move, direction,
                 transportationMethod, period, unit);
         sign.setText(signText);
+    }
+
+    // method used in timertask to refresh arraylist
+    private void refreshList(ArrayList<Position> List) {
+        this.poList = List;
     }
 }
 

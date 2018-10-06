@@ -36,6 +36,14 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.kallyruan.eldermap.NearbyLankmarkPkg.LandmarkListActivity" />
+        <activity android:name="com.example.kallyruan.eldermap.NavigationPkg.DisplayActivity" />
+        <activity android:name="com.example.kallyruan.eldermap.NavigationPkg.ScheduleTimeActivity" />
+
+        <service android:name="com.example.kallyruan.eldermap.GPSServicePkg.GPSTracker" />
+
+        <activity android:name="com.example.kallyruan.eldermap.AppMenuActivity" />
+        <activity android:name="com.example.kallyruan.eldermap.LocationPkg.TripReviewActivity" />
+        <activity android:name="com.example.kallyruan.eldermap.P2PPkg.ChatActivity" />
 
         <provider
             android:name="com.android.tools.ir.server.InstantRunContentProvider"

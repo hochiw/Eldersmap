@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({LandmarkListAdapter.class, View.class, Landmark.class})
+@PrepareForTest({LandmarkListAdapter.class, View.class, Landmark.class, TextView.class})
 public class LandmarkListAdapterTest {
 
     @Mock
@@ -102,19 +102,18 @@ public class LandmarkListAdapterTest {
         mark.setText(Float.toString(0.0f));
 
         //Mockito.when(places.get(position)).thenReturn(place);
-        Mockito.when(place.getName()).thenReturn(returnValue);
-        PowerMockito.whenNew(Landmark.class).withAnyArguments().thenReturn(place);
+        Mockito.when(place.getName()).thenReturn("HelloWorld");
+        //PowerMockito.whenNew(Landmark.class).withAnyArguments().thenReturn(place);
 
-        Mockito.when(place.getRating()).thenReturn(0.0f);//////////
-
+        Mockito.when(place.getRating()).thenReturn(0.0f);
         PowerMockito.whenNew(View.class).withAnyArguments().thenReturn(createdView);
         Mockito.when(mActivity.getLayoutInflater()).thenReturn(inflater);
 
 
-        Mockito.when(createdView.findViewById(R.id.locationName)).thenReturn(name);
-        Mockito.when(createdView.findViewById(R.id.reviewMark)).thenReturn(mark);
-        Mockito.when(createdView.findViewById(R.id.cost)).thenReturn(cost);
-        Mockito.when(createdView.findViewById(R.id.distance)).thenReturn(distance);
+//        Mockito.when(createdView.findViewById(R.id.locationName)).thenReturn(name);
+//        Mockito.when(createdView.findViewById(R.id.reviewMark)).thenReturn(mark);
+//        Mockito.when(createdView.findViewById(R.id.cost)).thenReturn(cost);
+//        Mockito.when(createdView.findViewById(R.id.distance)).thenReturn(distance);
 
         Mockito.when(inflater.inflate(R.layout.landmark_list_row,null)).
                 thenReturn(createdView);

@@ -63,7 +63,6 @@ public class ChangeDataActivity extends BaseActivity {
     }
 
     /** this method is to upload user preference to database
-     *
      * @param permissionPreference
      */
     private void savePermissionToDatabase(int permissionPreference) {

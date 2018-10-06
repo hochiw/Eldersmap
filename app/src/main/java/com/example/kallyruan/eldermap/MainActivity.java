@@ -24,12 +24,10 @@ import android.widget.Toast;
 
 import com.example.kallyruan.eldermap.NavigationPkg.DisplayActivity;
 import com.example.kallyruan.eldermap.NearbyLankmarkPkg.MenuActivity;
+import com.example.kallyruan.eldermap.P2PPkg.ChatActivity;
 import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
 import com.example.kallyruan.eldermap.ProfilePkg.SignupActivity;
 import com.example.kallyruan.eldermap.ProfilePkg.User;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity implements LocationListener{
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
@@ -48,9 +46,24 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         ANDROID_ID = Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID);
 
-        //check whether user exists, if yes then continue, otherwise re-direct to sign-up page
-        if(checkUserExist()){
+        /**
+         * this method is to check whether user exists first, if yes then check user type and show
+         * responding features,otherwise re-direct to sign-up page. All new registered users would
+         * be assumed as normal users (Not an admin)
+         */
+        if(User.checkUserExist()){
             checkLocationPermission();
+            // if is a normal user, re-direct to App Main menu page
+            Log.d("test type",Integer.toString(User.checkUserType()));
+            if(User.checkUserType() == User.USER) {
+                Intent i = new Intent(getApplicationContext(),AppMenuActivity.class);
+                startActivity(i);
+                // if is an admin, User will only have chat feature
+            }else if (User.checkUserType() == User.ADMIN){
+                Intent i = new Intent(getApplicationContext(),ChatActivity.class);
+                startActivity(i);
+            }
+        //if user doesn't exist, re-direct to Sign up page
         }else{
             Intent i = new Intent(getApplicationContext(), SignupActivity.class);
             startActivity(i);

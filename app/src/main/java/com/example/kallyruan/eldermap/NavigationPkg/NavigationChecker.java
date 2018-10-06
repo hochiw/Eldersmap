@@ -54,6 +54,7 @@ public class NavigationChecker {
                     jsonArray.optJSONObject(i).getInt("bearing_after"),
                     jsonArray.optJSONObject(i).getInt("bearing_before"),
                     jsonArray.optJSONObject(i).getJSONArray("location")));
+            Log.d("list_testing", list.get(i).getInstruction());
         }
 
     }
@@ -101,6 +102,7 @@ public class NavigationChecker {
      * @return arraylist
      */
     public ArrayList<Position> getPositions() {
+        Log.d("test getter: ",Integer.toString(list.size()));
         return list;
     }
 

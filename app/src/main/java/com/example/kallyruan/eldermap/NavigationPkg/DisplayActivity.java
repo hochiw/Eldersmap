@@ -7,6 +7,7 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -81,7 +82,9 @@ public class DisplayActivity extends AppCompatActivity {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
+                Log.d("position_test", checker.getPositions().get(0).toString());
                 refreshList(checker.getPositions());
+
                 //display the latest instruction to user
                 setInformation(poList.get(0));
             }

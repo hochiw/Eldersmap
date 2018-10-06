@@ -19,16 +19,24 @@ public class User {
     private static ArrayList<FinishedTrip> historyTripList = new ArrayList<>();
     public final static int INVALID = 0;
     private static int textSize = INVALID;
+    private static int userType = INVALID;
+    public static int USER = 0;
+    public static int ADMIN = 1;
     public static String profileUrl = "http://eldersmapapi.herokuapp.com/api/profile";
     public static String profileUpdateUrl = "http://eldersmapapi.herokuapp.com/api/updateProfile";
-    private static String userType = null;
+
 
     public static ArrayList<ScheduledTrip> getScheduledTripList() {
         return scheduledTripList;
     }
 
+
+    /**
+     * this method is to get User textsize preference from database
+     * @return int Textsize
+     */
     public static int getTextSize() {
-        //get user preferred textsize from database
+        //ig textsize is already set
         if(textSize == INVALID){
             textSize = retrieveUserTextSize();
         }
@@ -36,10 +44,25 @@ public class User {
         return textSize;
     }
 
-    public static String getUserType() {
-        if (userType == null) {
+    /**
+     * this method is to check whether user exists in the database
+     */
+    public static boolean checkUserExist() {
+
+        //default user doesn't exist
+        return false;
+    }
+
+    /**
+     * this method is to check user type from database
+     * @return int CustomerType (USER = 0, ADMIN = 1)
+     */
+    public static int checkUserType() {
+
+        if (userType == INVALID){
             userType = retrieveUserType();
         }
+        //default user type is USER
         return userType;
     }
 
@@ -60,20 +83,15 @@ public class User {
         return BaseActivity.MEDIUM;
     }
 
-    private static String retrieveUserType() {
+    private static int retrieveUserType() {
         HTTPPostRequest request = new HTTPPostRequest(profileUrl);
         try {
             JSONObject result = new JSONObject(request.execute(new JSONObject().put("userID", MainActivity.ANDROID_ID)).get());
-            switch(result.getInt("userType")) {
-                case 1:
-                    return "admin";
-                case 0:
-                    return "client";
-            }
+            return result.getInt("userType");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "client";
+        return USER;
     }
 
     /**
@@ -109,21 +127,87 @@ public class User {
     }
 
     /**
-     * this method is to add a ScheduledTrip to the scheduledTripList ArrayList
+     * this method is to add a ScheduledTrip to the scheduledTripList ArrayList and database
      * @param trip
      */
     public static void addScheduledTrip(ScheduledTrip trip){
         scheduledTripList.add(trip);
         //sort after each adding according on departing time
 
+        addUserPlan(1, trip);
+
     }
 
     /**
-     * this method is to add a FinishedTrip to the historyTripList ArrayList
+     * this method is to add a future trip plan to user database
+     * @param UserID
+     * @param Trip
+     */
+    public static void addUserPlan(int UserID, ScheduledTrip Trip){
+
+    }
+
+    /**
+     * this method is to delete a planned future trip plan from user database
+     * @param UserID
+     * @param TripID
+     */
+    public static void deleteUserPlan(int UserID,int TripID){
+
+    }
+
+    /**
+     * this method is to add a finished trip plan to user database history
+     * @param UserID
+     * @param trip
+     */
+    public static void addUserHistory(int UserID, FinishedTrip trip){
+
+    }
+
+    /**
+     * this method is to get all future trip plan from user database
+     * @param UserID
+     * @return ArrayList<ScheduledTrip>
+     */
+    public static ArrayList<ScheduledTrip> getUserPlan(int UserID){
+
+        return null;
+    }
+
+    /**
+     * this method is to get all trip plan from user database history
+     * @param UserID
+     * @return ArrayList<FinishedTrip>
+     */
+    public static ArrayList<FinishedTrip> getUserHistory(int UserID){
+
+        return null;
+    }
+
+
+
+    /**
+     * this method is to delete a ScheduledTrip from the scheduledTripList ArrayList and database
+     * @param trip
+     */
+    public static void deleteScheduledTrip(ScheduledTrip trip){
+        ///delete here
+
+        //sort after each delete according on departing time
+
+        deleteUserPlan(1, trip.getTripID());
+
+    }
+
+    /**
+     * this method is to add a FinishedTrip to the historyTripList ArrayList and database
      * @param trip
      */
     public static void addHistoryTrip(FinishedTrip trip) {
         historyTripList.add(trip);
+
+        addUserHistory(1, trip);
     }
 
 }

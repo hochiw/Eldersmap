@@ -20,7 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TripReviewActivity extends AppCompatActivity {
-    final int NORATE = -1;
+    final float NORATE = -1;
     final static int INVALID = -999;
     final String HISTORY = "com.example.kallyruan.eldermap.LocationPkg.HistoryActivity";
     private static int updateID = INVALID;
@@ -85,7 +85,7 @@ public class TripReviewActivity extends AppCompatActivity {
         //check whether this trip exists in database
         if(update && checkTripExists(updateID)){
             //update mark here
-            updateHistory(updateID);
+            updateHistory(updateID,destinationMark,navigationMark);
 
             //reset state
             update = false;
@@ -125,8 +125,10 @@ public class TripReviewActivity extends AppCompatActivity {
         User.addHistoryTrip(trip);
     }
 
-    //only update destination mark and navigation mark
-    private void updateHistory(int id) {
+    /**
+     * update new destination mark and navigation mark to responding trip review
+     */
+    private void updateHistory(int id, float destinationMark, float  navigationMark) {
 
 
     }

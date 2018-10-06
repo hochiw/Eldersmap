@@ -121,9 +121,16 @@ public class ChatActivity extends AppCompatActivity {
                         }
                     }
 
-                }
-            }
-        });
+
+    private void initMsgs() {
+        MsgItem msgItem1 = new MsgItem("Hello guy.", MsgItem.TYPE_RECEIVED,MsgItem.MESSAGE_TYPE_TEXT);
+        msgList.add(msgItem1);
+        MsgItem msgItem2 = new MsgItem("Hello. Who is that?", MsgItem.TYPE_SENT,MsgItem.MESSAGE_TYPE_TEXT);
+        msgList.add(msgItem2);
+        MsgItem msgItem3 = new MsgItem("This is Tom. Nice talking to you. ", MsgItem.TYPE_RECEIVED,MsgItem.MESSAGE_TYPE_TEXT);
+        msgList.add(msgItem3);
+   }
+
 
         //the following is with server connection..
         try {
@@ -151,6 +158,15 @@ public class ChatActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/* video/*");
         startActivityForResult(intent, RESULT_LOAD_IMG);
+    }
+
+    public void testText(View view){
+        MsgItem msgItem1 = new MsgItem("PLEASE WORK!", MsgItem.TYPE_RECEIVED,MsgItem.MESSAGE_TYPE_TEXT);
+        msgList.add(msgItem1);
+        // refresh the view
+        adapter.notifyItemInserted(msgList.size() - 1);
+        // nominate the view to the last message
+        msgRecyclerView.scrollToPosition(msgList.size() - 1);
     }
 
 
@@ -302,6 +318,7 @@ public class ChatActivity extends AppCompatActivity {
     }
 
 
+
     public void addToList(MsgItem msgItem,Intent intent){
         msgList.add(msgItem);
         adapter.notifyItemInserted(msgList.size() - 1);
@@ -310,8 +327,6 @@ public class ChatActivity extends AppCompatActivity {
             client.sendFile(getRealPathFromURI(intent.getData()));
         }
     }
-
-
 
     public static boolean isImageFile(String path) {
         String mimeType = URLConnection.guessContentTypeFromName(path);

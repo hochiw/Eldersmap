@@ -74,31 +74,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
     }
 
     /**
-     * this method is to check whether user exists in the database
-     */
-
-    private boolean checkUserExist() {
-        if (ANDROID_ID != null) {
-            try {
-
-                HTTPPostRequest request = new HTTPPostRequest(User.profileUrl);
-                JSONObject result = new JSONObject(request.execute(new JSONObject().put("userID", ANDROID_ID)).get());
-
-                if (request.getStatusCode() == 200) {
-                    if (result.getJSONObject("survey").getInt("completed") == 1) {
-                        return true;
-                    }
-                }
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        return false;
-    }
-
-    /**
      * this method is to check whether user Location service permission is granted. If not, pop up an
      * acknowledge message and request for permission.
      */

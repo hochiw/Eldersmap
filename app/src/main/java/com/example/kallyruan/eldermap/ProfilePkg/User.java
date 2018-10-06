@@ -1,6 +1,7 @@
 package com.example.kallyruan.eldermap.ProfilePkg;
 
 import android.accounts.NetworkErrorException;
+import android.provider.Settings;
 import android.util.Log;
 
 import com.example.kallyruan.eldermap.LocationPkg.FinishedTrip;
@@ -26,6 +27,7 @@ public class User {
     public static String profileUpdateUrl = "http://eldersmapapi.herokuapp.com/api/updateProfile";
 
 
+
     public static ArrayList<ScheduledTrip> getScheduledTripList() {
         return scheduledTripList;
     }
@@ -48,7 +50,22 @@ public class User {
      * this method is to check whether user exists in the database
      */
     public static boolean checkUserExist() {
+        if (MainActivity.ANDROID_ID != null) {
+            try {
 
+                HTTPPostRequest request = new HTTPPostRequest(User.profileUrl);
+                JSONObject result = new JSONObject(request.execute(new JSONObject().put("userID", MainActivity.ANDROID_ID)).get());
+
+                if (request.getStatusCode() == 200) {
+                    if (result.getJSONObject("survey").getInt("completed") == 1) {
+                        return true;
+                    }
+                }
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         //default user doesn't exist
         return false;
     }

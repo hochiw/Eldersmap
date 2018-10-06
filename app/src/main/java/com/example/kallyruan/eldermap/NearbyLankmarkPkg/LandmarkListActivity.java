@@ -46,6 +46,7 @@ public class LandmarkListActivity extends Activity {
     Notification myNotication;
     private boolean serviceAlive = false;
     private GPSTracker gps;
+
     public static String category; // show the list of nearby landmarks info
     ArrayList<Landmark> list = new ArrayList<>(); // returned list of landmarks
     LandmarkListAdapter adapter;
@@ -57,6 +58,7 @@ public class LandmarkListActivity extends Activity {
     public static String getDestinationName() {
         return destinationName;
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +100,6 @@ public class LandmarkListActivity extends Activity {
         @Override
         public void onServiceDisconnected(ComponentName name) {
             serviceAlive = false;
-
         }
 
         @Override
@@ -194,12 +195,13 @@ public class LandmarkListActivity extends Activity {
 
         //Data Input
         Location userLoc = gps.getLoc();
-
         JSONObject userData = JSONFactory.userDataJSONMaker(userLoc, targetLoc);
         Log.d("Uer ", userLoc.getLatitude().toString());
-
+        Log.d("CLick", userData.getString("pType"));
         //ArrayList<Landmark> list = searchAlg.filterList(JSONFactory.parseJSON("http://eldersmapapi.herokuapp.com/api/search"));
         JSONObject result = new HTTPPostRequest("http://eldersmapapi.herokuapp.com/api/search").execute(userData).get();
+        //Log.d("HTTP Request",result.getString("results"));
+
         if(result.get("status").toString().equals("OK")){
             list = searchAlg.filterList(result);
         }

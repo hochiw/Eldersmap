@@ -68,6 +68,7 @@ public class GPSTracker extends Service implements LocationListener {
         super.onStartCommand(intent,flags,startId);
         return START_STICKY;
     }
+    
 
     @Override
     public void onCreate() {

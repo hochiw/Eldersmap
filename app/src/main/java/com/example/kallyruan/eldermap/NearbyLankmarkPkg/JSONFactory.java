@@ -1,3 +1,8 @@
+/**
+ * This JSONFactory takes the responsibility to
+ */
+
+
 package com.example.kallyruan.eldermap.NearbyLankmarkPkg;
 
 import android.util.Log;

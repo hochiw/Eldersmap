@@ -29,6 +29,8 @@ import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
 import com.example.kallyruan.eldermap.ProfilePkg.SignupActivity;
 import com.example.kallyruan.eldermap.ProfilePkg.User;
 
+import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity implements LocationListener{
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     public static String ANDROID_ID;

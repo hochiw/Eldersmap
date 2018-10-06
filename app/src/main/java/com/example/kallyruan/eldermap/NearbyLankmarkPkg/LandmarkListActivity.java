@@ -60,6 +60,7 @@ public class LandmarkListActivity extends BaseActivity {
     private Location currentLocation;
     private static Location destination; // the target destination
     private static String destinationName;
+    private LocationReceiver receiver;
 
 
     public static String getDestinationName() {
@@ -83,9 +84,11 @@ public class LandmarkListActivity extends BaseActivity {
         // Create intent filter for broadcast receiver
         IntentFilter intentFilter = new IntentFilter("LocationUpdate");
 
+        // Initiate broadcast receiver
+        receiver = new LocationReceiver();
         // Start GPS service and register broadcast receiver
         startService(i);
-        registerReceiver(new LocationReceiver(),intentFilter);
+        registerReceiver(receiver,intentFilter);
 
         //If disconnected with service, show with only loading panel and hence listview invisiable
         Handler handler = new Handler();
@@ -97,6 +100,13 @@ public class LandmarkListActivity extends BaseActivity {
             }
         }, 1500);
         checkButtonClick();
+    }
+
+    @Override
+
+    public void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(receiver);
     }
 
     private class LocationReceiver extends BroadcastReceiver {

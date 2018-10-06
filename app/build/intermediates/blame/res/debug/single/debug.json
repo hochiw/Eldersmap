@@ -88,20 +88,20 @@
         "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/play-services-cast-framework-12.0.1.aar/cf1b4c136658a25fd269c01080d5caf8/res/drawable-xxhdpi-v4/quantum_ic_pause_circle_filled_white_36.png"
     },
     {
-        "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_design_ic_visibility_off.png.flat",
-        "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/a603fc35570d14f09d7f4574f27f1a40/res/drawable-mdpi-v4/design_ic_visibility_off.png"
-    },
-    {
         "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_ic_mr_button_connected_15_dark.png.flat",
         "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/mediarouter-v7-26.1.0.aar/0fb721fd00942307313e808ab56ee3e7/res/drawable-xxhdpi-v4/ic_mr_button_connected_15_dark.png"
     },
     {
-        "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_ic_mr_button_connecting_05_light.png.flat",
-        "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/mediarouter-v7-26.1.0.aar/0fb721fd00942307313e808ab56ee3e7/res/drawable-xhdpi-v4/ic_mr_button_connecting_05_light.png"
+        "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_design_ic_visibility_off.png.flat",
+        "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/a603fc35570d14f09d7f4574f27f1a40/res/drawable-mdpi-v4/design_ic_visibility_off.png"
     },
     {
         "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_list_focused_holo.9.png.flat",
         "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/ad872fc7c5bce4174e70da372dc0e688/res/drawable-xxhdpi-v4/abc_list_focused_holo.9.png"
+    },
+    {
+        "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_ic_mr_button_connecting_05_light.png.flat",
+        "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/mediarouter-v7-26.1.0.aar/0fb721fd00942307313e808ab56ee3e7/res/drawable-xhdpi-v4/ic_mr_button_connecting_05_light.png"
     },
     {
         "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_textfield_activated_mtrl_alpha.9.png.flat",
@@ -132,12 +132,12 @@
         "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/mediarouter-v7-26.1.0.aar/0fb721fd00942307313e808ab56ee3e7/res/layout/mr_playback_control.xml"
     },
     {
-        "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_arrow_left.png.flat",
-        "source": "/Users/TakoYaki/GitHub/ElderMaps/app/src/main/res/mipmap-hdpi/ic_arrow_left.png"
-    },
-    {
         "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_quantum_ic_pause_grey600_36.png.flat",
         "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/play-services-cast-framework-12.0.1.aar/cf1b4c136658a25fd269c01080d5caf8/res/drawable-mdpi-v4/quantum_ic_pause_grey600_36.png"
+    },
+    {
+        "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_arrow_left.png.flat",
+        "source": "/Users/TakoYaki/GitHub/ElderMaps/app/src/main/res/mipmap-hdpi/ic_arrow_left.png"
     },
     {
         "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_ic_mr_button_connecting_11_light.png.flat",
@@ -168,16 +168,16 @@
         "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/play-services-cast-framework-12.0.1.aar/cf1b4c136658a25fd269c01080d5caf8/res/drawable-hdpi-v4/quantum_ic_skip_previous_white_36.png"
     },
     {
-        "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_low_normal.9.png.flat",
-        "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/b43f384c104e05100f556957e071ec82/res/drawable-mdpi-v4/notification_bg_low_normal.9.png"
+        "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_quantum_ic_skip_next_white_24.png.flat",
+        "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/play-services-cast-framework-12.0.1.aar/cf1b4c136658a25fd269c01080d5caf8/res/drawable-xhdpi-v4/quantum_ic_skip_next_white_24.png"
     },
     {
         "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_cast_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
         "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/play-services-cast-framework-12.0.1.aar/cf1b4c136658a25fd269c01080d5caf8/res/drawable-hdpi-v4/cast_abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
-        "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_quantum_ic_skip_next_white_24.png.flat",
-        "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/play-services-cast-framework-12.0.1.aar/cf1b4c136658a25fd269c01080d5caf8/res/drawable-xhdpi-v4/quantum_ic_skip_next_white_24.png"
+        "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_low_normal.9.png.flat",
+        "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/b43f384c104e05100f556957e071ec82/res/drawable-mdpi-v4/notification_bg_low_normal.9.png"
     },
     {
         "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_text_select_handle_middle_mtrl_light.png.flat",
@@ -208,12 +208,12 @@
         "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/a603fc35570d14f09d7f4574f27f1a40/res/layout/design_navigation_item_separator.xml"
     },
     {
-        "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
-        "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/ad872fc7c5bce4174e70da372dc0e688/res/drawable-hdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png"
-    },
-    {
         "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_ic_mr_button_connecting_26_light.png.flat",
         "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/mediarouter-v7-26.1.0.aar/0fb721fd00942307313e808ab56ee3e7/res/drawable-xxhdpi-v4/ic_mr_button_connecting_26_light.png"
+    },
+    {
+        "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
+        "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/ad872fc7c5bce4174e70da372dc0e688/res/drawable-hdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
         "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_ic_mr_button_connecting_23_light.png.flat",
@@ -292,12 +292,12 @@
         "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/mediarouter-v7-26.1.0.aar/0fb721fd00942307313e808ab56ee3e7/res/drawable-xxhdpi-v4/ic_mr_button_connecting_11_light.png"
     },
     {
-        "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
-        "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/ad872fc7c5bce4174e70da372dc0e688/res/drawable-mdpi-v4/abc_scrubber_primary_mtrl_alpha.9.png"
-    },
-    {
         "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_googleg_standard_color_18.png.flat",
         "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/453397f02da327fa7ffef8beb04a4c8b/res/drawable-mdpi-v4/googleg_standard_color_18.png"
+    },
+    {
+        "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
+        "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/ad872fc7c5bce4174e70da372dc0e688/res/drawable-mdpi-v4/abc_scrubber_primary_mtrl_alpha.9.png"
     },
     {
         "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_ic_mr_button_connecting_08_light.png.flat",

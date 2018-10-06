@@ -33,7 +33,7 @@ public class GPS extends Service implements GoogleApiClient.ConnectionCallbacks,
     private GoogleApiClient googleAPI;
     private LocationRequest mLocationRequest;
 
-    private static final long INTERVAL = 5000;
+    private static final long INTERVAL = 1000;
 
     public GPS() {}
 

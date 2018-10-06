@@ -74,10 +74,16 @@ public class LandmarkListActivity extends BaseActivity {
         loading = (RelativeLayout) findViewById(R.id.loadingPanel);
         landmarkList.setVisibility(View.INVISIBLE);
 
+        // Initiate currentLocation variable
         currentLocation = Location.getInstance(0.0,0.0,0.0f);
-        // Connect to the GPS Service
+
+        // Create GPS Intent
         Intent i = new Intent(getApplicationContext(),GPS.class);
+
+        // Create intent filter for broadcast receiver
         IntentFilter intentFilter = new IntentFilter("LocationUpdate");
+
+        // Start GPS service and register broadcast receiver
         startService(i);
         registerReceiver(new LocationReceiver(),intentFilter);
 
@@ -96,11 +102,15 @@ public class LandmarkListActivity extends BaseActivity {
     private class LocationReceiver extends BroadcastReceiver {
 
         @Override
+        // Where a new location is received
         public void onReceive(Context context, Intent intent) {
+
+            // Replace the location attributes with the new ones
             currentLocation.setLatitude(intent.getDoubleExtra("Latitude",0.0));
             currentLocation.setLongitude(intent.getDoubleExtra("Longitude",0.0));
             currentLocation.setBearing(intent.getFloatExtra("Bearing",0.0f));
 
+            // Wait until the GPS is warmed up before displaying the list
             if (firstUpdate) {
                 try {
                     //if connected to server, make loading pannel view gone and show result list

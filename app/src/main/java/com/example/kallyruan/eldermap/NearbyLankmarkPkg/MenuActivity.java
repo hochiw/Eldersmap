@@ -21,7 +21,7 @@ public class MenuActivity extends BaseActivity {
 
     public final static int HOSPITSL = 0;
     public final static int PHARMACY = 1;
-    public final static int MARKET = 2;
+    public final static int LIBRARY = 2;
     public final static int SUPERMARKET = 3;
     public final static int BAR = 4;
     public final static int RESTAURANT = 5;
@@ -54,10 +54,8 @@ public class MenuActivity extends BaseActivity {
                     case PHARMACY:
                         category = "pharmacy";
                         break;
-                        // There is problem about market.
-                    //       Everything else is fine.
-                    case MARKET:
-                        category = "market";
+                    case LIBRARY:
+                        category = "library";
                         break;
                     case SUPERMARKET:
                         category = "supermarket";

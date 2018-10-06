@@ -1,22 +1,41 @@
 package com.example.kallyruan.eldermap.P2PPkg;
 
 
-import android.util.Log;
-
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
+import org.json.JSONException;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.net.URI;
 
-public class SocketClient {
+public class SocketClient implements Runnable{
 
     private Boolean alive = false;
     private WebSocketClient ws;
+    private ChatActivity ca;
+    private URI address;
 
-    public SocketClient(URI address) {
-        ws = new WebSocketClient(address) {
+    public SocketClient(URI address, ChatActivity ca) {
+        this.address = address;
+        this.ca = ca;
+    }
+
+    public void sendFile(String path) {
+        File file = new File(path);
+        byte[] data = FileEncoder.convertFileToByte(file);
+        if (data != null) {
+            try {
+                MsgItem message = new MsgItem(FileEncoder.byteToBase64(data), MsgItem.TYPE_SENT, MsgItem.MESSAGE_TYPE_GRAPH);
+                message.setFileName(file.getName());
+                ws.send(MsgCoder.encode(message));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void run() {
+        this.ws = new WebSocketClient(address) {
             @Override
             public void onOpen(ServerHandshake handshakedata) {
                 alive = true;
@@ -24,7 +43,16 @@ public class SocketClient {
 
             @Override
             public void onMessage(String message) {
-                Log.d("WS",message);
+                try {
+                    if (MsgCoder.decode(message) != null) {
+                        ca.newMessage(MsgCoder.decode(message));
+                    } else {
+                        throw new JSONException("Unable to decode");
+                    }
+                } catch (JSONException e) {
+                    ca.newMessage(new MsgItem(message, MsgItem.TYPE_RECEIVED, MsgItem.MESSAGE_TYPE_TEXT));
+                }
+
             }
 
             @Override
@@ -38,25 +66,6 @@ public class SocketClient {
             }
         };
         ws.connect();
-    }
-
-    public void sendFile(String path) {
-        byte[] data = convertFileToByte(new File(path));
-        if (data != null) {
-            ws.send(data);
-        }
-    }
-
-    public byte[] convertFileToByte(File file) {
-        try {
-            FileInputStream fs = new FileInputStream(file);
-            byte[] bytes = new byte[(int)file.length()];
-            fs.read(bytes,0,(int) file.length());
-            return bytes;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     public WebSocketClient getInstance() {

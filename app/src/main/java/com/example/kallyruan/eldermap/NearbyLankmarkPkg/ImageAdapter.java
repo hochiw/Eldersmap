@@ -48,7 +48,7 @@ public class ImageAdapter extends BaseAdapter {
     // references to our images
     private Integer[] mThumbIds = {
             R.mipmap.ic_hospital, R.mipmap.ic_pharmacy,
-            R.mipmap.ic_market,R.mipmap.ic_supermarket,
+            R.mipmap.ic_library,R.mipmap.ic_supermarket,
             R.mipmap.ic_bar, R.mipmap.ic_restaurant,
 
     };

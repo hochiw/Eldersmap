@@ -45,11 +45,11 @@
                 android:text="Call" />
 
             <Button
-                android:id="@+id/test_Text_button"
+                android:id="@+id/quit_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="testText"
-                android:text="testText" />
+                android:onClick="quitChat"
+                android:text="quit" />
 
         </LinearLayout>
 

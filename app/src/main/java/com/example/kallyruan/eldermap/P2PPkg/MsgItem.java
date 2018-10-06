@@ -8,13 +8,13 @@ public class MsgItem {
     public static final int MESSAGE_TYPE_TEXT = 2;
     public static final int MESSAGE_TYPE_GRAPH = 3;
     public static final int MESSAGE_TYPE_VIDEO = 4;
-    public static final int MESSAGE_TYPE_VOICE = 5;
+    public static final int MESSAGE_TYPE_AUDIO = 5;
+    public static final int MESSAGE_TYPE_USER = 6;
 
-    private InetAddress ip;
-    private int port;
     private String content;
     private int msgType;
     private int contentType;
+    private String fileName;
 
     //this constructor is used now for demo purpose since I (Kally) have no idea about
     // InetAddress and port format
@@ -22,14 +22,7 @@ public class MsgItem {
         this.content = content;
         this.msgType = type;
         this.contentType = msgType;
-    }
-
-    public MsgItem(InetAddress ip, int port, String content, int msgtype, int contentType) {
-        this.ip = ip;
-        this.port = port;
-        this.content = content;
-        this.msgType = msgtype;
-        this.contentType = contentType;
+        this.fileName = null;
     }
 
     public String getContent() {
@@ -56,19 +49,9 @@ public class MsgItem {
         this.contentType = contentType;
     }
 
-    public InetAddress getIp() {
-        return ip;
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
-    public void setIp(InetAddress ip) {
-        this.ip = ip;
-    }
-
-    public int getPort() {
-        return port;
-    }
-
-    public void setPort(int port) {
-        this.port = port;
-    }
+    public String getFileName() {return fileName;}
 }

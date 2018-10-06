@@ -1,12 +1,8 @@
 package com.example.kallyruan.eldermap.P2PPkg;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,15 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.MediaController;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.example.kallyruan.eldermap.R;
 
 import java.io.File;
-import java.net.URI;
 import java.util.List;
 
 public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.ViewHolder> {
@@ -55,7 +48,7 @@ public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.ViewHolder> {
         }
     }
 
-    public MsgAdapter(Context mContext,List<MsgItem> msgItemList,CustomItemClickListener listener) {
+    public MsgAdapter(Context mContext, List<MsgItem> msgItemList, CustomItemClickListener listener) {
         this.mContext = mContext;
         mMsgItemList = msgItemList;
         this.listener = listener;
@@ -105,6 +98,7 @@ public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.ViewHolder> {
                 Log.d("p2p ","left text ");
                 holder.leftMsg.setText(msgItem.getContent());
             }else if (msgItem.getContentType() == MsgItem.MESSAGE_TYPE_GRAPH){
+                Log.d("p2p ","left pic ");
                 Log.d("test p2p ","left pic ");
                 String path = msgItem.getContent();
                 Bitmap bmImg = BitmapFactory.decodeFile(path);
@@ -149,5 +143,9 @@ public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.ViewHolder> {
     @Override
     public int getItemCount() {
         return mMsgItemList.size();
+    }
+
+    public void add(MsgItem message) {
+        mMsgItemList.add(message);
     }
 }

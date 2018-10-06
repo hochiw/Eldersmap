@@ -10,6 +10,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Handler;
+import android.os.Looper;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -27,11 +28,22 @@ import com.example.kallyruan.eldermap.NearbyLankmarkPkg.MenuActivity;
 import com.example.kallyruan.eldermap.P2PPkg.ChatActivity;
 import com.example.kallyruan.eldermap.ProfilePkg.SignupActivity;
 import com.example.kallyruan.eldermap.ProfilePkg.User;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.SettingsClient;
 
-public class MainActivity extends AppCompatActivity implements LocationListener{
+public class MainActivity extends AppCompatActivity implements LocationListener {
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+    boolean askedPermission = false;
     LocationManager locationManager;
     String provider;
+    private long UPDATE_INTERVAL = 10 * 1000;  /* 10 secs */
+    private long FASTEST_INTERVAL = 2000; /* 2 sec */
+    private LocationRequest mLocationRequest;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,28 +52,15 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         provider = locationManager.getBestProvider(new Criteria(), false);
 
-        /**
-         * this method is to check whether user exists first, if yes then check user type and show
-         * responding features,otherwise re-direct to sign-up page. All new registered users would
-         * be assumed as normal users (Not an admin)
-         */
-        if(User.checkUserExist()){
+        if (User.checkUserExist()) {
             checkLocationPermission();
-            // if is a normal user, re-direct to App Main menu page
-            Log.d("test type",Integer.toString(User.checkUserType()));
-            if(User.checkUserType() == User.USER) {
-                Intent i = new Intent(getApplicationContext(),AppMenuActivity.class);
-                startActivity(i);
-                // if is an admin, User will only have chat feature
-            }else if (User.checkUserType() == User.ADMIN){
-                Intent i = new Intent(getApplicationContext(),ChatActivity.class);
-                startActivity(i);
-            }
-        //if user doesn't exist, re-direct to Sign up page
-        }else{
+
+            //if user doesn't exist, re-direct to Sign up page
+        } else {
             Intent i = new Intent(getApplicationContext(), SignupActivity.class);
             startActivity(i);
         }
+
 
     }
 
@@ -70,14 +69,15 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
      * this method is to check whether user Location service permission is granted. If not, pop up an
      * acknowledge message and request for permission.
      */
-    public void checkLocationPermission() {
+    public boolean checkLocationPermission() {
         //if permission not granted, promote for permission request
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
-            Log.d("test: ","check location permission");
+            Log.d("test: ", "1 NO location permission");
             // This is to check whether we should show an explanation
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.ACCESS_FINE_LOCATION)) {
+                Log.d("test: ", "request permission");
                 // Show an explanation to the user and then request the permission.
                 new AlertDialog.Builder(this)
                         .setTitle("Location Permission request")
@@ -95,17 +95,41 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
                         .create()
                         .show();
             } else {
-                Log.d("test: ","no explanation");
-               // No explanation needed, we can request the permission.
+                Log.d("test: ", "no explanation");
+                // No explanation needed, we can request the permission.
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                         MY_PERMISSIONS_REQUEST_LOCATION);
             }
-        //if location permission is granted, continue to AppMenu page
+            //if location permission is granted, continue to AppMenu page
         } else {
-            startMenu();
+            Log.d("test: ", "GET location permission");
+            //if is a normal user, re-direct to App Main menu page
+            Log.d("test type", Integer.toString(User.checkUserType()));
+
+            if (User.checkUserType() == User.USER) {
+                Intent i = new Intent(getApplicationContext(), AppMenuActivity.class);
+                startActivity(i);
+                // if is an admin, User will only have chat feature
+            } else if (User.checkUserType() == User.ADMIN) {
+                Intent i = new Intent(getApplicationContext(), ChatActivity.class);
+                startActivity(i);
+            }
         }
+        return true;
     }
+
+
+    @Override
+    public void onLocationChanged(Location location) {
+        Double lat = location.getLatitude();
+        Double lng = location.getLongitude();
+
+        Log.i("Location info: Lat", lat.toString());
+        Log.i("Location info: Lng", lng.toString());
+    }
+
+
 
     /**
      * this method is an override message to react with user permission decision. If users refuse to
@@ -127,8 +151,13 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
                     if (ContextCompat.checkSelfPermission(this,
                             Manifest.permission.ACCESS_FINE_LOCATION)
                             == PackageManager.PERMISSION_GRANTED) {
+
                         //Request location updates:
                         //locationManager.requestLocationUpdates(provider, 400, 1, this);
+                        //Log.d("test location", provider);
+//                        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+//                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+////
                     }
                 } else {
                     // if permission denied, send user the alert message
@@ -151,15 +180,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         startActivity(mainIntent);
     }
 
-    @Override
-    public void onLocationChanged(Location location) {
-        Double lat = location.getLatitude();
-        Double lng = location.getLongitude();
 
-        Log.i("Location info: Lat", lat.toString());
-        Log.i("Location info: Lng", lng.toString());
-
-    }
 
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {

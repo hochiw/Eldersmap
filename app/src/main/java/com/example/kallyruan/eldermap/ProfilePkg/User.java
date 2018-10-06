@@ -37,7 +37,7 @@ public class User {
      */
     public static boolean checkUserExist() {
 
-        //default user doesn't exist
+        //default user exist
         return false;
     }
 

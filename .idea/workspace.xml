@@ -11,73 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b1de292-7cbb-4ece-af8b-13337db1824d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/build-info/debug/build-info.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/build-info/debug/build-info.xml" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/NavigationPkg/DisplayActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/NavigationPkg/DisplayActivity.class" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListActivity.class" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/NearbyLankmarkPkg/SearchAlg.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/NearbyLankmarkPkg/SearchAlg.class" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/ProfilePkg/User.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/ProfilePkg/User.class" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/NavigationPkg/DisplayActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/NavigationPkg/DisplayActivity.class" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListActivity.class" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/NearbyLankmarkPkg/SearchAlg.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/NearbyLankmarkPkg/SearchAlg.class" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/ProfilePkg/User.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/ProfilePkg/User.class" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_dep/debug/package_dependencies/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_dep/debug/package_dependencies/dex-renamer-state.txt" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_0/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_0/dex-renamer-state.txt" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_1/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_1/dex-renamer-state.txt" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_2/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_2/dex-renamer-state.txt" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_3/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_3/dex-renamer-state.txt" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_4/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_4/dex-renamer-state.txt" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_5/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_5/dex-renamer-state.txt" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_6/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_6/dex-renamer-state.txt" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_7/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_7/dex-renamer-state.txt" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_8/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_8/dex-renamer-state.txt" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_9/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_9/dex-renamer-state.txt" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-apk/debug/app-debug.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/instant-run-apk/debug/app-debug.apk" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/resources-debug.ap_" afterPath="$PROJECT_DIR$/app/build/intermediates/res/debug/resources-debug.ap_" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_0.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_0.apk" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_2.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_2.apk" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_3.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_3.apk" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_4.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_4.apk" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_5.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_5.apk" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_6.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_6.apk" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_7.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_7.apk" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_8.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_8.apk" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_9.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_9.apk" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/__content__.json" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/__content__.json" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/1/classes.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/1/classes.dex" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/4/classes.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/4/classes.dex" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/5/classes.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/5/classes.dex" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/6/classes.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/6/classes.dex" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/8/classes.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/8/classes.dex" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/9/classes.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/9/classes.dex" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/__content__.json" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/__content__.json" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/MainActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/MainActivity.class" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/NavigationPkg/DisplayActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/NavigationPkg/DisplayActivity.class" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/NearbyLankmarkPkg/ImageAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/NearbyLankmarkPkg/ImageAdapter.class" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListActivity.class" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListAdapter.class" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/NearbyLankmarkPkg/MenuActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/NearbyLankmarkPkg/MenuActivity.class" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/NearbyLankmarkPkg/SearchAlg.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/NearbyLankmarkPkg/SearchAlg.class" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/ProfilePkg/User.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/ProfilePkg/User.class" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/__content__.json" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/__content__.json" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/__content__.json" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/__content__.json" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/TripReviewActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/TripReviewActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/CoorDist.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/CoorDist.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/DisplayActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/DisplayActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/NavigationChecker.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/NavigationChecker.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/ScheduleTimeActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/ScheduleTimeActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NearbyLankmarkPkg/SearchAlg.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NearbyLankmarkPkg/SearchAlg.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/ProfilePkg/User.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/ProfilePkg/User.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
@@ -139,11 +73,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DisplayActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DisplayActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/DisplayActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="80" column="25" lean-forward="false" selection-start-line="80" selection-start-column="25" selection-end-line="80" selection-end-column="25" />
+            <state relative-caret-position="282">
+              <caret line="134" column="12" lean-forward="false" selection-start-line="134" selection-start-column="12" selection-end-line="134" selection-end-column="12" />
               <folding>
                 <element signature="e#2679#2913#0" expanded="true" />
                 <element signature="e#2912#2913#0" expanded="true" />
@@ -205,18 +139,18 @@
       <file leaf-file-name="LandmarkListActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
+            <state relative-caret-position="718">
               <caret line="222" column="9" lean-forward="false" selection-start-line="222" selection-start-column="9" selection-end-line="222" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchAlg.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SearchAlg.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NearbyLankmarkPkg/SearchAlg.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="37" column="77" lean-forward="false" selection-start-line="37" selection-start-column="77" selection-end-line="37" selection-end-column="77" />
+            <state relative-caret-position="124">
+              <caret line="34" column="23" lean-forward="true" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -2327,9 +2261,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/ProfilePkg/User.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/CoorDist.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/NavigationChecker.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/DisplayActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NearbyLankmarkPkg/SearchAlg.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/DisplayActivity.java" />
       </list>
     </option>
   </component>
@@ -3146,19 +3080,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/DisplayActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="80" column="25" lean-forward="false" selection-start-line="80" selection-start-column="25" selection-end-line="80" selection-end-column="25" />
-          <folding>
-            <element signature="e#2679#2913#0" expanded="true" />
-            <element signature="e#2912#2913#0" expanded="true" />
-            <element signature="e#3012#3154#0" expanded="true" />
-            <element signature="e#3153#3154#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
@@ -3167,20 +3088,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NearbyLankmarkPkg/SearchAlg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="34" column="23" lean-forward="true" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
+        <state relative-caret-position="718">
           <caret line="222" column="9" lean-forward="false" selection-start-line="222" selection-start-column="9" selection-end-line="222" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NearbyLankmarkPkg/SearchAlg.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/DisplayActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="37" column="77" lean-forward="false" selection-start-line="37" selection-start-column="77" selection-end-line="37" selection-end-column="77" />
+        <state relative-caret-position="282">
+          <caret line="134" column="12" lean-forward="false" selection-start-line="134" selection-start-column="12" selection-end-line="134" selection-end-column="12" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#2679#2913#0" expanded="true" />
+            <element signature="e#2912#2913#0" expanded="true" />
+            <element signature="e#3012#3154#0" expanded="true" />
+            <element signature="e#3153#3154#0" expanded="true" />
           </folding>
         </state>
       </provider>

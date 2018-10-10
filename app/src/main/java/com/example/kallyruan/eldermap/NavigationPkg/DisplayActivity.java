@@ -115,14 +115,6 @@ public class DisplayActivity extends AppCompatActivity {
             currentLocation.setLongitude(intent.getDoubleExtra("Longitude",0.0));
             currentLocation.setBearing(intent.getFloatExtra("Bearing",0.0f));
 
-            //LUL
-
-            if (checker != null) {
-                refreshList(checker.getPositions());
-                checker.setUserLoc(currentLocation);
-                checker.getUserLoc();
-                setInformation(poList.get(0));
-            }
 
             // Wait until the GPS is warmed up before displaying the list
             if (firstUpdate) {
@@ -137,6 +129,15 @@ public class DisplayActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 firstUpdate = false;
+            }
+
+            // Update Arrow
+            
+            if (checker != null) {
+                refreshList(checker.getPositions());
+                checker.setUserLoc(currentLocation);
+                checker.getUserLoc();
+                setInformation(poList.get(0));
             }
         }
     };

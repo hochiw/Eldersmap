@@ -64,7 +64,7 @@ public class LandmarkListAdapterTest {
     @Before
     public void setup(){
         this.mActivity = Mockito.mock(Activity.class);
-        group = PowerMock.createMock(ArrayList.class);
+        group = PowerMock.createMock(ArrayList.class);  // Mock an arraylist ?
         adapter = new LandmarkListAdapter(mActivity, group);
         place = PowerMock.createMock(Landmark.class);
 //

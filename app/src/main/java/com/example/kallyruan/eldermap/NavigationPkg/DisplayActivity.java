@@ -4,10 +4,18 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.hardware.GeomagneticField;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,7 +35,9 @@ import java.util.concurrent.ExecutionException;
 
 public class DisplayActivity extends AppCompatActivity {
     TextView sign;
+    TextView distance;
     ImageView graph;
+
 
     //variable for display instruction
     NavigationChecker checker;
@@ -38,6 +48,11 @@ public class DisplayActivity extends AppCompatActivity {
     private Location currentLocation;
     private static Location destination; // the target destination
     private LocationReceiver receiver;
+    private SensorManager mSensorManager;
+    private float currentAngle;
+    private SensorListener sensorListener;
+    private float arrowAngle = 0f;
+
 
 
 //    // sample index for tracking demo display
@@ -64,6 +79,7 @@ public class DisplayActivity extends AppCompatActivity {
         setContentView(R.layout.navigation_display);
         //setInformation(displayIndex);//for demo purpose
 
+        distance = findViewById(R.id.distance);
         //A button listener for Help button, once clicked, re-direct to chat page
         Button helpButton = findViewById(R.id.helpButton);
         helpButton.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +110,19 @@ public class DisplayActivity extends AppCompatActivity {
         startService(i);
         registerReceiver(receiver,intentFilter);
 
-        currentLocation = Location.getInstance(0.0,0.0,0.0f);
+        currentLocation = Location.getInstance(0.0,0.0);
+        mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        sensorListener = new SensorListener();
+        mSensorManager.registerListener(sensorListener, mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION),
+                48,
+                SensorManager.SENSOR_DELAY_GAME);
+
+
+        graph = (ImageView) findViewById(R.id.directionIcon);
+
+        graph.setImageResource(R.mipmap.ic_arrow_up);
+
+
 
     }
 
@@ -102,6 +130,8 @@ public class DisplayActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         unregisterReceiver(receiver);
+        mSensorManager.unregisterListener(sensorListener);
+
     }
 
     private class LocationReceiver extends BroadcastReceiver {
@@ -113,7 +143,7 @@ public class DisplayActivity extends AppCompatActivity {
             // Replace the location attributes with the new ones
             currentLocation.setLatitude(intent.getDoubleExtra("Latitude",0.0));
             currentLocation.setLongitude(intent.getDoubleExtra("Longitude",0.0));
-            currentLocation.setBearing(intent.getFloatExtra("Bearing",0.0f));
+            currentLocation.setAltitude(intent.getDoubleExtra("Altitude",0.0));
 
 
             // Wait until the GPS is warmed up before displaying the list
@@ -122,8 +152,7 @@ public class DisplayActivity extends AppCompatActivity {
                     //if connected to server, make loading panel view gone and show result list
                     checker = new NavigationChecker(currentLocation,Location.getInstance(
                             getIntent().getDoubleExtra("destLatitude",0.0),
-                            getIntent().getDoubleExtra("destLongitude", 0.0),
-                            0.0f));
+                            getIntent().getDoubleExtra("destLongitude", 0.0)));
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -132,15 +161,69 @@ public class DisplayActivity extends AppCompatActivity {
             }
 
             // Update Arrow
-            
+
             if (checker != null) {
                 refreshList(checker.getPositions());
                 checker.setUserLoc(currentLocation);
                 checker.getUserLoc();
                 setInformation(poList.get(0));
+                distance.setText(String.format("%.2fm",checker.getDistance()));
             }
         }
     };
+
+    private class SensorListener implements SensorEventListener {
+
+        @Override
+        public void onSensorChanged(SensorEvent sensorEvent) {
+            if (checker != null) {
+
+                double bearing = checker.getAngle();
+
+                GeomagneticField geoField = checker.getGeoField();
+
+                currentAngle = Math.round(sensorEvent.values[0]);
+
+                currentAngle -= geoField.getDeclination();
+
+                if (bearing < 0) {
+                    bearing += 360;
+                }
+
+                float direction = (float) bearing - currentAngle;
+
+                if (direction < 0) {
+                    direction += 360;
+                }
+
+                RotateAnimation ra = new RotateAnimation(
+                        arrowAngle,
+                        direction,
+                        Animation.RELATIVE_TO_SELF, 0.5f,
+                        Animation.RELATIVE_TO_SELF,
+                        0.5f);
+
+                ra.setDuration(210);
+
+                ra.setFillAfter(true);
+
+                graph.startAnimation(ra);
+
+                arrowAngle = direction;
+            }
+
+
+
+        }
+
+
+
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int i) {
+
+        }
+    }
 
 //    // for the present demo, assume the navigation page would refresh every two seconds
 //    public void refresh() {
@@ -171,22 +254,23 @@ public class DisplayActivity extends AppCompatActivity {
 
         String direction = current.getModifier();
 
-        graph = (ImageView) findViewById(R.id.directionIcon);
+
+
         //set keywords for moving direction
-        final String LEFT = "LEFT";
-        final String RIGHT = "RIGHT";
-        final String BACKWARD = "BACKWARD";
-        final String FORWARD = "STRAIGHT";
+       // final String LEFT = "LEFT";
+        //final String RIGHT = "RIGHT";
+        //final String BACKWARD = "BACKWARD";
+      //  final String FORWARD = "STRAIGHT";
         //set direction image if contains keywords
-        if (signText.toUpperCase().contains(LEFT)) {
-            graph.setImageResource(R.mipmap.ic_arrow_left);
-        } else if (direction.toUpperCase().equals(RIGHT)) {
-            graph.setImageResource(R.mipmap.ic_arrow_right);
-        } else if (direction.toUpperCase().equals(FORWARD)) {
-            graph.setImageResource(R.mipmap.ic_arrow_up);
-        } else if (direction.toUpperCase().equals(BACKWARD)) {
-            graph.setImageResource(R.mipmap.ic_arrow_down);
-        }
+     //   if (signText.toUpperCase().contains(LEFT)) {
+    //        graph.setImageResource(R.mipmap.ic_arrow_left);
+    //    } else if (direction.toUpperCase().equals(RIGHT)) {
+    //        graph.setImageResource(R.mipmap.ic_arrow_right);
+    //    } else if (direction.toUpperCase().equals(FORWARD)) {
+    //        graph.setImageResource(R.mipmap.ic_arrow_up);
+    //    } else if (direction.toUpperCase().equals(BACKWARD)) {
+    //        graph.setImageResource(R.mipmap.ic_arrow_down);
+    //    }
 
     }
 

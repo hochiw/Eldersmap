@@ -4,6 +4,7 @@ ADDED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:2:1
 INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:2:1-59:12
 INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:2:1-59:12
 INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml:2:1-59:12
+MERGED from [com.android.support:multidex:1.0.2] /Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/multidex-1.0.2.aar/f5fa575eee22dc734195f2a6607401f2/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:design:27.1.1] /Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/a603fc35570d14f09d7f4574f27f1a40/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.gms:play-services:12.0.1] /Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/play-services-12.0.1.aar/07054d9634278f7756a048fb00248cb1/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.android.gms:play-services-cast-framework:12.0.1] /Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/play-services-cast-framework-12.0.1.aar/cf1b4c136658a25fd269c01080d5caf8/AndroidManifest.xml:2:1-14:12
@@ -515,6 +516,8 @@ uses-sdk
 INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml
 INJECTED from /Users/TakoYaki/GitHub/ElderMaps/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:multidex:1.0.2] /Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/multidex-1.0.2.aar/f5fa575eee22dc734195f2a6607401f2/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:multidex:1.0.2] /Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/multidex-1.0.2.aar/f5fa575eee22dc734195f2a6607401f2/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:design:27.1.1] /Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/a603fc35570d14f09d7f4574f27f1a40/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:design:27.1.1] /Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/a603fc35570d14f09d7f4574f27f1a40/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services:12.0.1] /Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/play-services-12.0.1.aar/07054d9634278f7756a048fb00248cb1/AndroidManifest.xml:4:5-43

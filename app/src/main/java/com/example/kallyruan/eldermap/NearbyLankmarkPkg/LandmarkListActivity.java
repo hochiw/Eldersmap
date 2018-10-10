@@ -76,7 +76,7 @@ public class LandmarkListActivity extends BaseActivity {
         landmarkList.setVisibility(View.INVISIBLE);
 
         // Initiate currentLocation variable
-        currentLocation = Location.getInstance(0.0,0.0,0.0f);
+        currentLocation = Location.getInstance(0.0,0.0);
 
         // Create GPS Intent
         Intent i = new Intent(getApplicationContext(),GPS.class);
@@ -98,7 +98,7 @@ public class LandmarkListActivity extends BaseActivity {
                 loading.setVisibility(View.INVISIBLE);
                 landmarkList.setVisibility(View.VISIBLE);
             }
-        }, 1500);
+        }, 2500);
         checkButtonClick();
     }
 
@@ -117,7 +117,6 @@ public class LandmarkListActivity extends BaseActivity {
             // Replace the location attributes with the new ones
             currentLocation.setLatitude(intent.getDoubleExtra("Latitude",0.0));
             currentLocation.setLongitude(intent.getDoubleExtra("Longitude",0.0));
-            currentLocation.setBearing(intent.getFloatExtra("Bearing",0.0f));
 
             // Wait until the GPS is warmed up before displaying the list
             if (firstUpdate) {

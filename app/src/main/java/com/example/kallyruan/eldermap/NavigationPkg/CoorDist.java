@@ -12,4 +12,18 @@ public class CoorDist {
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         return R * c * 1000;
     }
+
+    public static double getAngle(double userLat, double userLon, double destLat, double destLon) {
+        double y = Math.sin(destLon - userLon) * Math.cos(destLat);
+        double x = Math.cos(userLat) * Math.sin(destLat) - Math.sin(userLat)
+                * Math.cos(destLat) * Math.cos(destLon - userLon);
+
+        double bearing = Math.atan2(y, x);
+
+        bearing = Math.toDegrees(bearing);
+        bearing = (bearing + 360) % 360;
+        bearing = 360 - bearing;
+
+        return bearing;
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.kallyruan.eldermap.NavigationPkg;
 
+import android.hardware.GeomagneticField;
 import android.util.Log;
 
 import com.example.kallyruan.eldermap.LocationPkg.Location;
@@ -59,14 +60,13 @@ public class NavigationChecker {
     public void getUserLoc() {
         Iterator it1 = getPositions().iterator();
         while(it1.hasNext()) {
-            if (offRoute(userLoc, list.get(0))) {
-                Log.d("offRoute", "Wrong direction, please remain course");
-                break;
-            }
-
-            Log.d("DISTANCE",Double.toString(CoorDist.getDist(userLoc.getLatitude(),userLoc.getLongitude(),list.get(0).getLatitude(),list.get(0).getLongitude())));
+            //if (offRoute(userLoc, list.get(0))) {
+            //    Log.d("offRoute", "Wrong direction, please remain course");
+             //   break;
+           // }
+            Log.d("Angle",Double.toString(CoorDist.getAngle(userLoc.getLatitude(),userLoc.getLongitude(),list.get(0).getLatitude(),list.get(0).getLongitude())));
             if (CoorDist.getDist(userLoc.getLatitude(),userLoc.getLongitude(),list.get(0).getLatitude(),list.get(0).getLongitude()
-            ) < 2) {
+            ) < 10) {
                 Log.d("WEW","REMOVING YOUR SHIT");
                 list.remove(0);
             }else {
@@ -74,6 +74,30 @@ public class NavigationChecker {
             }
         }
         Log.d("testing", list.toString());
+    }
+
+    public double getAngle() {
+     //  double angle = CoorDist.getAngle(userLoc.getLatitude(),userLoc.getLongitude(),list.get(0).getLatitude(),list.get(0).getLongitude());
+
+        android.location.Location userLocation = new android.location.Location("User");
+        android.location.Location desLocation = new android.location.Location("Destination");
+        userLocation.setLatitude(userLoc.getLatitude());
+        userLocation.setLongitude(userLoc.getLongitude());
+        desLocation.setLatitude(list.get(0).getLatitude());
+        desLocation.setLongitude(list.get(0).getLongitude());
+
+        return userLocation.bearingTo(desLocation);
+    }
+
+    public GeomagneticField getGeoField() {
+        return new GeomagneticField( Double.valueOf( userLoc.getLatitude() ).floatValue(), Double
+                .valueOf( userLoc.getLongitude() ).floatValue(),
+                Double.valueOf( userLoc.getAltitude() ).floatValue(),
+                System.currentTimeMillis());
+    }
+
+    public double getDistance() {
+        return CoorDist.getDist(userLoc.getLatitude(),userLoc.getLongitude(),list.get(0).getLatitude(),list.get(0).getLongitude());
     }
 
     /***
@@ -85,7 +109,7 @@ public class NavigationChecker {
                 position.getLatitude(), position.getLongitude());
         // pre-set off road distant, we will detect if user is 'this far away' from the destined
         // position
-        if (distance > 30.00000 && userLoc.getBearing() - position.getBearing_before() > 90) {
+        if (distance > 30.00000) {
             return true;
         }
         return false;

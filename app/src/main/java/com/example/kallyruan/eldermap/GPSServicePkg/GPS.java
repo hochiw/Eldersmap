@@ -102,8 +102,8 @@ public class GPS extends Service implements GoogleApiClient.ConnectionCallbacks,
         i.setAction("LocationUpdate");
         i.putExtra("Latitude",location.getLatitude());
         i.putExtra("Longitude",location.getLongitude());
-        i.putExtra("Bearing",location.getBearing());
+        i.putExtra("Altitude",location.getAltitude());
         sendBroadcast(i);
-        Log.v(TAG, "Latitude: " + location.getLatitude() + " Longitude: " + location.getLongitude());
+        Log.v(TAG, "Latitude: " + location.getLatitude() + " Longitude: " + location.getLongitude() + " Altitude: " + location.getAltitude());
     }
 }

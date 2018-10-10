@@ -20,7 +20,6 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
-import com.example.kallyruan.eldermap.GPSServicePkg.GPSTracker;
 import com.example.kallyruan.eldermap.NavigationPkg.DisplayActivity;
 import com.example.kallyruan.eldermap.NavigationPkg.ScheduleTimeActivity;
 import com.example.kallyruan.eldermap.NearbyLankmarkPkg.JSONFactory;
@@ -150,7 +149,7 @@ public class HistoryActivity extends BaseActivity {
     private void demoData() {
         FinishedTrip trip = new
                 FinishedTrip(123, 1, 10, 2018,
-                Location.getInstance(15.0,22.5,53), "campus", 3,
+                Location.getInstance(15.0,22.5), "campus", 3,
                 4) ;
         for(int i =0;i<10;i++){
             list.add(trip);

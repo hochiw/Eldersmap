@@ -79,8 +79,6 @@ public class ScheduleTimeActivity extends AppCompatActivity{
 
     //create a id different from database history
     public int createUniqueID(){
-
-
         return 1;
     }
 }

@@ -175,11 +175,34 @@ public class User {
 
     /**
      * this method is to add a finished trip plan to user database history
-     * @param UserID
      * @param trip
      */
-    public static void addUserHistory(int UserID, FinishedTrip trip){
+    public static void addUserHistory(FinishedTrip trip){
+        String historyURL = "http://eldersmapapi.herokuapp.com/api/history";
+        JSONObject data = new JSONObject();
+        JSONObject date = new JSONObject();
+        JSONObject location = new JSONObject();
+         try {
+            data.put("userID",MainActivity.ANDROID_ID);
+            data.put("id",trip.getTripID());
 
+            date.put("year",trip.getTargetYear());
+            date.put("month",trip.getTargetMonth());
+            date.put("day",trip.getTargetDay());
+
+            location.put("name",trip.getName());
+            location.put("latitude",trip.getDestination().getLatitude());
+            location.put("longitude",trip.getDestination().getLongitude());
+
+            data.put("date",date);
+            data.put("location",location);
+            data.put("locationRating",trip.getdestinationMark());
+            data.put("tripRating",trip.getTripMark());
+
+            new HTTPPostRequest(historyURL).execute(data);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -224,7 +247,7 @@ public class User {
     public static void addHistoryTrip(FinishedTrip trip) {
         historyTripList.add(trip);
 
-        addUserHistory(1, trip);
+        addUserHistory(trip);
     }
 
 }

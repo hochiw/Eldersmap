@@ -2,7 +2,6 @@ package com.example.kallyruan.eldermap.NavigationPkg;
 
 import android.util.Log;
 
-import com.example.kallyruan.eldermap.GPSServicePkg.GPSTracker;
 import com.example.kallyruan.eldermap.LocationPkg.Location;
 import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
 
@@ -18,7 +17,8 @@ import java.util.concurrent.ExecutionException;
 
 public class NavigationChecker {
 
-    private GPSTracker gps;
+    Location userLoc;
+    Location destLoc;
 
     ArrayList<Position> list = new ArrayList<>();
     /**
@@ -26,31 +26,23 @@ public class NavigationChecker {
      * doing so with timer task will provide a checker that constantly checking user location
      * to make sure the app delivers accurate navigation
      */
-    NavigationChecker(GPSTracker gps) throws JSONException, ExecutionException, InterruptedException {
-        this.gps = gps;
-        Location userLoc = gps.getLoc();
-        Timer timer = new Timer();
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                getUserLoc();
-            }
-        };
-        timer.schedule(task, 5000);
+    NavigationChecker(Location userLoc,Location destLoc) throws JSONException, ExecutionException, InterruptedException {
+        this.userLoc = userLoc;
+        this.destLoc = destLoc;
         
         // user destination coordinate still needed, currently hard-coded
         JSONObject obj = new JSONObject();
         obj.put("curLatitude", userLoc.getLatitude());
         obj.put("curLongitude", userLoc.getLongitude());
         //get destination coordinate after user chooses
-        obj.put("desLatitude", userLoc.getLatitude());
-        obj.put("desLongitude", userLoc.getLongitude()-0.001);
+        obj.put("desLatitude", destLoc.getLatitude());
+        obj.put("desLongitude", destLoc.getLongitude());
         JSONArray jsonArray = new JSONArray(new HTTPPostRequest("http://eldersmapapi.herokuapp.com/api/route").execute(obj).get());
 
         for(int i = 0; i < jsonArray.length(); i++) {
             Log.d("json_testing", jsonArray.get(i).toString());
             list.add(new Position(jsonArray.optJSONObject(i).getString("instruction"),
-                    jsonArray.optJSONObject(i).getString("modifier"),
+                    jsonArray.optJSONObject(i).has("modifier") ? jsonArray.optJSONObject(i).getString("modifier") : "None",
                     jsonArray.optJSONObject(i).getInt("bearing_after"),
                     jsonArray.optJSONObject(i).getInt("bearing_before"),
                     jsonArray.optJSONObject(i).getJSONArray("location")));
@@ -64,16 +56,18 @@ public class NavigationChecker {
      * use method as a timer task, so the checker constantly get acknowledged of user latest location
      * and run a check with the navigation list
      */
-    private void getUserLoc() {
-        Location userLoc = gps.getLoc();
+    public void getUserLoc() {
         Iterator it1 = getPositions().iterator();
         while(it1.hasNext()) {
             if (offRoute(userLoc, list.get(0))) {
                 Log.d("offRoute", "Wrong direction, please remain course");
                 break;
             }
-            if (userLoc.getLatitude() - list.get(0).getLatitude() < 0.00001 &&
-                    userLoc.getLongitude() - list.get(0).getLongitude() < 0.00001) {
+
+            Log.d("DISTANCE",Double.toString(CoorDist.getDist(userLoc.getLatitude(),userLoc.getLongitude(),list.get(0).getLatitude(),list.get(0).getLongitude())));
+            if (CoorDist.getDist(userLoc.getLatitude(),userLoc.getLongitude(),list.get(0).getLatitude(),list.get(0).getLongitude()
+            ) < 2) {
+                Log.d("WEW","REMOVING YOUR SHIT");
                 list.remove(0);
             }else {
                 break;
@@ -87,11 +81,11 @@ public class NavigationChecker {
      * and run a check with the navigation list
      */
     private Boolean offRoute(Location userLoc, Position position) {
-        CoorDist calCoor = new CoorDist(userLoc.getLatitude(), userLoc.getLongitude(),
+        Double distance = CoorDist.getDist(userLoc.getLatitude(), userLoc.getLongitude(),
                 position.getLatitude(), position.getLongitude());
         // pre-set off road distant, we will detect if user is 'this far away' from the destined
         // position
-        if (calCoor.getDist() > 30.00000 && userLoc.getBearing() - position.getBearing_before() > 90) {
+        if (distance > 30.00000 && userLoc.getBearing() - position.getBearing_before() > 90) {
             return true;
         }
         return false;
@@ -102,8 +96,11 @@ public class NavigationChecker {
      * @return arraylist
      */
     public ArrayList<Position> getPositions() {
-        Log.d("test getter: ",Integer.toString(list.size()));
         return list;
+    }
+
+    public void setUserLoc(Location userLoc) {
+        this.userLoc = userLoc;
     }
 
 }

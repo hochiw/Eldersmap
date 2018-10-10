@@ -1,11 +1,10 @@
 package com.example.kallyruan.eldermap.NavigationPkg;
 
-import android.content.ComponentName;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -13,7 +12,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.kallyruan.eldermap.GPSServicePkg.GPSTracker;
+import com.example.kallyruan.eldermap.GPSServicePkg.GPS;
+import com.example.kallyruan.eldermap.LocationPkg.Location;
+import com.example.kallyruan.eldermap.NearbyLankmarkPkg.LandmarkListActivity;
 import com.example.kallyruan.eldermap.P2PPkg.ChatActivity;
 import com.example.kallyruan.eldermap.R;
 
@@ -26,7 +27,6 @@ import java.util.concurrent.ExecutionException;
 
 public class DisplayActivity extends AppCompatActivity {
     TextView sign;
-    String direction;
     ImageView graph;
 
     //variable for display instruction
@@ -34,8 +34,10 @@ public class DisplayActivity extends AppCompatActivity {
     ArrayList<Position> poList = new ArrayList<>();
 
     // connection used for navigation checker, binds gps
-    private boolean serviceAlive = false;
-    private GPSTracker gps;
+    private boolean firstUpdate = true;
+    private Location currentLocation;
+    private static Location destination; // the target destination
+    private LocationReceiver receiver;
 
 
 //    // sample index for tracking demo display
@@ -72,62 +74,71 @@ public class DisplayActivity extends AppCompatActivity {
             }
         });
 
-        // Connect to the GPS Service
-        Intent i = new Intent(this,GPSTracker.class);
-        startService(i);
-        bindService(i,mServiceConn, Context.BIND_AUTO_CREATE);
-
-        //timer task to get the latest position ArrayList and show current instruction
-        Timer timer = new Timer();
-        TimerTask task = new TimerTask() {
+        Button endTrip = findViewById(R.id.end_navigation);
+        endTrip.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
-                Log.d("position_test", checker.getPositions().get(0).toString());
-                refreshList(checker.getPositions());
-
-                //display the latest instruction to user
-                setInformation(poList.get(0));
+            public void onClick(View v) {
+                finish();
             }
-        };
-        timer.schedule(task, 10000);
+        });
+
+        // Create GPS Intent
+        Intent i = new Intent(getApplicationContext(),GPS.class);
+
+        // Create intent filter for broadcast receiver
+        IntentFilter intentFilter = new IntentFilter("LocationUpdate");
+
+        // Initiate broadcast receiver
+        receiver = new LocationReceiver();
+        // Start GPS service and register broadcast receiver
+        startService(i);
+        registerReceiver(receiver,intentFilter);
+
+        currentLocation = Location.getInstance(0.0,0.0,0.0f);
 
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        if (serviceAlive) {
-            unbindService(mServiceConn);
-            serviceAlive = false;
-        }
+        unregisterReceiver(receiver);
     }
 
-    private ServiceConnection mServiceConn = new ServiceConnection() {
+    private class LocationReceiver extends BroadcastReceiver {
 
         @Override
-        public void onServiceDisconnected(ComponentName name) {
-            serviceAlive = false;
+        // Where a new location is received
+        public void onReceive(Context context, Intent intent) {
 
-        }
+            // Replace the location attributes with the new ones
+            currentLocation.setLatitude(intent.getDoubleExtra("Latitude",0.0));
+            currentLocation.setLongitude(intent.getDoubleExtra("Longitude",0.0));
+            currentLocation.setBearing(intent.getFloatExtra("Bearing",0.0f));
 
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
+            //LUL
 
-            GPSTracker.binder mBinder = (GPSTracker.binder) service;
-            gps = mBinder.getInstance();
-            serviceAlive = true;
-            try {
-                checker = new NavigationChecker(gps);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            if (checker != null) {
+                refreshList(checker.getPositions());
+                checker.setUserLoc(currentLocation);
+                checker.getUserLoc();
+                setInformation(poList.get(0));
             }
 
-        }
+            // Wait until the GPS is warmed up before displaying the list
+            if (firstUpdate) {
+                try {
+                    //if connected to server, make loading panel view gone and show result list
+                    checker = new NavigationChecker(currentLocation,Location.getInstance(
+                            getIntent().getDoubleExtra("destLatitude",0.0),
+                            getIntent().getDoubleExtra("destLongitude", 0.0),
+                            0.0f));
 
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                firstUpdate = false;
+            }
+        }
     };
 
 //    // for the present demo, assume the navigation page would refresh every two seconds
@@ -157,6 +168,7 @@ public class DisplayActivity extends AppCompatActivity {
         String signText = current.getInstruction();
         sign.setText(signText);
 
+        String direction = current.getModifier();
 
         graph = (ImageView) findViewById(R.id.directionIcon);
         //set keywords for moving direction

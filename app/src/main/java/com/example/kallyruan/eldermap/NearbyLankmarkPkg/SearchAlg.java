@@ -28,6 +28,8 @@ public class SearchAlg {
 
             // Need to do a null pointer check before going on.
             Landmark curLandmark;
+
+
             try {
                 curLandmark = new Landmark((String)currentObj.get("name"),
                         (String)currentObj.get("address"), ((Number)currentObj.get("rating")).floatValue(), currentLoc, 0.0);
@@ -40,9 +42,6 @@ public class SearchAlg {
             returnList.add(curLandmark);
         }
         Collections.sort(returnList, new Sortbyrating());
-        for (int i = 0;i < returnList.size();i++) {
-            Log.d("test",Float.toString(returnList.get(i).getRating()));
-        }
         return returnList;
     }
 

@@ -44,24 +44,24 @@ import java.util.concurrent.ExecutionException;
 public class LandmarkListActivity extends BaseActivity {
     //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
     ArrayAdapter<Integer> adapter_id;
-    private int action_index;
-    private SearchAlg searchAlg = new SearchAlg();
-    NotificationManager manager;
-    Notification myNotication;
-    private boolean firstUpdate = true;
-    private GPS gps;
-    public static String category; // show the list of nearby landmarks info
     ArrayList<Landmark> list = new ArrayList<>(); // returned list of landmarks
     ArrayList<Landmark> similarlist = new ArrayList<>(); // returned list of similar landmarks based on history
     LandmarkListAdapter adapter;
     LandmarkListAdapter similarAdapter;
     ListView landmarkList;
     RelativeLayout loading;
+    NotificationManager manager;
+    Notification myNotication;
+
+    public static String category; // show the list of nearby landmarks info
+
+    private int action_index;
+    private SearchAlg searchAlg = new SearchAlg();
+    private boolean firstUpdate = true;
     private Location currentLocation;
+    private LocationReceiver receiver;
     private static Location destination; // the target destination
     private static String destinationName;
-    private LocationReceiver receiver;
-
 
     public static String getDestinationName() {
         return destinationName;
@@ -114,7 +114,6 @@ public class LandmarkListActivity extends BaseActivity {
         @Override
         // Where a new location is received
         public void onReceive(Context context, Intent intent) {
-
             // Replace the location attributes with the new ones
             currentLocation.setLatitude(intent.getDoubleExtra("Latitude",0.0));
             currentLocation.setLongitude(intent.getDoubleExtra("Longitude",0.0));
@@ -142,7 +141,7 @@ public class LandmarkListActivity extends BaseActivity {
         view.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int location, long l) {
-                destination= list.get(location).getLocation();
+                destination = list.get(location).getLocation();
                 navigationToast();
             }
         });
@@ -197,6 +196,8 @@ public class LandmarkListActivity extends BaseActivity {
 
     public void switchToNavigation(){
         Intent i = new Intent(this, DisplayActivity.class);
+        i.putExtra("destLatitude",destination.getLatitude());
+        i.putExtra("destLongitude",destination.getLongitude());
         startActivityForResult(i, 1);
     }
 
@@ -213,7 +214,6 @@ public class LandmarkListActivity extends BaseActivity {
 
         //Data Input
         Location userLoc = currentLocation;
-        Log.d("WTF",Double.toString(userLoc.getLatitude()));
         JSONObject userData = JSONFactory.userDataJSONMaker(userLoc, targetLoc);
 
         //ArrayList<Landmark> list = searchAlg.filterList(JSONFactory.parseJSON("http://eldersmapapi.herokuapp.com/api/search"));
@@ -221,7 +221,6 @@ public class LandmarkListActivity extends BaseActivity {
         if(result.get("status").toString().equals("OK")){
             list = searchAlg.filterList(result);
         }
-        Log.d("test",list.toString());
         adapter = new LandmarkListAdapter(this, list);
         listView.setAdapter(adapter);
 

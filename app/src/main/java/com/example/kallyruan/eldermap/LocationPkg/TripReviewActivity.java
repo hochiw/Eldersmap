@@ -12,12 +12,18 @@ import com.example.kallyruan.eldermap.MainActivity;
 import com.example.kallyruan.eldermap.NearbyLankmarkPkg.Landmark;
 import com.example.kallyruan.eldermap.NearbyLankmarkPkg.LandmarkListActivity;
 import com.example.kallyruan.eldermap.NearbyLankmarkPkg.MenuActivity;
+import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
 import com.example.kallyruan.eldermap.ProfilePkg.SettingActivity;
 import com.example.kallyruan.eldermap.ProfilePkg.User;
 import com.example.kallyruan.eldermap.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.ExecutionException;
 
 public class TripReviewActivity extends AppCompatActivity {
     final float NORATE = -1;
@@ -28,6 +34,9 @@ public class TripReviewActivity extends AppCompatActivity {
     //default mark is -1, which indicates no rate from user
     private float destinationMark = NORATE;
     private float navigationMark = NORATE;
+
+    private String historyUpdateURL = "http://eldersmapapi.herokuapp.com/api/updateHistory";
+    private String historyGetURL = "http://eldersmapapi.herokuapp.com/api/getHistory";
 
 
     public static boolean isUpdate() {
@@ -129,14 +138,40 @@ public class TripReviewActivity extends AppCompatActivity {
      * update new destination mark and navigation mark to responding trip review
      */
     private void updateHistory(int id, float destinationMark, float  navigationMark) {
+        JSONObject update = new JSONObject();
+        try {
+            update.put("userID",MainActivity.ANDROID_ID);
+            update.put("id",id);
+            update.put("key","locationRating");
+            update.put("value",destinationMark);
+            new HTTPPostRequest(historyUpdateURL).execute(update);
+            update.remove("key");
+            update.remove("value");
+            update.put("key","tripRating");
+            update.put("value",navigationMark);
+            new HTTPPostRequest(historyUpdateURL).execute(update);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
 
     }
 
     //check with database
     public boolean checkTripExists(int id){
+        JSONObject data = new JSONObject();
+        try {
+            data.put("userID",MainActivity.ANDROID_ID);
+            data.put("id",id);
+            JSONObject result = new JSONObject(new HTTPPostRequest(historyGetURL).execute(data).get());
+            if (result != null) {
+                return true;
+            }
 
-
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
         //default false
         return false;
     }

@@ -9,31 +9,19 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Handler;
-import android.os.Looper;
-import android.provider.Settings;
-import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 
-import com.example.kallyruan.eldermap.NavigationPkg.DisplayActivity;
-import com.example.kallyruan.eldermap.NearbyLankmarkPkg.MenuActivity;
 import com.example.kallyruan.eldermap.P2PPkg.ChatActivity;
 import com.example.kallyruan.eldermap.ProfilePkg.SignupActivity;
 import com.example.kallyruan.eldermap.ProfilePkg.User;
-import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.LocationSettingsRequest;
-import com.google.android.gms.location.SettingsClient;
 
 public class MainActivity extends AppCompatActivity implements LocationListener {
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
@@ -52,10 +40,15 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         provider = locationManager.getBestProvider(new Criteria(), false);
 
-        if (User.checkUserExist()) {
-            checkLocationPermission();
-
-            //if user doesn't exist, re-direct to Sign up page
+        //check whether user exist in the database
+        if (DBQuery.checkUserExist()){
+            if(DBQuery.checkUserType()==User.USER){
+                checkLocationPermission();
+            }else {
+                Intent i = new Intent(getApplicationContext(), ChatActivity.class);
+                startActivity(i);
+            }
+        //if does not exist, re-direct to sign up page
         } else {
             Intent i = new Intent(getApplicationContext(), SignupActivity.class);
             startActivity(i);
@@ -104,17 +97,18 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             //if location permission is granted, continue to AppMenu page
         } else {
             Log.d("test: ", "GET location permission");
-            //if is a normal user, re-direct to App Main menu page
-            Log.d("test type", Integer.toString(User.checkUserType()));
 
-            if (User.checkUserType() == User.USER) {
+            //retrieve all user data from database
+            if(User.retrieveUserData()){
+                //if successful, redirect to App Menu page
                 Intent i = new Intent(getApplicationContext(), AppMenuActivity.class);
                 startActivity(i);
-                // if is an admin, User will only have chat feature
-            } else if (User.checkUserType() == User.ADMIN) {
-                Intent i = new Intent(getApplicationContext(), ChatActivity.class);
-                startActivity(i);
+                //if failed, show error message
+            }else{
+                Toast.makeText(this,"Failed to retrieve User data. Please restart the APP."
+                        ,Toast.LENGTH_SHORT).show();
             }
+
         }
         return true;
     }

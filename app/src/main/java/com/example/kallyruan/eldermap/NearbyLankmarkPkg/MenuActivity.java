@@ -3,12 +3,16 @@ package com.example.kallyruan.eldermap.NearbyLankmarkPkg;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
 import java.util.HashMap;
 
+import com.example.kallyruan.eldermap.NavigationPkg.AlarmReceiver;
+import com.example.kallyruan.eldermap.NavigationPkg.NotificationScheduler;
+import com.example.kallyruan.eldermap.NavigationPkg.ScheduleTimeActivity;
 import com.example.kallyruan.eldermap.ProfilePkg.BaseActivity;
 import com.example.kallyruan.eldermap.R;
 
@@ -79,7 +83,11 @@ public class MenuActivity extends BaseActivity {
      */
     private void listlandmark(int landmark){
         Intent intent = new Intent(getApplicationContext(), LandmarkListActivity.class);
+
+        //this is now for testing notification feature, should use the above intent
+        //Intent intent = new Intent(getApplicationContext(), ScheduleTimeActivity.class);
         startActivity(intent);
+
 
     }
 

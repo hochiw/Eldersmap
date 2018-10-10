@@ -9,11 +9,9 @@ import com.example.kallyruan.eldermap.MainActivity;
 import com.example.kallyruan.eldermap.R;
 
 public class ChangeDataActivity extends BaseActivity {
-    final int AGREE = 1;
-    final int DISAGREE= 2;
     final int INVALID = 0;
     final static String SURVEYACTIVITY = "com.example.kallyruan.eldermap.ProfilePkg.ChangeWalkActivity";
-    int permissionPreference = INVALID;
+    boolean permission = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +27,15 @@ public class ChangeDataActivity extends BaseActivity {
     public void recordPermissionPreference(View view){
         switch (view.getId()) {
             case R.id.permission_agree:
-                permissionPreference = AGREE;
+                permission = true;
                 break;
-            case R.id.text_medium:
-                permissionPreference = DISAGREE;
+            case R.id.permission_disagree:
+                permission = false;
                 break;
         }
         //check get button clicked and calling activity
-        if(permissionPreference != INVALID){
-            savePermissionToDatabase(permissionPreference);
+        if(permission != false){
+            User.notifyPermissionChange(this, permission);
             if(this.getCallingActivity().getClassName().equals(SURVEYACTIVITY)){
                 //re-direct to survey - walking length page
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
@@ -48,13 +46,6 @@ public class ChangeDataActivity extends BaseActivity {
                 startActivity(i);
             }
         }
-    }
-
-    /** this method is to upload user preference to database
-     * @param permissionPreference
-     */
-    private void savePermissionToDatabase(int permissionPreference) {
-
     }
 
 

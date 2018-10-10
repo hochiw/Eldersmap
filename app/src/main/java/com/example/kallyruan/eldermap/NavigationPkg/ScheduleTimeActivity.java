@@ -1,6 +1,5 @@
 package com.example.kallyruan.eldermap.NavigationPkg;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,20 +8,20 @@ import android.view.View;
 import android.widget.CalendarView;
 import android.widget.TimePicker;
 
+import com.example.kallyruan.eldermap.DBQuery;
 import com.example.kallyruan.eldermap.LocationPkg.ScheduledTrip;
 import com.example.kallyruan.eldermap.NearbyLankmarkPkg.LandmarkListActivity;
 import com.example.kallyruan.eldermap.ProfilePkg.User;
 import com.example.kallyruan.eldermap.R;
 
-import java.sql.Time;
-import java.util.Date;
-
 public class ScheduleTimeActivity extends AppCompatActivity{
+    //private static int tripID;
     public static int targetDay;
     public static int targetMonth;
     public static int targetYear;
     public static int targetHour;
     public static int targetMinute;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,18 +68,24 @@ public class ScheduleTimeActivity extends AppCompatActivity{
         startActivity(i);
     }
 
-    //this function is to create an alert when this scheduled time arrives
+    //this function is to add a schedule reminder to NotificationScheduler class
     public void setSchedule(View view){
-        ScheduledTrip planTrip = ScheduledTrip.getInstance(createUniqueID(),targetDay,targetMonth, targetYear,
-                targetHour, targetMinute,LandmarkListActivity.getDestination(),
-                LandmarkListActivity.getDestinationName());
-        User.addScheduledTrip(planTrip);
-    }
+        int tripID = DBQuery.createPlanID();
+        // check whether can add this chosen trip as future trip
+        Boolean result = NotificationScheduler.setReminder(this, AlarmReceiver.class, targetYear,targetMonth,
+                targetDay,targetHour, targetMinute,tripID);
+        Log.d("test","check add schedule result");
 
-    //create a id different from database history
-    public int createUniqueID(){
-
-
-        return 1;
+        //if successfully added the reminder, add this trip to user database
+        if(result){
+            ScheduledTrip planTrip = ScheduledTrip.getInstance(tripID,targetDay,targetMonth, targetYear,
+                    targetHour, targetMinute,LandmarkListActivity.getDestination(),
+                    LandmarkListActivity.getDestinationName());
+            //add the new plan to the database and sort them by date
+            User.addScheduledTrip(this, planTrip);
+            User.checkAddComingTripID(tripID);
+        }
+        //re-direct user to the lankmark list page
+        finish();
     }
 }

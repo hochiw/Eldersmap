@@ -1,6 +1,5 @@
 package com.example.kallyruan.eldermap.LocationPkg;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,11 +7,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RatingBar;
 
-import com.example.kallyruan.eldermap.MainActivity;
-import com.example.kallyruan.eldermap.NearbyLankmarkPkg.Landmark;
+import com.example.kallyruan.eldermap.DBQuery;
 import com.example.kallyruan.eldermap.NearbyLankmarkPkg.LandmarkListActivity;
 import com.example.kallyruan.eldermap.NearbyLankmarkPkg.MenuActivity;
-import com.example.kallyruan.eldermap.ProfilePkg.SettingActivity;
 import com.example.kallyruan.eldermap.ProfilePkg.User;
 import com.example.kallyruan.eldermap.R;
 
@@ -23,7 +20,8 @@ public class TripReviewActivity extends AppCompatActivity {
     final float NORATE = -1;
     final static int INVALID = -999;
     final String HISTORY = "com.example.kallyruan.eldermap.LocationPkg.HistoryActivity";
-    private static int updateID = INVALID;
+    private static int tripID = INVALID;
+    private static int tripIndex = INVALID;
     private static boolean update = false;
     //default mark is -1, which indicates no rate from user
     private float destinationMark = NORATE;
@@ -38,12 +36,20 @@ public class TripReviewActivity extends AppCompatActivity {
         TripReviewActivity.update = update;
     }
 
-    public static int getUpdateID() {
-        return updateID;
+    public static int getTripID() {
+        return tripID;
     }
 
-    public static void setUpdateID(int updateID) {
-        TripReviewActivity.updateID = updateID;
+    public static void setTripID(int tripID) {
+        TripReviewActivity.tripID = tripID;
+    }
+
+    public static int getTripIndex() {
+        return tripIndex;
+    }
+
+    public static void setTripIndex(int tripIndex) {
+        TripReviewActivity.tripIndex = tripIndex;
     }
 
 
@@ -76,22 +82,33 @@ public class TripReviewActivity extends AppCompatActivity {
 
     public void backToMenu(View view){
         //if user refuse to review, just save default rating
-        saveToDB(view);
+        updateReviewToDB(view);
 
         checkCallingActivity();
     }
 
-    public void saveToDB(View view){
+    public void updateReviewToDB(View view){
         //check whether this trip exists in database
-        if(update && checkTripExists(updateID)){
+        if(update && DBQuery.checkHistoryTripExists(tripID)){
             //update mark here
-            updateHistory(updateID,destinationMark,navigationMark);
+            User.updateHistoryReview(getApplicationContext(),tripID,tripIndex,destinationMark,navigationMark);
 
             //reset state
             update = false;
-            updateID = INVALID;
+            tripID = INVALID;
+            tripIndex = INVALID;
         }else{
-            storeToHistory();
+            //get mobile phone time
+            SimpleDateFormat timeFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
+            String time = timeFormat.format(new Date());
+            int year = Integer.parseInt(time.substring(0,4));
+            int month = Integer.parseInt(time.substring(4,6));
+            int day = Integer.parseInt(time.substring(6,8));
+            Log.d("time: ", time);
+            //save the whole trip to user history
+            FinishedTrip trip = new FinishedTrip(DBQuery.createHistoryID(),day, month,year,LandmarkListActivity.getDestination(),
+                    LandmarkListActivity.getDestinationName(), destinationMark,navigationMark);
+            User.addUserHistory(this,trip);
         }
 
         checkCallingActivity();
@@ -110,42 +127,5 @@ public class TripReviewActivity extends AppCompatActivity {
         }
     }
 
-    //store the whole navigation history to user profile with ratings
-    private void storeToHistory() {
-        //get mobile phone time
-        SimpleDateFormat timeFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
-        String time = timeFormat.format(new Date());
-        int year = Integer.parseInt(time.substring(0,4));
-        int month = Integer.parseInt(time.substring(4,6));
-        int day = Integer.parseInt(time.substring(6,8));
-        Log.d("time: ", time);
-        //save to user trip history
-        FinishedTrip trip = new FinishedTrip(createUniqueID(),day, month,year,LandmarkListActivity.getDestination(),
-                LandmarkListActivity.getDestinationName(), destinationMark,navigationMark);
-        User.addHistoryTrip(trip);
-    }
-
-    /**
-     * update new destination mark and navigation mark to responding trip review
-     */
-    private void updateHistory(int id, float destinationMark, float  navigationMark) {
-
-
-    }
-
-    //check with database
-    public boolean checkTripExists(int id){
-
-
-        //default false
-        return false;
-    }
-
-    //create a id different from database history
-    public int createUniqueID(){
-
-
-        return 1;
-    }
 
 }

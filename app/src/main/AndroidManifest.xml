@@ -50,6 +50,15 @@
         <activity android:name=".P2PPkg.CallActivity" />
         <activity android:name=".P2PPkg.VideoDisplayActivity"/>
         <activity android:name=".LocationPkg.HistoryActivity" />
+        <activity android:name=".LocationPkg.FutureActivity" />
+
+        <!-- Register the Alarm Receiver -->
+        <receiver android:name=".NavigationPkg.AlarmReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

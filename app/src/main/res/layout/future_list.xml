@@ -11,7 +11,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textSize="?menuTitle"
-            android:text="History Trip Marks" />
+            android:text="Future Trip List" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,25 +33,10 @@
                 android:text="Date"
                 android:textSize="?textsize" />
 
-            <TextView
-                android:id="@+id/landmarkCost"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Destionation"
-                android:textSize="?textsize" />
-
-            <TextView
-                android:id="@+id/landmarkDistance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Navigation"
-                android:textSize="?textsize" />
         </LinearLayout>
 
         <ListView
-            android:id="@+id/history_list"
+            android:id="@+id/future_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </ListView>

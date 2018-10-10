@@ -38,17 +38,16 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-public class HistoryActivity extends BaseActivity {
+public class FutureActivity extends BaseActivity {
     //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
     ArrayAdapter<Integer> adapter_id;
     private int action_index;
 
-    ArrayList<FinishedTrip> list = new ArrayList<>(); // returned history list
-    HistoryAdapter adapter;
-    ListView historyList;
+    //ArrayList<ScheduledTrip> list = new ArrayList<>(); // returned future list
+    FutureAdapter adapter;
+    ListView futureList;
     RelativeLayout loading;
     private static int tripID; // the target trip id to update marks
-    private static int tripIndex; // the index of trip in the history list
     private static String destinationName;
 
     public static String getDestinationName() {
@@ -58,14 +57,13 @@ public class HistoryActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.history_list);
+        setContentView(R.layout.future_list);
 
         showList();
 
-        historyList = (ListView) findViewById(R.id.history_list);
+        futureList = (ListView) findViewById(R.id.future_list);
         loading = (RelativeLayout) findViewById(R.id.loadingPanel);
-        historyList.setVisibility(View.INVISIBLE);
-
+        futureList.setVisibility(View.INVISIBLE);
 
         //If disconnected with service, show with only loading panel and hence listview invisiable
         Handler handler = new Handler();
@@ -73,7 +71,7 @@ public class HistoryActivity extends BaseActivity {
             @Override
             public void run() {
                 loading.setVisibility(View.INVISIBLE);
-                historyList.setVisibility(View.VISIBLE);
+                futureList.setVisibility(View.VISIBLE);
             }
         }, 1500);
 
@@ -81,40 +79,44 @@ public class HistoryActivity extends BaseActivity {
     }
 
 
-    //check whether users click on a landmark
+    //check whether users click on a future trip
     public void checkButtonClick() {
-        ListView view = (ListView) findViewById(R.id.history_list);
+        ListView view = (ListView) findViewById(R.id.future_list);
 
         view.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int location, long l) {
-                tripID= list.get(location).getTripID();
-                tripIndex = location;
-                navigationToast();
+                tripID= User.getScheduledTripList().get(location).getTripID();
+                navigationToast(tripID,location);
             }
         });
 
     }
 
     //check whether users want to depart now or not
-    public void navigationToast() {
+    public void navigationToast(final int tripID, final int location) {
         AlertDialog dialog = new AlertDialog.Builder(this).setTitle("Confirm action " +
                 "dialog").setIcon(R.mipmap.ic_hospital)
-                .setPositiveButton("Start this trip again", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Start this trip now", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // do confirmed change nickname action
+                        // start navigation and delete this trip from future trip list
+                        User.deleteScheduledTrip(getApplicationContext(),tripID, location);
                         switchToNavigation();
+
                     }})
-                .setNeutralButton("Change Review Mark", new DialogInterface.OnClickListener() {
+                .setNeutralButton("Delete this plan", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                       //re-direct to review page
-                        switchToReview(which);
+                        //delete the trip plan and update next coming reminder tripID
+                        User.deleteScheduledTrip(getApplicationContext(), tripID, location);
+                        //reload page after changing
+                        Intent i = new Intent(getApplicationContext(), FutureActivity.class);
+                        startActivity(i);
                     }
                 })
                 .setNegativeButton("Cancel", null)
-                .setMessage("History Trip Change").create();
+                .setMessage("Change scheduled trip plans").create();
         dialog.show();
     }
 
@@ -124,39 +126,23 @@ public class HistoryActivity extends BaseActivity {
         startActivityForResult(i, 1);
     }
 
-    public void switchToReview(int index){
-        TripReviewActivity.setUpdate(true);
-        Log.d("test trip index ",Integer.toString(index));
-        TripReviewActivity.setTripID(tripID);
-        TripReviewActivity.setTripIndex(tripIndex);
-        Intent i = new Intent(this, TripReviewActivity.class);
-        startActivityForResult(i, 1);
-    }
-
     /**
-     * Shows the list of history trips
+     * Shows the list of future trips
      */
     public void showList() {
-        ListView listView = (ListView) findViewById(R.id.history_list);
-        list = User.getUserHistory();
-
-//        //Data Input
-//        demoData();
-
-
+        ListView listView = (ListView) findViewById(R.id.future_list);
         //set adapter
-        adapter = new HistoryAdapter(this, list);
+        adapter = new FutureAdapter(this, User.getScheduledTripList());
         listView.setAdapter(adapter);
 
     }
 
 //    //demo purpose
 //    private void demoData() {
-//        FinishedTrip trip = new
-//                FinishedTrip(123, 1, 10, 2018,
-//                Location.getInstance(15.0,22.5,53), "campus", 3,
-//                4) ;
-//        for(int i =0;i<10;i++){
+//        ScheduledTrip trip = new
+//                ScheduledTrip(123, 1, 10, 2018, 10,10,
+//                new Location(1.0,1.0,1),"test place") ;
+//        for(int i =0;i<2;i++){
 //            list.add(trip);
 //        }
 //

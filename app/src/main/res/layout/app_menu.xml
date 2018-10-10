@@ -31,6 +31,13 @@
             android:layout_height="wrap_content"
             android:text="conversation"
             android:textSize="?title" />
+        <Button
+            android:id="@+id/future_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Scheduled Trips"
+            android:textSize="?title"
+            android:onClick="futureAction" />
 
         <Button
             android:id="@+id/history_button"

@@ -22,10 +22,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.kallyruan.eldermap.GPSServicePkg.GPSTracker;
 import com.example.kallyruan.eldermap.LocationPkg.Location;
+import com.example.kallyruan.eldermap.LocationPkg.ScheduledTrip;
+import com.example.kallyruan.eldermap.NavigationPkg.AlarmReceiver;
 import com.example.kallyruan.eldermap.NavigationPkg.DisplayActivity;
+import com.example.kallyruan.eldermap.NavigationPkg.NotificationScheduler;
 import com.example.kallyruan.eldermap.NavigationPkg.ScheduleTimeActivity;
 import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
 
@@ -72,7 +76,7 @@ public class LandmarkListActivity extends BaseActivity {
         Intent i = new Intent(getApplicationContext(),GPSTracker.class);
         startService(i);
         bindService(i,mServiceConn,Context.BIND_AUTO_CREATE);
-        Log.d("test",Boolean.toString(serviceAlive));
+        Log.d("test service",Boolean.toString(serviceAlive));
 
         //If disconnected with service, show with only loading panel and hence listview invisiable
         Handler handler = new Handler();
@@ -146,7 +150,6 @@ public class LandmarkListActivity extends BaseActivity {
                 .setNeutralButton("Make a schedule", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        showNotification();
                         //switch to the schedule page
                         switchToSchedule();
                     }
@@ -154,29 +157,6 @@ public class LandmarkListActivity extends BaseActivity {
                 .setNegativeButton("No, thanks", null)
                 .setMessage("Are you want to depart now?").create();
         dialog.show();
-    }
-
-    // this method is to push a status bar notification (should be inside scheduleTimeActivity)
-    @SuppressWarnings("deprecation")
-    public void showNotification(){
-        Intent intent = new Intent("com.rj.notitfications.SECACTIVITY");
-        manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 1, intent, 0);
-        Notification.Builder builder = new Notification.Builder(getApplicationContext());
-
-        builder.setAutoCancel(false);
-        builder.setTicker("You have a scheduled trip with ElderMap");
-        builder.setContentTitle("ElderMap Notification");
-        builder.setContentText("Click here to start your scheduled journey!");
-        builder.setSmallIcon(R.drawable.ic_launcher_background);
-        builder.setContentIntent(pendingIntent);
-        builder.setOngoing(true);
-        //builder.setSubText("This is subtext...");   //API level 16
-        builder.setNumber(100);
-        builder.build();
-
-        myNotication = builder.getNotification();
-        manager.notify(11, myNotication);
     }
 
     public void switchToNavigation(){
@@ -206,12 +186,19 @@ public class LandmarkListActivity extends BaseActivity {
         if(result.get("status").toString().equals("OK")){
             list = searchAlg.filterList(result);
         }
-        Log.d("test",list.toString());
+        Log.d("test list length",Integer.toString(list.size()));
         adapter = new LandmarkListAdapter(this, list);
         listView.setAdapter(adapter);
 
         //check whether there exists a similar destination based on user history
         similarDestination();
+
+        //if there is empty result list, show error message
+        if(list.size()==0){
+            Toast.makeText(this,"Please go back and try again!",Toast.LENGTH_SHORT).show();
+        }
+
+
 
     }
 

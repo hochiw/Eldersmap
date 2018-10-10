@@ -1,6 +1,8 @@
 package com.example.kallyruan.eldermap.LocationPkg;
 
-public class ScheduledTrip extends Trip {
+import android.support.annotation.NonNull;
+
+public class ScheduledTrip extends Trip implements Comparable<ScheduledTrip>{
     private int targetHour;
     private int targetMinute;
 
@@ -31,4 +33,36 @@ public class ScheduledTrip extends Trip {
         return new ScheduledTrip(id, day,month, year, hour, minute,address, name);
     }
 
+    @Override
+    public String getDate() {
+       return  String.format("%s %2d:%2d", super.getDate(), targetHour, targetMinute);
+    }
+
+    @Override
+    public int compareTo(@NonNull ScheduledTrip o) {
+        if(this.getTargetYear()> o.getTargetYear()){
+            return 1;
+        }else if(this.getTargetYear() == o.getTargetYear() &&
+                this.getTargetMonth() > o.getTargetMonth()){
+            return 1;
+        }else if (this.getTargetYear() == o.getTargetYear() &&
+                this.getTargetMonth() == o.getTargetMonth()&&
+                this.getTargetDay() > o.getTargetDay()){
+            return 1;
+        }else if (this.getTargetYear() == o.getTargetYear() &&
+                this.getTargetMonth() == o.getTargetMonth()&&
+                this.getTargetDay() == o.getTargetDay()&&
+                this.targetHour > o.targetHour){
+            return 1;
+        }else if (this.getTargetYear() == o.getTargetYear() &&
+                this.getTargetMonth() == o.getTargetMonth()&&
+                this.getTargetDay() == o.getTargetDay()&&
+                this.targetHour == o.targetHour &&
+                this.targetMinute > o.targetMinute) {
+            return 1;
+        }else{
+            return -1;
+        }
+
+    }
 }

@@ -10,18 +10,24 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.text.Layout;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kallyruan.eldermap.GPSServicePkg.GPSTracker;
@@ -57,10 +63,11 @@ public class LandmarkListActivity extends BaseActivity {
     LandmarkListAdapter adapter;
     LandmarkListAdapter similarAdapter;
     ListView landmarkList;
+    LinearLayout recommendation;
     RelativeLayout loading;
     private static Location destination; // the target destination
     private static String destinationName;
-
+    private Activity mActivity;
     public static String getDestinationName() {
         return destinationName;
     }
@@ -69,9 +76,18 @@ public class LandmarkListActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landmark_list);
+        //set title size and style
+        TextView title = findViewById(R.id.landmark_list_title);
+        title.setGravity(Gravity.CENTER_HORIZONTAL);
+        Typeface typeface = Typeface.createFromAsset(getAssets(),"FormalTitle.ttf"); // create a typeface from the raw ttf
+        title.setTypeface(typeface);
+
+        //get all views
         landmarkList = (ListView) findViewById(R.id.landmark_list);
+        recommendation = findViewById(R.id.landmark_recommendation);
         loading = (RelativeLayout) findViewById(R.id.loadingPanel);
         landmarkList.setVisibility(View.INVISIBLE);
+        recommendation.setVisibility(View.INVISIBLE);
         // Connect to the GPS Service
         Intent i = new Intent(getApplicationContext(),GPSTracker.class);
         startService(i);
@@ -85,6 +101,8 @@ public class LandmarkListActivity extends BaseActivity {
             public void run() {
                 loading.setVisibility(View.INVISIBLE);
                 landmarkList.setVisibility(View.VISIBLE);
+                recommendation.setVisibility(View.VISIBLE);
+
             }
         }, 1500);
 
@@ -212,27 +230,81 @@ public class LandmarkListActivity extends BaseActivity {
 
 
     public void similarDestination(){
-        ListView similarView = (ListView) findViewById(R.id.similar_destination);
-
-        similarlist = similarityAlg();
+        Landmark place = similarityAlg();
 
         //here should check where is a recommendation based on our algorithm
-        if(similarlist != null){
-            adapter = new LandmarkListAdapter(this, similarlist);
-            similarView.setAdapter(similarAdapter);
-            similarView.setVisibility(View.VISIBLE);
+        if(place != null){
+            Log.d("test","show recommendation");
+            TextView name = findViewById(R.id.locationName);
+            TextView mark= findViewById(R.id.reviewMark);
+            TextView cost= findViewById(R.id.cost);
+            TextView distance= findViewById(R.id.distance);
+            ImageView rank= findViewById(R.id.icon_rank);
+
+            rank.setImageResource(R.mipmap.ic_rank_best);
+            name.setText(place.getName());
+            mark.setText("Rating: "+Float.toString(place.getRating()));
+            cost.setText("Average Cost: "+"0.0");
+            distance.setText("Distance: "+Integer.toString(0));
+
+            TextView textview = (TextView) findViewById(R.id.recommendation_title);
+            // adjust this line to get the TextView you want to change
+
+            Typeface typeface = Typeface.createFromAsset(getAssets(),"Casual.ttf"); // create a typeface from the raw ttf
+            textview.setTypeface(typeface); // apply the typeface to the textview
+
+
+            recommendation.setVisibility(View.VISIBLE);
         }else{
-            similarView.setVisibility(View.INVISIBLE);
+            recommendation.setVisibility(View.INVISIBLE);
         }
 
     }
 
     // this method implements our similarity comparision algorithm
-    public ArrayList<Landmark> similarityAlg(){
-
-        //default not available
+    public Landmark similarityAlg(){
+        //for demo purpose, assume the top location is our recommendation
+        try{
+            Landmark recommendation = list.get(0);
+            return recommendation;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return null;
     }
+
+
+//    public void similarDestination(){
+//        ListView similarView = (ListView) findViewById(R.id.similar_destination);
+//
+//        similarlist = similarityAlg();
+//
+//        //here should check where is a recommendation based on our algorithm
+//        if(similarlist != null){
+//            Log.d("test recommendation", Integer.toString(similarlist.size()));
+//            similarAdapter = new LandmarkListAdapter(this, similarlist);
+//            similarView.setAdapter(similarAdapter);
+//            similarView.setVisibility(View.VISIBLE);
+//        }else{
+//            similarView.setVisibility(View.INVISIBLE);
+//        }
+//
+//    }
+//
+//    // this method implements our similarity comparision algorithm
+//    public ArrayList<Landmark> similarityAlg(){
+//
+//        //for demo purpose, assume the top location is our recommendation
+//        try{
+//            Landmark recommendation = list.get(0);
+//            ArrayList<Landmark> result = new ArrayList<Landmark>();
+//            result.add(recommendation);
+//            return result;
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 
 
 

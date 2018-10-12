@@ -59,19 +59,9 @@ public class LandmarkListAdapter extends BaseAdapter {
         name.setText(place.getName());
         mark.setText(Float.toString(place.getRating()));
         cost.setText("0.0");
-        distance.setText(Integer.toString(calcuateDistance(place)));
+        distance.setText(Integer.toString(place.getEstTime()));
 
         return createdView;
     }
 
-    /**
-     * Calculate the distance based on User GPS and landmark locations
-     * @param destination
-     * @return
-     */
-    public int calcuateDistance(Landmark destination){
-
-
-        return 0;
-    }
 }

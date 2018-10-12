@@ -218,7 +218,7 @@ public class LandmarkListActivity extends BaseActivity {
         //ArrayList<Landmark> list = searchAlg.filterList(JSONFactory.parseJSON("http://eldersmapapi.herokuapp.com/api/search"));
         JSONObject result = new JSONObject(new HTTPPostRequest("http://eldersmapapi.herokuapp.com/api/search").execute(userData).get());
         if(result.get("status").toString().equals("OK")){
-            list = searchAlg.filterList(result);
+            list = searchAlg.filterList(result, userLoc);
         }
         adapter = new LandmarkListAdapter(this, list);
         listView.setAdapter(adapter);

@@ -5,16 +5,23 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.media.Image;
+import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -37,22 +44,40 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_welcome);
 
+        //set title size and style
+        TextView title = findViewById(R.id.welcome);
+        title.setGravity(Gravity.CENTER_HORIZONTAL);
+        Typeface typeface = Typeface.createFromAsset(getAssets(),"CasualTitle.ttf"); // create a typeface from the raw ttf
+        title.setTypeface(typeface);
+
+        //set image
+        ImageView image = findViewById(R.id.welcome_image);
+        image.setImageResource(R.mipmap.ic_launcher_app);
+
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         provider = locationManager.getBestProvider(new Criteria(), false);
 
-        //check whether user exist in the database
-        if (DBQuery.checkUserExist()){
-            if(DBQuery.checkUserType()==User.USER){
-                checkLocationPermission();
-            }else {
-                Intent i = new Intent(getApplicationContext(), ChatActivity.class);
-                startActivity(i);
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //check whether user exist in the database
+                if (!DBQuery.checkUserExist()){
+                    if(DBQuery.checkUserType()==User.USER){
+                        checkLocationPermission();
+                    }else {
+                        Intent i = new Intent(getApplicationContext(), ChatActivity.class);
+                        startActivity(i);
+                    }
+                    //if does not exist, re-direct to sign up page
+                } else {
+                    Intent i = new Intent(getApplicationContext(), SignupActivity.class);
+                    startActivity(i);
+                }
+
             }
-        //if does not exist, re-direct to sign up page
-        } else {
-            Intent i = new Intent(getApplicationContext(), SignupActivity.class);
-            startActivity(i);
-        }
+        }, 1500);
+
 
 
     }

@@ -1,7 +1,9 @@
 package com.example.kallyruan.eldermap.ProfilePkg;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -15,6 +17,12 @@ public class SignupActivity extends BaseActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_signup);
+
+        //set title size and style
+        TextView title = findViewById(R.id.signup_title);
+        title.setGravity(Gravity.CENTER_HORIZONTAL);
+        Typeface typeface = Typeface.createFromAsset(getAssets(),"FormalTitle.ttf"); // create a typeface from the raw ttf
+        title.setTypeface(typeface);
     }
 
     /**

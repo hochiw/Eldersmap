@@ -101,19 +101,19 @@ public class MenuActivity extends BaseActivity {
 
     }
 
-    private void initialiseIndexMap(){
-        /*R.mipmap.ic_hospital, R.mipmap.ic_pharmacy,
-            R.mipmap.ic_market,R.mipmap.ic_supermarket,
-            R.mipmap.ic_bar, R.mipmap.ic_restaurant,*/
-        mapIndex = new HashMap<Integer, String>();
-        mapIndex.put(0, "hospital");
-        mapIndex.put(1, "pharmacy");
-        mapIndex.put(2, "market");
-        mapIndex.put(3, "supermarket");
-        mapIndex.put(4, "bar");
-        mapIndex.put(5, "restaurant");
-
-    }
+//    private void initialiseIndexMap(){
+//        /*R.mipmap.ic_hospital, R.mipmap.ic_pharmacy,
+//            R.mipmap.ic_market,R.mipmap.ic_supermarket,
+//            R.mipmap.ic_bar, R.mipmap.ic_restaurant,*/
+//        mapIndex = new HashMap<Integer, String>();
+//        mapIndex.put(0, "hospital");
+//        mapIndex.put(1, "pharmacy");
+//        mapIndex.put(2, "market");
+//        mapIndex.put(3, "supermarket");
+//        mapIndex.put(4, "bar");
+//        mapIndex.put(5, "restaurant");
+//
+//    }
 
 
 }

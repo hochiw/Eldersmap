@@ -9,16 +9,20 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.kallyruan.eldermap.GPSServicePkg.GPSTracker;
 import com.example.kallyruan.eldermap.NavigationPkg.DisplayActivity;
@@ -60,6 +64,14 @@ public class HistoryActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.history_list);
 
+        //set title size and style
+        TextView title = findViewById(R.id.history_list_title);
+        title.setGravity(Gravity.CENTER_HORIZONTAL);
+        Typeface typeface = Typeface.createFromAsset(getAssets(),"FormalTitle.ttf"); // create a typeface from the raw ttf
+        title.setTypeface(typeface);
+
+
+
         showList();
 
         historyList = (ListView) findViewById(R.id.history_list);
@@ -98,8 +110,8 @@ public class HistoryActivity extends BaseActivity {
 
     //check whether users want to depart now or not
     public void navigationToast() {
-        AlertDialog dialog = new AlertDialog.Builder(this).setTitle("Confirm action " +
-                "dialog").setIcon(R.mipmap.ic_hospital)
+        AlertDialog dialog = new AlertDialog.Builder(this).setTitle("What do you want to do" +
+                " with this history trip?").setIcon(R.mipmap.ic_launcher_app)
                 .setPositiveButton("Start this trip again", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -114,7 +126,7 @@ public class HistoryActivity extends BaseActivity {
                     }
                 })
                 .setNegativeButton("Cancel", null)
-                .setMessage("History Trip Change").create();
+                .create();
         dialog.show();
     }
 
@@ -140,8 +152,9 @@ public class HistoryActivity extends BaseActivity {
         ListView listView = (ListView) findViewById(R.id.history_list);
         list = User.getUserHistory();
 
-//        //Data Input
-//        demoData();
+        //Data Input
+        demoData();
+        Log.d("test history list: ",Integer.toString(list.size()));
 
 
         //set adapter
@@ -150,17 +163,20 @@ public class HistoryActivity extends BaseActivity {
 
     }
 
-//    //demo purpose
-//    private void demoData() {
-//        FinishedTrip trip = new
-//                FinishedTrip(123, 1, 10, 2018,
-//                Location.getInstance(15.0,22.5,53), "campus", 3,
-//                4) ;
-//        for(int i =0;i<10;i++){
-//            list.add(trip);
-//        }
-//
-//    }
+    //demo purpose
+    private void demoData() {
+        FinishedTrip trip1 = new
+                FinishedTrip(123, 1, 10, 2018,
+                Location.getInstance(15.0,22.5,53,0), "campus", 3,
+                4) ;
+        FinishedTrip trip2 = new
+                FinishedTrip(123, 1, 6, 2018,
+                Location.getInstance(15.0,22.5,53,1), "campus", 3,
+                4) ;
+        list.add(trip1);
+        list.add(trip2);
+
+    }
 
 }
 

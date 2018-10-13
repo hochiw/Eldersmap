@@ -157,8 +157,8 @@ public class LandmarkListActivity extends BaseActivity {
 
     //check whether users want to depart now or not
     public void navigationToast() {
-        AlertDialog dialog = new AlertDialog.Builder(this).setTitle("Confirm action " +
-                "dialog").setIcon(R.mipmap.ic_hospital)
+        AlertDialog dialog = new AlertDialog.Builder(this).setTitle("Do you want to depart now?")
+                .setIcon(R.mipmap.ic_launcher_app)
                 .setPositiveButton("Start now", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -173,7 +173,7 @@ public class LandmarkListActivity extends BaseActivity {
                     }
                 })
                 .setNegativeButton("No, thanks", null)
-                .setMessage("Are you want to depart now?").create();
+                .create();
         dialog.show();
     }
 
@@ -272,39 +272,6 @@ public class LandmarkListActivity extends BaseActivity {
         }
         return null;
     }
-
-
-//    public void similarDestination(){
-//        ListView similarView = (ListView) findViewById(R.id.similar_destination);
-//
-//        similarlist = similarityAlg();
-//
-//        //here should check where is a recommendation based on our algorithm
-//        if(similarlist != null){
-//            Log.d("test recommendation", Integer.toString(similarlist.size()));
-//            similarAdapter = new LandmarkListAdapter(this, similarlist);
-//            similarView.setAdapter(similarAdapter);
-//            similarView.setVisibility(View.VISIBLE);
-//        }else{
-//            similarView.setVisibility(View.INVISIBLE);
-//        }
-//
-//    }
-//
-//    // this method implements our similarity comparision algorithm
-//    public ArrayList<Landmark> similarityAlg(){
-//
-//        //for demo purpose, assume the top location is our recommendation
-//        try{
-//            Landmark recommendation = list.get(0);
-//            ArrayList<Landmark> result = new ArrayList<Landmark>();
-//            result.add(recommendation);
-//            return result;
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
 
 
 

@@ -71,7 +71,7 @@ public class GPSTracker extends Service implements LocationListener {
 
     @Override
     public void onCreate() {
-            mLocation = Location.getInstance(0.0,0.0,0.0f);
+            mLocation = Location.getInstance(0.0,0.0,0.0f,0);
             if (locationManager == null) {
                 locationManager = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
             }

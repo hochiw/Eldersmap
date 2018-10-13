@@ -12,7 +12,7 @@ import static com.example.kallyruan.eldermap.ProfilePkg.User.USER;
 
 public class DBQuery {
 
-    static int UserID;
+    static String UserID;
     static int HistoryID = 0;//for demo purpose
     static int PlanID = 0; //for demo purpose
 

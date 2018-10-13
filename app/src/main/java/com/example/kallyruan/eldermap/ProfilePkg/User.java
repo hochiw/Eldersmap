@@ -24,17 +24,17 @@ public class User {
     private static int textSize;
     private static int walking;
     private static boolean dataPermission;
-    private static int userID = INVALID;//-1 is invalid UserID
+    private static String userID = null;//null is invalid UserID
 
     public static ArrayList<ScheduledTrip> getScheduledTripList() {
         return scheduledTripList;
     }
 
-    public static int getUserID(){
-        if (userID==INVALID){
+    public static String getUserID(){
+        if (userID==null){
             // here get MEID id here by somehow
 
-            userID = 1; //here 1 just for demo
+            userID = "1"; //here 1 just for demo
 
             return userID;
         }else{
@@ -260,6 +260,6 @@ public class User {
 
 
     public static int getTextSize() {
-        return textSize;
+        return BaseActivity.MEDIUM;
     }
 }

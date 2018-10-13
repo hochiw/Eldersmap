@@ -24,7 +24,7 @@ public class SearchAlg {
         for (int i = 0; i < array.length(); i++){
             JSONObject currentObj = array.getJSONObject(i);
 
-            Location currentLoc = Location.getInstance((Double) currentObj.getJSONObject("location").get("lat"), (Double) currentObj.getJSONObject("location").get("lng"),0.0f);
+            Location currentLoc = Location.getInstance((Double) currentObj.getJSONObject("location").get("lat"), (Double) currentObj.getJSONObject("location").get("lng"),0.0f,0);
 
             // Need to do a null pointer check before going on.
             Landmark curLandmark;

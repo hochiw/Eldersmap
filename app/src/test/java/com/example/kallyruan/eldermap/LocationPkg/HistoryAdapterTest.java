@@ -79,7 +79,7 @@ public class HistoryAdapterTest {
 
     @Test
     public void getItem() {
-        assertNull(adapter.getItem(0));
+        assertNull(adapter.getItem(1));
     }
 
     @Test

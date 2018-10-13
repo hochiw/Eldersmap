@@ -1,10 +1,14 @@
 package com.example.kallyruan.eldermap;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.example.kallyruan.eldermap.LocationPkg.FutureActivity;
 import com.example.kallyruan.eldermap.LocationPkg.HistoryActivity;
 import com.example.kallyruan.eldermap.NearbyLankmarkPkg.MenuActivity;
 import com.example.kallyruan.eldermap.P2PPkg.ChatActivity;
@@ -18,6 +22,13 @@ public class AppMenuActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_menu);
+
+        //set title size and style
+        TextView title = findViewById(R.id.menu_title);
+        title.setGravity(Gravity.CENTER_HORIZONTAL);
+        Typeface typeface = Typeface.createFromAsset(getAssets(),"FormalTitle.ttf"); // create a typeface from the raw ttf
+        title.setTypeface(typeface);
+
         checkUserDecision();
     }
 
@@ -43,12 +54,21 @@ public class AppMenuActivity extends BaseActivity {
             }
         });
 
-        //if profile button is clicked, re-direct to profile page
+        //if history button is clicked, re-direct to history page
         Button historyButton = (Button) findViewById(R.id.history_button);
         historyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 historyAction();
+            }
+        });
+
+        //if profile button is clicked, re-direct to future trip plan page
+        Button futureButton = (Button) findViewById(R.id.future_button);
+        futureButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                futureAction();
             }
         });
 
@@ -60,6 +80,7 @@ public class AppMenuActivity extends BaseActivity {
                 profileAction();
             }
         });
+
     }
 
 
@@ -84,6 +105,14 @@ public class AppMenuActivity extends BaseActivity {
      */
     public void historyAction(){
         Intent i = new Intent(getApplicationContext(), HistoryActivity.class);
+        startActivity(i);
+    }
+
+    /**
+     * this method is to re-direct to History page
+     */
+    public void futureAction(){
+        Intent i = new Intent(getApplicationContext(), FutureActivity.class);
         startActivity(i);
     }
 

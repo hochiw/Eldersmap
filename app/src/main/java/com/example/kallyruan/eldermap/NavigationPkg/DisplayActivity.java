@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.example.kallyruan.eldermap.GPSServicePkg.GPS;
 import com.example.kallyruan.eldermap.LocationPkg.Location;
+import com.example.kallyruan.eldermap.LocationPkg.TripReviewActivity;
 import com.example.kallyruan.eldermap.NearbyLankmarkPkg.LandmarkListActivity;
 import com.example.kallyruan.eldermap.P2PPkg.ChatActivity;
 import com.example.kallyruan.eldermap.R;
@@ -52,6 +53,7 @@ public class DisplayActivity extends AppCompatActivity {
     private float currentAngle;
     private SensorListener sensorListener;
     private float arrowAngle = 0f;
+    private IntentFilter intentFilter;
 
 
 
@@ -102,7 +104,7 @@ public class DisplayActivity extends AppCompatActivity {
         Intent i = new Intent(getApplicationContext(),GPS.class);
 
         // Create intent filter for broadcast receiver
-        IntentFilter intentFilter = new IntentFilter("LocationUpdate");
+        intentFilter = new IntentFilter("LocationUpdate");
 
         // Initiate broadcast receiver
         receiver = new LocationReceiver();
@@ -132,6 +134,15 @@ public class DisplayActivity extends AppCompatActivity {
         unregisterReceiver(receiver);
         mSensorManager.unregisterListener(sensorListener);
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(receiver,intentFilter);
+        mSensorManager.registerListener(sensorListener, mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION),
+                48,
+                SensorManager.SENSOR_DELAY_GAME);
     }
 
     private class LocationReceiver extends BroadcastReceiver {
@@ -166,7 +177,12 @@ public class DisplayActivity extends AppCompatActivity {
                 refreshList(checker.getPositions());
                 checker.setUserLoc(currentLocation);
                 checker.getUserLoc();
-                setInformation(poList.get(0));
+                if (poList.size() != 0) {
+                    setInformation(poList.get(0));
+                } else {
+                    switchToReview();
+                }
+
                 distance.setText(String.format("%.2fm",checker.getDistance()));
             }
         }
@@ -279,6 +295,11 @@ public class DisplayActivity extends AppCompatActivity {
      */
     private void refreshList(ArrayList<Position> List) {
         this.poList = List;
+    }
+
+    public void switchToReview(){
+        Intent i = new Intent(this, TripReviewActivity.class);
+        startActivityForResult(i, 1);
     }
 }
 

@@ -36,7 +36,7 @@ public class ImageAdapter extends BaseAdapter {
             // if it's not recycled, initialize some attributes
             imageView = new ImageView(mContext);
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(8, 8, 8, 8);
+            imageView.setPadding(10, 10, 10, 10);
         } else {
             imageView = (ImageView) convertView;
         }
@@ -48,7 +48,7 @@ public class ImageAdapter extends BaseAdapter {
     // references to our images
     private Integer[] mThumbIds = {
             R.mipmap.ic_hospital, R.mipmap.ic_pharmacy,
-            R.mipmap.ic_market,R.mipmap.ic_supermarket,
+            R.mipmap.ic_library,R.mipmap.ic_supermarket,
             R.mipmap.ic_bar, R.mipmap.ic_restaurant,
 
     };

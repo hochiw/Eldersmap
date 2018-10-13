@@ -1,6 +1,8 @@
 package com.example.kallyruan.eldermap.NetworkPkg;
 
+import android.accounts.NetworkErrorException;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.json.JSONObject;
 
@@ -42,6 +44,9 @@ public class HTTPPostRequest extends AsyncTask<JSONObject,Void,String> {
             output.close();
 
             resultCode = urlconnection.getResponseCode();
+            if (resultCode == 403) {
+                throw new NetworkErrorException();
+            }
 
             StringBuilder result = new StringBuilder();
             if (resultCode == HttpURLConnection.HTTP_OK) {

@@ -4,17 +4,17 @@ import android.app.Activity;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.kallyruan.eldermap.R;
 import com.sinch.android.rtc.PushPair;
-import com.sinch.android.rtc.Sinch;
 import com.sinch.android.rtc.SinchClient;
 import com.sinch.android.rtc.calling.Call;
+import com.sinch.android.rtc.calling.CallListener;
+
+import java.util.List;
 import com.sinch.android.rtc.calling.CallClient;
 import com.sinch.android.rtc.calling.CallClientListener;
-import com.sinch.android.rtc.calling.CallListener;
 
 import java.util.List;
 

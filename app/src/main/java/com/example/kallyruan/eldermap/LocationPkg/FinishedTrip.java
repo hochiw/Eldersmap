@@ -4,7 +4,7 @@ public class FinishedTrip extends Trip {
     private float destinationMark;
     private float navigationMark;
 
-    FinishedTrip(int id, int day, int month, int year, Location address, String name, float landmarkMark,
+   public FinishedTrip(int id, int day, int month, int year, Location address, String name, float landmarkMark,
                  float navigationMark) {
         super(id, day, month, year, address, name);
         this.destinationMark = landmarkMark;

@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.speech.tts.Voice;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.kallyruan.eldermap.DBQuery;
 import com.example.kallyruan.eldermap.MainActivity;
 import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
 import com.example.kallyruan.eldermap.ProfilePkg.User;
@@ -56,7 +56,7 @@ public class ChatActivity extends AppCompatActivity {
 
     private String userID;
 
-    private String userType = null;
+    private String userType = "admin";
 
     private SinchClient sinchClient;
 
@@ -76,7 +76,7 @@ public class ChatActivity extends AppCompatActivity {
         msgRecyclerView.setLayoutManager(layoutManager);
 
         // Get user type
-        userType = User.checkUserType() == 0 ? "client" : "admin";
+        userType = DBQuery.checkUserType() == 0 ? "client" : "admin";
 
 
         //adapter = new MsgAdapter(msgList);
@@ -100,150 +100,140 @@ public class ChatActivity extends AppCompatActivity {
 
         msgRecyclerView.setAdapter(adapter);
         send.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        String content = inputText.getText().toString();
-                                        if (!"".equals(content)) {
-                                            MsgItem msgItem = new MsgItem(content, MsgItem.TYPE_SENT, MsgItem.MESSAGE_TYPE_TEXT);
-                                            msgList.add(msgItem);
-                                            // refresh the view
-                                            adapter.notifyItemInserted(msgList.size() - 1);
-                                            // nominate the view to the last message
-                                            msgRecyclerView.scrollToPosition(msgList.size() - 1);
-                                            // clear the input text content
-                                            inputText.setText("");
-                                            // send the message
-                                            if (client != null) {
-                                                try {
-                                                    client.getInstance().send(MsgCoder.encode(msgItem));
-                                                } catch (JSONException e) {
-                                                    e.printStackTrace();
-                                                }
-                                            }
-                                        }
-                                    }
-                                });
-
-
-                    //the following is with server connection..
-                    try {
-                        client = new SocketClient(new URI("ws://eldermapswebsocket.herokuapp.com/?type=" + userType), this);
-                        Thread wsClient = new Thread(client);
-                        wsClient.start();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
-
-                }
-
-                @Override
-                protected void onDestroy () {
-                    super.onDestroy();
-                    if (client != null) {
-                        client.getInstance().close();
-                    }
-                }
-
-
-                public void getRichMedia (View view){
-                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    intent.setType("image/* video/*");
-                    startActivityForResult(intent, RESULT_LOAD_IMG);
-                }
-
-                public void testText (View view){
-                    MsgItem msgItem1 = new MsgItem("PLEASE WORK!", MsgItem.TYPE_RECEIVED, MsgItem.MESSAGE_TYPE_TEXT);
-                    msgList.add(msgItem1);
+            @Override
+            public void onClick(View v) {
+                String content = inputText.getText().toString();
+                if (!"".equals(content)) {
+                    MsgItem msgItem = new MsgItem(content, MsgItem.TYPE_SENT, MsgItem.MESSAGE_TYPE_TEXT);
+                    msgList.add(msgItem);
                     // refresh the view
                     adapter.notifyItemInserted(msgList.size() - 1);
                     // nominate the view to the last message
                     msgRecyclerView.scrollToPosition(msgList.size() - 1);
-                }
-
-
-                public void startCall (View view){
-                    if (userID != null && sinchClient != null) {
-                        Intent i = new Intent(getApplicationContext(), CallActivity.class);
-                        String CallID = "";
-                        switch (userType) {
-                            case "client":
-                                CallID = "admin" + userID;
-                                break;
-                            case "admin":
-                                CallID = "client" + userID;
-                                break;
+                    // clear the input text content
+                    inputText.setText("");
+                    // send the message
+                    if (client != null) {
+                        try {
+                            client.getInstance().send(MsgCoder.encode(msgItem));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                        if (!CallID.isEmpty()) {
-                            VoiceCall.setCall(sinchClient.getCallClient().callUser(CallID));
-                            startActivityForResult(i, 1);
-                        }
-
                     }
 
                 }
+            }
+        });
 
-                public void acceptCall (View view){
-                    if (VoiceCall.getCall() != null) {
-                        VoiceCall.getCall().answer();
-                        setContentView(R.layout.p2p_chatroom);
-                        Intent i = new Intent(getApplicationContext(), CallActivity.class);
-                        startActivityForResult(i, 1);
+        //the following is with server connection..
+        try {
+            client = new SocketClient(new URI("ws://eldermapswebsocket.herokuapp.com/?type=" + userType),this);
+            Thread wsClient = new Thread(client);
+            wsClient.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-                    }
-                }
 
-                public void declineCall (View view){
-                    if (VoiceCall.getCall() != null) {
-                        VoiceCall.getCall().hangup();
-                        setContentView(R.layout.p2p_chatroom);
+    }
 
-                    }
-                }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (client != null) {
+            client.getInstance().close();
+        }
+    }
 
-                private class SinchCallClientListener implements CallClientListener {
+    public void getRichMedia(View view){
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/* video/*");
+        startActivityForResult(intent, RESULT_LOAD_IMG);
+    }
+
+
+    public void startCall(View view){
+        if (userID != null && sinchClient != null) {
+            Intent i = new Intent(getApplicationContext(), CallActivity.class);
+            String CallID = "";
+            switch(userType) {
+                case "client":
+                    CallID = "admin" + userID;
+                    break;
+                case "admin":
+                    CallID = "client" + userID;
+                    break;
+            }
+            if (!CallID.isEmpty()) {
+                VoiceCall.setCall(sinchClient.getCallClient().callUser(CallID));
+                startActivityForResult(i,1);
+            }
+
+        }
+
+    }
+
+    public void acceptCall(View view) {
+        if (VoiceCall.getCall() != null) {
+            VoiceCall.getCall().answer();
+            setContentView(R.layout.p2p_chatroom);
+            Intent i = new Intent(getApplicationContext(), CallActivity.class);
+            startActivityForResult(i,1);
+
+        }
+    }
+
+    public void declineCall(View view) {
+        if (VoiceCall.getCall() != null) {
+            VoiceCall.getCall().hangup();
+            setContentView(R.layout.p2p_chatroom);
+
+        }
+    }
+
+    private class SinchCallClientListener implements CallClientListener {
+        @Override
+        public void onIncomingCall(CallClient callClient, Call incomingCall) {
+            VoiceCall.setCall(incomingCall);
+            setContentView(R.layout.p2p_incoming_call);
+        }
+    }
+
+    public void newMessage(final MsgItem message){
+        try {
+            if ((message.getContentType() == MsgItem.MESSAGE_TYPE_GRAPH || message.getContentType() == MsgItem.MESSAGE_TYPE_VIDEO) &&
+                    message.getFileName() != null) {
+                byte[] byteArray = FileEncoder.base64ToByte(message.getContent());
+                message.setContent(FileEncoder.writeToFile(byteArray, message.getFileName()));
+
+            } else if (message.getContentType() == MsgItem.MESSAGE_TYPE_USER) {
+                userID = message.getContent();
+                new Handler(getMainLooper()).post(new Runnable() {
                     @Override
-                    public void onIncomingCall(CallClient callClient, Call incomingCall) {
-                        VoiceCall.setCall(incomingCall);
-                        setContentView(R.layout.incoming_call);
+                    public void run() {
+                        new VoiceCall(userType + userID,getApplicationContext());
+                         sinchClient = VoiceCall.getInstance();
+                        sinchClient.getCallClient().addCallClientListener(new SinchCallClientListener());
                     }
-                }
+                });
+            }
 
-                public void newMessage ( final MsgItem message){
-                    try {
-                        if ((message.getContentType() == MsgItem.MESSAGE_TYPE_GRAPH || message.getContentType() == MsgItem.MESSAGE_TYPE_VIDEO) &&
-                                message.getFileName() != null) {
-                            byte[] byteArray = FileEncoder.base64ToByte(message.getContent());
-                            message.setContent(FileEncoder.writeToFile(byteArray, message.getFileName()));
-
-                        } else if (message.getContentType() == MsgItem.MESSAGE_TYPE_USER) {
-                            userID = message.getContent();
-                            new Handler(getMainLooper()).post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    new VoiceCall(userType + userID, getApplicationContext());
-                                    sinchClient = VoiceCall.getInstance();
-                                    sinchClient.getCallClient().addCallClientListener(new SinchCallClientListener());
-                                }
-                            });
-                        }
-
-                        if (message.getContentType() != MsgItem.MESSAGE_TYPE_USER) {
-                            new Handler(getMainLooper()).post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    adapter.add(message);
-                                    // refresh the view
-                                    adapter.notifyDataSetChanged();
-                                    //  adapter.notifyItemInserted(adapter.getItemCount());
-                                    msgRecyclerView.smoothScrollToPosition(adapter.getItemCount());
-                                }
-                            });
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
+            if (message.getContentType() != MsgItem.MESSAGE_TYPE_USER) {
+                new Handler(getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        adapter.add(message);
+                        // refresh the view
+                        adapter.notifyDataSetChanged();
+                        //  adapter.notifyItemInserted(adapter.getItemCount());
+                        msgRecyclerView.smoothScrollToPosition(adapter.getItemCount());
                     }
-                }
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
                 private String getRealPathFromURI (Uri contentURI){
@@ -293,41 +283,43 @@ public class ChatActivity extends AppCompatActivity {
                     }
                 }
 
-                public void checkMediaFileType (String path, Intent intent){
-                    File richMediaFile = new File(path);
-                    if (richMediaFile.exists()) {
-                        if (isImageFile(path)) {
-                            Log.d("test file type", "image");
-                            MsgItem msgItem = new MsgItem(path, MsgItem.TYPE_SENT, MsgItem.MESSAGE_TYPE_GRAPH);
-                            addToList(msgItem, intent);
-                        } else if (isVideoFile(path)) {
-                            Log.d("test file type", "video");
-                            MsgItem msgItem = new MsgItem(path, MsgItem.TYPE_SENT, MsgItem.MESSAGE_TYPE_VIDEO);
-                            addToList(msgItem, intent);
-                        }
-
-                    }
-                }
-
-
-                public void addToList (MsgItem msgItem, Intent intent){
-                    msgList.add(msgItem);
-                    adapter.notifyItemInserted(msgList.size() - 1);
-                    //send to server
-                    if (client.getStatus()) {
-                        client.sendFile(getRealPathFromURI(intent.getData()));
-                    }
-                }
-
-                public static boolean isImageFile (String path){
-                    String mimeType = URLConnection.guessContentTypeFromName(path);
-                    return mimeType != null && mimeType.startsWith("image");
-                }
-
-                public static boolean isVideoFile (String path){
-                    String mimeType = URLConnection.guessContentTypeFromName(path);
-                    return mimeType != null && mimeType.startsWith("video");
-                }
-
-
+    public void checkMediaFileType(String path,Intent intent){
+        File richMediaFile = new File(path);
+        if (richMediaFile.exists()) {
+            if(isImageFile(path)){
+                Log.d("test file type","image");
+                MsgItem msgItem = new MsgItem(path, MsgItem.TYPE_SENT, MsgItem.MESSAGE_TYPE_GRAPH);
+                addToList(msgItem,intent);
+            }else if (isVideoFile(path)){
+                Log.d("test file type","video");
+                MsgItem msgItem = new MsgItem(path, MsgItem.TYPE_SENT, MsgItem.MESSAGE_TYPE_VIDEO);
+                addToList(msgItem,intent);
             }
+        }
+    }
+
+
+    public void addToList(MsgItem msgItem, Intent intent){
+        msgList.add(msgItem);
+        adapter.notifyItemInserted(msgList.size() - 1);
+        //send to server
+        if (client.getStatus()) {
+            client.sendFile(getRealPathFromURI(intent.getData()));
+        }
+    }
+
+
+    public static boolean isImageFile(String path) {
+        String mimeType = URLConnection.guessContentTypeFromName(path);
+        return mimeType != null && mimeType.startsWith("image");
+    }
+
+    public static boolean isVideoFile(String path) {
+        String mimeType = URLConnection.guessContentTypeFromName(path);
+        return mimeType != null && mimeType.startsWith("video");
+    }
+
+
+
+
+}

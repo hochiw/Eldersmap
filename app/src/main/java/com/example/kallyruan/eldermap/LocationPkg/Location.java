@@ -4,11 +4,13 @@ public class Location {
     private Double latitude;
     private Double longitude;
     private Double altitude;
+    private int type;
 
     Location(Double latitude, Double longitude){
         this.latitude = latitude;
         this.longitude = longitude;
         this.altitude = 0.0;
+        this.type = 0;
     }
 
     public void setLatitude(Double x){
@@ -21,6 +23,8 @@ public class Location {
 
     public void setAltitude(Double z) {this.altitude = z;}
 
+    public void setType(int type) {this.type = type;}
+
     public Double getLatitude(){
         return latitude;
     }
@@ -30,6 +34,8 @@ public class Location {
     }
 
     public Double getAltitude() {return altitude;}
+
+    public int getType() {return type;}
 
 
 

@@ -40,7 +40,6 @@ public class ChangeSizeActivity extends BaseActivity {
                 textSizePreference = BaseActivity.EXTRALARGE;
                 break;
         }
-        User.saveSizeToDatabase(textSizePreference);
 
         checkCallingActivity(textSizePreference);
 
@@ -50,7 +49,7 @@ public class ChangeSizeActivity extends BaseActivity {
         //check whether buttons get clicked and what the calling activity is
         if(textSizePreference != BaseActivity.INVALID){
             Log.d("test size: ", Integer.toString(textSizePreference));
-            User.notifytextSizeChange(textSizePreference);
+            User.notifytextSizeChange(this,textSizePreference);
             if(this.getCallingActivity().getClassName().equals(SURVEYACTIVITY)){
                 //re-direct to survey - walking length page
                 Intent i = new Intent(getApplicationContext(), ChangeWalkActivity.class);

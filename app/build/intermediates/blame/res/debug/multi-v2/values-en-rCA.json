@@ -12,23 +12,6 @@
                         "endColumns": "103,99,107,83,99,114,76,75,81,102,103,98,104,102,103,155,99,81",
                         "endOffsets": "204,304,412,496,596,711,788,864,946,1049,1153,1252,1357,1460,1564,1720,1820,1902"
                     }
-                },
-                {
-                    "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/play-services-wallet-12.0.1.aar/b905219ab7876b9fb4dc433266826691/res/values-en-rCA/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "206",
-                        "endColumns": "99",
-                        "endOffsets": "305"
-                    },
-                    "to": {
-                        "startLines": "20",
-                        "startColumns": "4",
-                        "startOffsets": "1907",
-                        "endColumns": "103",
-                        "endOffsets": "2006"
-                    }
                 }
             ]
         }

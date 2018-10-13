@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.kallyruan.eldermap.R;
@@ -18,6 +19,7 @@ public class LandmarkListAdapter extends BaseAdapter {
     private TextView mark;
     private TextView cost;
     private TextView distance;
+    private ImageView rank;
 
     public LandmarkListAdapter(Activity activity, ArrayList<Landmark> group){
         this.mActivity = activity;
@@ -46,6 +48,7 @@ public class LandmarkListAdapter extends BaseAdapter {
 
         if(view == null){
             createdView = inflater.inflate(R.layout.landmark_list_row,null);
+            rank = (ImageView) createdView.findViewById(R.id.icon_rank);
             name = (TextView) createdView.findViewById(R.id.locationName);
             mark = (TextView) createdView.findViewById(R.id.reviewMark);
             cost = (TextView) createdView.findViewById(R.id.cost);
@@ -55,13 +58,48 @@ public class LandmarkListAdapter extends BaseAdapter {
         }
 
         final Landmark place = places.get(position);
-        System.out.print(place.getName());
+        fillImage(position);
         name.setText(place.getName());
-        mark.setText(Float.toString(place.getRating()));
-        cost.setText("0.0");
-        distance.setText(Integer.toString(place.getEstTime()));
+        mark.setText("Rating: "+Float.toString(place.getRating()));
+        cost.setText("Average Cost: "+"0.0");
+        distance.setText("Distance: "+Integer.toString(calcuateDistance(place)));
 
         return createdView;
     }
 
+    /**
+     * Calculate the distance based on User GPS and landmark locations
+     * @param destination
+     * @return
+     */
+    public int calcuateDistance(Landmark destination){
+
+
+        return 0;
+    }
+
+    public void fillImage(int index){
+        switch (index){
+            case (0):
+                rank.setImageResource(R.mipmap.ic_rank_1);
+                break;
+            case (1):
+                rank.setImageResource(R.mipmap.ic_rank_2);
+                break;
+            case (2):
+                rank.setImageResource(R.mipmap.ic_rank_3);
+                break;
+            case (3):
+                rank.setImageResource(R.mipmap.ic_rank_4);
+                break;
+            case (4):
+                rank.setImageResource(R.mipmap.ic_rank_5);
+                break;
+            case (5):
+                rank.setImageResource(R.mipmap.ic_rank_6);
+               break;
+        }
+
+
+    }
 }

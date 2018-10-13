@@ -8,11 +8,9 @@ public class MsgItem {
     public static final int MESSAGE_TYPE_TEXT = 2;
     public static final int MESSAGE_TYPE_GRAPH = 3;
     public static final int MESSAGE_TYPE_VIDEO = 4;
-    public static final int MESSAGE_TYPE_VOICE = 5;
+    public static final int MESSAGE_TYPE_AUDIO = 5;
     public static final int MESSAGE_TYPE_USER = 6;
 
-    private InetAddress ip;
-    private int port;
     private String content;
     private int msgType;
     private int contentType;
@@ -26,7 +24,6 @@ public class MsgItem {
         this.contentType = msgType;
         this.fileName = null;
     }
-
 
     public String getContent() {
         return content;

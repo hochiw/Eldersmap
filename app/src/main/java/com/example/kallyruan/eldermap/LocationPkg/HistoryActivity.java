@@ -28,6 +28,7 @@ import com.example.kallyruan.eldermap.NearbyLankmarkPkg.LandmarkListAdapter;
 import com.example.kallyruan.eldermap.NearbyLankmarkPkg.SearchAlg;
 import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
 import com.example.kallyruan.eldermap.ProfilePkg.BaseActivity;
+import com.example.kallyruan.eldermap.ProfilePkg.User;
 import com.example.kallyruan.eldermap.R;
 
 import org.json.JSONException;
@@ -46,6 +47,7 @@ public class HistoryActivity extends BaseActivity {
     ListView historyList;
     RelativeLayout loading;
     private static int tripID; // the target trip id to update marks
+    private static int tripIndex; // the index of trip in the history list
     private static String destinationName;
 
     public static String getDestinationName() {
@@ -86,6 +88,7 @@ public class HistoryActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int location, long l) {
                 tripID= list.get(location).getTripID();
+                tripIndex = location;
                 navigationToast();
             }
         });
@@ -123,7 +126,8 @@ public class HistoryActivity extends BaseActivity {
     public void switchToReview(int index){
         TripReviewActivity.setUpdate(true);
         Log.d("test trip index ",Integer.toString(index));
-        TripReviewActivity.setUpdateID(tripID);
+        TripReviewActivity.setTripID(tripID);
+        TripReviewActivity.setTripIndex(tripIndex);
         Intent i = new Intent(this, TripReviewActivity.class);
         startActivityForResult(i, 1);
     }
@@ -133,10 +137,10 @@ public class HistoryActivity extends BaseActivity {
      */
     public void showList() {
         ListView listView = (ListView) findViewById(R.id.history_list);
+        list = User.getUserHistory();
 
-
-        //Data Input
-        demoData();
+//        //Data Input
+//        demoData();
 
 
         //set adapter
@@ -145,17 +149,17 @@ public class HistoryActivity extends BaseActivity {
 
     }
 
-    //demo purpose
-    private void demoData() {
-        FinishedTrip trip = new
-                FinishedTrip(123, 1, 10, 2018,
-                Location.getInstance(15.0,22.5), "campus", 3,
-                4) ;
-        for(int i =0;i<10;i++){
-            list.add(trip);
-        }
-
-    }
+//    //demo purpose
+//    private void demoData() {
+//        FinishedTrip trip = new
+//                FinishedTrip(123, 1, 10, 2018,
+//                Location.getInstance(15.0,22.5,53), "campus", 3,
+//                4) ;
+//        for(int i =0;i<10;i++){
+//            list.add(trip);
+//        }
+//
+//    }
 
 }
 

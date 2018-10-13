@@ -1,253 +1,268 @@
 package com.example.kallyruan.eldermap.ProfilePkg;
 
-import android.accounts.NetworkErrorException;
+import android.content.Context;
 import android.provider.Settings;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.example.kallyruan.eldermap.DBQuery;
 import com.example.kallyruan.eldermap.LocationPkg.FinishedTrip;
 import com.example.kallyruan.eldermap.LocationPkg.ScheduledTrip;
 import com.example.kallyruan.eldermap.MainActivity;
-import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.example.kallyruan.eldermap.NavigationPkg.AlarmReceiver;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
+import java.util.Collections;
 
 public class User {
-    private static ArrayList<ScheduledTrip> scheduledTripList = new ArrayList<>();
-    private static ArrayList<FinishedTrip> historyTripList = new ArrayList<>();
-    public final static int INVALID = 0;
-    private static int textSize = INVALID;
-    private static int userType = INVALID;
     public static int USER = 0;
     public static int ADMIN = 1;
-    public static String profileUrl = "http://eldersmapapi.herokuapp.com/api/profile";
-    public static String profileUpdateUrl = "http://eldersmapapi.herokuapp.com/api/updateProfile";
+    public final static int INVALID = -1;
 
+    private static ArrayList<ScheduledTrip> scheduledTripList = new ArrayList<>();
+    private static ArrayList<FinishedTrip> historyTripList = new ArrayList<>();
 
+    //user setting
+    private static int textSize;
+    private static int walking;
+    private static boolean dataPermission;
+    private static String userID = "";//-1 is invalid UserID
 
     public static ArrayList<ScheduledTrip> getScheduledTripList() {
         return scheduledTripList;
     }
 
-
-    /**
-     * this method is to get User textsize preference from database
-     * @return int Textsize
-     */
-    public static int getTextSize() {
-        //ig textsize is already set
-        if(textSize == INVALID){
-            textSize = retrieveUserTextSize();
+    public static String getUserID(){
+        if (userID==""){
+            userID = MainActivity.ANDROID_ID;
+            return userID;
+        }else{
+            return userID;
         }
-
-        return textSize;
     }
 
-    /**
-     * this method is to check whether user exists in the database
-     */
-    public static boolean checkUserExist() {
-        if (MainActivity.ANDROID_ID != null) {
-            try {
-
-                HTTPPostRequest request = new HTTPPostRequest(User.profileUrl);
-                JSONObject result = new JSONObject(request.execute(new JSONObject().put("userID", MainActivity.ANDROID_ID)).get());
-
-                if (request.getStatusCode() == 200) {
-                    if (result.getJSONObject("survey").getInt("completed") == 1) {
-                        return true;
-                    }
-                }
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        //default user doesn't exist
-        return false;
+    public static boolean retrieveUserData(){
+        textSize = DBQuery.retrieveTextSize();
+        walking = DBQuery.retrieveWalking();
+        dataPermission = DBQuery.retrieveDataPrivilege();
+        scheduledTripList = DBQuery.retrievePlan();
+        historyTripList = DBQuery.retrieveHistory();
+        return true;
     }
 
-    /**
-     * this method is to check user type from database
-     * @return int CustomerType (USER = 0, ADMIN = 1)
-     */
-    public static int checkUserType() {
 
-        if (userType == INVALID){
-            userType = retrieveUserType();
-        }
-        //default user type is USER
-        return userType;
-    }
-
-    /**
-     * this method is to retrieve user textsize from database
-     * @return
-     */
-    private static int retrieveUserTextSize() {
-
-        HTTPPostRequest request = new HTTPPostRequest(profileUrl);
-        try {
-            JSONObject result = new JSONObject(request.execute(new JSONObject().put("userID", MainActivity.ANDROID_ID)).get());
-            return result.getJSONObject("survey").getInt("textSize");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        //default size is MEDIUM
-        return BaseActivity.MEDIUM;
-    }
-
-    private static int retrieveUserType() {
-        HTTPPostRequest request = new HTTPPostRequest(profileUrl);
-        try {
-            JSONObject result = new JSONObject(request.execute(new JSONObject().put("userID", MainActivity.ANDROID_ID)).get());
-            return result.getInt("userType");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return USER;
-    }
 
     /**
      * this method is to update the latest textsize based on user option
      * @param textSizePreference
      */
-    public static void notifytextSizeChange(int textSizePreference){
-        textSize = textSizePreference;
-
-        saveSizeToDatabase(textSizePreference);
-    }
-
-
-    public static void saveSizeToDatabase(int textSize) {
-        saveToDatabase("textSize",textSize);
-    }
-
-    public static void saveToDatabase(String key, int value) {
-        JSONObject request = new JSONObject();
-        try {
-            request.put("userID", MainActivity.ANDROID_ID);
-            request.put("key",key);
-            request.put("value",value);
-            HTTPPostRequest post = new HTTPPostRequest(profileUpdateUrl);
-            post.execute(request);
-        } catch (Exception e) {
-            e.printStackTrace();
+    public static void notifytextSizeChange(Context context, int textSizePreference){
+        boolean result = DBQuery.updateTextsize(textSizePreference);
+        //if succeeded to update in user database, update the local variable
+        if(result){
+            textSize = textSizePreference;
+        //if failed, show an error message
+        }else{
+            Toast.makeText(context,"Failed to update textsize preference to Database, please try again."
+                    ,Toast.LENGTH_SHORT).show();
         }
     }
 
-    public static void setScheduledTripList(ArrayList<ScheduledTrip> scheduledTripList) {
-        scheduledTripList = scheduledTripList;
+    /** this method is to update user preference to database
+     * @param permissionPreference
+     */
+    public static void notifyPermissionChange(Context context,boolean permissionPreference) {
+        boolean result = DBQuery.updatePermission(permissionPreference);
+        //if succeeded to update  in user database, update the local variable
+        if(result){
+            dataPermission = permissionPreference;
+            //if failed, show an error message
+        }else{
+            Toast.makeText(context,"Failed to update textsize preference to Database, please try again."
+                    ,Toast.LENGTH_SHORT).show();
+        }
     }
+
+    /** this method is to update user walking preference to database
+     * @param walking
+     */
+    public static void notifyWalkingChange(Context context,int walking) {
+        boolean result = DBQuery.updateWalking(walking);
+        //if succeeded to update in user database, update the local variable
+        if(result){
+            walking = walking;
+            //if failed, show an error message
+        }else{
+            Toast.makeText(context,"Failed to update walking preference to Database, please try again."
+                    ,Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     /**
      * this method is to add a ScheduledTrip to the scheduledTripList ArrayList and database
      * @param trip
      */
-    public static void addScheduledTrip(ScheduledTrip trip){
-        scheduledTripList.add(trip);
-        //sort after each adding according on departing time
-
-        addUserPlan(1, trip);
-
+    public static void addScheduledTrip(Context context, ScheduledTrip trip){
+        boolean result = DBQuery.addUserPlan(trip);
+        if(result){
+            scheduledTripList.add(trip);
+            //sort after each adding according on departing time
+            Collections.sort(scheduledTripList);
+            //update the next coming notification tripID
+            checkAddComingTripID(trip.getTripID());
+        //if failed, show an error message
+        }else{
+            Toast.makeText(context,"Failed to add Trip plan to Database, please try again."
+                    ,Toast.LENGTH_SHORT).show();
+        }
     }
 
-    /**
-     * this method is to add a future trip plan to user database
-     * @param UserID
-     * @param Trip
-     */
-    public static void addUserPlan(int UserID, ScheduledTrip Trip){
 
-    }
 
     /**
      * this method is to delete a planned future trip plan from user database
-     * @param UserID
-     * @param TripID
+     * @param tripID
      */
-    public static void deleteUserPlan(int UserID,int TripID){
+    public static void deleteScheduledTrip(Context context,int tripID,int index){
+        boolean nextID = false;
+
+        if(tripID == AlarmReceiver.getComingTripID()){
+            nextID = true;
+        }
+        boolean result = DBQuery.deleteUserPlan(tripID);
+        //if going to delete the coming trip, update the alarm receiver request code to next trip
+        if(result && nextID) {
+            try{
+                AlarmReceiver.setComingTripID(scheduledTripList.get(index + 1).getTripID());
+                scheduledTripList.remove(index);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        //if the removed one is in the past or not the next coming trip, it will not affect, so just
+        //remove it
+        }else if (result){
+            scheduledTripList.remove(index);
+
+        //if failed, show an error message
+        }else{
+            Toast.makeText(context,"Failed to remove Trip plan from Database, please try again."
+                    ,Toast.LENGTH_SHORT).show();
+        }
 
     }
+
 
     /**
      * this method is to add a finished trip plan to user database history
      * @param trip
      */
-    public static void addUserHistory(FinishedTrip trip){
-        String historyURL = "http://eldersmapapi.herokuapp.com/api/history";
-        JSONObject data = new JSONObject();
-        JSONObject date = new JSONObject();
-        JSONObject location = new JSONObject();
-         try {
-            data.put("userID",MainActivity.ANDROID_ID);
-            data.put("id",trip.getTripID());
+    public static void addUserHistory(Context context, FinishedTrip trip){
+        boolean result = DBQuery.addUserHistory(trip);
+        if(result){
+            historyTripList.add(trip);
 
-            date.put("year",trip.getTargetYear());
-            date.put("month",trip.getTargetMonth());
-            date.put("day",trip.getTargetDay());
+            //if failed, show an error message
+        }else{
+            Toast.makeText(context,"Failed to add the finished trip to Database, please try again."
+                    ,Toast.LENGTH_SHORT).show();
+        }
+    }
 
-            location.put("name",trip.getName());
-            location.put("latitude",trip.getDestination().getLatitude());
-            location.put("longitude",trip.getDestination().getLongitude());
 
-            data.put("date",date);
-            data.put("location",location);
-            data.put("locationRating",trip.getdestinationMark());
-            data.put("tripRating",trip.getTripMark());
+    public static ArrayList<ScheduledTrip> getUserPlan(){
 
-            new HTTPPostRequest(historyURL).execute(data);
-        } catch (JSONException e) {
-            e.printStackTrace();
+        return scheduledTripList;
+    }
+
+    public static ArrayList<FinishedTrip> getUserHistory(){
+
+        return historyTripList;
+    }
+
+
+    public static void updateHistoryReview(Context context, int tripID, int tripIndex,float destinationMark, float  navigationMark) {
+        //if successfully delete from DB
+        if(DBQuery.updateHistoryReview(tripID,destinationMark, navigationMark)){
+
+            historyTripList.remove(tripIndex);
+        }else{
+            Toast.makeText(context,"Failed to update history review to Database, please try again."
+                    ,Toast.LENGTH_SHORT).show();
         }
     }
 
     /**
-     * this method is to get all future trip plan from user database
-     * @param UserID
-     * @return ArrayList<ScheduledTrip>
+     * this method is called when there is a deletion or addition to the previous scheduledTripList.
+     * Need to check whether the change brought a more closing trip for notification or deleted the
+     * coming trip for notification
      */
-    public static ArrayList<ScheduledTrip> getUserPlan(int UserID){
 
-        return null;
+    //assume for addition, after sort
+    public static void checkAddComingTripID(int tripID){
+        //if not scheduled plan before, then this would be the first reminder
+        if(scheduledTripList.size()==1){
+            AlarmReceiver.setComingTripID(tripID);
+        }else{
+            //get next coming trip index
+            int lastID = AlarmReceiver.getComingTripID();
+            Log.d("test before add: ",Integer.toString(lastID));
+            int currentIndex = -1;
+            int addedIndex= -1;
+            //get the index of these two in the list
+            for(int i = 0; i < scheduledTripList.size();i++){
+                if (scheduledTripList.get(i).getTripID() == lastID){
+                    currentIndex = i;
+                }
+                if(scheduledTripList.get(i).getTripID() == tripID){
+                    addedIndex = i;
+                }
+                if(currentIndex !=-1 && addedIndex != -1){
+                    break;
+                }
+            }
+
+            // if the new added trip is closer than the previous coming trip, replace it with new tripID
+            if(addedIndex<currentIndex){
+                AlarmReceiver.setComingTripID(tripID);
+            }
+
+            int test = AlarmReceiver.getComingTripID();
+            Log.d("test after add: ",Integer.toString(test));
+        }
+
+
+
     }
 
     /**
-     * this method is to get all trip plan from user database history
-     * @param UserID
-     * @return ArrayList<FinishedTrip>
+     * this method is called when the the notification of lastID trip is already popped up, and
+     * hence need to find the next trip for reminding
      */
-    public static ArrayList<FinishedTrip> getUserHistory(int UserID){
+    public static void updateComingTripID(){
+        int lastID = AlarmReceiver.getComingTripID();
+        Log.d("test initally: ",Integer.toString(lastID));
+        int i;
+        for(i = 0; i < scheduledTripList.size();i++){
+            if (scheduledTripList.get(i).getTripID() == lastID){
+                break;
+            }
+        }
+        i+=1;
+        Log.d("test next not index is ",Integer.toString(i));
+        try{
+            int nextID = scheduledTripList.get(i).getTripID();
+            AlarmReceiver.setComingTripID(nextID);
+            Log.d("!test: next coming is: ",Integer.toString(nextID));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
-        return null;
     }
 
 
-
-    /**
-     * this method is to delete a ScheduledTrip from the scheduledTripList ArrayList and database
-     * @param trip
-     */
-    public static void deleteScheduledTrip(ScheduledTrip trip){
-        ///delete here
-
-        //sort after each delete according on departing time
-
-        deleteUserPlan(1, trip.getTripID());
-
+    public static int getTextSize() {
+        return BaseActivity.MEDIUM;
     }
-
-    /**
-     * this method is to add a FinishedTrip to the historyTripList ArrayList and database
-     * @param trip
-     */
-    public static void addHistoryTrip(FinishedTrip trip) {
-        historyTripList.add(trip);
-
-        addUserHistory(trip);
-    }
-
 }

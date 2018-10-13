@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kallyruan.eldermap.AppMenuActivity;
+import com.example.kallyruan.eldermap.DBQuery;
 import com.example.kallyruan.eldermap.R;
 
 public class SignupActivity extends BaseActivity{
@@ -25,6 +26,9 @@ public class SignupActivity extends BaseActivity{
      */
     public void startSurvey(View view){
         //show a message toast on UI
+
+        DBQuery.createProfile();
+
         Toast message = Toast.makeText(this, "Only a short survey to go!",
                                                                             Toast.LENGTH_SHORT);
         message.show();

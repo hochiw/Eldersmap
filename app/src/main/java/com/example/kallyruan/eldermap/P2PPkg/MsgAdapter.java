@@ -1,12 +1,8 @@
 package com.example.kallyruan.eldermap.P2PPkg;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
 import android.util.Log;
@@ -15,15 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.MediaController;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.example.kallyruan.eldermap.R;
 
 import java.io.File;
-import java.net.URI;
 import java.util.List;
 
 public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.ViewHolder> {
@@ -56,7 +49,7 @@ public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.ViewHolder> {
         }
     }
 
-    public MsgAdapter(Context mContext,List<MsgItem> msgItemList,CustomItemClickListener listener) {
+    public MsgAdapter(Context mContext, List<MsgItem> msgItemList, CustomItemClickListener listener) {
         this.mContext = mContext;
         mMsgItemList = msgItemList;
         this.listener = listener;

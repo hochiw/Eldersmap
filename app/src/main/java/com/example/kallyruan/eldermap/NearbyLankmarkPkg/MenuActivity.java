@@ -2,13 +2,20 @@ package com.example.kallyruan.eldermap.NearbyLankmarkPkg;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import java.util.HashMap;
 
+import com.example.kallyruan.eldermap.NavigationPkg.AlarmReceiver;
+import com.example.kallyruan.eldermap.NavigationPkg.NotificationScheduler;
+import com.example.kallyruan.eldermap.NavigationPkg.ScheduleTimeActivity;
 import com.example.kallyruan.eldermap.ProfilePkg.BaseActivity;
 import com.example.kallyruan.eldermap.R;
 
@@ -21,7 +28,7 @@ public class MenuActivity extends BaseActivity {
 
     public final static int HOSPITSL = 0;
     public final static int PHARMACY = 1;
-    public final static int MARKET = 2;
+    public final static int LIBRARY = 2;
     public final static int SUPERMARKET = 3;
     public final static int BAR = 4;
     public final static int RESTAURANT = 5;
@@ -32,6 +39,13 @@ public class MenuActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landmark_menu);
+
+        //set title size and style
+        TextView title = findViewById(R.id.landmark_menu_title);
+        title.setGravity(Gravity.CENTER_HORIZONTAL);
+        Typeface typeface = Typeface.createFromAsset(getAssets(),"FormalTitle.ttf"); // create a typeface from the raw ttf
+        title.setTypeface(typeface);
+
         showCategoryIcon();
     }
 
@@ -54,10 +68,8 @@ public class MenuActivity extends BaseActivity {
                     case PHARMACY:
                         category = "pharmacy";
                         break;
-                        // There is problem about market.
-                    //       Everything else is fine.
-                    case MARKET:
-                        category = "market";
+                    case LIBRARY:
+                        category = "library";
                         break;
                     case SUPERMARKET:
                         category = "supermarket";
@@ -81,7 +93,11 @@ public class MenuActivity extends BaseActivity {
      */
     private void listlandmark(int landmark){
         Intent intent = new Intent(getApplicationContext(), LandmarkListActivity.class);
+
+        //this is now for testing notification feature, should use the above intent
+        //Intent intent = new Intent(getApplicationContext(), ScheduleTimeActivity.class);
         startActivity(intent);
+
 
     }
 

@@ -10,11 +10,11 @@ import com.example.kallyruan.eldermap.R;
 import java.util.Objects;
 
 public class ChangeWalkActivity extends BaseActivity {
-    final int FIVEMINUTES = 5;
-    final int TENMINUTES = 10;
-    final int FIFTEENMINUTES = 15;
-    final int TWENTYMINUTES = 20;
-    final int DOUBLETIME = -2;
+    public static final int FIVEMINUTES = 5;
+    public static final int TENMINUTES = 10;
+    public static final int FIFTEENMINUTES = 15;
+    public static final int TWENTYMINUTES = 20;
+    public static final int DOUBLETIME = -2;
     final int EXTRAHELP = -1;
     final int SECRET = -3;
     final int INVALID = 0;
@@ -54,19 +54,13 @@ public class ChangeWalkActivity extends BaseActivity {
                 walkingPreference = TWENTYMINUTES;
                 break;
         }
-        saveToDatabase(walkingPreference);
+
         //check calling activity and re-direct to the next activity
         checkCallingActivity(walkingPreference);
 
     }
 
 
-    /**
-     * this method is to upload user preference to database
-     */
-    private void saveToDatabase(int walkingPreference) {
-        User.saveToDatabase("walking",walkingPreference);
-    }
 
     /**
      * this method is called to check the previous calling activity, different activities would be
@@ -76,7 +70,7 @@ public class ChangeWalkActivity extends BaseActivity {
     public void checkCallingActivity(int walkingPreference){
         if(walkingPreference != INVALID){
             Log.d("test walking: ", Integer.toString(walkingPreference));
-            saveToDatabase(walkingPreference);
+            User.notifyWalkingChange(this,walkingPreference);
             if(callingActivity.equals(SURVEYACTIVITY)){
                 //re-direct to survey - data collection page
                 Intent i = new Intent(getApplicationContext(), ChangeDataActivity.class);

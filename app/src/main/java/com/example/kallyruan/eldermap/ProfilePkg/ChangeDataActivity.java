@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.kallyruan.eldermap.DBQuery;
 import com.example.kallyruan.eldermap.MainActivity;
 import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
 import com.example.kallyruan.eldermap.R;
@@ -13,11 +14,9 @@ import com.example.kallyruan.eldermap.R;
 import org.json.JSONObject;
 
 public class ChangeDataActivity extends BaseActivity {
-    final int AGREE = 1;
-    final int DISAGREE= 2;
     final int INVALID = 0;
     final static String SURVEYACTIVITY = "com.example.kallyruan.eldermap.ProfilePkg.ChangeWalkActivity";
-    int permissionPreference = INVALID;
+    boolean permission = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,25 +32,18 @@ public class ChangeDataActivity extends BaseActivity {
     public void recordPermissionPreference(View view){
         switch (view.getId()) {
             case R.id.permission_agree:
-                permissionPreference = AGREE;
+                permission = true;
                 break;
-            case R.id.text_medium:
-                permissionPreference = DISAGREE;
+            case R.id.permission_disagree:
+                permission = false;
                 break;
         }
-
-        savePermissionToDatabase(permissionPreference);
-        User.saveToDatabase("completed",1);
-        checkCallingActivity(permissionPreference);
-
-    }
-
-    private void checkCallingActivity(int permissionPreference) {
         //check get button clicked and calling activity
-        if(permissionPreference != INVALID){
-            savePermissionToDatabase(permissionPreference);
+        if(permission != false){
+            User.notifyPermissionChange(this, permission);
             if(this.getCallingActivity().getClassName().equals(SURVEYACTIVITY)){
-                //re-direct to survey - walking length page
+                //re-direct to main page
+                DBQuery.surveyComplete();
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(i);
             }else{
@@ -60,13 +52,6 @@ public class ChangeDataActivity extends BaseActivity {
                 startActivity(i);
             }
         }
-    }
-
-    /** this method is to upload user preference to database
-     * @param permissionPreference
-     */
-    private void savePermissionToDatabase(int permissionPreference) {
-        User.saveToDatabase("userData",permissionPreference);
     }
 
 

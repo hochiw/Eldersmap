@@ -1,5 +1,6 @@
 package com.example.kallyruan.eldermap;
 
+import android.accounts.NetworkErrorException;
 import android.util.Log;
 
 import com.example.kallyruan.eldermap.LocationPkg.FinishedTrip;
@@ -24,8 +25,7 @@ public class DBQuery {
     static int HistoryID = 0;//for demo purpose
     static int PlanID = 0; //for demo purpose
 
-   // private static String baseURL = "http://eldersmapapi.herokuapp.com/api/";
-    private static String baseURL = "http://10.13.250.41:4100/api/";
+    private static String baseURL = "http://eldersmapapi.herokuapp.com/api/";
 
     /**
      * this method is to check whether user exists in the database
@@ -38,13 +38,15 @@ public class DBQuery {
 
         try {
             HTTPPostRequest request = new HTTPPostRequest(baseURL + "getProfile");
-            request.execute(new JSONObject().put("userID",UserID));
+            String result = request.execute(new JSONObject().put("userID",UserID)).get();
+            if (result == "Forbidden") {
+                return false;
+            }
             return true;
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
-        //default user exist
-        return false;
     }
 
     public static boolean checkSurveyCompleted() {
@@ -118,6 +120,7 @@ public class DBQuery {
         UserID = User.getUserID();
 
         if (!checkUserExist()) {
+
             try {
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "createProfile");
                 request.execute(new JSONObject().put("userID",UserID));
@@ -494,20 +497,17 @@ public class DBQuery {
                 updateData.put("key","locationRating");
                 updateData.put("value",destinationMark);
                 destination.execute(updateData);
-                if (destination.getStatusCode() == 200) {
-                    HTTPPostRequest request = new HTTPPostRequest(baseURL + "updateHistory");
-                    updateData.remove("key");
-                    updateData.remove("value");
-                    updateData.put("key","locationRating");
-                    updateData.put("value",destinationMark);
-                    request.execute(updateData);
-                }
+                HTTPPostRequest request = new HTTPPostRequest(baseURL + "updateHistory");
+                updateData.remove("key");
+                updateData.remove("value");
+                updateData.put("key","locationRating");
+                updateData.put("value",destinationMark);
+                request.execute(updateData);
 
             } catch (Exception e) {
-                e.printStackTrace();
+                return false;
             }
         }
-        //otherwise return default
         return false;
     }
 

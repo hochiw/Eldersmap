@@ -66,14 +66,16 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                //check whether user exist in the database
+//check whether user exist in the database
+                Log.d("WORKING",Boolean.toString(DBQuery.checkSurveyCompleted()));
                 if (DBQuery.checkUserExist()&& DBQuery.checkSurveyCompleted()){
-                    if(DBQuery.checkUserType()==User.USER){
-                        checkLocationPermission();
-                    }else {
-                        Intent i = new Intent(getApplicationContext(), ChatActivity.class);
-                        startActivity(i);
-                    }
+               //     if(DBQuery.checkUserType()==User.USER){
+                //        checkLocationPermission();
+               //     }else {
+               //         Intent i = new Intent(getApplicationContext(), ChatActivity.class);
+               //         startActivity(i);
+               //     }
+                    checkLocationPermission();
                     //if does not exist, re-direct to sign up page
                 } else {
                     Intent i = new Intent(getApplicationContext(), SignupActivity.class);
@@ -81,7 +83,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 }
 
             }
-        }, 1500);
+        }, 1000);
+
+
 
 
 

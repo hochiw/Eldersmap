@@ -1,6 +1,7 @@
 package com.example.kallyruan.eldermap.P2PPkg;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +21,6 @@ import java.util.List;
 
 public class CallActivity extends Activity{
 
-    private SinchClient sinchClient;
     private Call call;
     private TextView waitingMsg;
 
@@ -93,7 +93,6 @@ public class CallActivity extends Activity{
         //re-direct to previous chatroom page
         if (call != null) {
             call.hangup();
-            finish();
         }
 
         //stop p2p connection here

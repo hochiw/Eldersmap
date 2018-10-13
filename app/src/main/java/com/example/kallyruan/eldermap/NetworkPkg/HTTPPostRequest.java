@@ -44,9 +44,6 @@ public class HTTPPostRequest extends AsyncTask<JSONObject,Void,String> {
             output.close();
 
             resultCode = urlconnection.getResponseCode();
-            if (resultCode == 403) {
-                throw new NetworkErrorException();
-            }
 
             StringBuilder result = new StringBuilder();
             if (resultCode == HttpURLConnection.HTTP_OK) {
@@ -70,7 +67,4 @@ public class HTTPPostRequest extends AsyncTask<JSONObject,Void,String> {
 
     }
 
-    public int getStatusCode() {
-        return resultCode;
-    }
 }

@@ -50,9 +50,9 @@ public class ChatActivity extends AppCompatActivity {
 
     private Button send;
 
-    private RecyclerView msgRecyclerView;
+    private static RecyclerView msgRecyclerView;
 
-    private MsgAdapter adapter;
+    private static MsgAdapter adapter;
 
     private String userID;
 
@@ -72,17 +72,14 @@ public class ChatActivity extends AppCompatActivity {
         inputText = (EditText) findViewById(R.id.input_text);
         send = (Button) findViewById(R.id.send);
         msgRecyclerView = (RecyclerView) findViewById(R.id.msg_recycle_view);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        msgRecyclerView.setLayoutManager(layoutManager);
 
         // Get user type
         userType = DBQuery.checkUserType() == 0 ? "client" : "admin";
 
 
-        //adapter = new MsgAdapter(msgList);
 
         //check whether click on video to play
-        adapter = new MsgAdapter(getApplicationContext(),msgList, new CustomItemClickListener() {
+        adapter = new MsgAdapter(this,msgList, new CustomItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
                 Log.d("test all item", Integer.toString(msgList.size()));
@@ -98,7 +95,16 @@ public class ChatActivity extends AppCompatActivity {
         });
 
 
+        //adapter = new MsgAdapter(msgList);
+
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        msgRecyclerView.setHasFixedSize(true);
+        msgRecyclerView.setLayoutManager(layoutManager);
+
+
         msgRecyclerView.setAdapter(adapter);
+
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,22 +133,29 @@ public class ChatActivity extends AppCompatActivity {
 
         //the following is with server connection..
         try {
-            client = new SocketClient(new URI("ws://eldermapswebsocket.herokuapp.com/?type=" + userType),this);
-            Thread wsClient = new Thread(client);
-            wsClient.start();
+            if (client == null) {
+                client = new SocketClient(new URI("ws://eldermapswebsocket.herokuapp.com/?type=" + userType),this);
+                Thread wsClient = new Thread(client);
+                wsClient.start();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        Button quitButton = findViewById(R.id.quit_button);
+        quitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (client != null) {
-            client.getInstance().close();
-        }
+    protected void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
     }
 
     public void getRichMedia(View view){
@@ -153,7 +166,7 @@ public class ChatActivity extends AppCompatActivity {
 
 
     public void startCall(View view){
-        if (userID != null && sinchClient != null) {
+        if (userID != null && sinchClient.isStarted()) {
             Intent i = new Intent(getApplicationContext(), CallActivity.class);
             String CallID = "";
             switch(userType) {
@@ -166,7 +179,7 @@ public class ChatActivity extends AppCompatActivity {
             }
             if (!CallID.isEmpty()) {
                 VoiceCall.setCall(sinchClient.getCallClient().callUser(CallID));
-                startActivityForResult(i,1);
+                startActivity(i);
             }
 
         }
@@ -186,9 +199,8 @@ public class ChatActivity extends AppCompatActivity {
     public void declineCall(View view) {
         if (VoiceCall.getCall() != null) {
             VoiceCall.getCall().hangup();
-            setContentView(R.layout.p2p_chatroom);
-
         }
+        setContentView(R.layout.p2p_chatroom);
     }
 
     private class SinchCallClientListener implements CallClientListener {
@@ -201,6 +213,7 @@ public class ChatActivity extends AppCompatActivity {
 
     public void newMessage(final MsgItem message){
         try {
+            Log.d("MESSAGE",msgRecyclerView.getAdapter().toString());
             if ((message.getContentType() == MsgItem.MESSAGE_TYPE_GRAPH || message.getContentType() == MsgItem.MESSAGE_TYPE_VIDEO) &&
                     message.getFileName() != null) {
                 byte[] byteArray = FileEncoder.base64ToByte(message.getContent());
@@ -317,6 +330,10 @@ public class ChatActivity extends AppCompatActivity {
     public static boolean isVideoFile(String path) {
         String mimeType = URLConnection.guessContentTypeFromName(path);
         return mimeType != null && mimeType.startsWith("video");
+    }
+
+    public void quitChat(View view) {
+        finish();
     }
 
 

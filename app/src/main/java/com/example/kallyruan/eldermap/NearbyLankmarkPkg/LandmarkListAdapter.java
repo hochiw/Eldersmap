@@ -59,38 +59,28 @@ public class LandmarkListAdapter extends BaseAdapter {
         fillImage(position);
         name.setText(place.getName());
         mark.setText("Rating: "+Float.toString(place.getRating()));
-        distance.setText("Estimate time(min): "+Integer.toString(calcuateDistance(place)));
+        distance.setText("Estimate time(min): "+Integer.toString(place.getEstTime()));
 
         return createdView;
     }
 
-    /**
-     * Calculate the distance based on User GPS and landmark locations
-     * @param destination
-     * @return
-     */
-    public int calcuateDistance(Landmark destination){
-
-
-        return 0;
-    }
 
     public void fillImage(int index){
         switch (index){
             case (0):
-                rank.setImageResource(R.mipmap.ic_rank_1);
-                break;
-            case (1):
                 rank.setImageResource(R.mipmap.ic_rank_2);
                 break;
-            case (2):
+            case (1):
                 rank.setImageResource(R.mipmap.ic_rank_3);
                 break;
-            case (3):
+            case (2):
                 rank.setImageResource(R.mipmap.ic_rank_4);
                 break;
-            case (4):
+            case (3):
                 rank.setImageResource(R.mipmap.ic_rank_5);
+                break;
+            case (4):
+                rank.setImageResource(R.mipmap.ic_rank_6);
                 break;
             case (5):
                 rank.setImageResource(R.mipmap.ic_rank_6);
@@ -99,4 +89,5 @@ public class LandmarkListAdapter extends BaseAdapter {
 
 
     }
+
 }

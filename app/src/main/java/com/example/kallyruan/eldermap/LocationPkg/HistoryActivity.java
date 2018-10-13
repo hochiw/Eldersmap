@@ -151,10 +151,6 @@ public class HistoryActivity extends BaseActivity {
         ListView listView = (ListView) findViewById(R.id.history_list);
         list = User.getUserHistory();
 
-        //Data Input
-        demoData();
-        Log.d("test history list: ",Integer.toString(list.size()));
-
 
         //set adapter
         adapter = new HistoryAdapter(this, list);
@@ -162,20 +158,6 @@ public class HistoryActivity extends BaseActivity {
 
     }
 
-    //demo purpose
-    private void demoData() {
-        FinishedTrip trip1 = new
-                FinishedTrip(123, 1, 10, 2018,
-                Location.getInstance(15.0,22.5,53,0), "campus", 3,
-                4) ;
-        FinishedTrip trip2 = new
-                FinishedTrip(123, 1, 6, 2018,
-                Location.getInstance(15.0,22.5,53,1), "campus", 3,
-                4) ;
-        list.add(trip1);
-        list.add(trip2);
-
-    }
 
 }
 

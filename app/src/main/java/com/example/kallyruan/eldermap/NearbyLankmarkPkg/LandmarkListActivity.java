@@ -61,10 +61,10 @@ public class LandmarkListActivity extends BaseActivity {
     ArrayList<Landmark> list = new ArrayList<>(); // returned list of landmarks
     ArrayList<Landmark> similarlist = new ArrayList<>(); // returned list of similar landmarks based on history
     LandmarkListAdapter adapter;
-    LandmarkListAdapter similarAdapter;
     ListView landmarkList;
     LinearLayout recommendation;
     RelativeLayout loading;
+    Landmark place = null;
 
     private int action_index;
     private SearchAlg searchAlg = new SearchAlg();
@@ -159,12 +159,25 @@ public class LandmarkListActivity extends BaseActivity {
     //check whether users click on a landmark
     public void checkButtonClick() {
         ListView view = (ListView) findViewById(R.id.landmark_list);
+        LinearLayout recommendation = (LinearLayout) findViewById(R.id.landmark_recommendation);
 
+        if(place!= null){
+
+        }
         view.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int location, long l) {
                 destination = list.get(location).getLocation();
                 destinationName = list.get(location).getName();
+                navigationToast();
+            }
+        });
+
+        recommendation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                destination = place.getLocation();
+                destinationName = place.getName();
                 navigationToast();
             }
         });
@@ -220,6 +233,8 @@ public class LandmarkListActivity extends BaseActivity {
         if(result.get("status").toString().equals("OK")){
             list = searchAlg.filterList(result, userLoc);
         }
+
+
         adapter = new LandmarkListAdapter(this, list);
         listView.setAdapter(adapter);
 
@@ -245,22 +260,20 @@ public class LandmarkListActivity extends BaseActivity {
 
 
     public void similarDestination(){
-        Landmark place = similarityAlg();
+        place = similarityAlg();
 
         //here should check where is a recommendation based on our algorithm
         if(place != null){
             Log.d("test","show recommendation");
             TextView name = findViewById(R.id.locationName);
             TextView mark= findViewById(R.id.reviewMark);
-            TextView cost= findViewById(R.id.cost);
             TextView distance= findViewById(R.id.distance);
             ImageView rank= findViewById(R.id.icon_rank);
 
             rank.setImageResource(R.mipmap.ic_rank_best);
             name.setText(place.getName());
             mark.setText("Rating: "+Float.toString(place.getRating()));
-            cost.setText("Average Cost: "+"0.0");
-            distance.setText("Distance: "+Integer.toString(0));
+            distance.setText("Estimate time(min): "+Integer.toString(place.getEstTime()));
 
             TextView textview = (TextView) findViewById(R.id.recommendation_title);
             // adjust this line to get the TextView you want to change
@@ -270,6 +283,11 @@ public class LandmarkListActivity extends BaseActivity {
 
 
             recommendation.setVisibility(View.VISIBLE);
+            list.remove(0);
+            adapter.notifyDataSetChanged();
+
+
+
         }else{
             recommendation.setVisibility(View.INVISIBLE);
         }
@@ -280,7 +298,7 @@ public class LandmarkListActivity extends BaseActivity {
     public Landmark similarityAlg(){
         //for demo purpose, assume the top location is our recommendation
         try{
-            Landmark recommendation = list.get(0);
+            Landmark recommendation = list.remove(0);
             return recommendation;
         }catch (Exception e){
             e.printStackTrace();

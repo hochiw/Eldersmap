@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             @Override
             public void run() {
                 //check whether user exist in the database
-                if (!DBQuery.checkUserExist()&& DBQuery.checkSurveyCompleted()){
+                if (DBQuery.checkUserExist()&& DBQuery.checkSurveyCompleted()){
                     if(DBQuery.checkUserType()==User.USER){
                         checkLocationPermission();
                     }else {

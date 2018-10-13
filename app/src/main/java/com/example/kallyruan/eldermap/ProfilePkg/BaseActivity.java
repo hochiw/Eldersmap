@@ -22,9 +22,8 @@ public class BaseActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        try{
-            textSize= User.getTextSize();
-        }catch (Exception e){
+        textSize= User.getTextSize();
+        if (textSize == INVALID) {
             textSize = MEDIUM;
         }
 

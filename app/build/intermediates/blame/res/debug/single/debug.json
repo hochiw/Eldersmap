@@ -1560,10 +1560,6 @@
         "source": "/Users/TakoYaki/GitHub/ElderMaps/app/src/main/res/mipmap-hdpi/ic_rank_1.png"
     },
     {
-        "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/layout_future_list_row.xml.flat",
-        "source": "/Users/TakoYaki/GitHub/ElderMaps/app/src/main/res/layout/future_list_row.xml"
-    },
-    {
         "merged": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_library.png.flat",
         "source": "/Users/TakoYaki/GitHub/ElderMaps/app/src/main/res/mipmap-mdpi/ic_library.png"
     },

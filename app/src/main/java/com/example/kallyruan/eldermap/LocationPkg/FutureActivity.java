@@ -147,8 +147,6 @@ public class FutureActivity extends BaseActivity {
 
         //retrieve input
         list = User.getScheduledTripList();
-        //for demo purpose
-        demoData();
 
         //set adapter
         adapter = new FutureAdapter(this, list);
@@ -156,17 +154,6 @@ public class FutureActivity extends BaseActivity {
 
     }
 
-    //demo purpose
-    private void demoData() {
-        ScheduledTrip trip = new
-                ScheduledTrip(123, 1, 10, 2018, 10,10,
-                new Location(1.0,1.0,1,0),"test place") ;
-        ScheduledTrip trip1 = new
-                ScheduledTrip(123, 1, 10, 2018, 13,10,
-                new Location(1.0,1.0,1,2),"test place") ;
-        list.add(trip);
-        list.add(trip1);
-    }
 
 }
 

@@ -143,7 +143,9 @@ public class DBQuery {
             try {
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "getProfile");
                 JSONObject result = new JSONObject(request.execute(new JSONObject().put("userID", UserID)).get());
-                return result.getJSONObject("survey").getInt("textSize");
+                int textSize = result.getJSONObject("survey").getInt("textSize");
+                Log.d("TEXT",Integer.toString(textSize));
+                return textSize;
             } catch (Exception e) {
                 e.printStackTrace();
             }

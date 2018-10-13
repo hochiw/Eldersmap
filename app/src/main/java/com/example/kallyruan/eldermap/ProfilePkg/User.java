@@ -26,15 +26,18 @@ public class User {
     private static int textSize;
     private static int walking;
     private static boolean dataPermission;
-    private static String userID = "";//-1 is invalid UserID
+    private static String userID = null;//null is invalid UserID
 
     public static ArrayList<ScheduledTrip> getScheduledTripList() {
         return scheduledTripList;
     }
 
     public static String getUserID(){
-        if (userID==""){
-            userID = MainActivity.ANDROID_ID;
+        if (userID==null){
+            // here get MEID id here by somehow
+
+            userID = MainActivity.ANDROID_ID; //here 1 just for demo
+
             return userID;
         }else{
             return userID;
@@ -136,9 +139,10 @@ public class User {
             try{
                 AlarmReceiver.setComingTripID(scheduledTripList.get(index + 1).getTripID());
                 scheduledTripList.remove(index);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
+
 
         //if the removed one is in the past or not the next coming trip, it will not affect, so just
         //remove it
@@ -263,6 +267,6 @@ public class User {
 
 
     public static int getTextSize() {
-        return BaseActivity.MEDIUM;
+        return textSize;
     }
 }

@@ -9,16 +9,19 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.kallyruan.eldermap.NavigationPkg.DisplayActivity;
 import com.example.kallyruan.eldermap.NavigationPkg.ScheduleTimeActivity;
@@ -42,7 +45,7 @@ public class FutureActivity extends BaseActivity {
     ArrayAdapter<Integer> adapter_id;
     private int action_index;
 
-    //ArrayList<ScheduledTrip> list = new ArrayList<>(); // returned future list
+    ArrayList<ScheduledTrip> list = new ArrayList<>(); // returned future list
     FutureAdapter adapter;
     ListView futureList;
     RelativeLayout loading;
@@ -58,6 +61,13 @@ public class FutureActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.future_list);
+
+        //set title size and style
+        TextView title = findViewById(R.id.future_list_title);
+        title.setGravity(Gravity.CENTER_HORIZONTAL);
+        Typeface typeface = Typeface.createFromAsset(getAssets(),"FormalTitle.ttf"); // create a typeface from the raw ttf
+        title.setTypeface(typeface);
+
 
         showList();
 
@@ -96,8 +106,8 @@ public class FutureActivity extends BaseActivity {
 
     //check whether users want to depart now or not
     public void navigationToast(final int tripID, final int location) {
-        AlertDialog dialog = new AlertDialog.Builder(this).setTitle("Confirm action " +
-                "dialog").setIcon(R.mipmap.ic_hospital)
+        AlertDialog dialog = new AlertDialog.Builder(this).setTitle("What do you want to do" +
+                " with this scheduled trip?").setIcon(R.mipmap.ic_launcher_app)
                 .setPositiveButton("Start this trip now", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -117,7 +127,7 @@ public class FutureActivity extends BaseActivity {
                     }
                 })
                 .setNegativeButton("Cancel", null)
-                .setMessage("Change scheduled trip plans").create();
+                .create();
         dialog.show();
     }
 
@@ -134,22 +144,29 @@ public class FutureActivity extends BaseActivity {
      */
     public void showList() {
         ListView listView = (ListView) findViewById(R.id.future_list);
+
+        //retrieve input
+        list = User.getScheduledTripList();
+        //for demo purpose
+        demoData();
+
         //set adapter
-        adapter = new FutureAdapter(this, User.getScheduledTripList());
+        adapter = new FutureAdapter(this, list);
         listView.setAdapter(adapter);
 
     }
 
-//    //demo purpose
-//    private void demoData() {
-//        ScheduledTrip trip = new
-//                ScheduledTrip(123, 1, 10, 2018, 10,10,
-//                new Location(1.0,1.0,1),"test place") ;
-//        for(int i =0;i<2;i++){
-//            list.add(trip);
-//        }
-//
-//    }
+    //demo purpose
+    private void demoData() {
+        ScheduledTrip trip = new
+                ScheduledTrip(123, 1, 10, 2018, 10,10,
+                new Location(1.0,1.0,1,0),"test place") ;
+        ScheduledTrip trip1 = new
+                ScheduledTrip(123, 1, 10, 2018, 13,10,
+                new Location(1.0,1.0,1,2),"test place") ;
+        list.add(trip);
+        list.add(trip1);
+    }
 
 }
 

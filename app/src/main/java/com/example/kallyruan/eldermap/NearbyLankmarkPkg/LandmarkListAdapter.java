@@ -17,7 +17,6 @@ public class LandmarkListAdapter extends BaseAdapter {
     private ArrayList<Landmark> places;
     private TextView name;
     private TextView mark;
-    private TextView cost;
     private TextView distance;
     private ImageView rank;
 
@@ -51,7 +50,6 @@ public class LandmarkListAdapter extends BaseAdapter {
             rank = (ImageView) createdView.findViewById(R.id.icon_rank);
             name = (TextView) createdView.findViewById(R.id.locationName);
             mark = (TextView) createdView.findViewById(R.id.reviewMark);
-            cost = (TextView) createdView.findViewById(R.id.cost);
             distance = (TextView) createdView.findViewById(R.id.distance);
         } else {
             createdView = view;
@@ -61,8 +59,7 @@ public class LandmarkListAdapter extends BaseAdapter {
         fillImage(position);
         name.setText(place.getName());
         mark.setText("Rating: "+Float.toString(place.getRating()));
-        cost.setText("Average Cost: "+"0.0");
-        distance.setText("Distance: "+Integer.toString(calcuateDistance(place)));
+        distance.setText("Estimate time(min): "+Integer.toString(calcuateDistance(place)));
 
         return createdView;
     }

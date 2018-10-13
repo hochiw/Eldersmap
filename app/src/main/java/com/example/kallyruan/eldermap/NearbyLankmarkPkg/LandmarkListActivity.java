@@ -173,8 +173,8 @@ public class LandmarkListActivity extends BaseActivity {
 
     //check whether users want to depart now or not
     public void navigationToast() {
-        AlertDialog dialog = new AlertDialog.Builder(this).setTitle("Confirm action " +
-                "dialog").setIcon(R.mipmap.ic_hospital)
+        AlertDialog dialog = new AlertDialog.Builder(this).setTitle("Do you want to depart now?")
+                .setIcon(R.mipmap.ic_launcher_app)
                 .setPositiveButton("Start now", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -189,7 +189,7 @@ public class LandmarkListActivity extends BaseActivity {
                     }
                 })
                 .setNegativeButton("No, thanks", null)
-                .setMessage("Are you want to depart now?").create();
+                .create();
         dialog.show();
     }
 

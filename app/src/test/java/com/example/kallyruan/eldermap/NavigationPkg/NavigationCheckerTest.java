@@ -61,7 +61,7 @@ public class NavigationCheckerTest {
         Mockito.doReturn(0.0).when(object).get("desLatitude");
         Mockito.doReturn(0.0).when(object).get("desLongitude");
 
-        Mockito.when(request.execute(object)).thenReturn();
+//        Mockito.when(request.execute(object)).thenReturn();
         PowerMockito.whenNew(JSONObject.class).withNoArguments().thenReturn(object);
         PowerMockito.whenNew(HTTPPostRequest.class).withArguments(url).thenReturn(request);
 

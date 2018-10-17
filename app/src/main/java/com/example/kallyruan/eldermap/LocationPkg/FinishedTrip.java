@@ -1,23 +1,23 @@
 package com.example.kallyruan.eldermap.LocationPkg;
 
 public class FinishedTrip extends Trip {
-    private float reviewMark;
+    private float destinationMark;
     private float navigationMark;
 
-    FinishedTrip(int day, int month, int year, Location address, String name, float landmarkMark,
+   public FinishedTrip(int id, int day, int month, int year, Location address, String name, float landmarkMark,
                  float navigationMark) {
-        super(day, month, year, address, name);
-        this.reviewMark = landmarkMark;
+        super(id, day, month, year, address, name);
+        this.destinationMark = landmarkMark;
         this.navigationMark = navigationMark;
     }
 
 
-    public float getReviewMark() {
-        return reviewMark;
+    public float getdestinationMark() {
+        return destinationMark;
     }
 
-    public void setReviewMark(int reviewMark) {
-        this.reviewMark = reviewMark;
+    public void setdestinationMark(int reviewMark) {
+        this.destinationMark = reviewMark;
     }
 
     public float getTripMark() {

@@ -17,6 +17,7 @@ android {
         // If set to 'true', indicates that the Android system should run the instrumentation
         // class as a functional test. The default value is 'false'
         testFunctionalTest true
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -49,6 +50,13 @@ android {
     }
 }
 
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:27.1.1'
@@ -77,6 +85,9 @@ dependencies {
     androidTestImplementation 'com.android.support:support-annotations:28.0.0'
     androidTestImplementation 'org.hamcrest:hamcrest-library:1.3'
 
+    implementation "com.google.android.gms:play-services-location:15.0.1"
     implementation 'com.android.support:design:27.1.1'
 
+    implementation 'org.java-websocket:Java-WebSocket:1.3.9'
+    implementation(name: 'sinch-android-rtc', version: '+', ext: 'aar')
 }

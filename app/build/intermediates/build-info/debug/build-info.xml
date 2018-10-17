@@ -1,42 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="x86"
+    abi="arm64-v8a,armeabi-v7a,armeabi"
     api-level="24"
     build-mode="COLD"
-    density="xhdpi"
+    density="xxhdpi"
     format="10"
     ir-eligibility="COMPATIBLE"
     plugin-version="3.1.4"
-    timestamp="1537249995693"
+    timestamp="1539727943670"
     token="-3993191130931681901"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="359" />
+        duration="6540" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="106" />
+        duration="126" />
     <task
         name="verifier"
-        duration="11" />
+        duration="283" />
 
     <artifact
-        location="/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+        location="/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
         type="SPLIT" />
 
     <build
         build-mode="FULL"
-        timestamp="1537249830073"
+        timestamp="1539727881708"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
-            type="SPLIT" />
-        <artifact
-            location="/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
             type="SPLIT" />
         <artifact
             location="/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
@@ -49,6 +46,9 @@
             type="SPLIT" />
         <artifact
             location="/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
             type="SPLIT" />
         <artifact
             location="/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
@@ -72,10 +72,10 @@
     <build
         build-mode="COLD"
         ir-eligibility="COMPATIBLE"
-        timestamp="1537249995693"
+        timestamp="1539727943670"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+            location="/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
     </build>
 

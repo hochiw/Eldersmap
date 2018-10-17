@@ -8,4 +8,30 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Default_TextSize_Small">
+        <item name="textsize">@dimen/tset_small</item>
+        <item name="title">@dimen/tset_middle</item>
+        <item name="menuTitle">@dimen/tset_big</item>
+    </style>
+
+
+    <style name="Default_TextSize_Middle">
+        <item name="textsize">@dimen/tset_small2</item>
+        <item name="title">@dimen/tset_middle2</item>
+        <item name="menuTitle">@dimen/tset_big2</item>
+    </style>
+
+
+    <style name="Default_TextSize_Big">
+        <item name="textsize">@dimen/tset_small3</item>
+        <item name="title">@dimen/tset_middle3</item>
+        <item name="menuTitle">@dimen/tset_big3</item>
+    </style>
+
+    <style name="Default_TextSize_ExtraBig">
+        <item name="textsize">@dimen/tset_small4</item>
+        <item name="title">@dimen/tset_middle4</item>
+        <item name="menuTitle">@dimen/tset_big4</item>
+    </style>
+
 </resources>

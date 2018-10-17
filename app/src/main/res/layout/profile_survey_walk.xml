@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/signup"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/australia">
+            <TextView
+                android:id="@+id/signup_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sign up"
+                android:textSize="55dp"
+                android:textColor="#000000"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/survey_walking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="?menuTitle"
+                android:text="How comfortable are you walking? (Minutes)"
+                android:layout_marginBottom="30dp"/>
+
+            <Button
+                android:id="@+id/walking_uncomfortable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="?title"
+                android:text="Not comfortable"
+                android:onClick="recordWalkingPreference"/>
+
+            <Button
+                android:id="@+id/walking_5mins"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="?title"
+                android:text="up to 5 minutes"
+                android:onClick="recordWalkingPreference"/>
+
+            <Button
+                android:id="@+id/walking_10mins"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="?title"
+                android:text="up to 10 minutes"
+                android:onClick="recordWalkingPreference"/>
+            <Button
+                android:id="@+id/walking_15mins"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="?title"
+                android:text="up to 15 minutes"
+                android:onClick="recordWalkingPreference"/>
+            <Button
+                android:id="@+id/walking_20mins"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="?title"
+                android:text="up to 20 minutes"
+                android:onClick="recordWalkingPreference"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="textsize" format="reference|dimension" />
+    <attr name="title" format="reference|dimension" />
+    <attr name="menuTitle" format="reference|dimension" />
+
+</resources>

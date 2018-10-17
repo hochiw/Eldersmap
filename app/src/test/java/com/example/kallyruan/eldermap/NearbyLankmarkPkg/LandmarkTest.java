@@ -12,7 +12,7 @@ import java.util.Comparator;
 
 public class LandmarkTest {
     private Location location = Location.getInstance(0.0, 0.0);
-    private Landmark landmark = new Landmark("test", "test", 0.0f,location, 0.0);
+    private Landmark landmark = new Landmark("test", "test", 0.0f,location, 0);
 
     @Test
     public void getName() {
@@ -51,9 +51,9 @@ public class LandmarkTest {
         float expected1Float = 10.0f;
         float expected2Float = 5.0f;
         Landmark expected1 = new Landmark("expected1", "expected1",
-                expected1Float, location, 0.0);
+                expected1Float, location, 0);
         Landmark expected2 = new Landmark("expected1", "expected1",
-                expected2Float, location, 0.0);
+                expected2Float, location, 0);
         assertEquals(5,
                 expected1.getRating()-expected2.getRating(),1.0);
     }

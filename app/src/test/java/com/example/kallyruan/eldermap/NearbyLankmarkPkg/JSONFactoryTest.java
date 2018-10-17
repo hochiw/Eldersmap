@@ -37,7 +37,8 @@ public class JSONFactoryTest {
     public void setup() throws  Exception{
         PowerMockito.mockStatic(JSONFactory.class);
 
-        PowerMockito.when(JSONFactory.userDataJSONMaker(userLoc,landmarkType)).thenReturn(new JSONObject());
+        PowerMockito.when(JSONFactory.userDataJSONMaker(userLoc,landmarkType)).
+                thenReturn(new JSONObject());
         userLoc = Mockito.mock(Location.class);
 
         Mockito.when(userLoc.getLatitude()).thenReturn(0.0);

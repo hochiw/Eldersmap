@@ -19,7 +19,6 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/compat/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/compat/R.java" />
       <change beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/constraint/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/constraint/R.java" />
@@ -30,8 +29,6 @@
       <change beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/graphics/drawable/animated/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/graphics/drawable/animated/R.java" />
       <change beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/v7/appcompat/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/v7/appcompat/R.java" />
       <change beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/example/kallyruan/eldermap/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/example/kallyruan/eldermap/R.java" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/debug.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/debug.json" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/debug.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/debug.json" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/build-info/debug/build-info.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/build-info/debug/build-info.xml" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/compat/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/compat/R$id.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/constraint/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/android/support/constraint/R$id.class" />
@@ -47,7 +44,12 @@
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListActivity.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListAdapter.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/R$id.class" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/R$integer.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/R$integer.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/R$layout.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/R$layout.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/R$mipmap.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/R$mipmap.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/R$string.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/R$string.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/R$style.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/R$style.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/R$styleable.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/kallyruan/eldermap/R$styleable.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/android/support/compat/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/android/support/compat/R$id.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/android/support/constraint/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/android/support/constraint/R$id.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/android/support/coreui/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/android/support/coreui/R$id.class" />
@@ -62,8 +64,12 @@
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListActivity.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListAdapter.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/R$id.class" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/debug-mergeJavaRes/merge-state" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/debug-mergeJavaRes/merge-state" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/debug-mergeJniLibs/merge-state" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/debug-mergeJniLibs/merge-state" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/R$integer.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/R$integer.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/R$layout.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/R$layout.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/R$mipmap.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/R$mipmap.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/R$string.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/R$string.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/R$style.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/R$style.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/R$styleable.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/kallyruan/eldermap/R$styleable.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_dep/debug/package_dependencies/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_dep/debug/package_dependencies/dex-renamer-state.txt" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_0/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_0/dex-renamer-state.txt" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_1/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/ir_slices/debug/package_slice_1/dex-renamer-state.txt" />
@@ -80,9 +86,9 @@
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-apk/debug/app-debug.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/instant-run-apk/debug/app-debug.apk" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/resources-debug.ap_" afterPath="$PROJECT_DIR$/app/build/intermediates/res/debug/resources-debug.ap_" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/dep/dependencies.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/dep/dependencies.apk" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_0.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_0.apk" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_1.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_1.apk" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_2.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_2.apk" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_3.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_3.apk" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_4.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_4.apk" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_5.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_5.apk" />
@@ -92,7 +98,6 @@
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_9.apk" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_9.apk" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/symbols/debug/R.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/symbols/debug/R.txt" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/__content__.json" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/__content__.json" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/11/classes.dex" afterPath="" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/__content__.json" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/__content__.json" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/android/support/compat/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/android/support/compat/R$id.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/android/support/constraint/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/android/support/constraint/R$id.class" />
@@ -108,25 +113,26 @@
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListActivity.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListAdapter.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListAdapter.class" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/R$id.class" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/mergeJavaRes/debug/0.jar" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/mergeJavaRes/debug/0.jar" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/mergeJavaRes/debug/__content__.json" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/mergeJavaRes/debug/__content__.json" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/mergeJniLibs/debug/__content__.json" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/mergeJniLibs/debug/__content__.json" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/R$integer.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/R$integer.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/R$layout.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/R$layout.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/R$mipmap.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/R$mipmap.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/R$string.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/R$string.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/R$style.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/R$style.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/R$styleable.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/example/kallyruan/eldermap/R$styleable.class" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/__content__.json" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/__content__.json" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/__content__.json" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/__content__.json" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/DBQuery.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/DBQuery.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/FutureAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/FutureAdapter.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/HistoryActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/HistoryActivity.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/HistoryAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/HistoryAdapter.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/TripReviewActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/TripReviewActivity.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/MainActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListAdapter.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NetworkPkg/HTTPPostRequest.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NetworkPkg/HTTPPostRequest.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/P2PPkg/CallActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/P2PPkg/CallActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/P2PPkg/ChatActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/P2PPkg/ChatActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/P2PPkg/MsgAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/P2PPkg/MsgAdapter.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/ProfilePkg/SignupActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/ProfilePkg/SignupActivity.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/DisplayActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/DisplayActivity.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/ScheduleTimeActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/ScheduleTimeActivity.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/navigation_display.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/navigation_display.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/navigation_review.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/navigation_review.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/p2p_call.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/p2p_call.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/p2p_chatroom.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/p2p_chatroom.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/profile_setting.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/profile_setting.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/profile_signup.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/profile_signup.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/profile_survey_data.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/profile_survey_data.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/profile_survey_textsize.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/profile_survey_textsize.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/profile_survey_walk.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/profile_survey_walk.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/profile_survey_walk_assistance.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/profile_survey_walk_assistance.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
@@ -188,46 +194,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DisplayActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/DisplayActivity.java">
+      <file leaf-file-name="Trip.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/Trip.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
-              <caret line="36" column="13" lean-forward="false" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="navigation_display.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/navigation_display.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="48" column="40" lean-forward="false" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
+            <state relative-caret-position="60">
+              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NavigationChecker.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/NavigationChecker.java">
+      <file leaf-file-name="FinishedTrip.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/FinishedTrip.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="895">
-              <caret line="92" column="35" lean-forward="false" selection-start-line="92" selection-start-column="19" selection-end-line="92" selection-end-column="35" />
+            <state relative-caret-position="147">
+              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HTTPPostRequest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NetworkPkg/HTTPPostRequest.java">
+      <file leaf-file-name="DBQuery.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/DBQuery.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="659">
-              <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+            <state relative-caret-position="240">
+              <caret line="57" column="17" lean-forward="true" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/ProfilePkg/BaseActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="236">
+              <caret line="26" column="30" lean-forward="false" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SignupActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/ProfilePkg/SignupActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="67">
+              <caret line="36" column="32" lean-forward="false" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FutureActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/FutureActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1440">
+              <caret line="136" column="8" lean-forward="false" selection-start-line="136" selection-start-column="8" selection-end-line="137" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -236,72 +257,39 @@
       <file leaf-file-name="ChatActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/P2PPkg/ChatActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-79">
+            <state relative-caret-position="225">
               <caret line="52" column="19" lean-forward="false" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="19" />
-              <folding>
-                <element signature="e#2458#3104#0" expanded="true" />
-                <element signature="e#3103#3104#0" expanded="true" />
-                <element signature="e#12686#12687#0" expanded="true" />
-                <element signature="e#12710#12711#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VoiceCall.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/P2PPkg/VoiceCall.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CallActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/P2PPkg/CallActivity.java">
+      <file leaf-file-name="CustomItemClickListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/P2PPkg/CustomItemClickListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="76" column="21" lean-forward="false" selection-start-line="76" selection-start-column="21" selection-end-line="76" selection-end-column="21" />
+            <state relative-caret-position="75">
+              <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MsgAdapter.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/P2PPkg/MsgAdapter.java">
+      <file leaf-file-name="HistoryActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/HistoryActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="23" column="11" lean-forward="false" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+            <state relative-caret-position="342">
+              <caret line="133" column="0" lean-forward="false" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="p2p_chatroom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/p2p_chatroom.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
+      <file leaf-file-name="ScheduledTrip.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/ScheduledTrip.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="44" column="35" lean-forward="false" selection-start-line="44" selection-start-column="35" selection-end-line="44" selection-end-column="35" />
+            <state relative-caret-position="-558">
+              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/MainActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="77" column="46" lean-forward="false" selection-start-line="77" selection-start-column="46" selection-end-line="77" selection-end-column="46" />
-              <folding>
-                <element signature="e#2458#3351#0" expanded="true" />
-                <element signature="e#3350#3351#0" expanded="true" />
-                <element signature="e#4545#5112#0" expanded="true" />
-                <element signature="e#5111#5112#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -317,7 +305,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>voiceClient</find>
       <find>checkUserExist</find>
       <find>getLoc</find>
       <find>getInstance</find>
@@ -343,10 +330,16 @@
       <find>create</find>
       <find>setLay</find>
       <find>sinch</find>
+      <find>endTrip</find>
+      <find>DB</find>
+      <find>saveToDB</find>
+      <find>createdView</find>
+      <find>upda</find>
     </findStrings>
     <replaceStrings>
       <replace>bearing</replace>
       <replace>&quot;userID&quot;</replace>
+      <replace>view</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -2373,14 +2366,12 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/P2PPkg/FileEncoder.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/P2PPkg/VoiceCall.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/incoming_call.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/p2p_call.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/profile_survey_walk.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/profile_survey_walk_assistance.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/profile_survey_data.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/ProfilePkg/ChangeWalkActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/GPSServicePkg/GPSReceiver.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/TripReviewActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/CoorDist.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/GPSServicePkg/GPS.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/NavigationChecker.java" />
@@ -2390,10 +2381,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/FinishedTrip.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/ProfilePkg/ChangeSizeActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/ProfilePkg/ChangeDataActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/ScheduleTimeActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/DisplayActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/FutureActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/HistoryActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/ProfilePkg/User.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/ProfilePkg/BaseActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/landmark_list_row.xml" />
@@ -2402,14 +2390,22 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListAdapter.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/ProfilePkg/SignupActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/DBQuery.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NetworkPkg/HTTPPostRequest.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/navigation_display.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/p2p_chatroom.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/P2PPkg/CallActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/P2PPkg/ChatActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/P2PPkg/MsgAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/p2p_chatroom.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/DisplayActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/p2p_call.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/navigation_display.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/navigation_review.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/FutureAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/ScheduleTimeActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/HistoryAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/TripReviewActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/HistoryActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/DBQuery.java" />
       </list>
     </option>
   </component>
@@ -2435,8 +2431,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -2467,46 +2462,7 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="eldermap" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="NavigationPkg" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ElderMaps" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="eldermap" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="NearbyLankmarkPkg" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ElderMaps" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="eldermap" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="NetworkPkg" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ElderMaps" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="eldermap" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="P2PPkg" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ElderMaps" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="eldermap" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="ProfilePkg" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ElderMaps" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-            </path>
-            <path>
-              <item name="ElderMaps" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
             <path>
               <item name="ElderMaps" type="1abcf292:AndroidViewProjectNode" />
@@ -2516,8 +2472,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="ProjectPane" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2746,28 +2703,26 @@
     <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24299909" sideWeight="0.42959428" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41776937" sideWeight="0.5096831" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3453125" sideWeight="0.4903169" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.259375" sideWeight="0.48679578" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24933214" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32947463" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24299909" sideWeight="0.42959428" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32923833" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41776937" sideWeight="0.5096831" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32842416" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924336" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3453125" sideWeight="0.4903169" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24932249" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23396568" sideWeight="0.5704057" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.259375" sideWeight="0.48679578" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24933214" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32947463" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25225225" sideWeight="0.54366815" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -2777,7 +2732,9 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32923833" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32864675" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2824,38 +2781,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/GPSServicePkg/GPSReceiver.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="55" column="52" lean-forward="false" selection-start-line="55" selection-start-column="52" selection-end-line="55" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/support-fragment/27.1.1/94732bda44fba11302c58e459b7c1f47e7521bf9/support-fragment-27.1.1-sources.jar!/android/support/v4/app/FragmentActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1425">
-          <caret line="139" column="19" lean-forward="false" selection-start-line="139" selection-start-column="19" selection-end-line="139" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/AppMenuActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/SingleStepNavigation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2866,19 +2795,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/HistoryAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-401">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/Position.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2887,7 +2807,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="26" column="22" lean-forward="false" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2898,22 +2817,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/navigation_review.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NearbyLankmarkPkg/Landmark.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
           <caret line="41" column="44" lean-forward="false" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2921,48 +2828,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="9" column="9" lean-forward="false" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/P2PPkg/CustomItemClickListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/TripReviewActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-335">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1124#1125#0" expanded="false" />
-            <element signature="e#1153#1154#0" expanded="false" />
-            <element signature="e#1205#1206#0" expanded="false" />
-            <element signature="e#1255#1256#0" expanded="false" />
-            <element signature="e#1292#1293#0" expanded="false" />
-            <element signature="e#1321#1322#0" expanded="false" />
-            <element signature="e#1369#1370#0" expanded="false" />
-            <element signature="e#1419#1420#0" expanded="false" />
-            <element signature="e#1459#1460#0" expanded="false" />
-            <element signature="e#1491#1492#0" expanded="false" />
-            <element signature="e#1545#1546#0" expanded="false" />
-            <element signature="e#1601#1602#0" expanded="false" />
-            <element signature="e#2026#2252#0" expanded="false" />
-            <element signature="e#2251#2252#0" expanded="false" />
-            <element signature="e#2434#2659#0" expanded="false" />
-            <element signature="e#2658#2659#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/Trip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2974,19 +2839,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/FinishedTrip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NearbyLankmarkPkg/MenuActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-402">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3005,7 +2861,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-160">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3017,53 +2872,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/FutureAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/ScheduledTrip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/ScheduleTimeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="54" column="38" lean-forward="false" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/ProfilePkg/ChangePrivilegeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/FutureActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="159" column="0" lean-forward="false" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/HistoryActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="151" column="37" lean-forward="false" selection-start-line="151" selection-start-column="37" selection-end-line="151" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3074,7 +2886,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3089,14 +2900,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/ProfilePkg/BaseActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="26" column="30" lean-forward="false" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/landmark_list_row.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -3104,7 +2907,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
           <caret line="33" column="40" lean-forward="false" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3112,7 +2914,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="41" column="9" lean-forward="false" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3120,7 +2921,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="608">
           <caret line="67" column="53" lean-forward="false" selection-start-line="67" selection-start-column="53" selection-end-line="67" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3131,7 +2931,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
           <caret line="34" column="12" lean-forward="false" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3139,34 +2938,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-641">
           <caret line="214" column="0" lean-forward="false" selection-start-line="214" selection-start-column="0" selection-end-line="214" selection-end-column="0" />
-          <folding>
-            <element signature="e#6213#6559#0" expanded="false" />
-            <element signature="e#6558#6559#0" expanded="false" />
-            <element signature="e#6605#6861#0" expanded="false" />
-            <element signature="e#6860#6861#0" expanded="false" />
-            <element signature="e#9544#9545#0" expanded="false" />
-            <element signature="e#9578#9579#0" expanded="false" />
-            <element signature="e#9641#9642#0" expanded="false" />
-            <element signature="e#9682#9683#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="65" column="48" lean-forward="false" selection-start-line="65" selection-start-column="48" selection-end-line="65" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#721#722#0" expanded="false" />
-            <element signature="e#757#758#0" expanded="false" />
-            <element signature="e#807#808#0" expanded="false" />
-            <element signature="e#834#835#0" expanded="false" />
-            <element signature="e#884#885#0" expanded="false" />
-            <element signature="e#908#909#0" expanded="false" />
-            <element signature="e#970#971#0" expanded="false" />
-            <element signature="e#1001#1002#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3178,66 +2949,94 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/ProfilePkg/SignupActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="36" column="32" lean-forward="false" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/DBQuery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1485">
-          <caret line="42" column="29" lean-forward="false" selection-start-line="42" selection-start-column="29" selection-end-line="42" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NetworkPkg/HTTPPostRequest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="659">
+        <state relative-caret-position="840">
           <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/P2PPkg/VoiceCall.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
+        <state relative-caret-position="540">
           <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="77" column="46" lean-forward="false" selection-start-line="77" selection-start-column="46" selection-end-line="77" selection-end-column="46" />
-          <folding>
-            <element signature="e#2458#3351#0" expanded="true" />
-            <element signature="e#3350#3351#0" expanded="true" />
-            <element signature="e#4545#5112#0" expanded="true" />
-            <element signature="e#5111#5112#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/NavigationChecker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="895">
+        <state relative-caret-position="1170">
           <caret line="92" column="35" lean-forward="false" selection-start-line="92" selection-start-column="19" selection-end-line="92" selection-end-column="35" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/P2PPkg/CallActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="855">
+          <caret line="76" column="21" lean-forward="false" selection-start-line="76" selection-start-column="21" selection-end-line="76" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/p2p_chatroom.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/p2p_video.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-103">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/p2p_call.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="15" column="22" lean-forward="false" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/P2PPkg/MsgAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1455">
+          <caret line="114" column="57" lean-forward="false" selection-start-line="114" selection-start-column="57" selection-end-line="114" selection-end-column="57" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/DisplayActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="36" column="13" lean-forward="false" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="1065">
+          <caret line="100" column="13" lean-forward="false" selection-start-line="100" selection-start-column="13" selection-end-line="100" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-182">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="107" column="91" lean-forward="false" selection-start-line="107" selection-start-column="91" selection-end-line="107" selection-end-column="91" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3246,48 +3045,216 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="48" column="40" lean-forward="false" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
-          <folding />
+        <state relative-caret-position="105">
+          <caret line="7" column="9" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/p2p_chatroom.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/navigation_review.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="44" column="35" lean-forward="false" selection-start-line="44" selection-start-column="35" selection-end-line="44" selection-end-column="35" />
+        <state relative-caret-position="125">
+          <caret line="15" column="41" lean-forward="false" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NearbyLankmarkPkg/LandmarkListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="65" column="12" lean-forward="false" selection-start-line="65" selection-start-column="12" selection-end-line="65" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/FutureAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="870">
+          <caret line="75" column="4" lean-forward="false" selection-start-line="75" selection-start-column="4" selection-end-line="83" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/NavigationPkg/ScheduleTimeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="80" column="93" lean-forward="false" selection-start-line="80" selection-start-column="93" selection-end-line="80" selection-end-column="93" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/P2PPkg/CallActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/HistoryAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="76" column="21" lean-forward="false" selection-start-line="76" selection-start-column="21" selection-end-line="76" selection-end-column="21" />
+        <state relative-caret-position="855">
+          <caret line="75" column="29" lean-forward="false" selection-start-line="75" selection-start-column="29" selection-end-line="75" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-27/android.jar!/org/json/JSONObject.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2145">
+          <caret line="193" column="0" lean-forward="false" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
+          <folding>
+            <marker date="1535774330000" expanded="false" signature="0:104" ph="/.../" />
+            <marker date="1535774330000" expanded="false" signature="132:173" ph="..." />
+            <marker date="1535774330000" expanded="false" signature="269:280" ph=" { " />
+            <marker date="1535774330000" expanded="false" signature="316:322" ph=" }" />
+            <marker date="1535774330000" expanded="false" signature="359:370" ph=" { " />
+            <marker date="1535774330000" expanded="false" signature="406:412" ph=" }" />
+            <marker date="1535774330000" expanded="true" signature="479:531" ph="{...}" />
+            <marker date="1535774330000" expanded="true" signature="589:641" ph="{...}" />
+            <marker date="1535774330000" expanded="true" signature="723:775" ph="{...}" />
+            <marker date="1535774330000" expanded="false" signature="800:811" ph=" { " />
+            <marker date="1535774330000" expanded="false" signature="847:853" ph=" }" />
+            <marker date="1535774330000" expanded="true" signature="930:982" ph="{...}" />
+            <marker date="1535774330000" expanded="true" signature="1058:1110" ph="{...}" />
+            <marker date="1535774330000" expanded="true" signature="1183:1235" ph="{...}" />
+            <marker date="1535774330000" expanded="true" signature="1309:1361" ph="{...}" />
+            <marker date="1535774330000" expanded="true" signature="1437:1489" ph="{...}" />
+            <marker date="1535774330000" expanded="true" signature="1568:1620" ph="{...}" />
+            <marker date="1535774330000" expanded="true" signature="1703:1755" ph="{...}" />
+            <marker date="1535774330000" expanded="false" signature="1794:1805" ph=" { " />
+            <marker date="1535774330000" expanded="false" signature="1841:1847" ph=" }" />
+            <marker date="1535774330000" expanded="false" signature="1887:1898" ph=" { " />
+            <marker date="1535774330000" expanded="false" signature="1934:1940" ph=" }" />
+            <marker date="1535774330000" expanded="false" signature="1977:1988" ph=" { " />
+            <marker date="1535774330000" expanded="false" signature="2024:2030" ph=" }" />
+            <marker date="1535774330000" expanded="true" signature="2088:2140" ph="{...}" />
+            <marker date="1535774330000" expanded="false" signature="2176:2187" ph=" { " />
+            <marker date="1535774330000" expanded="false" signature="2223:2229" ph=" }" />
+            <marker date="1535774330000" expanded="true" signature="2295:2347" ph="{...}" />
+            <marker date="1535774330000" expanded="false" signature="2391:2402" ph=" { " />
+            <marker date="1535774330000" expanded="false" signature="2438:2444" ph=" }" />
+            <marker date="1535774330000" expanded="true" signature="2507:2559" ph="{...}" />
+            <marker date="1535774330000" expanded="true" signature="2623:2675" ph="{...}" />
+            <marker date="1535774330000" expanded="false" signature="2717:2728" ph=" { " />
+            <marker date="1535774330000" expanded="false" signature="2764:2770" ph=" }" />
+            <marker date="1535774330000" expanded="false" signature="2829:2840" ph=" { " />
+            <marker date="1535774330000" expanded="false" signature="2876:2882" ph=" }" />
+            <marker date="1535774330000" expanded="true" signature="2940:2992" ph="{...}" />
+            <marker date="1535774330000" expanded="false" signature="3028:3039" ph=" { " />
+            <marker date="1535774330000" expanded="false" signature="3075:3081" ph=" }" />
+            <marker date="1535774330000" expanded="false" signature="3131:3142" ph=" { " />
+            <marker date="1535774330000" expanded="false" signature="3178:3184" ph=" }" />
+            <marker date="1535774330000" expanded="true" signature="3244:3296" ph="{...}" />
+            <marker date="1535774330000" expanded="false" signature="3334:3345" ph=" { " />
+            <marker date="1535774330000" expanded="false" signature="3381:3387" ph=" }" />
+            <marker date="1535774330000" expanded="false" signature="3440:3451" ph=" { " />
+            <marker date="1535774330000" expanded="false" signature="3487:3493" ph=" }" />
+            <marker date="1535774330000" expanded="true" signature="3557:3609" ph="{...}" />
+            <marker date="1535774330000" expanded="false" signature="3651:3662" ph=" { " />
+            <marker date="1535774330000" expanded="false" signature="3698:3704" ph=" }" />
+            <marker date="1535774330000" expanded="false" signature="3763:3774" ph=" { " />
+            <marker date="1535774330000" expanded="false" signature="3810:3816" ph=" }" />
+            <marker date="1535774330000" expanded="true" signature="3886:3938" ph="{...}" />
+            <marker date="1535774330000" expanded="false" signature="3986:3997" ph=" { " />
+            <marker date="1535774330000" expanded="false" signature="4033:4039" ph=" }" />
+            <marker date="1535774330000" expanded="true" signature="4111:4163" ph="{...}" />
+            <marker date="1535774330000" expanded="false" signature="4213:4224" ph=" { " />
+            <marker date="1535774330000" expanded="false" signature="4260:4266" ph=" }" />
+            <marker date="1535774330000" expanded="true" signature="4339:4391" ph="{...}" />
+            <marker date="1535774330000" expanded="false" signature="4427:4438" ph=" { " />
+            <marker date="1535774330000" expanded="false" signature="4474:4480" ph=" }" />
+            <marker date="1535774330000" expanded="false" signature="4510:4521" ph=" { " />
+            <marker date="1535774330000" expanded="false" signature="4557:4563" ph=" }" />
+            <marker date="1535774330000" expanded="false" signature="4593:4604" ph=" { " />
+            <marker date="1535774330000" expanded="false" signature="4640:4646" ph=" }" />
+            <marker date="1535774330000" expanded="true" signature="4714:4766" ph="{...}" />
+            <marker date="1535774330000" expanded="true" signature="4844:4896" ph="{...}" />
+            <marker date="1535774330000" expanded="false" signature="4941:4952" ph=" { " />
+            <marker date="1535774330000" expanded="false" signature="4988:4994" ph=" }" />
+            <marker date="1535774330000" expanded="false" signature="5035:5046" ph=" { " />
+            <marker date="1535774330000" expanded="false" signature="5082:5088" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/TripReviewActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="81" column="5" lean-forward="false" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/Trip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/P2PPkg/ChatActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-79">
+        <state relative-caret-position="225">
           <caret line="52" column="19" lean-forward="false" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="19" />
-          <folding>
-            <element signature="e#2458#3104#0" expanded="true" />
-            <element signature="e#3103#3104#0" expanded="true" />
-            <element signature="e#12686#12687#0" expanded="true" />
-            <element signature="e#12710#12711#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/P2PPkg/MsgAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/P2PPkg/CustomItemClickListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="23" column="11" lean-forward="false" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+        <state relative-caret-position="75">
+          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/FutureActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1440">
+          <caret line="136" column="8" lean-forward="false" selection-start-line="136" selection-start-column="8" selection-end-line="137" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/ProfilePkg/BaseActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="26" column="30" lean-forward="false" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/ProfilePkg/SignupActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="36" column="32" lean-forward="false" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/FinishedTrip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/HistoryActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="133" column="0" lean-forward="false" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/LocationPkg/ScheduledTrip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-558">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kallyruan/eldermap/DBQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="57" column="17" lean-forward="true" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
           <folding />
         </state>
       </provider>

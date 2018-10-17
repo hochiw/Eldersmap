@@ -54,6 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:visibility="invisible"
             android:text="Follow the arrow, then turn left and then....."
             android:textSize="45dp" />
     </LinearLayout>

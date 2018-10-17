@@ -96,7 +96,8 @@ public class DisplayActivity extends AppCompatActivity {
         endTrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent i = new Intent(getApplicationContext(),TripReviewActivity.class);
+                startActivityForResult(i,1);
             }
         });
 

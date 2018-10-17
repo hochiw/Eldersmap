@@ -8,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.kallyruan.eldermap.NearbyLankmarkPkg.Landmark;
 import com.example.kallyruan.eldermap.NearbyLankmarkPkg.MenuActivity;
 import com.example.kallyruan.eldermap.R;
 
@@ -18,16 +17,7 @@ public class FutureAdapter extends BaseAdapter {
 
     private Activity mActivity;
     private ArrayList<ScheduledTrip> futureTrips;
-    private TextView name;
-    private TextView date;
 
-    private ImageView tripType;
-    private ImageView tripRank;
-    private TextView tripName;
-    private TextView tripDate;
-    private TextView tripTime;
-    private TextView tripReview;
-    private TextView tripNavigation;
 
     public FutureAdapter(Activity activity, ArrayList<ScheduledTrip> places){
         this.mActivity = activity;
@@ -50,81 +40,94 @@ public class FutureAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, final View view, ViewGroup viewGroup) {
+    public View getView(int position, View view, ViewGroup viewGroup) {
+        ViewHolder holder = null;
         LayoutInflater inflater = mActivity.getLayoutInflater();
-        final View createdView;
 
         if(view == null){
-            createdView = inflater.inflate(R.layout.history_list_row,null);
-            name = (TextView) createdView.findViewById(R.id.destinationName);
-            date = (TextView) createdView.findViewById(R.id.date);
-            tripType = createdView.findViewById(R.id.trip_type);
-            tripRank = createdView.findViewById(R.id.trip_rank);
-            tripName = (TextView) createdView.findViewById(R.id.trip_name);
-            tripDate = (TextView) createdView.findViewById(R.id.trip_date);
+            holder = new ViewHolder();
+            view = inflater.inflate(R.layout.history_list_row,null);
+            holder.name = (TextView) view.findViewById(R.id.destinationName);
+            holder.date = (TextView) view.findViewById(R.id.date);
+            holder.tripType = view.findViewById(R.id.trip_type);
+            holder.tripRank = view.findViewById(R.id.trip_rank);
+            holder.tripName = (TextView) view.findViewById(R.id.trip_name);
+            holder.tripDate = (TextView) view.findViewById(R.id.trip_date);
+
+            view.setTag(holder);
         } else {
-            createdView = view;
+            holder = (ViewHolder) view.getTag();
         }
 
         final ScheduledTrip trip = futureTrips.get(position);
-        fillImage(position);
-        fillTypeImage(trip.getDestination().getType());
-        tripName.setText(trip.getName());
-        tripDate.setText(trip.getDate());
-        tripName.setText(trip.getName());
-        tripDate.setText(trip.getDate());
+        fillImage(holder,position);
+        fillTypeImage(holder,trip.getDestination().getType());
+        holder.tripName.setText(trip.getName());
+        holder.tripDate.setText(trip.getDate());
+        holder.tripName.setText(trip.getName());
+        holder.tripDate.setText(trip.getDate());
 
-        name.setText(trip.getName());
-        date.setText(trip.getDate());
+        holder.name.setText(trip.getName());
+        holder.date.setText(trip.getDate());
 
-        return createdView;
+        return view;
     }
 
-    public void fillImage(int index){
+    static class ViewHolder
+    {
+        TextView name;
+        TextView date;
+        ImageView tripType;
+        ImageView tripRank;
+        TextView tripName;
+        TextView tripDate;
+    }
+
+    public void fillImage(ViewHolder holder,int index){
         switch (index){
             case (0):
-                tripRank.setImageResource(R.mipmap.ic_rank_1);
+                holder.tripRank.setImageResource(R.mipmap.ic_rank_1);
                 break;
             case (1):
-                tripRank.setImageResource(R.mipmap.ic_rank_2);
+                holder.tripRank.setImageResource(R.mipmap.ic_rank_2);
                 break;
             case (2):
-                tripRank.setImageResource(R.mipmap.ic_rank_3);
+                holder.tripRank.setImageResource(R.mipmap.ic_rank_3);
                 break;
             case (3):
-                tripRank.setImageResource(R.mipmap.ic_rank_4);
+                holder.tripRank.setImageResource(R.mipmap.ic_rank_4);
                 break;
             case (4):
-                tripRank.setImageResource(R.mipmap.ic_rank_5);
+                holder.tripRank.setImageResource(R.mipmap.ic_rank_5);
                 break;
             case (5):
-                tripRank.setImageResource(R.mipmap.ic_rank_6);
+                holder.tripRank.setImageResource(R.mipmap.ic_rank_6);
                 break;
         }
     }
 
-    public void fillTypeImage(int type) {
-        tripType.setImageResource(R.mipmap.ic_launcher_app);
+    public void fillTypeImage(ViewHolder holder,int type) {
+        holder.tripType.setImageResource(R.mipmap.ic_launcher_app);
         switch (type){
             case (MenuActivity.HOSPITSL):
-                tripType.setImageResource(R.mipmap.ic_hospital);
+                holder.tripType.setImageResource(R.mipmap.ic_hospital);
                 break;
             case (MenuActivity.PHARMACY):
-                tripType.setImageResource(R.mipmap.ic_pharmacy);
+                holder.tripType.setImageResource(R.mipmap.ic_pharmacy);
                 break;
             case (MenuActivity.LIBRARY):
-                tripType.setImageResource(R.mipmap.ic_library);
+                holder.tripType.setImageResource(R.mipmap.ic_library);
                 break;
             case (MenuActivity.SUPERMARKET):
-                tripType.setImageResource(R.mipmap.ic_supermarket);
+                holder.tripType.setImageResource(R.mipmap.ic_supermarket);
                 break;
             case (MenuActivity.BAR):
-                tripType.setImageResource(R.mipmap.ic_bar);
+                holder.tripType.setImageResource(R.mipmap.ic_bar);
                 break;
             case (MenuActivity.RESTAURANT):
-                tripType.setImageResource(R.mipmap.ic_restaurant);
+                holder.tripType.setImageResource(R.mipmap.ic_restaurant);
                 break;
-            default: tripType.setImageResource(R.mipmap.ic_launcher_app);
+            default: holder.tripType.setImageResource(R.mipmap.ic_launcher_app);
                 break;
         }
     }

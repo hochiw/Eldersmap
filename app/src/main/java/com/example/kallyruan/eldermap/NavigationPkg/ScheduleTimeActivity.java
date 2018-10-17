@@ -78,7 +78,7 @@ public class ScheduleTimeActivity extends AppCompatActivity{
 
         //if successfully added the reminder, add this trip to user database
         if(result){
-            ScheduledTrip planTrip = ScheduledTrip.getInstance(tripID,targetDay,targetMonth, targetYear,
+            ScheduledTrip planTrip = ScheduledTrip.getInstance(tripID,targetDay,targetMonth+1, targetYear,
                     targetHour, targetMinute,LandmarkListActivity.getDestination(),
                     LandmarkListActivity.getDestinationName());
             //add the new plan to the database and sort them by date

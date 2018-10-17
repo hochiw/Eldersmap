@@ -52,6 +52,7 @@ public class HistoryActivity extends BaseActivity {
     RelativeLayout loading;
     private static int tripID; // the target trip id to update marks
     private static int tripIndex; // the index of trip in the history list
+    private FinishedTrip destination;
     private static String destinationName;
 
     public static String getDestinationName() {
@@ -101,6 +102,7 @@ public class HistoryActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int location, long l) {
                 tripID= list.get(location).getTripID();
                 tripIndex = location;
+                destination = list.get(location);
                 navigationToast();
             }
         });
@@ -132,6 +134,8 @@ public class HistoryActivity extends BaseActivity {
 
     public void switchToNavigation(){
         Intent i = new Intent(this, DisplayActivity.class);
+        i.putExtra("destLatitude",destination.getDestination().getLatitude());
+        i.putExtra("destLongitude",destination.getDestination().getLongitude());
         startActivityForResult(i, 1);
     }
 

@@ -18,17 +18,7 @@ public class HistoryAdapter extends BaseAdapter {
 
     private Activity mActivity;
     private ArrayList<FinishedTrip> history;
-    private TextView name;
-    private TextView date;
-    private TextView locationMark;
-    private TextView navigationMark;
 
-    private ImageView tripType;
-    private ImageView tripRank;
-    private TextView tripName;
-    private TextView tripDate;
-    private TextView tripReview;
-    private TextView tripNavigation;
 
     public HistoryAdapter(Activity activity, ArrayList<FinishedTrip> places){
         this.mActivity = activity;
@@ -51,91 +41,110 @@ public class HistoryAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, final View view, ViewGroup viewGroup) {
+    public View getView(int position, View view, ViewGroup viewGroup) {
+        ViewHolder holder = null;
         LayoutInflater inflater = mActivity.getLayoutInflater();
-        final View createdView;
+        
 
         if(view == null){
-            createdView = inflater.inflate(R.layout.history_list_row,null);
-            name = (TextView) createdView.findViewById(R.id.destinationName);
-            date = (TextView) createdView.findViewById(R.id.date);
-            locationMark = (TextView) createdView.findViewById(R.id.reviewMark);
-            navigationMark = (TextView) createdView.findViewById(R.id.navigationMark);
+            holder = new ViewHolder();
+            view = inflater.inflate(R.layout.history_list_row,null);
+            holder.name = (TextView) view.findViewById(R.id.destinationName);
+            holder.date = (TextView) view.findViewById(R.id.date);
+            holder.locationMark = (TextView) view.findViewById(R.id.reviewMark);
+            holder.navigationMark = (TextView) view.findViewById(R.id.navigationMark);
 
-            tripType = createdView.findViewById(R.id.trip_type);
-            tripRank = createdView.findViewById(R.id.trip_rank);
-            tripName = (TextView) createdView.findViewById(R.id.trip_name);
-            tripDate = (TextView) createdView.findViewById(R.id.trip_date);
-            tripReview = (TextView) createdView.findViewById(R.id.trip_review);
-            tripNavigation = (TextView) createdView.findViewById(R.id.trip_navigation);
+            holder.tripType = view.findViewById(R.id.trip_type);
+            holder.tripRank = view.findViewById(R.id.trip_rank);
+            holder.tripName = (TextView) view.findViewById(R.id.trip_name);
+            holder.tripDate = (TextView) view.findViewById(R.id.trip_date);
+            holder.tripReview = (TextView) view.findViewById(R.id.trip_review);
+            holder.tripNavigation = (TextView) view.findViewById(R.id.trip_navigation);
+
+            view.setTag(holder);
         } else {
-            createdView = view;
+            holder = (ViewHolder) view.getTag();
         }
 
         final FinishedTrip trip = history.get(position);
-        name.setText(Float.toString(trip.getdestinationMark()));
-        date.setText(trip.getDate());
-        locationMark.setText(Float.toString(trip.getdestinationMark()));
-        navigationMark.setText(Float.toString(trip.getTripMark()));
+        holder.name.setText(Float.toString(trip.getdestinationMark()));
+        holder.date.setText(trip.getDate());
+        holder.locationMark.setText(Float.toString(trip.getdestinationMark()));
+        holder.navigationMark.setText(Float.toString(trip.getTripMark()));
 
-        fillNumberImage(position);
-        fillTypeImage(trip.getDestination().getType());
-        tripName.setText(trip.getName());
-        tripDate.setText(trip.getDate());
-        tripReview.setText("Destination mark: "+Float.toString(trip.getdestinationMark()));
-        tripNavigation.setText("Navigation mark: "+Float.toString(trip.getTripMark()));
+        fillNumberImage(holder,position);
+        fillTypeImage(holder,trip.getDestination().getType());
+        holder.tripName.setText(trip.getName());
+        holder.tripDate.setText(trip.getDate());
+        holder.tripReview.setText("Destination mark: "+Float.toString(trip.getdestinationMark()));
+        holder.tripNavigation.setText("Navigation mark: "+Float.toString(trip.getTripMark()));
 
-        return createdView;
+        return view;
     }
 
-    public void fillTypeImage(int type) {
-        tripType.setImageResource(R.mipmap.ic_launcher_app);
+    static class ViewHolder
+    {
+        TextView name;
+        TextView date;
+        TextView locationMark;
+        TextView navigationMark;
+
+        ImageView tripType;
+        ImageView tripRank;
+        TextView tripName;
+        TextView tripDate;
+        TextView tripReview;
+        TextView tripNavigation;
+    }
+
+    public void fillTypeImage(ViewHolder holder,int type) {
+        holder.tripType.setImageResource(R.mipmap.ic_launcher_app);
         switch (type){
             case (MenuActivity.HOSPITSL):
-                tripType.setImageResource(R.mipmap.ic_hospital);
+                holder.tripType.setImageResource(R.mipmap.ic_hospital);
                 break;
             case (MenuActivity.PHARMACY):
-                tripType.setImageResource(R.mipmap.ic_pharmacy);
+                holder.tripType.setImageResource(R.mipmap.ic_pharmacy);
                 break;
             case (MenuActivity.LIBRARY):
-                tripType.setImageResource(R.mipmap.ic_library);
+                holder.tripType.setImageResource(R.mipmap.ic_library);
                 break;
             case (MenuActivity.SUPERMARKET):
-                tripType.setImageResource(R.mipmap.ic_supermarket);
+                holder.tripType.setImageResource(R.mipmap.ic_supermarket);
                 break;
             case (MenuActivity.BAR):
-                tripType.setImageResource(R.mipmap.ic_bar);
+                holder.tripType.setImageResource(R.mipmap.ic_bar);
                 break;
             case (MenuActivity.RESTAURANT):
-                tripType.setImageResource(R.mipmap.ic_restaurant);
+                holder.tripType.setImageResource(R.mipmap.ic_restaurant);
                 break;
-            default: tripType.setImageResource(R.mipmap.ic_launcher_app);
+            default: holder.tripType.setImageResource(R.mipmap.ic_launcher_app);
                 break;
         }
 
     }
 
-    public void fillNumberImage(int index){
+    public void fillNumberImage(ViewHolder holder,int index){
         switch (index){
             case (0):
-                tripRank.setImageResource(R.mipmap.ic_rank_1);
+                holder.tripRank.setImageResource(R.mipmap.ic_rank_1);
                 break;
             case (1):
-                tripRank.setImageResource(R.mipmap.ic_rank_2);
+                holder.tripRank.setImageResource(R.mipmap.ic_rank_2);
                 break;
             case (2):
-                tripRank.setImageResource(R.mipmap.ic_rank_3);
+                holder.tripRank.setImageResource(R.mipmap.ic_rank_3);
                 break;
             case (3):
-                tripRank.setImageResource(R.mipmap.ic_rank_4);
+                holder.tripRank.setImageResource(R.mipmap.ic_rank_4);
                 break;
             case (4):
-                tripRank.setImageResource(R.mipmap.ic_rank_5);
+                holder.tripRank.setImageResource(R.mipmap.ic_rank_5);
                 break;
             case (5):
-                tripRank.setImageResource(R.mipmap.ic_rank_6);
+                holder.tripRank.setImageResource(R.mipmap.ic_rank_6);
                 break;
-            default: tripRank.setImageResource(R.mipmap.ic_rank_6);
+            default: holder.tripRank.setImageResource(R.mipmap.ic_rank_6);
                 break;
         }
 

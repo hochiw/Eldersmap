@@ -1,7 +1,7 @@
-#Sat Oct 13 21:52:00 AEDT 2018
+#Wed Oct 17 09:14:21 AEDT 2018
 base.0=/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/transforms/dexMerger/debug/28
 path.1=classes.dex
 renamed.1=classes2.dex
 path.0=classes.dex
 renamed.0=classes.dex
-base.1=/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/transforms/dexMerger/debug/229
+base.1=/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/transforms/dexMerger/debug/259

@@ -31,7 +31,7 @@ import com.example.kallyruan.eldermap.ProfilePkg.SignupActivity;
 import com.example.kallyruan.eldermap.ProfilePkg.User;
 import com.google.android.gms.location.LocationRequest;
 
-public class MainActivity extends AppCompatActivity implements LocationListener {
+public class MainActivity extends AppCompatActivity {
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     public static String ANDROID_ID;
     boolean askedPermission = false;
@@ -69,13 +69,20 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 //check whether user exist in the database
                 Log.d("WORKING",Boolean.toString(DBQuery.checkSurveyCompleted()));
                 if (DBQuery.checkUserExist()&& DBQuery.checkSurveyCompleted()){
-               //     if(DBQuery.checkUserType()==User.USER){
-                //        checkLocationPermission();
-               //     }else {
-               //         Intent i = new Intent(getApplicationContext(), ChatActivity.class);
-               //         startActivity(i);
-               //     }
-                    checkLocationPermission();
+                if (checkLocationPermission()) {
+                    //retrieve all user data from database
+                    if(User.retrieveUserData()){
+                        //if successful, redirect to App Menu page
+                        Intent i = new Intent(getApplicationContext(), AppMenuActivity.class);
+                        startActivity(i);
+                        //if failed, show error message
+                    }else{
+                        Toast.makeText(getApplicationContext(),"Failed to retrieve User data. Please restart the APP."
+                                ,Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
                     //if does not exist, re-direct to sign up page
                 } else {
                     Intent i = new Intent(getApplicationContext(), SignupActivity.class);
@@ -98,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
      */
     public boolean checkLocationPermission() {
         //if permission not granted, promote for permission request
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+        if (ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
             Log.d("test: ", "1 NO location permission");
             // This is to check whether we should show an explanation
@@ -130,31 +137,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             }
             //if location permission is granted, continue to AppMenu page
         } else {
-            Log.d("test: ", "GET location permission");
-
-            //retrieve all user data from database
-            if(User.retrieveUserData()){
-                //if successful, redirect to App Menu page
-                Intent i = new Intent(getApplicationContext(), AppMenuActivity.class);
-                startActivity(i);
-                //if failed, show error message
-            }else{
-                Toast.makeText(this,"Failed to retrieve User data. Please restart the APP."
-                        ,Toast.LENGTH_SHORT).show();
-            }
-
+            return true;
         }
-        return true;
-    }
-
-
-    @Override
-    public void onLocationChanged(Location location) {
-        Double lat = location.getLatitude();
-        Double lng = location.getLongitude();
-
-        Log.i("Location info: Lat", lat.toString());
-        Log.i("Location info: Lng", lng.toString());
+        return false;
     }
 
 
@@ -208,20 +193,4 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         startActivity(mainIntent);
     }
 
-
-
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-
-    }
-
-    @Override
-    public void onProviderEnabled(String provider) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(String provider) {
-
-    }
 }

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RatingBar;
 
+import com.example.kallyruan.eldermap.AppMenuActivity;
 import com.example.kallyruan.eldermap.DBQuery;
 import com.example.kallyruan.eldermap.NearbyLankmarkPkg.LandmarkListActivity;
 import com.example.kallyruan.eldermap.NearbyLankmarkPkg.MenuActivity;
@@ -72,7 +73,7 @@ public class TripReviewActivity extends AppCompatActivity {
 
         //get navigation mark
         final RatingBar navigationRating = (RatingBar) findViewById(R.id.navigation_rating);
-        destinationRating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+        navigationRating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                 navigationMark = rating;
@@ -122,7 +123,7 @@ public class TripReviewActivity extends AppCompatActivity {
             startActivity(i);
         }else {
             //re-direct to menu page
-            Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+            Intent intent = new Intent(getApplicationContext(), AppMenuActivity.class);
             startActivity(intent);
         }
     }

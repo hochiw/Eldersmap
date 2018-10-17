@@ -119,7 +119,6 @@ public class DBQuery {
         //get MEID number
         UserID = User.getUserID();
 
-        if (!checkUserExist()) {
 
             try {
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "createProfile");
@@ -128,7 +127,6 @@ public class DBQuery {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
         return false;
     }
     /**
@@ -325,8 +323,8 @@ public class DBQuery {
                     int day = item.getJSONObject("date").getInt("day");
                     int month = item.getJSONObject("date").getInt("month");
                     int year = item.getJSONObject("date").getInt("year");
-                    int locationRating = item.getInt("locationRating");
-                    int tripRating = item.getInt("tripRating");
+                    float locationRating = item.getLong("locationRating");
+                    float tripRating = item.getLong("tripRating");
                     Double lat = item.getJSONObject("location").getDouble("latitude");
                     Double lon = item.getJSONObject("location").getDouble("longitude");
                     String name = item.getJSONObject("location").getString("name");
@@ -418,7 +416,7 @@ public class DBQuery {
 
         if (checkUserExist()) {
             try {
-                HTTPPostRequest request = new HTTPPostRequest(baseURL + "createPlan");
+                HTTPPostRequest request = new HTTPPostRequest(baseURL + "createHistory");
                 JSONObject data = new JSONObject();
                 data.put("userID",UserID);
                 data.put("id",trip.getTripID());
@@ -432,6 +430,9 @@ public class DBQuery {
                 data.put("latitude",trip.getDestination().getLatitude());
                 data.put("longitude",trip.getDestination().getLongitude());
                 data.put("type",trip.getDestination().getType());
+
+                data.put("locationRating",trip.getdestinationMark());
+                data.put("tripRating",trip.getTripMark());
                 request.execute(data);
                 return true;
             } catch (Exception e) {
@@ -500,8 +501,8 @@ public class DBQuery {
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "updateHistory");
                 updateData.remove("key");
                 updateData.remove("value");
-                updateData.put("key","locationRating");
-                updateData.put("value",destinationMark);
+                updateData.put("key","tripRating");
+                updateData.put("value",navigationMark);
                 request.execute(updateData);
 
             } catch (Exception e) {

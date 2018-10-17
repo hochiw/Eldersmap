@@ -56,7 +56,6 @@ public class JSONFactoryTest {
 
 //        userLoc.setLatitude(0.0);
 //        userLoc.setLongitude(0.0);
-        //TODO: 10.6 Saturday
         // Verify construction of object.
         PowerMockito.whenNew(JSONObject.class).withNoArguments().thenReturn(jsonObject);
 //        Mockito.when(userLoc.getLatitude()).thenReturn(0.0);

@@ -1,6 +1,8 @@
 package com.example.kallyruan.eldermap.NetworkPkg;
 
+import android.accounts.NetworkErrorException;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.json.JSONObject;
 
@@ -10,15 +12,16 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class HTTPPostRequest extends AsyncTask<JSONObject,Void,JSONObject> {
+public class HTTPPostRequest extends AsyncTask<JSONObject,Void,String> {
     private String url;
+    private int resultCode;
 
     public HTTPPostRequest(String url) {
         this.url = url;
     }
 
     @Override
-    protected JSONObject doInBackground(JSONObject... params) {
+    protected String doInBackground(JSONObject... params) {
         try {
             URL _url = new URL(url);
             HttpURLConnection urlconnection = (HttpURLConnection) _url.openConnection();
@@ -31,11 +34,16 @@ public class HTTPPostRequest extends AsyncTask<JSONObject,Void,JSONObject> {
             urlconnection.setRequestProperty("Accept", "application/json");
 
             OutputStreamWriter output = new OutputStreamWriter(urlconnection.getOutputStream(), "UTF-8");
-            output.write(params[0].toString());
+            if (params.length > 0) {
+                output.write(params[0].toString());
+            } else {
+                output.write("");
+            }
+
             output.flush();
             output.close();
 
-            int resultCode = urlconnection.getResponseCode();
+            resultCode = urlconnection.getResponseCode();
 
             StringBuilder result = new StringBuilder();
             if (resultCode == HttpURLConnection.HTTP_OK) {
@@ -49,7 +57,7 @@ public class HTTPPostRequest extends AsyncTask<JSONObject,Void,JSONObject> {
                 }
                 br.close();
 
-                return new JSONObject(result.toString());
+                return result.toString();
             }
 
         } catch (Exception e) {
@@ -58,4 +66,5 @@ public class HTTPPostRequest extends AsyncTask<JSONObject,Void,JSONObject> {
         return null;
 
     }
+
 }

@@ -2,18 +2,7 @@ package com.example.kallyruan.eldermap.NavigationPkg;
 
 public class CoorDist {
 
-    private double dist;
-    private double userLat;
-    private double userLon;
-    private double destLat;
-    private double destLon;
-
-    CoorDist(double userLat, double userLon, double destLat, double destLon) {
-        this.userLat = userLat;
-        this.userLon = userLon;
-        this.destLat = destLat;
-        this.destLon = destLon;
-
+    public static double getDist(double userLat, double userLon, double destLat, double destLon) {
         double R = 6378.137; // Radius of earth in KM
         double dLat = destLat * Math.PI / 180 - userLat * Math.PI / 180;
         double dLon = destLon * Math.PI / 180 - userLon * Math.PI / 180;
@@ -21,12 +10,20 @@ public class CoorDist {
                 Math.cos(userLat * Math.PI / 180) * Math.cos(destLat * Math.PI / 180) *
                         Math.sin(dLon/2) * Math.sin(dLon/2);
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-        this.dist = R * c;
-
+        return R * c * 1000;
     }
 
-    public double getDist() {
-        return this.dist;
-    }
+    public static double getAngle(double userLat, double userLon, double destLat, double destLon) {
+        double y = Math.sin(destLon - userLon) * Math.cos(destLat);
+        double x = Math.cos(userLat) * Math.sin(destLat) - Math.sin(userLat)
+                * Math.cos(destLat) * Math.cos(destLon - userLon);
 
+        double bearing = Math.atan2(y, x);
+
+        bearing = Math.toDegrees(bearing);
+        bearing = (bearing + 360) % 360;
+        bearing = 360 - bearing;
+
+        return bearing;
+    }
 }

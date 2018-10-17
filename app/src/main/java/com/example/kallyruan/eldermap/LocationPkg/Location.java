@@ -3,12 +3,14 @@ package com.example.kallyruan.eldermap.LocationPkg;
 public class Location {
     private Double latitude;
     private Double longitude;
-    private float bearing;
+    private Double altitude;
+    private int type;
 
-    Location(Double latitude, Double longitude,float bearing){
+    Location(Double latitude, Double longitude){
         this.latitude = latitude;
         this.longitude = longitude;
-        this.bearing = bearing;
+        this.altitude = 0.0;
+        this.type = 0;
     }
 
     public void setLatitude(Double x){
@@ -19,9 +21,9 @@ public class Location {
         this.longitude = y;
     }
 
-    public void setBearing(float z){
-        this.bearing = z;
-    }
+    public void setAltitude(Double z) {this.altitude = z;}
+
+    public void setType(int type) {this.type = type;}
 
     public Double getLatitude(){
         return latitude;
@@ -31,9 +33,10 @@ public class Location {
         return longitude;
     }
 
-    public float getBearing(){
-        return bearing;
-    }
+    public Double getAltitude() {return altitude;}
+
+    public int getType() {return type;}
+
 
 
     /**
@@ -42,8 +45,8 @@ public class Location {
      * @param y longitude
      * @return Location object
      */
-    public static Location getInstance(Double x, Double y, float z){
-        return new Location(x, y, z);
+    public static Location getInstance(Double x, Double y){
+        return new Location(x, y);
     }
 
 

@@ -131,7 +131,7 @@ public class HistoryAdapterTest {
 
 //        Mockito.verify(name.setText(Float.toString(trip.getdestinationMark())));
         //
-        // TODO: HistoryAdapter Needs more Mock on. 
+        // TODO: HistoryAdapter Needs more Mock on.
 //        adapter.getView(position,view,viewGroup);
 
         navigationMark.setText(Float.toString(mockTrip.getdestinationMark()));

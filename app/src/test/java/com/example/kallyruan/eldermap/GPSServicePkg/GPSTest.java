@@ -13,29 +13,22 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
 
-import org.junit.Test;
-
-import static org.junit.Assert.*;
-import static org.powermock.api.easymock.PowerMock.replay;
-import static org.powermock.api.easymock.PowerMock.verify;
-
-import org.mockito.BDDMockito;
-import org.powermock.api.easymock.PowerMock;
-import org.junit.Test;
-
 import org.junit.Before;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
+import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.powermock.api.easymock.PowerMock;
 import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
 
-// The below link from google, saying that the test of Service requires Instrumented Unit Test,
-// which is about UI/Integration test that is not required for the purpose of the subject.
-// https://developer.android.com/training/testing/integration-testing/service-testing#java
+/**
+ *  The below link from google, saying that the test of Service requires Instrumented Unit Test,
+ *  which is about UI/Integration test that is not required for the purpose of the subject.
+ *  https://developer.android.com/training/testing/integration-testing/service-testing#java
+ *  I personally assume that since the whole class is based on Google API yet the coding and
+ *  functionality should be valid. No need for further testing.
+ */
+
 public class GPSTest extends Service implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
     private  String TAG = "GOS";
     private static final long INTERVAL = 1000;
@@ -48,8 +41,8 @@ public class GPSTest extends Service implements GoogleApiClient.ConnectionCallba
 
     @Before
     public void setup(){
-
-
+        locationRequest = PowerMockito.mock(LocationRequest.class);
+        googleApiClient = PowerMockito.mock(GoogleApiClient.class);
     }
 
     @Test

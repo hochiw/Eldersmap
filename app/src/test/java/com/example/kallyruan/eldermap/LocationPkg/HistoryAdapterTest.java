@@ -1,11 +1,18 @@
+/**
+ *  History Adapter is more about setting the UI picture for the user's travelling history.
+ *  Only logic part will be tested.
+ *  fillNumberImage(ViewHOlder holder, int index)
+ *  fillTypeImage(ViewHolder holder, int type)
+ *  are not tested.
+ * */
+
 package com.example.kallyruan.eldermap.LocationPkg;
 
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.app.Activity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.kallyruan.eldermap.R;
 
@@ -16,8 +23,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.objenesis.instantiator.basic.FailingInstantiator;
-import org.powermock.api.easymock.PowerMock;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
@@ -25,15 +30,10 @@ import org.powermock.modules.junit4.PowerMockRunner;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.doReturn;
+import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.mock;
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.when;
 
 
-// TODO: HistoryAdapter Has been changed. Needs further unit test.
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({TextView.class, FinishedTrip.class, FutureAdapter.ViewHolder.class
     ,Float.class})
@@ -79,9 +79,8 @@ public class HistoryAdapterTest {
     @Test
     public void getCount() {
         int expected = 0;
-        System.out.println(history.get(0));
-        System.out.println(trip);
-        //assertEquals(expected, adapter.getCount());
+        PowerMockito.when(history.size()).thenReturn(0);
+        assertEquals(expected, adapter.getCount());
     }
 
     @Test
@@ -91,7 +90,7 @@ public class HistoryAdapterTest {
 
     @Test
     public void getItemId() {
-        assertNull(adapter.getItem(0));
+        assertEquals((long)0, adapter.getItemId(0));
     }
 
     @Test
@@ -129,10 +128,6 @@ public class HistoryAdapterTest {
         PowerMockito.mockStatic(Float.class);
         Mockito.when(Float.toString(destinationMark)).thenReturn(destinationMarkString);
 
-//        Mockito.verify(name.setText(Float.toString(trip.getdestinationMark())));
-        //
-        // TODO: HistoryAdapter Needs more Mock on.
-//        adapter.getView(position,view,viewGroup);
 
         navigationMark.setText(Float.toString(mockTrip.getdestinationMark()));
         locationMark.setText(Float.toString(mockTrip.getdestinationMark()));

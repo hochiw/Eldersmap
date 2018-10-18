@@ -37,8 +37,6 @@ public class JSONFactoryTest {
     public void setup() throws  Exception{
         PowerMockito.mockStatic(JSONFactory.class);
 
-        PowerMockito.when(JSONFactory.userDataJSONMaker(userLoc,landmarkType)).
-                thenReturn(new JSONObject());
         userLoc = Mockito.mock(Location.class);
 
         Mockito.when(userLoc.getLatitude()).thenReturn(0.0);
@@ -49,23 +47,10 @@ public class JSONFactoryTest {
     @Test
     public void userDataJSONMaker() throws  Exception{
 
-        //JSONObject jsonObject = Mockito.mock(JSONObject.class);
-        //Alternately
         JSONObject jsonObject = PowerMock.createMock(JSONObject.class);
 
-
-//        userLoc.setLatitude(0.0);
-//        userLoc.setLongitude(0.0);
-        // Verify construction of object.
         PowerMockito.whenNew(JSONObject.class).withNoArguments().thenReturn(jsonObject);
-//        Mockito.when(userLoc.getLatitude()).thenReturn(0.0);
-//        Mockito.when(userLoc.getLongitude()).thenReturn(0.0);
 
-        // Maybe two equavilant way of writing new object construction?
-        //PowerMockito.whenNew(JSONObject.class).withNoArguments().thenReturn(jsonObject);
-        //PowerMock.expectNew(JSONObject.class).andReturn(jsonObject);
-
-        //PowerMockito.whenNew(JSONObject.class).withNoArguments().thenReturn(jsonObject);
         PowerMockito.when(JSONFactory.userDataJSONMaker(userLoc,landmarkType)).thenReturn(jsonObject);
         assertEquals(jsonObject, JSONFactory.userDataJSONMaker(userLoc,landmarkType));
         assertEquals(0.0, userLoc.getLongitude(),0.1);

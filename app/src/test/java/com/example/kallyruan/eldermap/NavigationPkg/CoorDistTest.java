@@ -1,31 +1,43 @@
-//package com.example.kallyruan.eldermap.NavigationPkg;
-//
-//import org.junit.Before;
-//import org.junit.Test;
-//import org.junit.runner.RunWith;
-//import org.powermock.modules.junit4.PowerMockRunner;
-//
-//import static org.junit.Assert.assertEquals;
-//@RunWith(PowerMockRunner.class)
-//public class CoorDistTest {
-//
-//    private double dist;
-//    private double userLat=10.0;
-//    private double userLon=12.0;
-//    private double destLat=31.0;
-//    private double destLon=41.0;
-//
-//    private CoorDist coorDist;
-//    @Before
-//    public void setup(){
-//        coorDist = new CoorDist(userLat, userLon, destLat, destLon);
-//    }
-//
-//    @Test
-//    public void getDist() {
-//        double expected = 3799.62;
-//        assertEquals(expected, coorDist.getDist(), 1.0f);
-//    }
-//}
+package com.example.kallyruan.eldermap.NavigationPkg;
 
-// TODO: CoorDist Has been changed to static class. Needs to fix later.
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
+
+import static org.junit.Assert.assertEquals;
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(CoorDist.class)
+public class CoorDistTest {
+
+    private double dist;
+    private double userLat=11.0;
+    private double userLon=21.0;
+    private double destLat=31.0;
+    private double destLon=41.0;
+
+    //3034407.101993954
+    //293.9818667421665 bearing
+
+    private CoorDist coorDist;
+    @Before
+    public void setup(){
+        PowerMockito.mockStatic(CoorDist.class);
+    }
+
+    @Test
+    public void getDist() {
+        double expected = 3034407.101993954;
+        PowerMockito.when(CoorDist.getDist(userLat,userLon,destLat,destLon)).thenReturn(3034407.101993954);
+        assertEquals(expected, CoorDist.getDist(userLat,userLon,destLat,destLon),1.0);
+    }
+    @Test
+    public void getAngle(){
+        double expected = 293.9818667421665;
+        PowerMockito.when(CoorDist.getAngle(userLat,userLon,destLat,destLon)).thenReturn(293.9818667421665);
+        assertEquals(expected, CoorDist.getAngle(userLat,userLon,destLat,destLon), 1.0);
+    }
+}
+

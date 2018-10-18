@@ -71,7 +71,6 @@ public class JSONFactoryTest {
         assertEquals(0.0, userLoc.getLongitude(),0.1);
         assertEquals(0.0, userLoc.getLatitude(), 0.1);
 
-        // Verify construction of object.
         replay(jsonObject,JSONObject.class);
         verify(jsonObject,JSONObject.class);
 

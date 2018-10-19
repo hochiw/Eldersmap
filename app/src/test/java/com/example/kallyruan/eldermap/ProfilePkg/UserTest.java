@@ -31,6 +31,11 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.util.ArrayList;
 
+/**
+ * A series tests written fro User class
+ * The class is mainly composed of static void method, therefore the return type of methods
+ * are infeasible to be tested. The behaviours of methods will be tested instead. 
+ */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ScheduledTrip.class, FinishedTrip.class, User.class, DBQuery.class,
         AlarmReceiver.class})
@@ -42,6 +47,7 @@ public class UserTest {
 
     private static String userID = "Hello";
     private static String anotherUserID = null;
+    private static int testSize;
 
 
     @Before
@@ -51,9 +57,10 @@ public class UserTest {
 
         MockitoAnnotations.initMocks(this);
         ScheduledTrip scheduledTrip = Mockito.mock(ScheduledTrip.class);
-        scheduledTripArrayList.add(scheduledTrip);
         FinishedTrip finishedTrip = Mockito.mock(FinishedTrip.class);
-        historyTripList.add(finishedTrip);
+
+        PowerMockito.when(scheduledTripArrayList.size()).thenReturn(1);
+        PowerMockito.when(historyTripList.size()).thenReturn(1);
 
         Mockito.when(historyTripList.get(0)).thenReturn(finishedTrip);
 
@@ -87,11 +94,12 @@ public class UserTest {
         assertEquals(scheduledTripArrayList, DBQuery.retrievePlan());
         assertEquals(historyTripList, DBQuery.retrieveHistory());
 
+        assertEquals(false, User.retrieveUserData());
     }
 
     @Test
     public void notifytextSizeChange() {
-        int textSizePreference = 0, expected = 0;
+        int textSizePreference = 0;
         Context context = Mockito.mock(Context.class);
         Mockito.when(DBQuery.updateTextsize(0)).thenReturn(true);
         PowerMockito.doNothing().when(User.class);
@@ -145,8 +153,15 @@ public class UserTest {
 
     @Test
     public void addUserHistory() {
-    }
+        Context context = PowerMockito.mock(Context.class);
+        FinishedTrip finishedTrip = PowerMockito.mock(FinishedTrip.class);
 
+        boolean result = true;
+        PowerMockito.when(DBQuery.addUserHistory(finishedTrip)).thenReturn(result);
+        User.addUserHistory(context, finishedTrip);
+        PowerMockito.verifyStatic();
+
+    }
     @Test
     public void getUserPlan() {
         PowerMockito.when(User.getUserPlan()).thenReturn(scheduledTripArrayList);
@@ -161,17 +176,39 @@ public class UserTest {
 
     @Test
     public void updateHistoryReview() {
+        Context context = PowerMockito.mock(Context.class);
+        int tripID = 0, tripIndex=0;
+        float destinationMark =0.0f, navigationMark =0.0f;
+        boolean result = true;
+        PowerMockito.when(DBQuery.updateHistoryReview(tripID, destinationMark,
+                navigationMark)).thenReturn(result);
+
+        User.updateHistoryReview(context, tripID, tripIndex, destinationMark, navigationMark);
     }
 
     @Test
-    public void checkAddComingTripID() {
+    public void checkAddComingTripID() throws Exception{
+        int tripID = 0;
+        PowerMockito.mockStatic(AlarmReceiver.class);
+        AlarmReceiver alarmReceiver = PowerMockito.mock(AlarmReceiver.class);
+        PowerMockito.whenNew(AlarmReceiver.class).withAnyArguments().
+                thenReturn(alarmReceiver);
+        User.checkAddComingTripID(tripID);
+        PowerMockito.verifyStatic();
     }
 
     @Test
     public void updateComingTripID() {
+        int lastID = 0;
+        PowerMockito.mockStatic(AlarmReceiver.class);
+        PowerMockito.when(AlarmReceiver.getComingTripID()).thenReturn(lastID);
+        User.updateComingTripID();
+        PowerMockito.verifyStatic();
     }
 
     @Test
     public void getTextSize() {
+        testSize = 0;
+        assertEquals(testSize, User.getTextSize());
     }
 }

@@ -87,6 +87,8 @@ public class NavigationCheckerTest {
 
         // TODO: NullPointerException on the call task.get()... Still working on fixing it...
         // TODO: NullPointerExce[tion on task.get(). Pretty sure that this is something related with final class mock.
+        // TODO: Go and check how JSONarray are mocked in SearchAlgTest.
+        // That one worked. 
         PowerMockito.when(request.execute(object)).thenReturn(task);
         PowerMockito.when(task.get()).thenReturn("Hello");
 //        PowerMockito.when(request.execute(object).get()).thenReturn(returnString);

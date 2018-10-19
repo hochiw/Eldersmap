@@ -34,7 +34,7 @@ import java.util.ArrayList;
 /**
  * A series tests written fro User class
  * The class is mainly composed of static void method, therefore the return type of methods
- * are infeasible to be tested. The behaviours of methods will be tested instead. 
+ * are infeasible to be tested. The behaviours of methods will be tested instead.
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ScheduledTrip.class, FinishedTrip.class, User.class, DBQuery.class,

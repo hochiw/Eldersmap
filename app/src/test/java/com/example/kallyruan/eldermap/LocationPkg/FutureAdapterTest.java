@@ -43,15 +43,16 @@ public class FutureAdapterTest {
     @Mock
     FutureAdapter.ViewHolder viewHolder;
 
+
     @InjectMocks
     private FutureAdapter adapter;
 
     @Before
     public void setup() throws  Exception{
-        MockitoAnnotations.initMocks(this);
 
         int position = 0;
         activity = PowerMockito.mock(Activity.class);
+        futureTrips = new ArrayList<>();
 
         // Prepare Mocks for the inner static class.
         viewHolder = PowerMockito.mock(FutureAdapter.ViewHolder.class);
@@ -64,13 +65,7 @@ public class FutureAdapterTest {
         viewHolder.tripName = PowerMockito.mock(TextView.class);
         viewHolder.tripDate = PowerMockito.mock(TextView.class);
 
-//        Not sure if it should be locally declared and used. Just in case.
-//        TextView name = viewHolder.name;
-//        TextView date = viewHolder.date;
-//        ImageView tripType = viewHolder.tripType;
-//        ImageView tripRank = viewHolder.tripRank;
-//        TextView tripName = viewHolder.tripName;
-//        TextView tripDate = viewHolder.tripDate;
+
 
         LayoutInflater inflater = PowerMockito.mock(LayoutInflater.class);
         PowerMockito.whenNew(LayoutInflater.class).withAnyArguments().thenReturn(inflater);
@@ -85,6 +80,7 @@ public class FutureAdapterTest {
         PowerMockito.when(view.findViewById(R.id.trip_date)).thenReturn(viewHolder.tripDate);
         PowerMockito.doNothing().when(view).setTag(viewHolder);
 
+        MockitoAnnotations.initMocks(this);
         adapter = new FutureAdapter(activity, futureTrips);
 
 
@@ -92,15 +88,20 @@ public class FutureAdapterTest {
 
     @Test
     public void getCount() {
-
+        int expected= 0;
+        PowerMockito.when(futureTrips.size()).thenReturn(0);
+        assertEquals(expected, adapter.getCount());
     }
 
     @Test
     public void getItem() {
+        assertNull(adapter.getItem(0));
     }
 
     @Test
     public void getItemId() {
+        int expected = 0;
+        assertEquals(expected, adapter.getItemId(0));
     }
 
     @Test
@@ -120,6 +121,8 @@ public class FutureAdapterTest {
         FutureAdapter adapter;
         adapter = Mockito.spy(new FutureAdapter(activity, futureTrips));
         Mockito.doNothing().when(adapter).fillImage(viewHolder, position);
+
+        viewHolder.tripRank = PowerMockito.mock(ImageView.class);
         Mockito.doNothing().when(viewHolder.tripRank).setImageResource(R.mipmap.ic_rank_1);
         Mockito.doNothing().when(viewHolder.tripRank).setImageResource(R.mipmap.ic_rank_2);
         Mockito.doNothing().when(viewHolder.tripRank).setImageResource(R.mipmap.ic_rank_3);
@@ -137,7 +140,7 @@ public class FutureAdapterTest {
     }
 
     /**
-     * fillTypeImage involves UI setting. 
+     * fillTypeImage involves UI setting.
      */
     @Test
     public void fillTypeImage() {

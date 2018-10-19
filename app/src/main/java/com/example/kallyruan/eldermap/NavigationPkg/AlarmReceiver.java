@@ -17,9 +17,7 @@ import com.example.kallyruan.eldermap.R;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 
-/**
- * Created by Jaison on 17/06/17.
- */
+
 
 public class AlarmReceiver extends BroadcastReceiver {
 
@@ -51,6 +49,11 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         User.updateComingTripID();
 
+        setUpNotificationContent(context, pendingIntent);
+
+
+    }
+    private void setUpNotificationContent(Context context, PendingIntent pendingIntent){
         //set up the notification content
         Notification.Builder builder = new Notification.Builder(context);
         builder.setTicker("You have a scheduled trip with ElderMap")
@@ -65,8 +68,6 @@ public class AlarmReceiver extends BroadcastReceiver {
         myNotication = builder.getNotification();
         manager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
         manager.notify(11, myNotication);
-
-
     }
 }
 

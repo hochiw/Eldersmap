@@ -67,12 +67,6 @@ public class LandmarkListAdapterTest {
         group = PowerMock.createMock(ArrayList.class);  // Mock an arraylist ?
         adapter = new LandmarkListAdapter(mActivity, group);
         place = PowerMock.createMock(Landmark.class);
-//
-//        PowerMockito.when(group.get(position)).thenReturn(place);
-//        Mockito.when(place.getRating()).thenReturn(0.0f);
-
-
-
 
     }
     @Test
@@ -91,8 +85,7 @@ public class LandmarkListAdapterTest {
         assertEquals(0,adapter.getItemId(0));
     }
 
-    // TODO: Not sure if it is feasible to write test when we need to extract data from a private
-    // variable.
+    // getView is mostly about setting ui, which calls fillImage.
     @Test
     public void getViewWithNullView() throws Exception {
         // Since the assignment is acted on a private value, not able to test the assignment.
@@ -100,38 +93,20 @@ public class LandmarkListAdapterTest {
         final View createdView = Mockito.mock(View.class);
 
         PowerMockito.whenNew(View.class).withAnyArguments().thenReturn(createdView);
-        //PowerMock.expectNew(View.class).andReturn(createdView);
 
-
-
-//        PowerMockito.when(place.getName()).thenReturn("HelloWorld");
-//        place.getName();
-//        PowerMock.replay(place);
 
 
         Mockito.when(mActivity.getLayoutInflater()).thenReturn(inflater);
         Mockito.when(inflater.inflate(R.layout.landmark_list_row,null)).
                 thenReturn(createdView);
 
-//        Mockito.when(adapter.getView(position, null,viewGroup)).thenReturn(createdView);
-
         PowerMockito.when(createdView.findViewById(R.id.locationName)).thenReturn(name);
 
-//        Mockito.verify(createdView.findViewById(R.id.locationName));
-//        Mockito.verify(createdView.findViewById(R.id.reviewMark));
-//        Mockito.verify(createdView.findViewById(R.id.cost));
-//        Mockito.verify(createdView.findViewById(R.id.distance));
-        // Test if the method is called.
-        //Mockito.verify(adapter).getView(position, null, viewGroup);
+
     }
 
     @Test
     public void getViewWithView(){
 
-    }
-
-    @Test
-    public void calcuateDistance() {   // TODO: Calculate Distance is no more supported.
-        //assertEquals(0,adapter.calcuateDistance(destination));
     }
 }

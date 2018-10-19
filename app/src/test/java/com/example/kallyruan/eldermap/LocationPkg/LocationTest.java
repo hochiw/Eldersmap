@@ -14,6 +14,7 @@ public class LocationTest {
     Location testLoc ;
     double inputNum = 0.0;
     double expected = 100.0;
+    private int type=0;
 
     @Before
     public void setup(){
@@ -21,7 +22,6 @@ public class LocationTest {
 
     }
 
-    // Todo: Later need to finish those simple unit tests.
     @Test
     public void setLatitude() {
         testLoc.setLatitude(100.0);
@@ -46,5 +46,19 @@ public class LocationTest {
     @Test
     public void getInstance() {
         assertThat(testLoc.getInstance(0.0, 0.0), isA(Location.class));
+    }
+    @Test
+    public void setAltitude(){
+        testLoc.setAltitude(100.0);
+        assertEquals(expected, testLoc.getAltitude(), 1.0);
+    }
+    @Test
+    public void getAltitude(){
+        testLoc.setAltitude(100.0);
+        assertEquals(expected, testLoc.getAltitude(), 1.0);
+    }
+    @Test
+    public void getType(){
+        assertEquals(0, testLoc.getType());
     }
 }

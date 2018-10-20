@@ -3,6 +3,8 @@ package com.example.kallyruan.eldermap.LocationPkg;
 import android.support.annotation.NonNull;
 
 public class ScheduledTrip extends Trip implements Comparable<ScheduledTrip>{
+
+    // Initialize the variables
     private int targetHour;
     private int targetMinute;
 
@@ -33,13 +35,24 @@ public class ScheduledTrip extends Trip implements Comparable<ScheduledTrip>{
         return new ScheduledTrip(id, day,month, year, hour, minute,address, name);
     }
 
+    /**
+     *
+     * @return Formatted date
+     */
     @Override
     public String getDate() {
        return  String.format("%s %2d:%2d", super.getDate(), targetHour, targetMinute);
     }
 
+
+    /**
+     * Comparator for the scheduled trip
+     * @param o
+     * @return
+     */
     @Override
     public int compareTo(@NonNull ScheduledTrip o) {
+        // Compare the scheduled trips
         if(this.getTargetYear()> o.getTargetYear()){
             return 1;
         }else if(this.getTargetYear() == o.getTargetYear() &&

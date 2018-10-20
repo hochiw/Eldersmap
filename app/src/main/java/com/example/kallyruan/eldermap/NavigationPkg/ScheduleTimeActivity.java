@@ -3,7 +3,6 @@ package com.example.kallyruan.eldermap.NavigationPkg;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.CalendarView;
 import android.widget.TimePicker;
@@ -26,10 +25,13 @@ public class ScheduleTimeActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //by default, start the activity with date selection page
-        setDateView();
+        createDateView();
     }
 
-    private void setDateView() {
+    /**
+     * instantiates the view for the Scheduled trip
+     */
+    private void createDateView() {
         setContentView(R.layout.navigation_schedule_date);
         CalendarView calendarView = findViewById(R.id.calendarView);
         //get target day from UI intersection
@@ -44,7 +46,10 @@ public class ScheduleTimeActivity extends AppCompatActivity{
         });
     }
 
-
+    /**
+     * Handles the selection of a time for the scheduled trip from UI
+     * @param view
+     */
     public void toSelectTime(View view){
         setContentView(R.layout.navigation_schedule_time);
         TimePicker timePicker = findViewById(R.id.timePicker);
@@ -57,24 +62,32 @@ public class ScheduleTimeActivity extends AppCompatActivity{
         });
     }
 
-
+    /**
+     * Button that allows the user to go back to the date selection from the time selection
+     * @param view
+     */
     public void backToDate(View view){
-        setDateView();
+        createDateView();
     }
 
-
+    /**
+     * Button that cancels the scheduling
+     * @param view
+     */
     public void cancelSchedule(View view){
         Intent i = new Intent(this, LandmarkListActivity.class);
         startActivity(i);
     }
 
-    //this function is to add a schedule reminder to NotificationScheduler class
+    /**
+     * this function is to add a schedule reminder to NotificationScheduler class
+     * @param view
+     */
     public void setSchedule(View view){
         int tripID = DBQuery.createPlanID();
         // check whether can add this chosen trip as future trip
         Boolean result = NotificationScheduler.setReminder(this, AlarmReceiver.class, targetYear,targetMonth,
                 targetDay,targetHour, targetMinute,tripID);
-        Log.d("test","check add schedule result");
 
         //if successfully added the reminder, add this trip to user database
         if(result){

@@ -2,13 +2,14 @@ package com.example.kallyruan.eldermap.ProfilePkg;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-
 import com.example.kallyruan.eldermap.R;
-
 import java.util.Objects;
 
+/**
+ * ChangeWalkActivity class is to get the User preference on walking distance preference and save/
+ * update the change to Database
+ */
 public class ChangeWalkActivity extends BaseActivity {
     public static final int FIVEMINUTES = 5;
     public static final int TENMINUTES = 10;
@@ -36,7 +37,9 @@ public class ChangeWalkActivity extends BaseActivity {
      * @param view
      */
     public void recordWalkingPreference(View view) {
+        //get the calling activity
         callingActivity = Objects.requireNonNull(this.getCallingActivity()).getClassName();
+        //set walking preference based on user click on UI
         switch (view.getId()) {
             case R.id.walking_uncomfortable:
                 setContentView(R.layout.profile_survey_walk_assistance);
@@ -69,7 +72,6 @@ public class ChangeWalkActivity extends BaseActivity {
      */
     public void checkCallingActivity(int walkingPreference){
         if(walkingPreference != INVALID){
-            Log.d("test walking: ", Integer.toString(walkingPreference));
             User.notifyWalkingChange(this,walkingPreference);
             if(callingActivity.equals(SURVEYACTIVITY)){
                 //re-direct to survey - data collection page
@@ -90,6 +92,7 @@ public class ChangeWalkActivity extends BaseActivity {
      */
     public void recordDisabilityPreference(View view){
         int walkingPreference = INVALID;
+        //set walking ability preference based on user click on UI
         switch (view.getId()) {
             case R.id.walking_wheelchair:
                 walkingPreference = DOUBLETIME;

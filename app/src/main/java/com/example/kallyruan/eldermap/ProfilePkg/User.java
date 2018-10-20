@@ -1,24 +1,20 @@
 package com.example.kallyruan.eldermap.ProfilePkg;
 
 import android.content.Context;
-import android.provider.Settings;
-import android.util.Log;
 import android.widget.Toast;
-
 import com.example.kallyruan.eldermap.DBQuery;
 import com.example.kallyruan.eldermap.LocationPkg.FinishedTrip;
 import com.example.kallyruan.eldermap.LocationPkg.ScheduledTrip;
 import com.example.kallyruan.eldermap.MainActivity;
 import com.example.kallyruan.eldermap.NavigationPkg.AlarmReceiver;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * User class to to handle all changes on user preference, scheduled Trip list and history trip list
+ */
 public class User {
     public static int USER = 0;
-    public static int ADMIN = 1;
-    public final static int INVALID = -1;
-
     private static ArrayList<ScheduledTrip> scheduledTripList = new ArrayList<>();
     private static ArrayList<FinishedTrip> historyTripList = new ArrayList<>();
 
@@ -26,24 +22,30 @@ public class User {
     private static int textSize;
     private static int walking;
     private static boolean dataPermission;
-    private static String userID = null;//null is invalid UserID
+    private static String userID = null;//null is the default UserID
 
     public static ArrayList<ScheduledTrip> getScheduledTripList() {
         return scheduledTripList;
     }
 
+    /**
+     * this method is to get device android id
+     * @return userID as String
+     */
     public static String getUserID(){
         if (userID==null){
-            // here get MEID id here by somehow
-
-            userID = MainActivity.ANDROID_ID; //here 1 just for demo
-
+            // get device android id
+            userID = MainActivity.ANDROID_ID;
             return userID;
         }else{
             return userID;
         }
     }
 
+    /**
+     * this method is to retrieve all user data from database
+     * @return retrieve result as boolean
+     */
     public static boolean retrieveUserData(){
         textSize = DBQuery.retrieveTextSize();
         walking = DBQuery.retrieveWalking();
@@ -54,10 +56,10 @@ public class User {
     }
 
 
-
     /**
      * this method is to update the latest textsize based on user option
-     * @param textSizePreference
+     * @param context App context
+     * @param textSizePreference user text size option
      */
     public static void notifytextSizeChange(Context context, int textSizePreference){
         boolean result = DBQuery.updateTextsize(textSizePreference);
@@ -71,8 +73,9 @@ public class User {
         }
     }
 
-    /** this method is to update user preference to database
-     * @param permissionPreference
+    /** this method is to update user data permission preference to database
+     * @param context App context
+     * @param permissionPreference user permission option
      */
     public static void notifyPermissionChange(Context context,boolean permissionPreference) {
         boolean result = DBQuery.updatePermission(permissionPreference);
@@ -87,7 +90,8 @@ public class User {
     }
 
     /** this method is to update user walking preference to database
-     * @param walking
+     * @param context App context
+     * @param walking user walking distance option
      */
     public static void notifyWalkingChange(Context context,int walking) {
         boolean result = DBQuery.updateWalking(walking);
@@ -104,7 +108,8 @@ public class User {
 
     /**
      * this method is to add a ScheduledTrip to the scheduledTripList ArrayList and database
-     * @param trip
+     * @param context App context
+     * @param trip a scheduled trip to be saved into database
      */
     public static void addScheduledTrip(Context context, ScheduledTrip trip){
         boolean result = DBQuery.addUserPlan(trip);
@@ -125,7 +130,8 @@ public class User {
 
     /**
      * this method is to delete a planned future trip plan from user database
-     * @param tripID
+     * @param context App context
+     * @param tripID tripID used to delete this trip from user database
      */
     public static void deleteScheduledTrip(Context context,int tripID,int index){
         boolean nextID = false;
@@ -142,7 +148,6 @@ public class User {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
 
         //if the removed one is in the past or not the next coming trip, it will not affect, so just
         //remove it
@@ -175,21 +180,18 @@ public class User {
     }
 
 
-    public static ArrayList<ScheduledTrip> getUserPlan(){
-
-        return scheduledTripList;
-    }
-
-    public static ArrayList<FinishedTrip> getUserHistory(){
-
-        return historyTripList;
-    }
-
-
-    public static void updateHistoryReview(Context context, int tripID, int tripIndex,float destinationMark, float  navigationMark) {
+    /**
+     * this method is to update the ratings of a specific history trip of a user
+     * @param context App context
+     * @param tripID the history trip id to be updated
+     * @param tripIndex the index of this history trip in the sorted list
+     * @param destinationMark the new destination rating
+     * @param navigationMark the new navigation rating
+     */
+    public static void updateHistoryReview(Context context, int tripID, int tripIndex,
+                                                    float destinationMark, float  navigationMark) {
         //if successfully delete from DB
         if(DBQuery.updateHistoryReview(tripID,destinationMark, navigationMark)){
-
             historyTripList.remove(tripIndex);
         }else{
             Toast.makeText(context,"Failed to update history review to Database, please try again."
@@ -202,26 +204,26 @@ public class User {
      * Need to check whether the change brought a more closing trip for notification or deleted the
      * coming trip for notification
      */
-
-    //assume for addition, after sort
     public static void checkAddComingTripID(int tripID){
-        //if not scheduled plan before, then this would be the first reminder
+        //if has no scheduled plan before, then this would be the first reminder
         if(scheduledTripList.size()==1){
             AlarmReceiver.setComingTripID(tripID);
         }else{
             //get next coming trip index
             int lastID = AlarmReceiver.getComingTripID();
-            Log.d("test before add: ",Integer.toString(lastID));
             int currentIndex = -1;
             int addedIndex= -1;
-            //get the index of these two in the list
+            //go through all the trip plans in the list
             for(int i = 0; i < scheduledTripList.size();i++){
+                // get the index of the next reminding trip in the whole scheduled plan list
                 if (scheduledTripList.get(i).getTripID() == lastID){
                     currentIndex = i;
                 }
+                // get the index of the new added reminding trip in the whole scheduled plan list
                 if(scheduledTripList.get(i).getTripID() == tripID){
                     addedIndex = i;
                 }
+                //if both next reminding trip and new added trip is valid
                 if(currentIndex !=-1 && addedIndex != -1){
                     break;
                 }
@@ -231,9 +233,6 @@ public class User {
             if(addedIndex<currentIndex){
                 AlarmReceiver.setComingTripID(tripID);
             }
-
-            int test = AlarmReceiver.getComingTripID();
-            Log.d("test after add: ",Integer.toString(test));
         }
 
 
@@ -245,20 +244,22 @@ public class User {
      * hence need to find the next trip for reminding
      */
     public static void updateComingTripID(){
+        //get the next coming reminding id
         int lastID = AlarmReceiver.getComingTripID();
-        Log.d("test initally: ",Integer.toString(lastID));
-        int i;
+        int i; //index tracking in the list
+        // go through all the trip plans in the list, get the index of the next reminding trip in
+        // the whole scheduled plan list
         for(i = 0; i < scheduledTripList.size();i++){
             if (scheduledTripList.get(i).getTripID() == lastID){
                 break;
             }
         }
         i+=1;
-        Log.d("test next not index is ",Integer.toString(i));
+
+        //update the next coming reminding tripID
         try{
             int nextID = scheduledTripList.get(i).getTripID();
             AlarmReceiver.setComingTripID(nextID);
-            Log.d("!test: next coming is: ",Integer.toString(nextID));
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -268,5 +269,15 @@ public class User {
 
     public static int getTextSize() {
         return textSize;
+    }
+
+    public static ArrayList<ScheduledTrip> getUserPlan(){
+
+        return scheduledTripList;
+    }
+
+    public static ArrayList<FinishedTrip> getUserHistory(){
+
+        return historyTripList;
     }
 }

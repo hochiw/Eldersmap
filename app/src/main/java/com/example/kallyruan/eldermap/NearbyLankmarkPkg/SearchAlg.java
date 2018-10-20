@@ -1,7 +1,5 @@
 package com.example.kallyruan.eldermap.NearbyLankmarkPkg;
 
-import android.util.Log;
-
 import com.example.kallyruan.eldermap.LocationPkg.Location;
 import com.example.kallyruan.eldermap.NavigationPkg.CoorDist;
 
@@ -12,16 +10,27 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Collections;
 
-/**
- * Created by Kah Chun on 01/09/2018.
- */
-
 public class SearchAlg {
+    public final static int FIVEMINUTES = 5;
+    public final static int TENMINUTES = 10;
+    public final static int FIFTEENMINUTES = 15;
+    public final static int TWENTYMINUTES = 20;
+    public final static int THIRTYMINUTES = 30;
 
-    //Takes a string returned from the API server
+    /**
+     * Takes a string returned from the API server nad returns the top 5 recommended landmarks
+     * @param inList list of landmarks returned from the API server
+     * @param userLoc user's currect location
+     * @return
+     * @throws JSONException
+     * @throws NullPointerException
+     */
     public ArrayList<Landmark> filterList(JSONObject inList, Location userLoc) throws JSONException, NullPointerException {
-        ArrayList<Landmark> returnList = new ArrayList<Landmark>();
+        ArrayList<Landmark> returnList = new ArrayList();
         JSONArray array = new JSONArray(inList.get("results").toString());
+
+        //iterates through the list of landmarks and converts them into a location object
+        //then place into arraylist
         for (int i = 0; i < array.length(); i++){
             JSONObject currentObj = array.getJSONObject(i);
 
@@ -29,12 +38,8 @@ public class SearchAlg {
 
             double distance = CoorDist.getDist(userLoc.getLatitude(),userLoc.getLongitude(),currentLoc.getLatitude(),currentLoc.getLongitude());
 
-
-
             // Need to do a null pointer check before going on.
             Landmark curLandmark;
-
-
             try {
                 curLandmark = new Landmark((String)currentObj.get("name"),
                         (String)currentObj.get("address"), ((Number)currentObj.get("rating")).floatValue(), currentLoc, estWalkTime(distance));
@@ -46,10 +51,12 @@ public class SearchAlg {
 
             returnList.add(curLandmark);
         }
+
+        //Sort the list
         Collections.sort(returnList, new Sortbyrating());
 
+        //Only return the top 5 of the list
         int k = returnList.size();
-
         if (k > 5) {
             returnList.subList(5,k).clear();
         }
@@ -58,17 +65,22 @@ public class SearchAlg {
 
     }
 
+    /**
+     * Converts distance to an estimated time of travel
+     * @param walkDist Distance from user to landmark in meters
+     * @return
+     */
     public int estWalkTime(double walkDist) {
         if (0 < walkDist && walkDist <= 250) {
-            return 5;
+            return FIVEMINUTES;
         } else if (250 < walkDist && walkDist <= 500) {
-            return 10;
+            return TENMINUTES;
         } else if (500 < walkDist && walkDist <= 750) {
-            return 15;
+            return FIFTEENMINUTES;
         } else if (750 < walkDist && walkDist <= 1000) {
-            return 20;
+            return TWENTYMINUTES;
         } else {
-            return 30;
+            return THIRTYMINUTES;
         }
     }
 

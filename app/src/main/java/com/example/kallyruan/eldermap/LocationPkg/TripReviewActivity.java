@@ -21,17 +21,13 @@ public class TripReviewActivity extends AppCompatActivity {
     final float NORATE = -1;
     final static int INVALID = -999;
     final String HISTORY = "com.example.kallyruan.eldermap.LocationPkg.HistoryActivity";
+
+    // Default values
     private static int tripID = INVALID;
     private static int tripIndex = INVALID;
     private static boolean update = false;
-    //default mark is -1, which indicates no rate from user
     private float destinationMark = NORATE;
     private float navigationMark = NORATE;
-
-
-    public static boolean isUpdate() {
-        return update;
-    }
 
     public static void setUpdate(boolean update) {
         TripReviewActivity.update = update;
@@ -45,10 +41,6 @@ public class TripReviewActivity extends AppCompatActivity {
         TripReviewActivity.tripID = tripID;
     }
 
-    public static int getTripIndex() {
-        return tripIndex;
-    }
-
     public static void setTripIndex(int tripIndex) {
         TripReviewActivity.tripIndex = tripIndex;
     }
@@ -58,12 +50,14 @@ public class TripReviewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_review);
-        recordReviewMark();
+        recordReviewRating();
     }
 
-    private void recordReviewMark() {
-        //get destination mark
-        final RatingBar destinationRating = (RatingBar) findViewById(R.id.destination_rating);
+    private void recordReviewRating() {
+        // get destination rating
+        final RatingBar destinationRating = findViewById(R.id.destination_rating);
+
+        // assign the destination rating to the variable
         destinationRating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
@@ -71,8 +65,10 @@ public class TripReviewActivity extends AppCompatActivity {
             }
         });
 
-        //get navigation mark
+        //get navigation rating
         final RatingBar navigationRating = (RatingBar) findViewById(R.id.navigation_rating);
+
+        // assign the navigation rating to the variable
         navigationRating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
@@ -81,13 +77,21 @@ public class TripReviewActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Save the default rating if user refuses to review
+     * @param view
+     */
     public void backToMenu(View view){
-        //if user refuse to review, just save default rating
         updateReviewToDB(view);
-
+        // Start the next activity
         checkCallingActivity();
     }
 
+
+    /**
+     * Save the review to the database
+     * @param view
+     */
     public void updateReviewToDB(View view){
         //check whether this trip exists in database
         if(update && DBQuery.checkHistoryTripExists(tripID)){
@@ -105,16 +109,20 @@ public class TripReviewActivity extends AppCompatActivity {
             int year = Integer.parseInt(time.substring(0,4));
             int month = Integer.parseInt(time.substring(4,6));
             int day = Integer.parseInt(time.substring(6,8));
-            Log.d("time: ", time);
+
             //save the whole trip to user history
             FinishedTrip trip = new FinishedTrip(DBQuery.createHistoryID(),day, month,year,LandmarkListActivity.getDestination(),
                     LandmarkListActivity.getDestinationName(), destinationMark,navigationMark);
             User.addUserHistory(this,trip);
         }
 
+        // Start the next activity
         checkCallingActivity();
     }
 
+    /**
+     * Start the next activity
+     */
     private void checkCallingActivity() {
         //check calling activity
         if(this.getCallingActivity().getClassName().equals(HISTORY)){

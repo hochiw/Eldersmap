@@ -1,13 +1,14 @@
 package com.example.kallyruan.eldermap.ProfilePkg;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-
 import com.example.kallyruan.eldermap.R;
 
+/**
+ * ChangeSizeActivity class is to get the User preference on text size preference and save/
+ * update the change to Database
+ */
 public class ChangeSizeActivity extends BaseActivity {
     final static String SURVEYACTIVITY = "com.example.kallyruan.eldermap.ProfilePkg.SignupActivity";
 
@@ -25,7 +26,7 @@ public class ChangeSizeActivity extends BaseActivity {
      */
     public void recordSizePreference(View view){
         int textSizePreference = BaseActivity.INVALID;
-        //set textsize style based on user click
+        //set text size based on user click on UI
         switch (view.getId()) {
             case R.id.text_small:
                 textSizePreference = BaseActivity.SMALL;
@@ -41,14 +42,18 @@ public class ChangeSizeActivity extends BaseActivity {
                 break;
         }
 
+        //check its calling activity and redirect back to responding activity
         checkCallingActivity(textSizePreference);
 
     }
 
+    /**
+     * this method is to check calling activity and redirect back to responding activity
+     * @param textSizePreference
+     */
     public void checkCallingActivity(int textSizePreference) {
         //check whether buttons get clicked and what the calling activity is
         if(textSizePreference != BaseActivity.INVALID){
-            Log.d("test size: ", Integer.toString(textSizePreference));
             User.notifytextSizeChange(this,textSizePreference);
             if(this.getCallingActivity().getClassName().equals(SURVEYACTIVITY)){
                 //re-direct to survey - walking length page

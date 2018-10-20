@@ -11,10 +11,8 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,66 +21,38 @@ import android.widget.TextView;
 import com.example.kallyruan.eldermap.GPSServicePkg.GPS;
 import com.example.kallyruan.eldermap.LocationPkg.Location;
 import com.example.kallyruan.eldermap.LocationPkg.TripReviewActivity;
-import com.example.kallyruan.eldermap.NearbyLankmarkPkg.LandmarkListActivity;
 import com.example.kallyruan.eldermap.P2PPkg.ChatActivity;
 import com.example.kallyruan.eldermap.R;
 
-import org.json.JSONException;
-
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.ExecutionException;
 
 public class DisplayActivity extends AppCompatActivity {
-    TextView sign;
-    TextView distance;
-    ImageView graph;
-
-
+    private TextView sign;
+    private TextView distance;
+    private ImageView graph;
     //variable for display instruction
-    NavigationChecker checker;
-    ArrayList<Position> poList = new ArrayList<>();
-
+    private NavigationChecker checker;
+    private ArrayList<Position> poList = new ArrayList<>();
     // connection used for navigation checker, binds gps
-    private boolean firstUpdate = true;
     private Location currentLocation;
-    private static Location destination; // the target destination
     private LocationReceiver receiver;
     private SensorManager mSensorManager;
-    private float currentAngle;
     private SensorListener sensorListener;
-    private float arrowAngle = 0f;
     private IntentFilter intentFilter;
+    private float currentAngle;
+    private float arrowAngle = 0f;
+    private boolean firstUpdate = true;
 
-
-
-//    // sample index for tracking demo display
-////    private static int displayIndex = 0;
-////
-////    // sample list of instruction steps for demo displaying
-////    public final ArrayList<SingleStepNavigation> getInformation() {
-////        SingleStepNavigation sample1 = new SingleStepNavigation("Turn", "Left", "walk", 2, "min");
-////        SingleStepNavigation sample2 = new SingleStepNavigation("Continue", "Forward", "walk", 5, "min");
-////        SingleStepNavigation sample3 = new SingleStepNavigation("Turn", "Right", "walk", 1, "min");
-////        SingleStepNavigation sample4 = new SingleStepNavigation("Continue", "Backward", "walk", 5, "min");
-////
-////        ArrayList<SingleStepNavigation> sampleList = new ArrayList<>();
-////        sampleList.add(sample1);
-////        sampleList.add(sample2);
-////        sampleList.add(sample3);
-////        sampleList.add(sample4);
-////        return sampleList;
-////    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_display);
-        //setInformation(displayIndex);//for demo purpose
 
+        // distance display box
         distance = findViewById(R.id.distance);
-        //A button listener for Help button, once clicked, re-direct to chat page
+
+        //A button listener for help button which redirects the user to chat page when clicked
         Button helpButton = findViewById(R.id.helpButton);
         helpButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +62,8 @@ public class DisplayActivity extends AppCompatActivity {
             }
         });
 
+        // A button listener for the end trip button which redirects the user to the reivew page
+        // when clicked
         Button endTrip = findViewById(R.id.end_navigation);
         endTrip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,14 +93,17 @@ public class DisplayActivity extends AppCompatActivity {
                 SensorManager.SENSOR_DELAY_GAME);
 
 
-        graph = (ImageView) findViewById(R.id.directionIcon);
-
+        // Initialize the direction arrow
+        graph = findViewById(R.id.directionIcon);
         graph.setImageResource(R.mipmap.ic_arrow_up);
 
 
 
     }
 
+    /**
+     * Disconnects the receiver the sensor when the activity is stopped
+     */
     @Override
     protected void onStop() {
         super.onStop();
@@ -137,6 +112,9 @@ public class DisplayActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Connects the receiver the sensor when the activity is resumed
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -146,17 +124,22 @@ public class DisplayActivity extends AppCompatActivity {
                 SensorManager.SENSOR_DELAY_GAME);
     }
 
+
+    // Custom broadcast receiver
     private class LocationReceiver extends BroadcastReceiver {
 
+        /**
+         * Calls when the reciever receives an intent from the gps service
+         * @param context Application context
+         * @param intent Received Intent
+         */
         @Override
-        // Where a new location is received
         public void onReceive(Context context, Intent intent) {
 
             // Replace the location attributes with the new ones
             currentLocation.setLatitude(intent.getDoubleExtra("Latitude",0.0));
             currentLocation.setLongitude(intent.getDoubleExtra("Longitude",0.0));
             currentLocation.setAltitude(intent.getDoubleExtra("Altitude",0.0));
-
 
             // Wait until the GPS is warmed up before displaying the list
             if (firstUpdate) {
@@ -172,12 +155,11 @@ public class DisplayActivity extends AppCompatActivity {
                 firstUpdate = false;
             }
 
-            // Update Arrow
-
+            // Check the current user location and update the arrow
             if (checker != null) {
                 refreshList(checker.getPositions());
                 checker.setUserLoc(currentLocation);
-                checker.getUserLoc();
+                checker.checkpointDetection();
                 if (poList.size() != 0) {
                     setInformation(poList.get(0));
                 } else {
@@ -187,17 +169,19 @@ public class DisplayActivity extends AppCompatActivity {
                 distance.setText(String.format("%.2fm",checker.getDistance()));
             }
         }
-    };
+    }
 
+    // Custom listener for the geomagnetic field sensor
     private class SensorListener implements SensorEventListener {
 
         @Override
         public void onSensorChanged(SensorEvent sensorEvent) {
             if (checker != null) {
 
-                double bearing = checker.getAngle();
+                // Algorithm to calculate the direction the arrow should be pointing to
+                double bearing = checker.calculateAngle();
 
-                GeomagneticField geoField = checker.getGeoField();
+                GeomagneticField geoField = checker.calcGeofield();
 
                 currentAngle = Math.round(sensorEvent.values[0]);
 
@@ -213,6 +197,7 @@ public class DisplayActivity extends AppCompatActivity {
                     direction += 360;
                 }
 
+                // Animation for the arrow
                 RotateAnimation ra = new RotateAnimation(
                         arrowAngle,
                         direction,
@@ -224,8 +209,10 @@ public class DisplayActivity extends AppCompatActivity {
 
                 ra.setFillAfter(true);
 
+                // Start the animation
                 graph.startAnimation(ra);
 
+                // Smoothening the animation
                 arrowAngle = direction;
             }
 

@@ -1,47 +1,29 @@
 package com.example.kallyruan.eldermap.NearbyLankmarkPkg;
 
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.ServiceConnection;
 import android.graphics.Typeface;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.IBinder;
-import android.support.v4.content.LocalBroadcastManager;
-import android.text.Layout;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.kallyruan.eldermap.GPSServicePkg.GPS;;
+import com.example.kallyruan.eldermap.GPSServicePkg.GPS;
 import com.example.kallyruan.eldermap.LocationPkg.Location;
-import com.example.kallyruan.eldermap.LocationPkg.ScheduledTrip;
-import com.example.kallyruan.eldermap.NavigationPkg.AlarmReceiver;
 import com.example.kallyruan.eldermap.NavigationPkg.DisplayActivity;
-import com.example.kallyruan.eldermap.NavigationPkg.NotificationScheduler;
 import com.example.kallyruan.eldermap.NavigationPkg.ScheduleTimeActivity;
 import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
-
 import com.example.kallyruan.eldermap.ProfilePkg.BaseActivity;
 import com.example.kallyruan.eldermap.R;
 
@@ -51,29 +33,23 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-public class LandmarkListActivity extends BaseActivity {
-    //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
-    ArrayAdapter<Integer> adapter_id;
-    NotificationManager manager;
-    Notification myNotication;
-    private boolean serviceAlive = false;
-    public static String category; // show the list of nearby landmarks info
-    ArrayList<Landmark> list = new ArrayList<>(); // returned list of landmarks
-    ArrayList<Landmark> similarlist = new ArrayList<>(); // returned list of similar landmarks based on history
-    LandmarkListAdapter adapter;
-    ListView landmarkList;
-    LinearLayout recommendation;
-    RelativeLayout loading;
-    Landmark place = null;
 
-    private int action_index;
+public class LandmarkListActivity extends BaseActivity {
+    public static String category; // show the list of nearby landmarks info
+
+    private ArrayList<Landmark> list = new ArrayList<>(); // returned list of landmarks
+    private LandmarkListAdapter adapter; // Adapter for the landmark list
+    private ListView landmarkList;
+    private LinearLayout recommendation;
+    private RelativeLayout loading;
+    private Landmark place = null;
     private SearchAlg searchAlg = new SearchAlg();
-    private boolean firstUpdate = true;
-    private Location currentLocation;
-    private LocationReceiver receiver;
+    private Location currentLocation; // Current user location
+    private LocationReceiver receiver; // Location receiver
+    private boolean firstUpdate = true; // Check if it's the first update
+
     private static Location destination; // the target destination
-    private static String destinationName;
-    private Activity mActivity;
+    private static String destinationName; // the name of the destination
     public static String getDestinationName() {
         return destinationName;
     }
@@ -89,9 +65,9 @@ public class LandmarkListActivity extends BaseActivity {
         title.setTypeface(typeface);
 
         //get all views
-        landmarkList = (ListView) findViewById(R.id.landmark_list);
+        landmarkList = findViewById(R.id.landmark_list);
         recommendation = findViewById(R.id.landmark_recommendation);
-        loading = (RelativeLayout) findViewById(R.id.loadingPanel);
+        loading = findViewById(R.id.loadingPanel);
         landmarkList.setVisibility(View.INVISIBLE);
 
         // Initiate currentLocation variable
@@ -125,13 +101,16 @@ public class LandmarkListActivity extends BaseActivity {
         checkButtonClick();
     }
 
+    /**
+     * Unregister the location receiver when the activity is destroyed
+     */
     @Override
-
     public void onDestroy() {
         super.onDestroy();
         unregisterReceiver(receiver);
     }
 
+    // Custom broadcast receiver for the gps service
     private class LocationReceiver extends BroadcastReceiver {
 
         @Override
@@ -155,15 +134,14 @@ public class LandmarkListActivity extends BaseActivity {
     }
 
 
-
-    //check whether users click on a landmark
+    /**
+     * check whether users click on a landmark
+     */
     public void checkButtonClick() {
-        ListView view = (ListView) findViewById(R.id.landmark_list);
-        LinearLayout recommendation = (LinearLayout) findViewById(R.id.landmark_recommendation);
+        ListView view = findViewById(R.id.landmark_list);
+        LinearLayout recommendation = findViewById(R.id.landmark_recommendation);
 
-        if(place!= null){
-
-        }
+        // Set the destination to the corresponding location that the user has clicked
         view.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int location, long l) {
@@ -173,6 +151,7 @@ public class LandmarkListActivity extends BaseActivity {
             }
         });
 
+        // Set the destination to the recommended location that the user has clicked
         recommendation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -184,16 +163,21 @@ public class LandmarkListActivity extends BaseActivity {
 
     }
 
-    //check whether users want to depart now or not
+    /**
+     * Confirmation box to check whether the user wants to start the nagivation or not
+     */
     public void navigationToast() {
         AlertDialog dialog = new AlertDialog.Builder(this).setTitle("Do you want to depart now?")
                 .setIcon(R.mipmap.ic_launcher_app)
+                // Option to start the navigation
                 .setPositiveButton("Start now", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // do confirmed change nickname action
                         switchToNavigation();
                     }})
+
+                // Option to make a schedule
                 .setNeutralButton("Make a schedule", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -201,18 +185,30 @@ public class LandmarkListActivity extends BaseActivity {
                         switchToSchedule();
                     }
                 })
+
+                //Option to dismiss the box
                 .setNegativeButton("No, thanks", null)
                 .create();
+
+        // Show the confirmation box
         dialog.show();
     }
 
+    /**
+     * Start the nagivation
+     */
     public void switchToNavigation(){
         Intent i = new Intent(this, DisplayActivity.class);
+
+        // Put the information into the intent and start the activity
         i.putExtra("destLatitude",destination.getLatitude());
         i.putExtra("destLongitude",destination.getLongitude());
         startActivityForResult(i, 1);
     }
 
+    /**
+     * Move to the schedule creator
+     */
     public void switchToSchedule(){
         Intent i = new Intent(this, ScheduleTimeActivity.class);
         startActivityForResult(i, 1);
@@ -222,24 +218,25 @@ public class LandmarkListActivity extends BaseActivity {
      * Shows the list of nearby landmarks
      */
     public void showLandmarkList(String targetLoc) throws  JSONException, ExecutionException, InterruptedException {
-        ListView listView = (ListView) findViewById(R.id.landmark_list);
+        ListView listView = findViewById(R.id.landmark_list);
 
         //Data Input
         Location userLoc = currentLocation;
         JSONObject userData = JSONFactory.userDataJSONMaker(userLoc, targetLoc);
 
-        //ArrayList<Landmark> list = searchAlg.filterList(JSONFactory.parseJSON("http://eldersmapapi.herokuapp.com/api/search"));
+        // Request for the location list from the api server
         JSONObject result = new JSONObject(new HTTPPostRequest("http://eldersmapapi.herokuapp.com/api/search").execute(userData).get());
         if(result.get("status").toString().equals("OK")){
+            // Filter the list
             list = searchAlg.filterList(result, userLoc);
         }
 
-
+        // Set the adapter for the list
         adapter = new LandmarkListAdapter(this, list);
         listView.setAdapter(adapter);
 
         //check whether there exists a similar destination based on user history
-        similarDestination();
+        recommendedDestination();
 
         //if there is empty result list, show error message
         if(list.size()==0){
@@ -254,52 +251,56 @@ public class LandmarkListActivity extends BaseActivity {
         return destination;
     }
 
-    public static void setDestination(Location destination) {
-        destination = destination;
-    }
 
+    /**
+     * Set the recommended destination
+     */
+    public void recommendedDestination(){
 
-    public void similarDestination(){
-        place = similarityAlg();
+        // Get the place using the algorithm
+        place = recommendedAlg();
 
-        //here should check where is a recommendation based on our algorithm
         if(place != null){
-            Log.d("test","show recommendation");
-            TextView name = findViewById(R.id.locationName);
-            TextView mark= findViewById(R.id.reviewMark);
-            TextView distance= findViewById(R.id.distance);
-            ImageView rank= findViewById(R.id.icon_rank);
 
+            // Assign the view elements to the variables
+            TextView name = findViewById(R.id.locationName);
+            TextView mark = findViewById(R.id.reviewMark);
+            TextView distance = findViewById(R.id.distance);
+            TextView textview = findViewById(R.id.recommendation_title);
+            ImageView rank = findViewById(R.id.icon_rank);
+
+            // Set the information to the elements
             rank.setImageResource(R.mipmap.ic_rank_best);
             name.setText(place.getName());
-            mark.setText("Rating: "+Float.toString(place.getRating()));
-            distance.setText("Estimate time(min): "+Integer.toString(place.getEstTime()));
+            mark.setText("Rating: " + Float.toString(place.getRating()));
+            distance.setText("Estimate time(min): " + Integer.toString(place.getEstTime()));
 
-            TextView textview = (TextView) findViewById(R.id.recommendation_title);
-            // adjust this line to get the TextView you want to change
-
+            // Font for the recommendation
             Typeface typeface = Typeface.createFromAsset(getAssets(),"Casual.ttf"); // create a typeface from the raw ttf
-            textview.setTypeface(typeface); // apply the typeface to the textview
+            textview.setTypeface(typeface); // apply the typeface to the text view
 
-
+            // Show the recommendation after all the calculation
             recommendation.setVisibility(View.VISIBLE);
+
+            // Remove the first element from the list
             list.remove(0);
             adapter.notifyDataSetChanged();
 
-
-
         }else{
+            // If place is empty hide the recommendation field
             recommendation.setVisibility(View.INVISIBLE);
         }
 
     }
 
-    // this method implements our similarity comparision algorithm
-    public Landmark similarityAlg(){
-        //for demo purpose, assume the top location is our recommendation
+    /**
+     * Get the recommended location
+     * @return best location
+     */
+    public Landmark recommendedAlg(){
+        // Remove the first location from the list and set it as the recommended location
         try{
-            Landmark recommendation = list.remove(0);
-            return recommendation;
+            return list.remove(0);
         }catch (Exception e){
             e.printStackTrace();
         }

@@ -2,10 +2,12 @@ package com.example.kallyruan.eldermap.ProfilePkg;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.example.kallyruan.eldermap.R;
 
+/**
+ * BaseActicity class is to define the text size for all class extending from this class
+ */
 public class BaseActivity extends Activity {
     public final static int SMALL = 20;
     public final static int MEDIUM = 25;
@@ -15,21 +17,21 @@ public class BaseActivity extends Activity {
     private int textSize;
 
     /**
-     * this method is to set the display pattern with four available textsize. Each specific font
+     * this method is to set the display pattern with four available text sizes. Each specific font
      * style is defined in res/values/styles.xml
      * @param savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //get the user text size preference from User class
         textSize= User.getTextSize();
+
+        //if no text size set, use the medium size as the default size
         if (textSize == INVALID) {
             textSize = MEDIUM;
         }
-
-
-        Log.d("test textsize",Integer.toString(textSize));
-
+        //otherwise, set the text size as defined in res/values/styles.xml
         if (textSize == SMALL) {
             setTheme(R.style.Default_TextSize_Small);
         } else if (textSize == MEDIUM) {

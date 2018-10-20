@@ -1,7 +1,7 @@
 /**
  * Unit test for FinishedTrip class.
  * Methods tested are:
- * getdestinationMark() and getTripMark()
+ * getDestinationMark() and getTripMark()
  *
  * */
 package com.example.kallyruan.eldermap.LocationPkg;
@@ -35,11 +35,11 @@ public class FinishedTripTest {
     }
 
     /**
-     * Test for getdestinationMark.
+     * Test for getDestinationMark.
      */
     @Test
     public void getdestinationMark() {
-        assertEquals(destinationMark,trip.getdestinationMark(), 1.0f);
+        assertEquals(destinationMark,trip.getDestinationMark(), 1.0f);
     }
 
     /**

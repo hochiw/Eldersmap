@@ -1,35 +1,33 @@
 package com.example.kallyruan.eldermap.NavigationPkg;
 
 import android.app.AlarmManager;
-import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.media.RingtoneManager;
-import android.net.Uri;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
-import android.util.Log;
 import android.widget.Toast;
-
-import com.example.kallyruan.eldermap.R;
 
 import java.util.Calendar;
 
 import static android.content.Context.ALARM_SERVICE;
-import static android.content.Context.NOTIFICATION_SERVICE;
 
-/**
- * Created by Jaison on 20/06/17.
- */
 
 public class NotificationScheduler
 {
-    public static final String TAG="NotificationScheduler";
 
+    /**
+     * function to instatiate the scheduled trip notification
+     * @param context Application context
+     * @param cls class
+     * @param year year
+     * @param month month
+     * @param day day
+     * @param hour hour
+     * @param min minute
+     * @param tripID trip id
+     * @return
+     */
     public static boolean setReminder(Context context, Class<?> cls, int year, int month, int day,
                                       int hour, int min,int tripID)
     {
@@ -56,11 +54,11 @@ public class NotificationScheduler
                     PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
                     PackageManager.DONT_KILL_APP);
 
+            // Create new intent
             Intent intent1 = new Intent(context, cls);
             PendingIntent pendingIntent = PendingIntent.getBroadcast(context, tripID, intent1, PendingIntent.FLAG_ONE_SHOT);
 
-
-            Log.d("test plan tripID:", Integer.toString(tripID)+" at: "+Integer.toString(min));
+            // Set an alarm
             AlarmManager am = (AlarmManager) context.getSystemService(ALARM_SERVICE);
             am.setInexactRepeating(AlarmManager.RTC_WAKEUP, setcalendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
             Toast.makeText(context, "A future reminder is successfully set!", Toast.LENGTH_SHORT).show();

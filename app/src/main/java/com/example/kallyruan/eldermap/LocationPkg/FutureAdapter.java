@@ -15,11 +15,12 @@ import java.util.ArrayList;
 
 public class FutureAdapter extends BaseAdapter {
 
+    // Initialize the variables
     private Activity mActivity;
     private ArrayList<ScheduledTrip> futureTrips;
 
-
-    public FutureAdapter(Activity activity, ArrayList<ScheduledTrip> places){
+    FutureAdapter(Activity activity, ArrayList<ScheduledTrip> places){
+        // Assign the activity and the list of scheduled trips to the corresponding variables
         this.mActivity = activity;
         this.futureTrips = places;
     }
@@ -39,40 +40,9 @@ public class FutureAdapter extends BaseAdapter {
         return 0;
     }
 
-    @Override
-    public View getView(int position, View view, ViewGroup viewGroup) {
-        ViewHolder holder = null;
-        LayoutInflater inflater = mActivity.getLayoutInflater();
-
-        if(view == null){
-            holder = new ViewHolder();
-            view = inflater.inflate(R.layout.history_list_row,null);
-            holder.name = (TextView) view.findViewById(R.id.destinationName);
-            holder.date = (TextView) view.findViewById(R.id.date);
-            holder.tripType = view.findViewById(R.id.trip_type);
-            holder.tripRank = view.findViewById(R.id.trip_rank);
-            holder.tripName = (TextView) view.findViewById(R.id.trip_name);
-            holder.tripDate = (TextView) view.findViewById(R.id.trip_date);
-
-            view.setTag(holder);
-        } else {
-            holder = (ViewHolder) view.getTag();
-        }
-
-        final ScheduledTrip trip = futureTrips.get(position);
-        fillImage(holder,position);
-        fillTypeImage(holder,trip.getDestination().getType());
-        holder.tripName.setText(trip.getName());
-        holder.tripDate.setText(trip.getDate());
-        holder.tripName.setText(trip.getName());
-        holder.tripDate.setText(trip.getDate());
-
-        holder.name.setText(trip.getName());
-        holder.date.setText(trip.getDate());
-
-        return view;
-    }
-
+    /**
+     * Custom viewholder for the list
+     */
     static class ViewHolder
     {
         TextView name;
@@ -83,7 +53,60 @@ public class FutureAdapter extends BaseAdapter {
         TextView tripDate;
     }
 
-    public void fillImage(ViewHolder holder,int index){
+    @Override
+    public View getView(int position, View view, ViewGroup viewGroup) {
+        // Initialize the viewholder
+        ViewHolder holder;
+
+        // Initialize the inflater
+        LayoutInflater inflater = mActivity.getLayoutInflater();
+
+        // Create a new view if it is null, else load from the tag
+        if(view == null){
+            // Initialize the view holder
+            holder = new ViewHolder();
+
+            // inflate the view with the layout
+            view = inflater.inflate(R.layout.history_list_row,null);
+
+            // Assign the elements to the view holder
+            holder.name =  view.findViewById(R.id.destinationName);
+            holder.date =  view.findViewById(R.id.date);
+            holder.tripType = view.findViewById(R.id.trip_type);
+            holder.tripRank = view.findViewById(R.id.trip_rank);
+            holder.tripName = view.findViewById(R.id.trip_name);
+            holder.tripDate = view.findViewById(R.id.trip_date);
+
+            // Assign the holder to the view as a tag to fix the position of the items
+            view.setTag(holder);
+        } else {
+            // Load the holder from the tag
+            holder = (ViewHolder) view.getTag();
+        }
+
+        // Get the trip from the list at the give position
+        final ScheduledTrip trip = futureTrips.get(position);
+
+        // Fill the information to the holder
+        fillImage(holder,position);
+        fillTypeImage(holder,trip.getDestination().getType());
+        holder.tripName.setText(trip.getName());
+        holder.tripDate.setText(trip.getDate());
+        holder.tripName.setText(trip.getName());
+        holder.tripDate.setText(trip.getDate());
+        holder.name.setText(trip.getName());
+        holder.date.setText(trip.getDate());
+
+        // Return the view
+        return view;
+    }
+
+    /**
+     * Assign the rank to the corresponding item
+     * @param holder holder of the item
+     * @param index position of the item
+     */
+    private void fillImage(ViewHolder holder,int index){
         switch (index){
             case (0):
                 holder.tripRank.setImageResource(R.mipmap.ic_rank_1);
@@ -106,10 +129,14 @@ public class FutureAdapter extends BaseAdapter {
         }
     }
 
-    public void fillTypeImage(ViewHolder holder,int type) {
-        holder.tripType.setImageResource(R.mipmap.ic_launcher_app);
+    /**
+     * Assign the type to the corresponding item
+     * @param holder holder of the item
+     * @param type type of the item
+     */
+    private void fillTypeImage(ViewHolder holder,int type) {
         switch (type){
-            case (MenuActivity.HOSPITSL):
+            case (MenuActivity.HOSPITAL):
                 holder.tripType.setImageResource(R.mipmap.ic_hospital);
                 break;
             case (MenuActivity.PHARMACY):

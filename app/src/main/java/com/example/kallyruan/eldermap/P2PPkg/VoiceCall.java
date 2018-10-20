@@ -8,6 +8,7 @@ import com.sinch.android.rtc.SinchClient;
 import com.sinch.android.rtc.calling.Call;
 
 public class VoiceCall {
+
     private static SinchClient voiceClient = null;
     private static Call call;
     private static String userID;
@@ -18,6 +19,10 @@ public class VoiceCall {
         this.context = context;
     }
 
+    /**
+     * Create the SinchClient
+     * @return sinchclient instance
+     */
     public static SinchClient getInstance() {
             voiceClient = Sinch.getSinchClientBuilder().context(context)
                     .applicationKey("30a63ef6-ba48-44ef-8a74-e88f95afe18d")
@@ -26,16 +31,14 @@ public class VoiceCall {
                     .userId(userID)
                     .build();
 
+
+            // Settings for the sinch client
             voiceClient.setSupportCalling(true);
             voiceClient.setSupportActiveConnectionInBackground(true);
             voiceClient.startListeningOnActiveConnection();
 
             voiceClient.start();
 
-        return voiceClient;
-    }
-
-    public static SinchClient getClient() {
         return voiceClient;
     }
 

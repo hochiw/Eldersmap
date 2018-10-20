@@ -12,7 +12,6 @@ import com.example.kallyruan.eldermap.LocationPkg.FutureActivity;
 import com.example.kallyruan.eldermap.LocationPkg.HistoryActivity;
 import com.example.kallyruan.eldermap.NearbyLankmarkPkg.MenuActivity;
 import com.example.kallyruan.eldermap.P2PPkg.ChatActivity;
-import com.example.kallyruan.eldermap.P2PPkg.VideoDisplayActivity;
 import com.example.kallyruan.eldermap.ProfilePkg.BaseActivity;
 import com.example.kallyruan.eldermap.ProfilePkg.SettingActivity;
 
@@ -29,15 +28,15 @@ public class AppMenuActivity extends BaseActivity {
         Typeface typeface = Typeface.createFromAsset(getAssets(),"FormalTitle.ttf"); // create a typeface from the raw ttf
         title.setTypeface(typeface);
 
-        checkUserDecision();
+        checkUserChoice();
     }
 
     /**
-     * this method is to detect what feature user want to do and redirect to responding page
+     * this method is to detect what feature user want to do and redirect to corresponding page
      */
-    public void checkUserDecision(){
+    public void checkUserChoice(){
         //if nearByLandmark button is clicked, re-direct to nearByLandmark page
-        Button nearbyButton = (Button) findViewById(R.id.nearby_button);
+        Button nearbyButton = findViewById(R.id.nearby_button);
         nearbyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,7 +45,7 @@ public class AppMenuActivity extends BaseActivity {
         });
 
         //if conversation button is clicked, re-direct to conversation page
-        Button conversationButton = (Button) findViewById(R.id.conversation_button);
+        Button conversationButton = findViewById(R.id.conversation_button);
         conversationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +54,7 @@ public class AppMenuActivity extends BaseActivity {
         });
 
         //if history button is clicked, re-direct to history page
-        Button historyButton = (Button) findViewById(R.id.history_button);
+        Button historyButton = findViewById(R.id.history_button);
         historyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,7 +63,7 @@ public class AppMenuActivity extends BaseActivity {
         });
 
         //if profile button is clicked, re-direct to future trip plan page
-        Button futureButton = (Button) findViewById(R.id.future_button);
+        Button futureButton = findViewById(R.id.future_button);
         futureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +72,7 @@ public class AppMenuActivity extends BaseActivity {
         });
 
         //if profile button is clicked, re-direct to profile page
-        Button profileButton = (Button) findViewById(R.id.profile_button);
+        Button profileButton = findViewById(R.id.profile_button);
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,7 +84,7 @@ public class AppMenuActivity extends BaseActivity {
 
 
     /**
-     * this method is to re-direct to nearByLandmark page
+     * Redirect the user to the nearByLandmark page
      */
     public void nearbyAction(){
         Intent i = new Intent(getApplicationContext(), MenuActivity.class);
@@ -93,7 +92,7 @@ public class AppMenuActivity extends BaseActivity {
     }
 
     /**
-     * this method is to re-direct to Chat page
+     * Redirect the user to the Chat page
      */
     public void chatAction(){
         Intent i = new Intent(getApplicationContext(), ChatActivity.class);
@@ -101,7 +100,7 @@ public class AppMenuActivity extends BaseActivity {
     }
 
     /**
-     * this method is to re-direct to History page
+     * Redirect the user to theHistory page
      */
     public void historyAction(){
         Intent i = new Intent(getApplicationContext(), HistoryActivity.class);
@@ -109,7 +108,7 @@ public class AppMenuActivity extends BaseActivity {
     }
 
     /**
-     * this method is to re-direct to History page
+     * Redirect the user to the History page
      */
     public void futureAction(){
         Intent i = new Intent(getApplicationContext(), FutureActivity.class);
@@ -117,7 +116,7 @@ public class AppMenuActivity extends BaseActivity {
     }
 
     /**
-     * this method is to re-direct to setting page
+     * Redirect the user to the setting page
      */
     public void profileAction(){
         Intent i = new Intent(getApplicationContext(), SettingActivity.class);

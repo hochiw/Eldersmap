@@ -8,7 +8,6 @@ import android.widget.VideoView;
 import com.example.kallyruan.eldermap.R;
 
 public class VideoDisplayActivity extends Activity {
-    public final int RESULT_LOAD_IMG = 1;
     private static String dir;
 
     @Override
@@ -16,11 +15,18 @@ public class VideoDisplayActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.p2p_video);
 
+        // Select the video to play
         VideoView video = findViewById(R.id.video_play);
         video.setVideoPath(dir);
+
+        // Start playing the video
         video.start();
     }
 
+    /**
+     * Button to dismiss the video player
+     * @param view
+     */
     public void cancelVideo(View view){
         finish();
     }

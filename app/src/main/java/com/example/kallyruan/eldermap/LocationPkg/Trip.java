@@ -1,7 +1,5 @@
 package com.example.kallyruan.eldermap.LocationPkg;
 
-import android.support.annotation.NonNull;
-
 public class Trip {
     private int tripID;
     private int targetDay;

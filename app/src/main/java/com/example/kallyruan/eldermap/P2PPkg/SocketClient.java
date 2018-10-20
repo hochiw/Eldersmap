@@ -1,18 +1,12 @@
 package com.example.kallyruan.eldermap.P2PPkg;
 
 
-import android.util.Base64;
-import android.util.Log;
-
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 import org.json.JSONException;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.net.URI;
-import java.util.Arrays;
 
 public class SocketClient implements Runnable{
 
@@ -26,13 +20,24 @@ public class SocketClient implements Runnable{
         this.ca = ca;
     }
 
-    public void sendFile(String path) {
+    /**
+     * handles the file sending
+     * @param path path of the file
+     */
+    public void sendFile(String path, int type) {
+        // Open the file
         File file = new File(path);
+
+        // Conver the file into the data
         byte[] data = FileEncoder.convertFileToByte(file);
         if (data != null) {
             try {
-                MsgItem message = new MsgItem(FileEncoder.byteToBase64(data),MsgItem.TYPE_SENT,MsgItem.MESSAGE_TYPE_GRAPH);
+                // Create the message item
+                MsgItem message = new MsgItem(FileEncoder.byteToBase64(data),MsgItem.TYPE_SENT,type);
+                // Set the filename
                 message.setFileName(file.getName());
+
+                // Send the rich media file as a string
                 ws.send(MsgCoder.encode(message));
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -40,15 +45,29 @@ public class SocketClient implements Runnable{
         }
     }
 
+    /**
+     * Start running the client
+     */
     public void run() {
+        // Create a websocket client
         this.ws = new WebSocketClient(address) {
+
+            /**
+             * make the service alive when it's connected
+             * @param handshakedata
+             */
             @Override
             public void onOpen(ServerHandshake handshakedata) {
                 alive = true;
             }
 
+            /**
+             * handles message receiving
+             * @param message
+             */
             @Override
             public void onMessage(String message) {
+                // Attempt to decode the message
                 try {
                     if (MsgCoder.decode(message) != null) {
                         ca.newMessage(MsgCoder.decode(message));
@@ -56,6 +75,7 @@ public class SocketClient implements Runnable{
                         throw new JSONException("Unable to decode");
                     }
                 } catch (JSONException e) {
+                    // Create a text message if the decoding fails
                     ca.newMessage(new MsgItem(message,MsgItem.TYPE_RECEIVED,MsgItem.MESSAGE_TYPE_TEXT));
                 }
 
@@ -71,6 +91,8 @@ public class SocketClient implements Runnable{
 
             }
         };
+
+        // Connect to the server
         ws.connect();
     }
 

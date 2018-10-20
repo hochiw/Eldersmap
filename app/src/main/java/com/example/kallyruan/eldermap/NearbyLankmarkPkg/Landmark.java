@@ -40,26 +40,28 @@ public class Landmark {
     public void setRating(float newValue){ this.rating = newValue;}
 
     public int getEstTime() {return estTime;}
-
-    public void setEstTime(int newValue) {this.estTime = newValue;}
 }
 
+// Sorter of the Landmark object
 class Sortbyrating implements Comparator<Landmark>{
     public int compare(Landmark land1, Landmark land2){
         Integer time1 = land1.getEstTime();
         Integer time2 = land2.getEstTime();
-        int timeCompare = time1.compareTo(time2);
 
+        // Compare the landmarks by time
+        int timeCompare = time1.compareTo(time2);
         if (timeCompare != 0) {
             return timeCompare;
         }
-
+        // set the default value if there is no rating
         if (Float.isNaN(land1.getRating())){
             land1.setRating(0.0f);
         }
         if (Float.isNaN(land2.getRating())){
             land2.setRating(0.0f);
         }
+
+        // Then compare the landmarks by rating
         return (int) ((land2.getRating()*10) - (land1.getRating()*10));
     }
 }

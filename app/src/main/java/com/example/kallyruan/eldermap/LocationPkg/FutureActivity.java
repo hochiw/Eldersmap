@@ -1,81 +1,59 @@
 package com.example.kallyruan.eldermap.LocationPkg;
 
 import android.app.AlertDialog;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.IBinder;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.kallyruan.eldermap.NavigationPkg.DisplayActivity;
-import com.example.kallyruan.eldermap.NavigationPkg.ScheduleTimeActivity;
-import com.example.kallyruan.eldermap.NearbyLankmarkPkg.JSONFactory;
-import com.example.kallyruan.eldermap.NearbyLankmarkPkg.Landmark;
-import com.example.kallyruan.eldermap.NearbyLankmarkPkg.LandmarkListAdapter;
-import com.example.kallyruan.eldermap.NearbyLankmarkPkg.SearchAlg;
-import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
 import com.example.kallyruan.eldermap.ProfilePkg.BaseActivity;
 import com.example.kallyruan.eldermap.ProfilePkg.User;
 import com.example.kallyruan.eldermap.R;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 public class FutureActivity extends BaseActivity {
-    //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
-    ArrayAdapter<Integer> adapter_id;
-    private int action_index;
 
-    ArrayList<ScheduledTrip> list = new ArrayList<>(); // returned future list
-    FutureAdapter adapter;
-    ListView futureList;
-    RelativeLayout loading;
+    private ArrayList<ScheduledTrip> list = new ArrayList<>(); // returned future list
+    private FutureAdapter adapter; // adapter for the scheduled trips
+    private ListView futureList; // list of scheduled trip
+    private RelativeLayout loading;
+    private Location destination; // destination of the scheduled trip
+
     private static int tripID; // the target trip id to update marks
-    private static String destinationName;
-    private Location destination;
-
-    public static String getDestinationName() {
-        return destinationName;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.future_list);
 
-        //set title size and style
+        // Set and place the title
         TextView title = findViewById(R.id.future_list_title);
         title.setGravity(Gravity.CENTER_HORIZONTAL);
-        Typeface typeface = Typeface.createFromAsset(getAssets(),"FormalTitle.ttf"); // create a typeface from the raw ttf
+
+        // create a typeface from the raw ttf
+        Typeface typeface = Typeface.createFromAsset(getAssets(),"FormalTitle.ttf");
         title.setTypeface(typeface);
 
-
+        // Display the list
         showList();
 
-        futureList = (ListView) findViewById(R.id.future_list);
-        loading = (RelativeLayout) findViewById(R.id.loadingPanel);
+        // Assign the views to the variables
+        futureList = findViewById(R.id.future_list);
+        loading = findViewById(R.id.loadingPanel);
+
+        // Hide the scheduled trip
         futureList.setVisibility(View.INVISIBLE);
 
-        //If disconnected with service, show with only loading panel and hence listview invisiable
+        // Loading screen
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -89,14 +67,16 @@ public class FutureActivity extends BaseActivity {
     }
 
 
-    //check whether users click on a future trip
+    /**
+     * Assign the corresponding destination and id to the variables that the user has selected
+     */
     public void checkButtonClick() {
-        ListView view = (ListView) findViewById(R.id.future_list);
+        ListView view = findViewById(R.id.future_list);
 
         view.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int location, long l) {
-                tripID= User.getScheduledTripList().get(location).getTripID();
+                tripID = User.getScheduledTripList().get(location).getTripID();
                 destination = User.getScheduledTripList().get(location).getDestination();
                 navigationToast(tripID,location);
             }
@@ -104,10 +84,17 @@ public class FutureActivity extends BaseActivity {
 
     }
 
-    //check whether users want to depart now or not
+    /**
+     * Confirmation box to check whether the user wants to start the nagivation or not
+     * @param tripID id of the trip
+     * @param location destination id of the trip
+     */
     public void navigationToast(final int tripID, final int location) {
+        // Create a confirmation box
         AlertDialog dialog = new AlertDialog.Builder(this).setTitle("What do you want to do" +
                 " with this scheduled trip?").setIcon(R.mipmap.ic_launcher_app)
+
+                // Option to start the trip
                 .setPositiveButton("Start this trip now", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -116,6 +103,8 @@ public class FutureActivity extends BaseActivity {
                         switchToNavigation();
 
                     }})
+
+                // Option to delete the trip
                 .setNeutralButton("Delete this plan", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -126,14 +115,21 @@ public class FutureActivity extends BaseActivity {
                         startActivity(i);
                     }
                 })
+                // Option to dismiss the menu
                 .setNegativeButton("Cancel", null)
                 .create();
+
+        // Show the confirmation box
         dialog.show();
     }
 
 
+    /**
+     * Start the nagivation
+     */
     public void switchToNavigation(){
         Intent i = new Intent(this, DisplayActivity.class);
+        // Put all the details of the destination and send it to the nagivation activity
         i.putExtra("destLatitude",destination.getLatitude());
         i.putExtra("destLongitude",destination.getLongitude());
         startActivityForResult(i, 1);
@@ -143,7 +139,7 @@ public class FutureActivity extends BaseActivity {
      * Shows the list of future trips
      */
     public void showList() {
-        ListView listView = (ListView) findViewById(R.id.future_list);
+        ListView listView = findViewById(R.id.future_list);
 
         //retrieve input
         list = User.getScheduledTripList();

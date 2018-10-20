@@ -12,19 +12,12 @@ public class FinishedTrip extends Trip {
     }
 
 
-    public float getdestinationMark() {
+    public float getDestinationMark() {
         return destinationMark;
-    }
-
-    public void setdestinationMark(int reviewMark) {
-        this.destinationMark = reviewMark;
     }
 
     public float getTripMark() {
         return navigationMark;
     }
 
-    public void setTripMark(float navigationMark) {
-        this.navigationMark = navigationMark;
-    }
 }

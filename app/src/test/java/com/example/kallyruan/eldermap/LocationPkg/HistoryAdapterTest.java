@@ -112,7 +112,7 @@ public class HistoryAdapterTest {
         Mockito.when(history.get(position)).thenReturn(mockTrip);
 
 
-        Mockito.when(mockTrip.getdestinationMark()).thenReturn(0.0f);
+        Mockito.when(mockTrip.getDestinationMark()).thenReturn(0.0f);
         Mockito.when(mockTrip.getDate()).thenReturn("Hello");
         Mockito.when(mockTrip.getTripMark()).thenReturn(0.0f);
 
@@ -124,21 +124,21 @@ public class HistoryAdapterTest {
         Mockito.when(history.get(position)).thenReturn(trip);
         float destinationMark = 0.0f;
         String destinationMarkString = "Hello";
-        Mockito.when(trip.getdestinationMark()).thenReturn(destinationMark);
+        Mockito.when(trip.getDestinationMark()).thenReturn(destinationMark);
         PowerMockito.mockStatic(Float.class);
         Mockito.when(Float.toString(destinationMark)).thenReturn(destinationMarkString);
 
 
-        navigationMark.setText(Float.toString(mockTrip.getdestinationMark()));
-        locationMark.setText(Float.toString(mockTrip.getdestinationMark()));
+        navigationMark.setText(Float.toString(mockTrip.getDestinationMark()));
+        locationMark.setText(Float.toString(mockTrip.getDestinationMark()));
         date.setText(mockTrip.getDate());
-        name.setText(Float.toString(mockTrip.getdestinationMark()));
+        name.setText(Float.toString(mockTrip.getDestinationMark()));
 
 
         Mockito.verify(navigationMark).setText(Float.toString(mockTrip.getTripMark()));
-        Mockito.verify(locationMark).setText(Float.toString(mockTrip.getdestinationMark()));
+        Mockito.verify(locationMark).setText(Float.toString(mockTrip.getDestinationMark()));
         Mockito.verify(date).setText(mockTrip.getDate());
-        Mockito.verify(name).setText(Float.toString(mockTrip.getdestinationMark()));
+        Mockito.verify(name).setText(Float.toString(mockTrip.getDestinationMark()));
 
 
     }

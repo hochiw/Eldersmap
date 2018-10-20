@@ -3,11 +3,13 @@ package com.example.kallyruan.eldermap.ProfilePkg;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import com.example.kallyruan.eldermap.AppMenuActivity;
 import com.example.kallyruan.eldermap.R;
 
 
+/**
+ * SettingActivity Class is to handle all changes on user preference through UI
+ */
 public class SettingActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +44,6 @@ public class SettingActivity extends BaseActivity {
         startActivityForResult(i,1);
     }
 
-    /**
-     * this is the method to re-direct to ChangePrivilegeActivity page for user privilege request
-     * @param view
-     */
-    public void changePrivilege(View view){
-        Intent i = new Intent(getApplicationContext(), ChangePrivilegeActivity.class);
-        startActivityForResult(i,1);
-    }
 
     /**
      * this is the method to re-direct to AppMenuActivity page for App main menu

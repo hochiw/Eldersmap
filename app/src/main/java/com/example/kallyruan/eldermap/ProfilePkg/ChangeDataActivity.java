@@ -1,20 +1,18 @@
 package com.example.kallyruan.eldermap.ProfilePkg;
 
-import android.accounts.NetworkErrorException;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import com.example.kallyruan.eldermap.DBQuery;
 import com.example.kallyruan.eldermap.MainActivity;
-import com.example.kallyruan.eldermap.NetworkPkg.HTTPPostRequest;
 import com.example.kallyruan.eldermap.R;
 
-import org.json.JSONObject;
 
+/**
+ * ChangeDataActivity class is to get the User preference on Data collection permission and save/
+ * update the change to Database
+ */
 public class ChangeDataActivity extends BaseActivity {
-    final int INVALID = 0;
     final static String SURVEYACTIVITY = "com.example.kallyruan.eldermap.ProfilePkg.ChangeWalkActivity";
     boolean permission = true;
 
@@ -25,11 +23,12 @@ public class ChangeDataActivity extends BaseActivity {
     }
 
     /**
-     * a method to get user collection preference from user action. This method would re-direct
+     * A method to get user collection preference from user action. This method would re-direct
      * to different activities afterwards depending on its calling activity.
      * @param view
      */
     public void recordPermissionPreference(View view){
+        //set data permission preference based on user click on UI
         switch (view.getId()) {
             case R.id.permission_agree:
                 permission = true;
@@ -38,9 +37,11 @@ public class ChangeDataActivity extends BaseActivity {
                 permission = false;
                 break;
         }
-        //check get button clicked and calling activity
+        //check whether get data permission from user
         if(permission != false){
+            //update the change to user database
             User.notifyPermissionChange(this, permission);
+            //redirect the app depending on its calling activity
             if(this.getCallingActivity().getClassName().equals(SURVEYACTIVITY)){
                 //re-direct to main page
                 DBQuery.surveyComplete();

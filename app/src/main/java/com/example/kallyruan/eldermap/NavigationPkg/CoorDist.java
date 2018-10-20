@@ -2,6 +2,14 @@ package com.example.kallyruan.eldermap.NavigationPkg;
 
 public class CoorDist {
 
+    /**
+     * Algorithm to calculate the distance between the two coordinates
+     * @param userLat Latitude of the user location
+     * @param userLon Longitude of the user location
+     * @param destLat Latitude of the destination
+     * @param destLon Longitude of the destination
+     * @return distance of between the two coordinates
+     */
     public static double getDist(double userLat, double userLon, double destLat, double destLon) {
         double R = 6378.137; // Radius of earth in KM
         double dLat = destLat * Math.PI / 180 - userLat * Math.PI / 180;
@@ -11,19 +19,5 @@ public class CoorDist {
                         Math.sin(dLon/2) * Math.sin(dLon/2);
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         return R * c * 1000;
-    }
-
-    public static double getAngle(double userLat, double userLon, double destLat, double destLon) {
-        double y = Math.sin(destLon - userLon) * Math.cos(destLat);
-        double x = Math.cos(userLat) * Math.sin(destLat) - Math.sin(userLat)
-                * Math.cos(destLat) * Math.cos(destLon - userLon);
-
-        double bearing = Math.atan2(y, x);
-
-        bearing = Math.toDegrees(bearing);
-        bearing = (bearing + 360) % 360;
-        bearing = 360 - bearing;
-
-        return bearing;
     }
 }

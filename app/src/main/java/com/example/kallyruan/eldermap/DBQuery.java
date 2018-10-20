@@ -1,7 +1,5 @@
 package com.example.kallyruan.eldermap;
 
-import android.accounts.NetworkErrorException;
-import android.util.Log;
 
 import com.example.kallyruan.eldermap.LocationPkg.FinishedTrip;
 import com.example.kallyruan.eldermap.LocationPkg.Location;
@@ -12,7 +10,6 @@ import com.example.kallyruan.eldermap.ProfilePkg.ChangeWalkActivity;
 import com.example.kallyruan.eldermap.ProfilePkg.User;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -21,9 +18,10 @@ import static com.example.kallyruan.eldermap.ProfilePkg.User.USER;
 
 public class DBQuery {
 
-    static String UserID;
-    static int HistoryID = 0;//for demo purpose
-    static int PlanID = 0; //for demo purpose
+    // Initialize the variables
+    private static String UserID;
+    private static int HistoryID = 0;
+    private static int PlanID = 0;
 
     private static String baseURL = "http://eldersmapapi.herokuapp.com/api/";
 
@@ -31,11 +29,10 @@ public class DBQuery {
      * this method is to check whether user exists in the database
      */
     public static boolean checkUserExist() {
-        //get MEID number
+        // get the user id
         UserID= User.getUserID();
 
-        //check whether exist or not
-
+        // Send a post request to the api server and check whether the user profile exists
         try {
             HTTPPostRequest request = new HTTPPostRequest(baseURL + "getProfile");
             String result = request.execute(new JSONObject().put("userID",UserID)).get();
@@ -44,20 +41,21 @@ public class DBQuery {
             }
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
             return false;
         }
     }
 
     public static boolean checkSurveyCompleted() {
-        //get MEID number
+        // Get the user id
         UserID= User.getUserID();
 
-        //check whether exist or not
+        // Check if user profile exists
         if (checkUserExist()) {
             try {
+                // Send a post request to the server and retrieve the user profile
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "getProfile");
                 JSONObject result = new JSONObject(request.execute(new JSONObject().put("userID", UserID)).get());
+                // Check if the user has completed the survey or not
                 if (result.getJSONObject("survey").getInt("completed") == 1) {
                     return true;
                 }
@@ -65,46 +63,57 @@ public class DBQuery {
                 e.printStackTrace();
             }
         }
-        //default user type is USER
         return false;
     }
 
     public static boolean surveyComplete() {
-        //get MEID number
+        // get user id
         UserID= User.getUserID();
 
-        //check whether exist or not
+        //check whether user profile exists or not
         if (checkUserExist()) {
             try {
+                // Send a post request to the API server
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "updateProfile");
+
+                // Create the json data object
                 JSONObject data = new JSONObject();
+
+                // User ID
                 data.put("userID", UserID);
+
+                // Set the completed variable to 1
                 data.put("key","completed");
                 data.put("value",1);
+
+                // Execute the async task
                 request.execute(data);
+
+                // Return true if success
                 return true;
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        //default user type is USER
         return false;
     }
 
     /**
-     * this method is to check user type from database
+     * this method is to check the user type from database
      * @return int CustomerType (USER = 0, ADMIN = 1)
      */
     public static int checkUserType() {
 
-        //get MEID number
+        // Get the user id
         UserID= User.getUserID();
 
-        //check whether exist or not
+        // Check if user profile exists
         if (checkUserExist()) {
             try {
+                // Send a post request to the API server and retrieve the user profile
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "getProfile");
                 JSONObject result = new JSONObject(request.execute(new JSONObject().put("userID", UserID)).get());
+                // Return the user type as an interger
                 return result.getInt("userType");
             } catch (Exception e) {
                 e.printStackTrace();
@@ -116,13 +125,13 @@ public class DBQuery {
 
 
     public static boolean createProfile() {
-        //get MEID number
+        // get the user id
         UserID = User.getUserID();
-
-
             try {
+                // Send a post request to the API server to create the user profile
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "createProfile");
                 request.execute(new JSONObject().put("userID",UserID));
+                // Return true if success
                 return true;
             } catch (Exception e) {
                 e.printStackTrace();
@@ -134,23 +143,24 @@ public class DBQuery {
      * @return int Textsize
      */
     public static int retrieveTextSize() {
-
-
-        //get MEID number
+        // Get the user id
         UserID= User.getUserID();
 
-        //check whether exist or not
+        // Check if user exists or not
         if (checkUserExist()) {
             try {
+                // Send a post request and retrieve the user profile
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "getProfile");
                 JSONObject result = new JSONObject(request.execute(new JSONObject().put("userID", UserID)).get());
+                // Get the text size from the user profile
                 int textSize = result.getJSONObject("survey").getInt("textSize");
-                Log.d("TEXT",Integer.toString(textSize));
+                // Return the preferred text size
                 return textSize;
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+        // Return the default size if error occurs
         return BaseActivity.MEDIUM;
     }
 
@@ -159,21 +169,22 @@ public class DBQuery {
      * @return int walking preference
      */
     public static int retrieveWalking() {
-
-
-        //get MEID number
+        // Get the user id
         UserID= User.getUserID();
 
-        //check whether exist or not
+        // Check if user exists or not
         if (checkUserExist()) {
             try {
+                // Send a post request and retrieve the user profile
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "getProfile");
                 JSONObject result = new JSONObject(request.execute(new JSONObject().put("userID", UserID)).get());
+                // Get the walking distance preference from the user profile
                 return result.getJSONObject("survey").getInt("walking");
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+        // Return the default value if error occurs
         return ChangeWalkActivity.FIFTEENMINUTES;
     }
 
@@ -182,15 +193,16 @@ public class DBQuery {
      * @return int walking preference
      */
     public static boolean retrieveDataPrivilege() {
-
-        //get MEID number
+        // Get the user id
         UserID= User.getUserID();
 
-        //check whether exist or not
+        // Check if the user profile exists
         if (checkUserExist()) {
             try {
+                // Send a post request and retrieve the user profile
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "getProfile");
                 JSONObject result = new JSONObject(request.execute(new JSONObject().put("userID", UserID)).get());
+                // Get the data preference from the user profile
                 switch(result.getJSONObject("survey").getInt("userData")) {
                     case 0:
                         return false;
@@ -201,23 +213,31 @@ public class DBQuery {
                 e.printStackTrace();
             }
         }
-        //otherwise return default
+        //return default value if error occurs
         return false;
     }
 
     public static boolean updateTextsize(int textSize) {
-
-        //get MEID number
+        // Get the user id
         UserID= User.getUserID();
 
-        //check whether exist or not
+        // Check if the user profile exists
         if (checkUserExist()) {
             try {
+                // Create a post requests to update the profile
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "updateProfile");
+
+                // Create json object
                 JSONObject data = new JSONObject();
+
+                // User ID
                 data.put("userID",UserID);
+
+                // Set the text size to the preferred value
                 data.put("key","textSize");
                 data.put("value",textSize);
+
+                // Execute the async task
                 request.execute(data);
                 return true;
             } catch (Exception e) {
@@ -229,17 +249,26 @@ public class DBQuery {
 
     public static boolean updatePermission(boolean permissionPreference){
 
-        //get MEID number
+        // Get the user id
         UserID= User.getUserID();
 
         //check whether exist or not
         if (checkUserExist()) {
             try {
+                // Create a post requests to update the profile
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "updateProfile");
+
+                // Create json object
                 JSONObject data = new JSONObject();
+
+                // User ID
                 data.put("userID",UserID);
+
+                // Set permission preference
                 data.put("key","userData");
                 data.put("value",permissionPreference);
+
+                // Execute the async task
                 request.execute(data);
                 return true;
             } catch (Exception e) {
@@ -251,17 +280,26 @@ public class DBQuery {
 
     public static boolean updateWalking(int walking){
 
-        //get MEID number
+        // Get the user id
         UserID= User.getUserID();
 
         //check whether exist or not
         if (checkUserExist()) {
             try {
+                // Create a post requests to update the profile
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "updateProfile");
+
+                // Create json object
                 JSONObject data = new JSONObject();
+
+                // User ID
                 data.put("userID",UserID);
+
+                // Set new walking distance preference
                 data.put("key","walking");
                 data.put("value",walking);
+
+                // Execute the async task
                 request.execute(data);
                 return true;
             } catch (Exception e) {
@@ -274,14 +312,20 @@ public class DBQuery {
     public static ArrayList<ScheduledTrip> retrievePlan() {
         ArrayList<ScheduledTrip> list = new ArrayList<>();
 
-        //get MEID number
+        // Get the user id
         UserID= User.getUserID();
 
         //check whether exist or not
         if (checkUserExist()) {
             try {
+                //Create a post request to retrieve scheduled trips
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "getAllPlan");
+
+                //Assign returning list of scheduled trips to a JSON array
                 JSONArray result = new JSONArray(request.execute(new JSONObject().put("userID", UserID)).get());
+
+                //Iterate through the JSON array and assign the values within
+                //each JSON object to their respective variables
                 for (int i = 0;i < result.length();i++) {
                     JSONObject item = result.getJSONObject(i);
                     int id = item.getInt("id");
@@ -296,6 +340,8 @@ public class DBQuery {
                     String name = item.getJSONObject("location").getString("name");
                     Location loc = Location.getInstance(lat,lon);
                     loc.setType(type);
+
+                    //Create a scheduled trip and add it to the list
                     list.add(ScheduledTrip.getInstance(id,day,month,year,hour,minute,loc,name));
                 }
             } catch (Exception e) {
@@ -309,14 +355,20 @@ public class DBQuery {
     public static ArrayList<FinishedTrip> retrieveHistory() {
         ArrayList<FinishedTrip> historyTripList = new ArrayList<>();
 
-        //get MEID number
+        // Get the user id
         UserID= User.getUserID();
 
         //check whether exist or not
         if (checkUserExist()) {
             try {
+                //Create a post request to retrieve history
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "getAllHistory");
+
+                //Assign returning list of recorded trips to a JSON array
                 JSONArray result = new JSONArray(request.execute(new JSONObject().put("userID", UserID)).get());
+
+                //Iterate through the JSON array and assign the values within
+                //each JSON object to their respective variables
                 for (int i = 0;i < result.length();i++) {
                     JSONObject item = result.getJSONObject(i);
                     int id = item.getInt("id");
@@ -329,6 +381,8 @@ public class DBQuery {
                     Double lon = item.getJSONObject("location").getDouble("longitude");
                     String name = item.getJSONObject("location").getString("name");
                     Location loc = Location.getInstance(lat,lon);
+
+                    //Creates a history entry and adds it to the list
                     historyTripList.add(new FinishedTrip(id,day,month,year,loc,name,locationRating,tripRating));
                 }
             } catch (Exception e) {
@@ -347,16 +401,17 @@ public class DBQuery {
      */
     public static boolean addUserPlan(ScheduledTrip trip){
 
-        //get MEID number
+        // Get the user id
         UserID= User.getUserID();
-        Log.d("UPDATE",Integer.toString(trip.getTargetHour()));
         if (checkUserExist()) {
             try {
-
+                //Create a post request to create a scheduled trip
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "createPlan");
+
+                //Create json object
                 JSONObject data = new JSONObject();
 
-
+                //Add relevant data into the JSON object
                 data.put("userID",UserID);
                 data.put("id",trip.getTripID());
                 data.put("year",trip.getTargetYear());
@@ -368,6 +423,8 @@ public class DBQuery {
                 data.put("latitude",trip.getDestination().getLatitude());
                 data.put("longitude",trip.getDestination().getLongitude());
                 data.put("type",trip.getDestination().getType());
+
+                // Execute the async task
                 request.execute(data);
                 return true;
             } catch (Exception e) {
@@ -384,16 +441,23 @@ public class DBQuery {
      */
     public static boolean deleteUserPlan(int tripID){
 
-        //get MEID number
+        // Get the user id
         UserID= User.getUserID();
 
         //check whether exist or not
         if (checkUserExist()) {
             try {
+                //Create post request for the deletion of a scheduled trip
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "delPlan");
+
+                //Create JSON object
                 JSONObject data = new JSONObject();
+
+                //Add relevant data into the JSON object
                 data.put("userID",UserID);
                 data.put("id",tripID);
+
+                // Execute the async task
                 request.execute(data);
                 return true;
             } catch (Exception e) {
@@ -411,11 +475,13 @@ public class DBQuery {
     public static boolean addUserHistory(FinishedTrip trip){
 
 
-        //get MEID number
+        // Get the user id
         UserID= User.getUserID();
 
+        // Check if the user profile exists
         if (checkUserExist()) {
             try {
+                // Create a post request to create the history
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "createHistory");
                 JSONObject data = new JSONObject();
                 data.put("userID",UserID);
@@ -431,29 +497,33 @@ public class DBQuery {
                 data.put("longitude",trip.getDestination().getLongitude());
                 data.put("type",trip.getDestination().getType());
 
-                data.put("locationRating",trip.getdestinationMark());
+                data.put("locationRating",trip.getDestinationMark());
                 data.put("tripRating",trip.getTripMark());
+
+                // Execute the async task
                 request.execute(data);
                 return true;
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-
         return false;
     }
 
     public static boolean checkHistoryTripExists(int TripID){
-        //get MEID number
+        // Get the user id
         UserID= User.getUserID();
 
-        //check whether exist or not
+        //check if the user profile exists
         if (checkUserExist()) {
             try {
+                // Create a post request to get the history with the corresponding id
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "getHistory");
                 JSONObject data = new JSONObject();
                 data.put("userID",UserID);
                 data.put("id",TripID);
+
+                // execute the async task
                 request.execute(data);
                 return true;
 
@@ -485,26 +555,33 @@ public class DBQuery {
 
     public static boolean updateHistoryReview(int tripID, float destinationMark, float navigationMark) {
 
-        //get MEID number
+        // Get the user id
         UserID= User.getUserID();
 
-        //check whether exist or not
+        // Check if the user profile and history exists
         if (checkUserExist() && checkHistoryTripExists(tripID)) {
             try {
+                // Create two post requests to update the ratings
                 HTTPPostRequest destination = new HTTPPostRequest(baseURL + "updateHistory");
                 JSONObject updateData = new JSONObject();
                 updateData.put("userID",UserID);
                 updateData.put("id",tripID);
                 updateData.put("key","locationRating");
                 updateData.put("value",destinationMark);
+
+                // Execute the async task
                 destination.execute(updateData);
+
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "updateHistory");
                 updateData.remove("key");
                 updateData.remove("value");
                 updateData.put("key","tripRating");
                 updateData.put("value",navigationMark);
+
+                // Execute the async task
                 request.execute(updateData);
 
+                return true;
             } catch (Exception e) {
                 return false;
             }

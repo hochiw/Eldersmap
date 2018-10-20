@@ -1,51 +1,35 @@
 package com.example.kallyruan.eldermap;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.media.Image;
+import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import com.example.kallyruan.eldermap.P2PPkg.ChatActivity;
 import com.example.kallyruan.eldermap.ProfilePkg.SignupActivity;
 import com.example.kallyruan.eldermap.ProfilePkg.User;
-import com.google.android.gms.location.LocationRequest;
 
 public class MainActivity extends AppCompatActivity {
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     public static String ANDROID_ID;
-    boolean askedPermission = false;
-    LocationManager locationManager;
-    String provider;
-    private long UPDATE_INTERVAL = 10 * 1000;  /* 10 secs */
-    private long FASTEST_INTERVAL = 2000; /* 2 sec */
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_welcome);
 
+        // Assign the android id to the variable
         ANDROID_ID = Settings.Secure.getString(getContentResolver(),
                 Settings.Secure.ANDROID_ID);
 
@@ -59,30 +43,25 @@ public class MainActivity extends AppCompatActivity {
         ImageView image = findViewById(R.id.welcome_image);
         image.setImageResource(R.mipmap.ic_launcher_app);
 
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        provider = locationManager.getBestProvider(new Criteria(), false);
-
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-//check whether user exist in the database
-                Log.d("WORKING",Boolean.toString(DBQuery.checkSurveyCompleted()));
+                // Check if the user profile exists and if the user has completed the survey
                 if (DBQuery.checkUserExist()&& DBQuery.checkSurveyCompleted()){
-                if (checkLocationPermission()) {
-                    //retrieve all user data from database
-                    if(User.retrieveUserData()){
-                        //if successful, redirect to App Menu page
-                        Intent i = new Intent(getApplicationContext(), AppMenuActivity.class);
-                        startActivity(i);
-                        //if failed, show error message
-                    }else{
-                        Toast.makeText(getApplicationContext(),"Failed to retrieve User data. Please restart the APP."
-                                ,Toast.LENGTH_SHORT).show();
-                    }
-
+                    // Check if the app has the permission
+                    if (checkLocationPermission()) {
+                        //retrieve all user data from database
+                        if(User.retrieveUserData()){
+                            //if successful, redirect to App Menu page
+                            Intent i = new Intent(getApplicationContext(), AppMenuActivity.class);
+                            startActivity(i);
+                            //if failed, show error message
+                        }else{
+                            Toast.makeText(getApplicationContext(),"Failed to retrieve User data. Please restart the APP."
+                                    ,Toast.LENGTH_SHORT).show();
+                        }
                 }
-
                     //if does not exist, re-direct to sign up page
                 } else {
                     Intent i = new Intent(getApplicationContext(), SignupActivity.class);
@@ -107,11 +86,9 @@ public class MainActivity extends AppCompatActivity {
         //if permission not granted, promote for permission request
         if (ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
-            Log.d("test: ", "1 NO location permission");
             // This is to check whether we should show an explanation
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.ACCESS_FINE_LOCATION)) {
-                Log.d("test: ", "request permission");
                 // Show an explanation to the user and then request the permission.
                 new AlertDialog.Builder(this)
                         .setTitle("Location Permission request")
@@ -129,8 +106,7 @@ public class MainActivity extends AppCompatActivity {
                         .create()
                         .show();
             } else {
-                Log.d("test: ", "no explanation");
-                // No explanation needed, we can request the permission.
+                // Request for the permission
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                         MY_PERMISSIONS_REQUEST_LOCATION);
@@ -159,34 +135,25 @@ public class MainActivity extends AppCompatActivity {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Log.d("test: ","permission granted!");
-                    // if get permission, then do the task
+                    // Execute the task if the app has the permission
                     if (ContextCompat.checkSelfPermission(this,
                             Manifest.permission.ACCESS_FINE_LOCATION)
                             == PackageManager.PERMISSION_GRANTED) {
-
-                        //Request location updates:
-                        //locationManager.requestLocationUpdates(provider, 400, 1, this);
-                        //Log.d("test location", provider);
-//                        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-//                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-////
                     }
                 } else {
-                    // if permission denied, send user the alert message
+                    // Send a warning message to the user if they denied the permission request
                     Toast.makeText(MainActivity.this,"App feature may not work without " +
                                                                 "permission!",Toast.LENGTH_SHORT).show();
                 }
-                // Whenever get permission from user, re-route user to menu page
+                // Redirect user to the start menu
                 startMenu();
-                return;
             }
 
         }
     }
 
     /**
-     * this method would re-direct to App main menu page
+     * Redirect the user to the main menu
      */
     private void startMenu() {
         final Intent mainIntent = new Intent(getApplicationContext(), AppMenuActivity.class);

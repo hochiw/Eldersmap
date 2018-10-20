@@ -1,6 +1,7 @@
 package com.example.kallyruan.eldermap.LocationPkg;
 
 public class Location {
+
     private Double latitude;
     private Double longitude;
     private Double altitude;
@@ -36,8 +37,6 @@ public class Location {
     public Double getAltitude() {return altitude;}
 
     public int getType() {return type;}
-
-
 
     /**
      * This function is to let classes in other package instantiate and get a Location object.

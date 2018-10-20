@@ -28,6 +28,11 @@ public class Position {
     public double getLatitude() { return latitude; }
     public double getLongitude() { return longitude; }
 
+    /**
+     * Parses location JSON array into a position object
+     * @param location
+     * @throws JSONException
+     */
     private void parseJSON(JSONArray location) throws JSONException {
         this.latitude = location.getDouble(1);
         this.longitude = location.getDouble(0);

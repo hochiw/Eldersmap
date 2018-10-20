@@ -16,10 +16,9 @@ import java.util.concurrent.ExecutionException;
 
 public class NavigationChecker {
 
-    Location userLoc;
-    Location destLoc;
+    private Location userLoc;
 
-    ArrayList<Position> list = new ArrayList<>();
+    private ArrayList<Position> list = new ArrayList<>();
     /**
      * This class is used to check user current location and compares with navigation instruction,
      * doing so with timer task will provide a checker that constantly checking user location
@@ -27,7 +26,6 @@ public class NavigationChecker {
      */
     NavigationChecker(Location userLoc,Location destLoc) throws JSONException, ExecutionException, InterruptedException {
         this.userLoc = userLoc;
-        this.destLoc = destLoc;
         
         // user destination coordinate still needed, currently hard-coded
         JSONObject obj = new JSONObject();
@@ -38,8 +36,8 @@ public class NavigationChecker {
         obj.put("desLongitude", destLoc.getLongitude());
         JSONArray jsonArray = new JSONArray(new HTTPPostRequest("http://eldersmapapi.herokuapp.com/api/route").execute(obj).get());
 
+        //parsing the JSON array into a list that contains the checkpoints of the path
         for(int i = 0; i < jsonArray.length(); i++) {
-            Log.d("json_testing", jsonArray.get(i).toString());
             list.add(new Position(jsonArray.optJSONObject(i).getString("instruction"),
                     jsonArray.optJSONObject(i).has("modifier") ? jsonArray.optJSONObject(i).getString("modifier") : "None",
                     jsonArray.optJSONObject(i).getInt("bearing_after"),
@@ -55,28 +53,25 @@ public class NavigationChecker {
      * use method as a timer task, so the checker constantly get acknowledged of user latest location
      * and run a check with the navigation list
      */
-    public void getUserLoc() {
+    public void checkpointDetection() {
         Iterator it1 = getPositions().iterator();
+        //if user is within a 10m radius of the current checkpoint, move onto the next checkpoint
         while(it1.hasNext()) {
-            //if (offRoute(userLoc, list.get(0))) {
-            //    Log.d("offRoute", "Wrong direction, please remain course");
-             //   break;
-           // }
-            Log.d("Angle",Double.toString(CoorDist.getAngle(userLoc.getLatitude(),userLoc.getLongitude(),list.get(0).getLatitude(),list.get(0).getLongitude())));
             if (CoorDist.getDist(userLoc.getLatitude(),userLoc.getLongitude(),list.get(0).getLatitude(),list.get(0).getLongitude()
             ) < 10) {
-                Log.d("WEW","REMOVING YOUR SHIT");
+                //removes the checkpoint
                 list.remove(0);
             }else {
                 break;
             }
         }
-        Log.d("testing", list.toString());
     }
 
-    public double getAngle() {
-     //  double angle = CoorDist.getAngle(userLoc.getLatitude(),userLoc.getLongitude(),list.get(0).getLatitude(),list.get(0).getLongitude());
-
+    /**
+     * Calculates angle between the coordinates
+     * @return
+     */
+    public double calculateAngle() {
         android.location.Location userLocation = new android.location.Location("User");
         android.location.Location desLocation = new android.location.Location("Destination");
         userLocation.setLatitude(userLoc.getLatitude());
@@ -87,7 +82,11 @@ public class NavigationChecker {
         return userLocation.bearingTo(desLocation);
     }
 
-    public GeomagneticField getGeoField() {
+    /**
+     * Calculates Geomagnetic field of the device
+     * @return
+     */
+    public GeomagneticField calcGeofield() {
         return new GeomagneticField( Double.valueOf( userLoc.getLatitude() ).floatValue(), Double
                 .valueOf( userLoc.getLongitude() ).floatValue(),
                 Double.valueOf( userLoc.getAltitude() ).floatValue(),
@@ -98,25 +97,6 @@ public class NavigationChecker {
         return CoorDist.getDist(userLoc.getLatitude(),userLoc.getLongitude(),list.get(0).getLatitude(),list.get(0).getLongitude());
     }
 
-    /***
-     * method used to check if user has gone the wrong way
-     * and run a check with the navigation list
-     */
-    private Boolean offRoute(Location userLoc, Position position) {
-        Double distance = CoorDist.getDist(userLoc.getLatitude(), userLoc.getLongitude(),
-                position.getLatitude(), position.getLongitude());
-        // pre-set off road distant, we will detect if user is 'this far away' from the destined
-        // position
-        if (distance > 30.00000) {
-            return true;
-        }
-        return false;
-    }
-
-    /***
-     * get method
-     * @return arraylist
-     */
     public ArrayList<Position> getPositions() {
         return list;
     }

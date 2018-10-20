@@ -46,7 +46,7 @@ Eldermap.P2PPkg : Contains code that handles peer 2 peer communication.<br/><br/
 Eldermap.ProfilePkg : Contains code that handles creation and modification of a profile.<br/><br/>
 
 # Servers
-There are two servers contained in the Server folder, API and WebSocket. <br/>
+There are two servers contained in the Server folder, API and WebSocket. <br/><br/>
 The API Server handles all the requests related to any database communication and is acting as a relay server to redirect requests to other APIs<br/><br/>
 The WebSocket Server handles all the chat connections, including id generation, client pairings and message redirection.<br/><br/>
 

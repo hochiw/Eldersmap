@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rTW/values-zh-rTW.xml",
+            "outputFile": "/Users/TakoYaki/GitHub/ElderMaps/Client/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rTW/values-zh-rTW.xml",
             "map": [
                 {
                     "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/ad872fc7c5bce4174e70da372dc0e688/res/values-zh-rTW/values-zh-rTW.xml",

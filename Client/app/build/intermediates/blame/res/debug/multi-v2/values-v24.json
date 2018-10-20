@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/TakoYaki/GitHub/ElderMaps/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
+            "outputFile": "/Users/TakoYaki/GitHub/ElderMaps/Client/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
             "map": [
                 {
                     "source": "/Users/TakoYaki/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/22ddf66a4d0e5cf5f7245baf5653c157/res/values-v24/values-v24.xml",

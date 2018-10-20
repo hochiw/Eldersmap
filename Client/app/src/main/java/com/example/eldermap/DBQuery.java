@@ -43,6 +43,10 @@ public class DBQuery {
         }
     }
 
+    /**
+     * Function to check if the user has completed the survey or not
+     * @return result
+     */
     public static boolean checkSurveyCompleted() {
         // Get the user id
         UserID= User.getUserID();
@@ -64,6 +68,10 @@ public class DBQuery {
         return false;
     }
 
+    /**
+     * Function to update the user profile and mark that they have completed the survey
+     * @return result
+     */
     public static boolean surveyComplete() {
         // get user id
         UserID= User.getUserID();
@@ -121,7 +129,10 @@ public class DBQuery {
         return User.USER;
     }
 
-
+    /**
+     * Function to create a new user profile with the corresponding id
+     * @return result
+     */
     public static boolean createProfile() {
         // get the user id
         UserID = User.getUserID();
@@ -215,6 +226,10 @@ public class DBQuery {
         return false;
     }
 
+    /**
+     * Function to update the user's text size preference
+     * @return result
+     */
     public static boolean updateTextsize(int textSize) {
         // Get the user id
         UserID= User.getUserID();
@@ -245,6 +260,10 @@ public class DBQuery {
         return false;
     }
 
+    /**
+     * Function to update the user's data collection preference
+     * @return result
+     */
     public static boolean updatePermission(boolean permissionPreference){
 
         // Get the user id
@@ -276,6 +295,10 @@ public class DBQuery {
         return false;
     }
 
+    /**
+     * Function to update the user's walking preference
+     * @return result
+     */
     public static boolean updateWalking(int walking){
 
         // Get the user id
@@ -307,6 +330,10 @@ public class DBQuery {
         return false;
     }
 
+    /**
+     * Function to retrieve a scheduled trip with the corresponding id
+     * @return result
+     */
     public static ArrayList<ScheduledTrip> retrievePlan() {
         ArrayList<ScheduledTrip> list = new ArrayList<>();
 
@@ -350,6 +377,10 @@ public class DBQuery {
         return list;
     }
 
+    /**
+     * Function to retrieve a history with the corresponding id
+     * @return
+     */
     public static ArrayList<FinishedTrip> retrieveHistory() {
         ArrayList<FinishedTrip> historyTripList = new ArrayList<>();
 
@@ -468,7 +499,7 @@ public class DBQuery {
 
     /**
      * this method is to add a finished trip to user history database
-     * @param trip
+     * @param trip history
      */
     public static boolean addUserHistory(FinishedTrip trip){
 
@@ -508,6 +539,11 @@ public class DBQuery {
         return false;
     }
 
+    /**
+     * Function to check if the history with the corresponding id exists
+     * @param TripID id of the trip
+     * @return result
+     */
     public static boolean checkHistoryTripExists(int TripID){
         // Get the user id
         UserID= User.getUserID();
@@ -534,7 +570,10 @@ public class DBQuery {
     }
 
 
-    //create a unique history trip id that doesn't exist in user database
+    /**
+     * create a unique history id that doesn't exist in user database
+     * @return id
+     */
     public static int createHistoryID(){
         int id;
         id = HistoryID;
@@ -543,7 +582,10 @@ public class DBQuery {
         return id;
     }
 
-    //create a unique future trip id that doesn't exist in user database
+    /**
+     * create a unique scheduled trip id that doesn't exist in user database
+     * @return id
+     */
     public static int createPlanID(){
         int id;
         id = PlanID;
@@ -551,7 +593,14 @@ public class DBQuery {
         return id;
     }
 
-    public static boolean updateHistoryReview(int tripID, float destinationMark, float navigationMark) {
+    /**
+     * function to update the history with the corresponding id
+     * @param tripID id of the trip
+     * @param destinationRating Rating of the destination
+     * @param navigationRating Rating of the trip
+     * @return result
+     */
+    public static boolean updateHistoryReview(int tripID, float destinationRating, float navigationRating) {
 
         // Get the user id
         UserID= User.getUserID();
@@ -565,7 +614,7 @@ public class DBQuery {
                 updateData.put("userID",UserID);
                 updateData.put("id",tripID);
                 updateData.put("key","locationRating");
-                updateData.put("value",destinationMark);
+                updateData.put("value",destinationRating);
 
                 // Execute the async task
                 destination.execute(updateData);
@@ -574,7 +623,7 @@ public class DBQuery {
                 updateData.remove("key");
                 updateData.remove("value");
                 updateData.put("key","tripRating");
-                updateData.put("value",navigationMark);
+                updateData.put("value",navigationRating);
 
                 // Execute the async task
                 request.execute(updateData);

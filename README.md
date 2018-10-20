@@ -31,7 +31,8 @@ ElderMaps API server :<br/>
 
 # Installing and Running
 Download the zip of this project. <br/>
-Don’t concern yourself with the server, it is well and alive on Heroku ;D <br/>
+Open the project in the Client folder <br/>
+Don’t concern yourself with the server, it is well and alive on Heroku <br/>
 Run project on Android Studio using an emulator or device. <br/>
 
 # About packages
@@ -43,6 +44,11 @@ Eldermap.NearbyLandmarkPkg : Contains code that handles the recommendation of la
 Eldermap.NetworkPkg : Communication between our API server (ElderMaps API) and the Android device.<br/><br/>
 Eldermap.P2PPkg : Contains code that handles peer 2 peer communication.<br/><br/>
 Eldermap.ProfilePkg : Contains code that handles creation and modification of a profile.<br/><br/>
+
+# Servers
+There are two servers contained in the Server folder, API and WebSocket. <br/>
+The API Server handles all the requests related to any database communication and is acting as a relay server to redirect requests to other APIs<br/><br/>
+The WebSocket Server handles all the chat connections, including id generation, client pairings and message redirection.<br/><br/>
 
 # Unit testing
 

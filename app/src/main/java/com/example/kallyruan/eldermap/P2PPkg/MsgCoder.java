@@ -25,7 +25,6 @@ public class MsgCoder {
             if (JsonMsg.has("type") && JsonMsg.has("content")) {
                 if (Integer.parseInt(JsonMsg.get("type").toString()) == MsgItem.MESSAGE_TYPE_TEXT) {
                     result = new MsgItem(JsonMsg.get("content").toString(),MsgItem.TYPE_RECEIVED,MsgItem.MESSAGE_TYPE_TEXT);
-                    result = new MsgItem(JsonMsg.get("content").toString(), MsgItem.TYPE_RECEIVED, MsgItem.MESSAGE_TYPE_TEXT);
                 } else if (Integer.parseInt(JsonMsg.get("type").toString()) == MsgItem.MESSAGE_TYPE_GRAPH) {
                     result = new MsgItem(JsonMsg.get("content").toString(), MsgItem.TYPE_RECEIVED, MsgItem.MESSAGE_TYPE_GRAPH);
                 } else if (Integer.parseInt(JsonMsg.get("type").toString()) == MsgItem.MESSAGE_TYPE_USER) {

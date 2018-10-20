@@ -1,9 +1,5 @@
 package com.example.kallyruan.eldermap.NavigationPkg;
-// TODO: NotificaitonScheduler and AlarmReceiver are the last two tests.Both classes are static.
-// TODO: Then the only remaining package is P2PPkg,
-// TODO: FileEncode, MsgCoder, MsgItem, SocketClient, VoiceCall. five more on P2P Tests.
-// TODO: One more DBQuery.(Static)
-// TODO: In total 8 more tests to go...
+
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.Notification;

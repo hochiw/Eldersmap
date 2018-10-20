@@ -48,10 +48,16 @@ public class FileEncoder {
             file.createNewFile();
             FileOutputStream out = new FileOutputStream(file);
 
-            out.write(data);
-            out.close();
-            return file.getAbsolutePath();
+            write(data,file,out);
         }
         return null;
+    }
+    // I have modfified a bit. (For test purpsoe. Not sure if this
+    // Modification screw the code...)
+    private static String write(byte[] data, File file,
+                         FileOutputStream out) throws IOException{
+        out.write(data);
+        out.close();
+        return file.getAbsolutePath();
     }
 }

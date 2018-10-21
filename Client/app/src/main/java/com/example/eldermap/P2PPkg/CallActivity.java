@@ -13,6 +13,10 @@ import com.sinch.android.rtc.calling.CallListener;
 
 import java.util.List;
 
+/**
+ * CallActivity class handles activities with call features including Custom call listener,
+ * call connection, cancell, UI display and redirecting to other activities.
+ */
 public class CallActivity extends Activity{
 
     // Initialize the call and the waiting message variable

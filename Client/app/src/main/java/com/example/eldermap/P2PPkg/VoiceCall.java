@@ -7,6 +7,9 @@ import com.sinch.android.rtc.Sinch;
 import com.sinch.android.rtc.SinchClient;
 import com.sinch.android.rtc.calling.Call;
 
+/**
+ * VoiceCall class is to create the connection with SinchClient.
+ */
 public class VoiceCall {
 
     private static SinchClient voiceClient = null;

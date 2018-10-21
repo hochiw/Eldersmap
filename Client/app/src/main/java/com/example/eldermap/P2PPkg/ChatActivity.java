@@ -33,6 +33,11 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ChatActivity class realises P2P chat through websocket server and SinchClient. All sending and
+ * received files would be process in JSON. This class would also handle all activites with UI display
+ * and intersection.
+ */
 public class ChatActivity extends AppCompatActivity {
 
     public final int RESULT_LOAD_IMG = 1;

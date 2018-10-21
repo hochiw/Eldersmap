@@ -1,7 +1,9 @@
 package com.example.eldermap.LocationPkg;
-
+/**
+ * Location class defines all attributes about a location including latitude, longitude, altitude
+ * and landmark type.
+ */
 public class Location {
-
     private Double latitude;
     private Double longitude;
     private Double altitude;

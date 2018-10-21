@@ -11,7 +11,10 @@ import android.widget.TextView;
 
 import com.example.eldermap.ProfilePkg.BaseActivity;
 import com.example.eldermap.R;
-
+/**
+ * MenuActivity class handles activities with menu features including UI display, intersection and
+ * redirecting to other activities.
+ */
 public class MenuActivity extends BaseActivity {
 
     //final static int variables for use in switch
@@ -83,8 +86,6 @@ public class MenuActivity extends BaseActivity {
      */
     private void listlandmark(int landmark){
         Intent intent = new Intent(getApplicationContext(), LandmarkListActivity.class);
-
-        //this is now for testing notification feature, should use the above intent
         startActivity(intent);
 
 

@@ -14,7 +14,10 @@ import com.example.eldermap.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+/**
+ * TripReviewActivity class handles activities with trip review features including UI display,
+ * update review to DB and redirecting to other activities.
+ */
 public class TripReviewActivity extends AppCompatActivity {
     final float NORATE = -1;
     final static int INVALID = -999;

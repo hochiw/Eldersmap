@@ -20,6 +20,10 @@ import com.example.eldermap.R;
 
 import java.util.ArrayList;
 
+/**
+ * FutureActivity class handles activities with scheduled trip features including UI display,
+ * intersection and redirecting to other activities.
+ */
 public class FutureActivity extends BaseActivity {
 
     private ArrayList<ScheduledTrip> list = new ArrayList<>(); // returned future list

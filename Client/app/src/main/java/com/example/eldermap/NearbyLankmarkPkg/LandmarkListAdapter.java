@@ -11,7 +11,10 @@ import android.widget.TextView;
 import com.example.eldermap.R;
 
 import java.util.ArrayList;
-
+/**
+ * LandmarkListAdapter class is to define a custom adatper for the customised element showing in a
+ * listView. Each landmark element will show name, rank, mark and distance in given format.
+ */
 public class LandmarkListAdapter extends BaseAdapter {
     // Initialize the variables
     private Activity mActivity;

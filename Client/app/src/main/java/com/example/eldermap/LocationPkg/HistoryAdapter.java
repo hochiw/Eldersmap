@@ -12,7 +12,10 @@ import com.example.eldermap.NearbyLankmarkPkg.MenuActivity;
 import com.example.eldermap.R;
 
 import java.util.ArrayList;
-
+/**
+ * HistoryAdapter class is to define a custom adatper for the customised element showing in a list view
+ * Each element will show trip name, date, rank,ratings and lankmark type.
+ */
 public class HistoryAdapter extends BaseAdapter {
 
     // Initialize the variables

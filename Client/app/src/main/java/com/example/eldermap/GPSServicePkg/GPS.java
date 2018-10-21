@@ -16,13 +16,15 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
-
+/**
+ * GPS class is to handle all request about GPS feature. This class will continuous get latest
+ * location and send updates to the observers
+ */
 public class GPS extends Service implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
     // Initializing the google api and request variable
     private GoogleApiClient googleAPI;
     private LocationRequest mLocationRequest;
-
 
     // The interval of the location update
     private static final long INTERVAL = 1000;

@@ -8,6 +8,9 @@ import org.json.JSONException;
 import java.io.File;
 import java.net.URI;
 
+/**
+ * SocketClient is the class to handle with connection with server and  P2P message sending.
+ */
 public class SocketClient implements Runnable{
 
     private Boolean alive = false;

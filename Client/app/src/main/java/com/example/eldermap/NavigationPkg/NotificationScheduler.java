@@ -12,10 +12,11 @@ import java.util.Calendar;
 
 import static android.content.Context.ALARM_SERVICE;
 
-
+/**
+ * NotificationScheduler class is to set Reminder at a given time though AlarmManager
+ */
 public class NotificationScheduler
 {
-
     /**
      * function to instatiate the scheduled trip notification
      * @param context Application context

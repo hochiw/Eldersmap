@@ -7,6 +7,10 @@ import android.widget.VideoView;
 
 import com.example.eldermap.R;
 
+/**
+ * VideoDisplayActivity class handles activities with video display features, UI display and
+ * redirecting to other activities.
+ */
 public class VideoDisplayActivity extends Activity {
     private static String dir;
 

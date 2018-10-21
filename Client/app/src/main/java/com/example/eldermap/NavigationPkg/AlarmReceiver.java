@@ -14,8 +14,10 @@ import com.example.eldermap.R;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 
-
-
+/**
+ * AlarmReceiver Class extends from BroadcastReceiver, and this is to watch for all scheduled
+ * reminders. Once catches, it will trigger a notification.
+ */
 public class AlarmReceiver extends BroadcastReceiver {
 
     // Initialize the variables
@@ -49,8 +51,6 @@ public class AlarmReceiver extends BroadcastReceiver {
         User.updateComingTripID();
 
         setupNotificationContent(context, pendingIntent);
-
-
     }
 
     /**

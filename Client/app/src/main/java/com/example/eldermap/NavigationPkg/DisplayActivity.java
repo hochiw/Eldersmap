@@ -25,7 +25,11 @@ import com.example.eldermap.P2PPkg.ChatActivity;
 import com.example.eldermap.R;
 
 import java.util.ArrayList;
-
+/**
+ * DisplayActivity class to to connect GPS service, take advantage of geomagnetic field sensor and
+ * update walking instructions and arrow direction. All navigation UI display and intersections will
+ * also be handled within this class.
+ */
 public class DisplayActivity extends AppCompatActivity {
     private TextView sign;
     private TextView distance;
@@ -43,6 +47,7 @@ public class DisplayActivity extends AppCompatActivity {
     private float arrowAngle = 0f;
     private boolean firstUpdate = true;
 
+    final float DEFAULT = 0.0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +90,7 @@ public class DisplayActivity extends AppCompatActivity {
         startService(i);
         registerReceiver(receiver,intentFilter);
 
-        currentLocation = Location.getInstance(0.0,0.0);
+        currentLocation = Location.getInstance(DEFAULT,DEFAULT);
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         sensorListener = new SensorListener();
         mSensorManager.registerListener(sensorListener, mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION),
@@ -96,9 +101,6 @@ public class DisplayActivity extends AppCompatActivity {
         // Initialize the direction arrow
         graph = findViewById(R.id.directionIcon);
         graph.setImageResource(R.mipmap.ic_arrow_up);
-
-
-
     }
 
     /**
@@ -125,7 +127,9 @@ public class DisplayActivity extends AppCompatActivity {
     }
 
 
-    // Custom broadcast receiver
+    /**
+     * LocationReceiver is a Custom broadcast receiver
+     */
     private class LocationReceiver extends BroadcastReceiver {
 
         /**
@@ -137,17 +141,17 @@ public class DisplayActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
 
             // Replace the location attributes with the new ones
-            currentLocation.setLatitude(intent.getDoubleExtra("Latitude",0.0));
-            currentLocation.setLongitude(intent.getDoubleExtra("Longitude",0.0));
-            currentLocation.setAltitude(intent.getDoubleExtra("Altitude",0.0));
+            currentLocation.setLatitude(intent.getDoubleExtra("Latitude",DEFAULT));
+            currentLocation.setLongitude(intent.getDoubleExtra("Longitude",DEFAULT));
+            currentLocation.setAltitude(intent.getDoubleExtra("Altitude",DEFAULT));
 
             // Wait until the GPS is warmed up before displaying the list
             if (firstUpdate) {
                 try {
                     //if connected to server, make loading panel view gone and show result list
                     checker = new NavigationChecker(currentLocation,Location.getInstance(
-                            getIntent().getDoubleExtra("destLatitude",0.0),
-                            getIntent().getDoubleExtra("destLongitude", 0.0)));
+                            getIntent().getDoubleExtra("destLatitude",DEFAULT),
+                            getIntent().getDoubleExtra("destLongitude", DEFAULT)));
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -171,7 +175,9 @@ public class DisplayActivity extends AppCompatActivity {
         }
     }
 
-    // Custom listener for the geomagnetic field sensor
+    /**
+     * SensorListener class is a Custom listener for the geomagnetic field sensor
+     */
     private class SensorListener implements SensorEventListener {
 
         @Override
@@ -180,11 +186,8 @@ public class DisplayActivity extends AppCompatActivity {
 
                 // Algorithm to calculate the direction the arrow should be pointing to
                 double bearing = checker.calculateAngle();
-
                 GeomagneticField geoField = checker.calcGeofield();
-
                 currentAngle = Math.round(sensorEvent.values[0]);
-
                 currentAngle -= geoField.getDeclination();
 
                 if (bearing < 0) {
@@ -206,7 +209,6 @@ public class DisplayActivity extends AppCompatActivity {
                         0.5f);
 
                 ra.setDuration(210);
-
                 ra.setFillAfter(true);
 
                 // Start the animation
@@ -215,36 +217,11 @@ public class DisplayActivity extends AppCompatActivity {
                 // Smoothening the animation
                 arrowAngle = direction;
             }
-
-
-
         }
-
-
-
 
         @Override
-        public void onAccuracyChanged(Sensor sensor, int i) {
-
-        }
+        public void onAccuracyChanged(Sensor sensor, int i) { }
     }
-
-//    // for the present demo, assume the navigation page would refresh every two seconds
-//    public void refresh() {
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                try {
-//                    final Intent mainIntent = new Intent(getApplicationContext(), DisplayActivity.class);
-//                    startActivity(mainIntent);
-//                    displayIndex += 1;
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }, 2000);
-//    }
-
 
     /**
      * this method is to set instruction information on display page based on information content
@@ -257,25 +234,6 @@ public class DisplayActivity extends AppCompatActivity {
         sign.setText(signText);
 
         String direction = current.getModifier();
-
-
-
-        //set keywords for moving direction
-       // final String LEFT = "LEFT";
-        //final String RIGHT = "RIGHT";
-        //final String BACKWARD = "BACKWARD";
-      //  final String FORWARD = "STRAIGHT";
-        //set direction image if contains keywords
-     //   if (signText.toUpperCase().contains(LEFT)) {
-    //        graph.setImageResource(R.mipmap.ic_arrow_left);
-    //    } else if (direction.toUpperCase().equals(RIGHT)) {
-    //        graph.setImageResource(R.mipmap.ic_arrow_right);
-    //    } else if (direction.toUpperCase().equals(FORWARD)) {
-    //        graph.setImageResource(R.mipmap.ic_arrow_up);
-    //    } else if (direction.toUpperCase().equals(BACKWARD)) {
-    //        graph.setImageResource(R.mipmap.ic_arrow_down);
-    //    }
-
     }
 
     /** this method is used in timertask to refresh arraylist

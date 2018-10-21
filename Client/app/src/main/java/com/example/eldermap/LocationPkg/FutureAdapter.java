@@ -13,8 +13,11 @@ import com.example.eldermap.R;
 
 import java.util.ArrayList;
 
+/**
+ * FutureAdapter class is to define a custom adatper for the customised element showing in a list view
+ * Each element will show trip name, date, rank and lankmark type.
+ */
 public class FutureAdapter extends BaseAdapter {
-
     // Initialize the variables
     private Activity mActivity;
     private ArrayList<ScheduledTrip> futureTrips;

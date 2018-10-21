@@ -1,5 +1,8 @@
 package com.example.eldermap.LocationPkg;
-
+/**
+ * Trip class defines all basic attributes about a trip, this is the base class in the Trip related
+ * class.
+ */
 public class Trip {
     private int tripID;
     private int targetDay;

@@ -1,5 +1,8 @@
 package com.example.eldermap.P2PPkg;
 
+/**
+ * MsgItem class defines all attributes about a Message including content, message type and filename.
+ */
 public class MsgItem {
     public static final int TYPE_RECEIVED = 0;
     public static final int TYPE_SENT = 1;

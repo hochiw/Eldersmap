@@ -1,5 +1,8 @@
 package com.example.eldermap.NavigationPkg;
 
+/**
+ * CoorDist class is to calculate the distance between the two coordinates
+ */
 public class CoorDist {
 
     /**

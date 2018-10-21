@@ -12,7 +12,9 @@ import com.example.eldermap.DBQuery;
 import com.example.eldermap.NearbyLankmarkPkg.LandmarkListActivity;
 import com.example.eldermap.ProfilePkg.User;
 import com.example.eldermap.R;
-
+/**
+ * ScheduleTimeActivity class is to get trip plan dates and time through UI intersection.
+ */
 public class ScheduleTimeActivity extends AppCompatActivity{
     //private static int tripID;
     public static int targetDay;

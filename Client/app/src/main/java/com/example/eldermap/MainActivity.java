@@ -21,6 +21,10 @@ import com.example.eldermap.ProfilePkg.SignupActivity;
 import com.example.eldermap.ProfilePkg.User;
 import com.example.eldermap.R;
 
+/**
+ * MainActivity class is to check user type, permission status and loading all user data. Permission
+ * request will also be handled within this class. AppMenuActivity will be launched afterwards.
+ */
 public class MainActivity extends AppCompatActivity {
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     public static String ANDROID_ID;

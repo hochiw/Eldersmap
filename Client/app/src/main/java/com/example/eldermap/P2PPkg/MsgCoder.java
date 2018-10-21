@@ -3,8 +3,11 @@ package com.example.eldermap.P2PPkg;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * MsgCoder class is to Convert the message file to json format or Decode from json in to responding
+ * file type.
+ */
 public class MsgCoder {
-
     /**
      * Encode the message item into a json
      * @param message

@@ -7,7 +7,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
+/**
+ * FileEncoder class is to Convert the file to desired data format
+ */
 public class FileEncoder {
 
     /**

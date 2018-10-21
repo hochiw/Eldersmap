@@ -33,7 +33,10 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-
+/**
+ * LandmarkListActivity class is to request nearby lankmark, show sorted suggested landmark list,
+ * handles UI display, intersection and redirecting to other activities.
+ */
 public class LandmarkListActivity extends BaseActivity {
     public static String category; // show the list of nearby landmarks info
 

@@ -7,7 +7,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.example.eldermap.R;
-
+/**
+ * ImageAdapter class is to define a custom adatper for image showing in a ImageView
+ */
 public class ImageAdapter extends BaseAdapter {
 
     // Variable for the context

@@ -1,19 +1,20 @@
 package com.example.eldermap.NavigationPkg;
 
 import android.hardware.GeomagneticField;
-import android.util.Log;
-
 import com.example.eldermap.LocationPkg.Location;
 import com.example.eldermap.NetworkPkg.HTTPPostRequest;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * This class is used to check user current location and compares with navigation instruction,
+ * doing so with timer task will provide a checker that constantly checking user location
+ * to make sure the app delivers accurate navigation
+ */
 public class NavigationChecker {
 
     private Location userLoc;
@@ -43,7 +44,6 @@ public class NavigationChecker {
                     jsonArray.optJSONObject(i).getInt("bearing_after"),
                     jsonArray.optJSONObject(i).getInt("bearing_before"),
                     jsonArray.optJSONObject(i).getJSONArray("location")));
-            Log.d("list_testing", list.get(i).getInstruction());
         }
 
     }
@@ -69,7 +69,7 @@ public class NavigationChecker {
 
     /**
      * Calculates angle between the coordinates
-     * @return
+     * @return angle as double
      */
     public double calculateAngle() {
         android.location.Location userLocation = new android.location.Location("User");

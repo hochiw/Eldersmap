@@ -16,6 +16,11 @@ import com.example.eldermap.R;
 import java.io.File;
 import java.util.List;
 
+/**
+ * MsgAdapter class is to define a customised chat message element showing in a the chat ListView.
+ * This adapter handles video, image, text data. All received message will be displayed on the left
+ * while the sent message will be on the right.
+ */
 public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.ViewHolder> {
 
     private List<MsgItem> mMsgItemList;

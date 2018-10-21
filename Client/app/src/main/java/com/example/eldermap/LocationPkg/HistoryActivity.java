@@ -20,6 +20,10 @@ import com.example.eldermap.R;
 
 import java.util.ArrayList;
 
+/**
+ * HistoryActivity class handles activities with history trip features including UI display,
+ * intersection and redirecting to other activities.
+ */
 public class HistoryActivity extends BaseActivity {
     private ArrayList<FinishedTrip> list = new ArrayList<>(); // returned history list
     private HistoryAdapter adapter; // adapter of the history
@@ -54,7 +58,7 @@ public class HistoryActivity extends BaseActivity {
         historyList.setVisibility(View.INVISIBLE);
 
 
-        // Loading screen
+        // Loading screen with a delay 1.5 seconds
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

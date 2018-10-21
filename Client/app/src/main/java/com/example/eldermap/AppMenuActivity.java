@@ -16,6 +16,10 @@ import com.example.eldermap.ProfilePkg.BaseActivity;
 import com.example.eldermap.ProfilePkg.SettingActivity;
 import com.example.eldermap.R;
 
+/**
+ * AppMenuActivity class handles activities with menu features including UI display, intersection and
+ * redirecting to other activities.
+ */
 public class AppMenuActivity extends BaseActivity {
 
     @Override

@@ -2,6 +2,11 @@ package com.example.eldermap.LocationPkg;
 
 import android.support.annotation.NonNull;
 
+/**
+ * ScheduledTrip class is the class storing all information about Scheduled Trip. As a extended class
+ * from Trip class, it inherents all features from Trip class and further adds trip time variables.
+ * This class also implements comparable interface, which could sort by trip date.
+ */
 public class ScheduledTrip extends Trip implements Comparable<ScheduledTrip>{
 
     // Initialize the variables
@@ -36,7 +41,7 @@ public class ScheduledTrip extends Trip implements Comparable<ScheduledTrip>{
     }
 
     /**
-     *
+     * this method is to return formated date
      * @return Formatted date
      */
     @Override
@@ -47,8 +52,8 @@ public class ScheduledTrip extends Trip implements Comparable<ScheduledTrip>{
 
     /**
      * Comparator for the scheduled trip
-     * @param o
-     * @return
+     * @param o a given ScheduledTrip for comparsion
+     * @return comparsion result
      */
     @Override
     public int compareTo(@NonNull ScheduledTrip o) {

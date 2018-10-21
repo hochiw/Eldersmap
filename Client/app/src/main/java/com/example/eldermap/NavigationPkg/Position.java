@@ -2,7 +2,9 @@ package com.example.eldermap.NavigationPkg;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-
+/**
+ * Position class defines all attributes around a position.
+ */
 public class Position {
     private String instruction;
     private int bearing_before;

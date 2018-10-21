@@ -9,7 +9,10 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
+/**
+ * SearchAlg class defines the applied landmark searching algorithm and revert distance to estimated
+ * walking time.
+ */
 public class SearchAlg {
     public final static int FIVEMINUTES = 5;
     public final static int TENMINUTES = 10;
@@ -68,7 +71,7 @@ public class SearchAlg {
     /**
      * Converts distance to an estimated time of travel
      * @param walkDist Distance from user to landmark in meters
-     * @return
+     * @return estimates walking time as int
      */
     public int estWalkTime(double walkDist) {
         if (0 < walkDist && walkDist <= 250) {

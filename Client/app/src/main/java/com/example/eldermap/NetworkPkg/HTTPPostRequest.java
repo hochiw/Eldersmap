@@ -10,6 +10,9 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * HTTPPostRequest class is to handle all HTTP Post Requests.
+ */
 public class HTTPPostRequest extends AsyncTask<JSONObject,Void,String> {
     // Variable to store the url and the result code
     private String url;

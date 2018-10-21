@@ -7,7 +7,9 @@ import com.example.eldermap.LocationPkg.Location;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
+/**
+ * JSONFactory class is to parse user location object and selected landmark type into a JSON Object
+ */
 public final class JSONFactory {
     /**
      * Parse user location object and selected landmark type into a JSON Object

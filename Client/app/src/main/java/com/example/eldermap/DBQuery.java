@@ -13,6 +13,10 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+/**
+ * DBQuery class handles all intersection with database server including profile creation, trip storage,
+ * updating and deletion.
+ */
 public class DBQuery {
 
     // Initialize the variables

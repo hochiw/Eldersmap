@@ -1,5 +1,9 @@
 package com.example.eldermap.LocationPkg;
 
+/**
+ * FinishedTrip class is the class storing all information about FinishedTrip. As a extended class
+ * from Trip class, it inherents all features from Trip class and further adds rating variables.
+ */
 public class FinishedTrip extends Trip {
     private float destinationMark;
     private float navigationMark;

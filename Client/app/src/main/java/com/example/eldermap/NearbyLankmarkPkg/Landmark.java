@@ -2,9 +2,10 @@ package com.example.eldermap.NearbyLankmarkPkg;
 import com.example.eldermap.LocationPkg.Location;
 
 import java.util.Comparator;
-
+/**
+ * Landmark class defines all basic attributes about a landmark.
+ */
 public class Landmark {
-
     private String name;
     private String address;
     private float rating;

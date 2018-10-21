@@ -44,7 +44,10 @@ public class SettingActivity extends BaseActivity {
         startActivityForResult(i,1);
     }
 
+<<<<<<< HEAD:Client/app/src/main/java/com/example/eldermap/ProfilePkg/SettingActivity.java
 
+=======
+>>>>>>> master:app/src/main/java/com/example/kallyruan/eldermap/ProfilePkg/SettingActivity.java
     /**
      * this is the method to re-direct to AppMenuActivity page for App main menu
      * @param view

@@ -1,5 +1,11 @@
 package com.example.eldermap;
 
+<<<<<<< HEAD:Client/app/src/main/java/com/example/eldermap/DBQuery.java
+=======
+import android.accounts.NetworkErrorException;
+import android.os.AsyncTask;
+import android.util.Log;
+>>>>>>> master:app/src/main/java/com/example/kallyruan/eldermap/DBQuery.java
 
 import com.example.eldermap.LocationPkg.FinishedTrip;
 import com.example.eldermap.LocationPkg.Location;
@@ -16,10 +22,17 @@ import java.util.ArrayList;
 
 public class DBQuery {
 
+<<<<<<< HEAD:Client/app/src/main/java/com/example/eldermap/DBQuery.java
     // Initialize the variables
     private static String UserID;
     private static int HistoryID = 0;
     private static int PlanID = 0;
+=======
+    static String UserID;
+    // Initialise int.
+    static int HistoryID = 0;
+    static int PlanID = 0;
+>>>>>>> master:app/src/main/java/com/example/kallyruan/eldermap/DBQuery.java
 
     private static String baseURL = "http://eldersmapapi.herokuapp.com/api/";
 
@@ -56,8 +69,13 @@ public class DBQuery {
             try {
                 // Send a post request to the server and retrieve the user profile
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "getProfile");
+<<<<<<< HEAD:Client/app/src/main/java/com/example/eldermap/DBQuery.java
                 JSONObject result = new JSONObject(request.execute(new JSONObject().put("userID", UserID)).get());
                 // Check if the user has completed the survey or not
+=======
+                JSONObject result = new JSONObject(request.execute(new JSONObject().
+                        put("userID", UserID)).get());
+>>>>>>> master:app/src/main/java/com/example/kallyruan/eldermap/DBQuery.java
                 if (result.getJSONObject("survey").getInt("completed") == 1) {
                     return true;
                 }
@@ -118,8 +136,13 @@ public class DBQuery {
             try {
                 // Send a post request to the API server and retrieve the user profile
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "getProfile");
+<<<<<<< HEAD:Client/app/src/main/java/com/example/eldermap/DBQuery.java
                 JSONObject result = new JSONObject(request.execute(new JSONObject().put("userID", UserID)).get());
                 // Return the user type as an interger
+=======
+                JSONObject result = new JSONObject(request.execute(new JSONObject().
+                        put("userID", UserID)).get());
+>>>>>>> master:app/src/main/java/com/example/kallyruan/eldermap/DBQuery.java
                 return result.getInt("userType");
             } catch (Exception e) {
                 e.printStackTrace();

@@ -36,8 +36,15 @@ public class User {
      */
     public static String getUserID(){
         if (userID==null){
+<<<<<<< HEAD:Client/app/src/main/java/com/example/eldermap/ProfilePkg/User.java
             // get device android id
             userID = MainActivity.ANDROID_ID;
+=======
+            // here get MEID id here by somehow
+
+            userID = MainActivity.ANDROID_ID;
+
+>>>>>>> master:app/src/main/java/com/example/kallyruan/eldermap/ProfilePkg/User.java
             return userID;
         }else{
             return userID;

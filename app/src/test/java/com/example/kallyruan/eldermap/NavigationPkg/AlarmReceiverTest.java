@@ -57,7 +57,7 @@ public class AlarmReceiverTest {
 
     @Test
     public void getComingTripID() {
-        int expected = 0;
+        int expected = 10;
         assertEquals(expected,AlarmReceiver.getComingTripID());
     }
 

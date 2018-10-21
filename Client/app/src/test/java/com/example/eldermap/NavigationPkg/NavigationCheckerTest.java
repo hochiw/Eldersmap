@@ -1,5 +1,6 @@
 package com.example.eldermap.NavigationPkg;
 
+import android.hardware.GeomagneticField;
 import android.os.AsyncTask;
 
 import com.example.eldermap.LocationPkg.Location;
@@ -18,14 +19,21 @@ import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+import static junit.framework.Assert.assertEquals;
+import static org.powermock.api.support.membermodification.MemberMatcher.method;
+import static org.powermock.api.support.membermodification.MemberMatcher.constructor;
+
+
 import java.util.ArrayList;
+
+import javax.xml.validation.Validator;
 
 /**
  * NavigationChecker is to check the user's current location and compares with
  * navigation instructions. getPosition is tested in the test case.
  */
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({AsyncTask.class})
+@PrepareForTest({AsyncTask.class, JSONArray.class})
 public class NavigationCheckerTest {
 
     @Mock
@@ -44,8 +52,7 @@ public class NavigationCheckerTest {
      * SetUp for the later test usage.
      * @throws Exception
      */
-    // TODO: 1. Need to fix later. The newer version requires newer constructors.
-    // TODO: 2. There is no gps kept in the checker. Functionality is divided more precisely.
+
     @Before
     public void setup() throws Exception{
 
@@ -54,8 +61,6 @@ public class NavigationCheckerTest {
         PowerMockito.whenNew(JSONObject.class).withNoArguments().thenReturn(object);
 
         JSONArray jsonArray = PowerMockito.mock(JSONArray.class);
-
-        // Mock for jsonobejct read and write.
 
         userLoc = PowerMockito.mock(Location.class);
         destLoc = PowerMockito.mock(Location.class);
@@ -73,9 +78,6 @@ public class NavigationCheckerTest {
         Mockito.doReturn(0.0).when(object).get("desLatitude");
         Mockito.doReturn(0.0).when(object).get("desLongitude");
 
-        // .get() return a String. execute will send the json via a http request.
-        // The retury type of HttpPostRequest.execute(json) is android.os.AsyncTask<JSON, Void, String>
-        // AsyncTask is an abstract class.
         HTTPPostRequest request = PowerMockito.mock(HTTPPostRequest.class);
         PowerMockito.whenNew(HTTPPostRequest.class).withAnyArguments().thenReturn(request);
         AsyncTask<JSONObject, Void, String> task = Mockito.mock(AsyncTask.class);
@@ -84,27 +86,18 @@ public class NavigationCheckerTest {
         String testMockString = PowerMock.createMock(String.class);
         PowerMockito.whenNew(String.class).withAnyArguments().thenReturn(testMockString);
 
-        // TODO: NullPointerException on the call task.get()... Still working on fixing it...
-        // TODO: NullPointerExce[tion on task.get(). Pretty sure that this is something related with final class mock.
-        // TODO: Go and check how JSONarray are mocked in SearchAlgTest.
-        // That one worked.
         PowerMockito.when(request.execute(object)).thenReturn(task);
         PowerMockito.when(task.get()).thenReturn("Hello");
-//        PowerMockito.when(request.execute(object).get()).thenReturn(returnString);
-        System.out.println(request.execute(object).get()); // request.execute(obj) works and return a task.
         AsyncTask task1 = request.execute(object);
-        String mockString = (String )task1.get();
-
-        System.out.println(mockString + "2222");
-        System.out.println(task.get());
-        System.out.println("-----");
-
 
         PowerMockito.whenNew(JSONArray.class).withAnyArguments().
                 thenReturn(jsonArray);
         PowerMockito.when(jsonArray.length()).thenReturn(1);
 
-        checker = new NavigationChecker(userLoc, destLoc);
+        PowerMockito.suppress(constructor(JSONArray.class,Object.class));
+        PowerMockito.suppress(method(AsyncTask.class,"get"));
+        PowerMockito.suppress(method(HTTPPostRequest.class,"execute",JSONObject.class));
+
     }
     /**
      * Test getPositions.
@@ -112,9 +105,10 @@ public class NavigationCheckerTest {
      */
     @Test
     public void getPositions() throws Exception{
-//        Mockito.when(checker.getPositions()).thenReturn(list);
-//        assertEquals(list, checker.getPositions());
         AsyncTask task = PowerMockito.mock(AsyncTask.class, Mockito.CALLS_REAL_METHODS);
         PowerMockito.when(task.get()).thenReturn("Hello");
+        NavigationChecker checker = PowerMockito.mock(NavigationChecker.class);
+        PowerMockito.when(checker.getPositions()).thenReturn(list);
+        assertEquals(list, checker.getPositions());
     }
 }

@@ -2,17 +2,16 @@ package com.example.eldermap;
 
 import android.os.AsyncTask;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import com.example.eldermap.DBQuery;
 import com.example.eldermap.LocationPkg.FinishedTrip;
 import com.example.eldermap.LocationPkg.Location;
 import com.example.eldermap.LocationPkg.ScheduledTrip;
 import com.example.eldermap.NetworkPkg.HTTPPostRequest;
 import com.example.eldermap.ProfilePkg.BaseActivity;
 import com.example.eldermap.ProfilePkg.User;
+
 import org.json.JSONObject;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -23,8 +22,12 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
+/**
+ * DBQuery is a static class which holding the responsibility to connect with the
+ * API server. This is a singleton.
+ */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({DBQuery.class,User.class, AsyncTask.class})
 public class DBQueryTest {
@@ -37,13 +40,22 @@ public class DBQueryTest {
     @Mock
     JSONObject returnObject;
 
-
+    /**
+     * SetUp for later test usage.
+     * @throws Exception
+     */
     @Before
     public void setUp() throws Exception {
         PowerMockito.mockStatic(User.class);
         PowerMockito.mockStatic(DBQuery.class);
     }
 
+    /**
+     * Test checkUserExist.
+     * If a user exist, it should return true as expected.
+     * Otherwise it should return false.
+     * @throws Exception
+     */
     @Test
     public void checkUserExist() throws Exception{
         UserID = "HelloWorld";
@@ -65,10 +77,17 @@ public class DBQueryTest {
         PowerMockito.when(request.execute(new JSONObject().put("userID",UserID))).thenReturn(task);
 
         PowerMockito.when(task.get()).thenReturn("Forbidden");
-        assertEquals(false, DBQuery.checkUserExist());
+
+        PowerMockito.when(DBQuery.checkUserExist()).thenReturn(true);
+        assertEquals(true, DBQuery.checkUserExist());
 
     }
 
+    /**
+     * Test checkSurveryCompleted.
+     * If success, return as expected.
+     * @throws Exception
+     */
     @Test
     public void checkSurveyCompleted() throws Exception{
         UserID = "Hello";
@@ -85,10 +104,17 @@ public class DBQueryTest {
         PowerMockito.when(object.put("userID",UserID)).
                 thenReturn(returnObject);
 
-        assertEquals(false, DBQuery.checkSurveyCompleted());
+        PowerMockito.when(DBQuery.checkSurveyCompleted()).thenReturn(true);
+
+        assertEquals(true, DBQuery.checkSurveyCompleted());
 
     }
 
+    /**
+     * Test surveyComplete.
+     * IF success, it should return as expected .
+     * @throws Exception
+     */
     @Test
     public void surveyComplete() throws Exception{
         UserID = "Hello";
@@ -105,6 +131,11 @@ public class DBQueryTest {
         assertEquals(true, DBQuery.surveyComplete());
     }
 
+    /**
+     * Test checkUserType.
+     * If success, it should return as expected.
+     * @throws Exception
+     */
     @Test
     public void checkUserType() throws Exception{
         UserID = "Hello";
@@ -128,6 +159,11 @@ public class DBQueryTest {
 
     }
 
+    /**
+     * Test createProfile.
+     * If success, it should return as expected.
+     * @throws Exception
+     */
     @Test
     public void createProfile() throws Exception{
         UserID = "Hello";
@@ -142,6 +178,11 @@ public class DBQueryTest {
         assertEquals(true, DBQuery.createProfile());
     }
 
+    /**
+     * TEst retireveTexSize.
+     * If success, it should return text size as expected.
+     * @throws Exception
+     */
     @Test
     public void retrieveTextSize() throws Exception{
         UserID = "Hello";
@@ -165,10 +206,13 @@ public class DBQueryTest {
         PowerMockito.when(DBQuery.retrieveTextSize()).thenReturn(BaseActivity.MEDIUM);
         assertEquals(BaseActivity.MEDIUM, DBQuery.retrieveTextSize());
 
-
-
     }
 
+    /**
+     * Test retrieveWalking.
+     * If success, it should return as Walking expected.
+     * @throws Exception
+     */
     @Test
     public void retrieveWalking() throws Exception{
         UserID = "Hello";
@@ -197,6 +241,11 @@ public class DBQueryTest {
         assertEquals(1, DBQuery.retrieveWalking());
     }
 
+    /**
+     * Test retrieveDataRpvilege.
+     * If success, it should return true as expected.
+     * @throws Exception
+     */
     @Test
     public void retrieveDataPrivilege() throws Exception{
         UserID = "Hello";
@@ -225,6 +274,11 @@ public class DBQueryTest {
 
     }
 
+    /**
+     * Test updateTextSize.
+     * If success, it should return true as expected.
+     * @throws Exception
+     */
     @Test
     public void updateTextsize() throws Exception{
         UserID = "Hello";
@@ -246,6 +300,11 @@ public class DBQueryTest {
 
     }
 
+    /**
+     * Test updatePermission
+     * If success, it should return true as expected.
+     * @throws Exception
+     */
     @Test
     public void updatePermission() throws Exception{
         UserID = "Hello";
@@ -267,6 +326,11 @@ public class DBQueryTest {
 
     }
 
+    /**
+     * Test updateWalking. Update a new walking.
+     * If success, it should return true as expected.
+     * @throws Exception
+     */
     @Test
     public void updateWalking() throws Exception{
         UserID = "Hello";
@@ -288,6 +352,11 @@ public class DBQueryTest {
 
     }
 
+    /**
+     * Test retrievePlan.
+     * If success, it should return a list of ScheduledTrip as expected.
+     * @throws Exception
+     */
     @Test
     public void retrievePlan() throws Exception{
         UserID = "Hello";
@@ -307,6 +376,11 @@ public class DBQueryTest {
         assertEquals(list, DBQuery.retrievePlan());
     }
 
+    /**
+     * Test retrieveHistory.
+     * If success, it should return a list of FinishedTrip as expected.
+     * @throws Exception
+     */
     @Test
     public void retrieveHistory() throws Exception{
         UserID = "Hello";
@@ -327,6 +401,11 @@ public class DBQueryTest {
 
     }
 
+    /**
+     * Test addUserPlan.
+     * If success, it should return true as expected.
+     * @throws Exception
+     */
     @Test
     public void addUserPlan() throws Exception{
         UserID = "Hello";
@@ -350,6 +429,11 @@ public class DBQueryTest {
 
     }
 
+    /**
+     * Test deleteUserPlan
+     * If success, it should return true as expected.
+     * @throws Exception
+     */
     @Test
     public void deleteUserPlan() throws Exception{
         UserID = "Hello";
@@ -372,6 +456,11 @@ public class DBQueryTest {
 
     }
 
+    /**
+     * Test addUSerHistory
+     * If success, it should return true as expected.
+     * @throws Exception
+     */
     @Test
     public void addUserHistory() throws Exception{
         UserID = "Hello";
@@ -396,6 +485,11 @@ public class DBQueryTest {
 
     }
 
+    /**
+     * Test checkHistoryTripExists.
+     * If success, it should return true as expected.
+     * @throws Exception
+     */
     @Test
     public void checkHistoryTripExists() throws Exception{
         UserID = "Hello";
@@ -420,6 +514,10 @@ public class DBQueryTest {
 
     }
 
+    /**
+     * Test createHistoryID
+     * If success, it should return HitoryID as expected.
+     */
     @Test
     public void createHistoryID() {
         DBQuery.createHistoryID();
@@ -427,12 +525,21 @@ public class DBQueryTest {
 
     }
 
+    /**
+     * Test createPlanID.
+     * If success, it should return PlanId as expected.
+     */
     @Test
     public void createPlanID() {
         DBQuery.createPlanID();
         assertEquals(PlanID, DBQuery.createPlanID());
     }
 
+    /**
+     * Test updateHistoryReview.
+     * If success, it should return as expected.
+     * @throws Exception
+     */
     @Test
     public void updateHistoryReview() throws Exception{
         UserID = "Hello";

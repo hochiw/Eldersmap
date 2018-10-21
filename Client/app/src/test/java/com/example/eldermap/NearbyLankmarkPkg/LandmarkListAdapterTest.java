@@ -6,25 +6,30 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.eldermap.NearbyLankmarkPkg.Landmark;
-import com.example.eldermap.NearbyLankmarkPkg.LandmarkListAdapter;
 import com.example.eldermap.R;
-import org.powermock.api.easymock.PowerMock;
-import org.junit.Test;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.powermock.api.easymock.PowerMock;
 import org.powermock.api.mockito.PowerMockito;
+import org.powermock.api.support.membermodification.MemberMatcher;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
+/**
+ *LandmarkListAdapter holds the functionality to show the view for the landmarkList.
+ * Most of the class is about ui setting.
+ */
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({LandmarkListAdapter.class, View.class, Landmark.class, TextView.class})
+@PrepareForTest({LandmarkListAdapter.class, View.class,
+        Landmark.class, TextView.class, LandmarkListAdapter.ViewHolder.class})
 public class LandmarkListAdapterTest {
 
     @Mock
@@ -60,7 +65,9 @@ public class LandmarkListAdapterTest {
     private final View view = null;
     private ViewGroup viewGroup;
 
-
+    /**
+     * Prepare for later test usage.
+     */
     @Before
     public void setup(){
         this.mActivity = Mockito.mock(Activity.class);
@@ -69,44 +76,56 @@ public class LandmarkListAdapterTest {
         place = PowerMock.createMock(Landmark.class);
 
     }
+
+    /**
+     * Test getCount
+     * If success, it should return expected.
+     */
     @Test
     public void getCount() {
         int expected = 0;
         assertEquals(expected,adapter.getCount());
     }
 
+    /**
+     * Test getItem
+     * If success, it should return null
+     */
     @Test
     public void getItem() {
         assertEquals(null, adapter.getItem(0));
     }
 
+    /**
+     * Test getItemId
+     * If success, it should return 0 as expected.
+     */
     @Test
     public void getItemId() {
         assertEquals(0,adapter.getItemId(0));
     }
 
-    // getView is mostly about setting ui, which calls fillImage.
+    /**
+     * Test getView.
+     * Mainly about ui setting.
+     * @throws Exception
+     */
     @Test
-    public void getViewWithNullView() throws Exception {
-        // Since the assignment is acted on a private value, not able to test the assignment.
+    public void getView() throws Exception {
         LayoutInflater inflater = Mockito.mock(LayoutInflater.class);
         final View createdView = Mockito.mock(View.class);
 
         PowerMockito.whenNew(View.class).withAnyArguments().thenReturn(createdView);
 
-
-
         Mockito.when(mActivity.getLayoutInflater()).thenReturn(inflater);
         Mockito.when(inflater.inflate(R.layout.landmark_list_row,null)).
                 thenReturn(createdView);
 
+        PowerMockito.suppress(MemberMatcher.method(LandmarkListAdapter.class, "fillImage",
+                LandmarkListAdapter.ViewHolder.class,int.class));
+
         PowerMockito.when(createdView.findViewById(R.id.locationName)).thenReturn(name);
-
-
+        PowerMockito.suppress(MemberMatcher.method(TextView.class,"setText",String.class));
     }
 
-    @Test
-    public void getViewWithView(){
-
-    }
 }

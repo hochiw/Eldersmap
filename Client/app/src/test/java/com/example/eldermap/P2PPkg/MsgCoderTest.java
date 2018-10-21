@@ -1,9 +1,6 @@
 package com.example.eldermap.P2PPkg;
 
 
-import com.example.eldermap.P2PPkg.MsgCoder;
-import com.example.eldermap.P2PPkg.MsgItem;
-
 import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,16 +13,28 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * MsgCoder should be able to encode and decode.
+ * This test includes encode testing and decode testing.
+ */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({JSONObject.class, MsgCoder.class})
 public class MsgCoderTest {
 
-
+    /**
+     * SetUp for later test usage.
+     * @throws Exception
+     */
     @Before
     public void setUp() throws Exception {
         PowerMockito.mockStatic(MsgCoder.class);
     }
 
+    /**
+     * Test if the coder is able to encode.
+     * If success, it should return as expected String.
+     * @throws Exception
+     */
     @Test
     public void encode() throws Exception{
         String expected = "HelloAreYouGood";
@@ -38,6 +47,11 @@ public class MsgCoderTest {
         assertEquals(expected, MsgCoder.encode(msgItem));
     }
 
+    /**
+     * Test if the coder is able to decode.
+     * If success, it should return as a messageItem as expected.
+     * @throws Exception
+     */
     @Test
     public void decode() throws Exception{
         String message = "HelloWorld";

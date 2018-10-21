@@ -1,12 +1,11 @@
 package com.example.eldermap.NavigationPkg;
+
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-
-import com.example.eldermap.NavigationPkg.NotificationScheduler;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +17,12 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.util.Calendar;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
+/**
+ * notificationScheduler is an object with a notification functionality.
+ * Methods tested is setReminder. The test convers both branch of if-else.
+ */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({NotificationScheduler.class, PendingIntent.class})
 public class NotificationSchedulerTest {
@@ -28,12 +32,21 @@ public class NotificationSchedulerTest {
     @Mock
     Context context;
 
+    /**
+     * SetUp for later test.
+     * NotificationScheduler used a static method, need to prepare for static.
+     */
     @Before
     public void setup(){
         PowerMockito.mockStatic(NotificationScheduler.class);
         context = PowerMockito.mock(Context.class);
     }
 
+    /**
+     * Test setReminderFalse.
+     * This should hold for the first true part.
+     * @throws Exception
+     */
     @Test
     public void setReminderFalse() throws  Exception{
         int year=0, month=0, day=0, hour=0, min=0, tripID= 0;
@@ -58,6 +71,11 @@ public class NotificationSchedulerTest {
 
         assertEquals(bol, NotificationScheduler.setReminder(context, haha, year, month, day,hour, min,tripID));
     }
+
+    /**
+     * Another branch tested on setReminder.
+     * @throws Exception
+     */
     @Test
     public void setReminderTrue() throws  Exception{
         boolean bool = false;

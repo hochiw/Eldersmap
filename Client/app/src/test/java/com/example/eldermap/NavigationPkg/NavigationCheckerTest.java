@@ -3,8 +3,6 @@ package com.example.eldermap.NavigationPkg;
 import android.os.AsyncTask;
 
 import com.example.eldermap.LocationPkg.Location;
-import com.example.eldermap.NavigationPkg.NavigationChecker;
-import com.example.eldermap.NavigationPkg.Position;
 import com.example.eldermap.NetworkPkg.HTTPPostRequest;
 
 import org.json.JSONArray;
@@ -22,6 +20,10 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.util.ArrayList;
 
+/**
+ * NavigationChecker is to check the user's current location and compares with
+ * navigation instructions. getPosition is tested in the test case.
+ */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({AsyncTask.class})
 public class NavigationCheckerTest {
@@ -38,7 +40,10 @@ public class NavigationCheckerTest {
 
     private NavigationChecker checker;
 
-
+    /**
+     * SetUp for the later test usage.
+     * @throws Exception
+     */
     // TODO: 1. Need to fix later. The newer version requires newer constructors.
     // TODO: 2. There is no gps kept in the checker. Functionality is divided more precisely.
     @Before
@@ -55,12 +60,6 @@ public class NavigationCheckerTest {
         userLoc = PowerMockito.mock(Location.class);
         destLoc = PowerMockito.mock(Location.class);
 
-//        Location mocktest = PowerMock.createMock(Location.class);
-//        System.out.println(mocktest);
-//        Location mockLocation = PowerMockito.mock(Location.class);
-//        System.out.println(mockLocation);
-//        Location mockLocation2 = Mockito.mock(Location.class);
-//        System.out.println(mockLocation2);
 
         MockitoAnnotations.initMocks(this);
 
@@ -107,7 +106,10 @@ public class NavigationCheckerTest {
 
         checker = new NavigationChecker(userLoc, destLoc);
     }
-
+    /**
+     * Test getPositions.
+     * If success, It should return a list of Positions.
+     */
     @Test
     public void getPositions() throws Exception{
 //        Mockito.when(checker.getPositions()).thenReturn(list);

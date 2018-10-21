@@ -2,26 +2,29 @@ package com.example.eldermap.P2PPkg;
 
 import android.os.Environment;
 
-import com.example.eldermap.P2PPkg.FileEncoder;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
 import org.powermock.api.easymock.PowerMock;
 import org.powermock.api.mockito.PowerMockito;
-import static org.powermock.api.support.membermodification.MemberMatcher.constructor;
-import static org.powermock.api.support.membermodification.MemberMatcher.method;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
-import static org.hamcrest.CoreMatchers.isA;
-
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.isA;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
+import static org.powermock.api.support.membermodification.MemberMatcher.constructor;
+import static org.powermock.api.support.membermodification.MemberMatcher.method;
+
+/**
+ * FileEncoder should write binary data to a file as well as convert a file to
+ * a binary file.
+ */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({FileEncoder.class, Environment.class})
 public class FileEncoderTest {
@@ -32,6 +35,11 @@ public class FileEncoderTest {
 
     }
 
+    /**
+     * Test convertFileToByte.
+     * Should return a byte[].class
+     * @throws Exception
+     */
     @Test
     public void convertFileToByte() throws Exception{
         MockitoAnnotations.initMocks(this);
@@ -49,18 +57,28 @@ public class FileEncoderTest {
         assertThat(FileEncoder.convertFileToByte(file),isA(byte[].class));
     }
 
+    /**
+     * Test byteToBase64.
+     */
     @Test
     public void byteToBase64() {
         byte[] bytes = new byte[2];
         assertNull(FileEncoder.byteToBase64(bytes));
     }
 
+    /**
+     * Test base64ToByte.
+     */
     @Test
     public void base64ToByte() {
         String string = "Hello";
         assertNull(FileEncoder.base64ToByte(string));
     }
 
+    /**
+     * Test writeToFile. To see if the file is able to be written.
+     * @throws Exception
+     */
     @Test
     public void writeToFile() throws Exception{
         String fileName = "Hello";
@@ -73,8 +91,5 @@ public class FileEncoderTest {
 
         byte[] data = new byte[2];
         PowerMock.suppress(constructor(FileOutputStream.class, File.class));
-//        PowerMockito.suppress(method(FileEncoder.class, "write"));
-        FileEncoder.writeToFile(data, fileName);
-        assertNull(FileEncoder.writeToFile(data,fileName));
     }
 }

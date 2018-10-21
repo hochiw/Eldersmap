@@ -1,31 +1,41 @@
 package com.example.eldermap.NearbyLankmarkPkg;
 
-import org.junit.Test;
-
-import static org.junit.Assert.*;
 import com.example.eldermap.LocationPkg.Location;
-import com.example.eldermap.NearbyLankmarkPkg.Landmark;
-import com.example.eldermap.NearbyLankmarkPkg.SearchAlg;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.modules.junit4.PowerMockRunner;
+
+import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
+
+/**
+ * Algorithm to filter the top 5 landmarks returned by the API server.
+ * Test cases include filterList, estWalkTime.
+ */
 @RunWith(PowerMockRunner.class)
 public class SearchAlgTest {
 
     private SearchAlg searchAlg;
 
+    /**
+     * SetUp for later test use.
+     * @throws Exception
+     */
     @Before
     public void setup() throws Exception{
         searchAlg = new SearchAlg();
     }
 
+    /**
+     * Test filterList is working.
+     * @throws Exception
+     */
     @Test
     public void filterList() throws Exception{
 
@@ -45,6 +55,10 @@ public class SearchAlgTest {
         searchAlg.filterList(object, userLoc);
     }
 
+    /**
+     * Test estWalkTime.
+     * If success, it should return an int as expected.
+     */
     @Test
     public void estWalkTime() {
         double test = 10.0;

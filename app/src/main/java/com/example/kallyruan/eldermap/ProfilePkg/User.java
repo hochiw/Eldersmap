@@ -36,7 +36,7 @@ public class User {
         if (userID==null){
             // here get MEID id here by somehow
 
-            userID = MainActivity.ANDROID_ID; //here 1 just for demo
+            userID = MainActivity.ANDROID_ID;
 
             return userID;
         }else{

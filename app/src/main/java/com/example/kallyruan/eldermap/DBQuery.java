@@ -1,6 +1,7 @@
 package com.example.kallyruan.eldermap;
 
 import android.accounts.NetworkErrorException;
+import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.kallyruan.eldermap.LocationPkg.FinishedTrip;
@@ -22,8 +23,9 @@ import static com.example.kallyruan.eldermap.ProfilePkg.User.USER;
 public class DBQuery {
 
     static String UserID;
-    static int HistoryID = 0;//for demo purpose
-    static int PlanID = 0; //for demo purpose
+    // Initialise int.
+    static int HistoryID = 0;
+    static int PlanID = 0;
 
     private static String baseURL = "http://eldersmapapi.herokuapp.com/api/";
 
@@ -57,7 +59,8 @@ public class DBQuery {
         if (checkUserExist()) {
             try {
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "getProfile");
-                JSONObject result = new JSONObject(request.execute(new JSONObject().put("userID", UserID)).get());
+                JSONObject result = new JSONObject(request.execute(new JSONObject().
+                        put("userID", UserID)).get());
                 if (result.getJSONObject("survey").getInt("completed") == 1) {
                     return true;
                 }
@@ -104,7 +107,8 @@ public class DBQuery {
         if (checkUserExist()) {
             try {
                 HTTPPostRequest request = new HTTPPostRequest(baseURL + "getProfile");
-                JSONObject result = new JSONObject(request.execute(new JSONObject().put("userID", UserID)).get());
+                JSONObject result = new JSONObject(request.execute(new JSONObject().
+                        put("userID", UserID)).get());
                 return result.getInt("userType");
             } catch (Exception e) {
                 e.printStackTrace();

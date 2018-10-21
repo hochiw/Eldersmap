@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.eldermap.DBQuery;
-import com.example.kallyruan.eldermap.R;
+import com.example.eldermap.R;
 
 /**
  * SignupActivity class is to execute the sign up survey and get user preference through user clicks

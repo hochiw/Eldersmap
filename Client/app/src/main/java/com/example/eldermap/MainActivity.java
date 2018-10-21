@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import com.example.eldermap.ProfilePkg.SignupActivity;
 import com.example.eldermap.ProfilePkg.User;
-import com.example.kallyruan.eldermap.R;
+import com.example.eldermap.R;
 
 public class MainActivity extends AppCompatActivity {
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;

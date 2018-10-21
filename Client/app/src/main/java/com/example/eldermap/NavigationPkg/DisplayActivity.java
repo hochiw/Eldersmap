@@ -22,7 +22,7 @@ import com.example.eldermap.LocationPkg.TripReviewActivity;
 import com.example.eldermap.GPSServicePkg.GPS;
 import com.example.eldermap.LocationPkg.Location;
 import com.example.eldermap.P2PPkg.ChatActivity;
-import com.example.kallyruan.eldermap.R;
+import com.example.eldermap.R;
 
 import java.util.ArrayList;
 

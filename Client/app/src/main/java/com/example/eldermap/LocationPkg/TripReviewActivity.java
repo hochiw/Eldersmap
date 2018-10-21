@@ -10,7 +10,7 @@ import com.example.eldermap.AppMenuActivity;
 import com.example.eldermap.DBQuery;
 import com.example.eldermap.NearbyLankmarkPkg.LandmarkListActivity;
 import com.example.eldermap.ProfilePkg.User;
-import com.example.kallyruan.eldermap.R;
+import com.example.eldermap.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

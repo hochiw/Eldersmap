@@ -25,7 +25,7 @@ import com.example.eldermap.NavigationPkg.DisplayActivity;
 import com.example.eldermap.NavigationPkg.ScheduleTimeActivity;
 import com.example.eldermap.NetworkPkg.HTTPPostRequest;
 import com.example.eldermap.ProfilePkg.BaseActivity;
-import com.example.kallyruan.eldermap.R;
+import com.example.eldermap.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;

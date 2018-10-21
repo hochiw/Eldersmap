@@ -14,7 +14,7 @@ import com.example.eldermap.NearbyLankmarkPkg.MenuActivity;
 import com.example.eldermap.P2PPkg.ChatActivity;
 import com.example.eldermap.ProfilePkg.BaseActivity;
 import com.example.eldermap.ProfilePkg.SettingActivity;
-import com.example.kallyruan.eldermap.R;
+import com.example.eldermap.R;
 
 public class AppMenuActivity extends BaseActivity {
 

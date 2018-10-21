@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import com.example.kallyruan.eldermap.R;
+import com.example.eldermap.R;
 
 public class ImageAdapter extends BaseAdapter {
 

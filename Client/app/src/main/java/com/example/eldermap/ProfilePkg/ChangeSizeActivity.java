@@ -3,7 +3,7 @@ package com.example.eldermap.ProfilePkg;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import com.example.kallyruan.eldermap.R;
+import com.example.eldermap.R;
 
 /**
  * ChangeSizeActivity class is to get the User preference on text size preference and save/

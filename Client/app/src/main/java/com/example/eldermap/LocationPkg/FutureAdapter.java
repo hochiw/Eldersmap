@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.eldermap.NearbyLankmarkPkg.MenuActivity;
-import com.example.kallyruan.eldermap.R;
+import com.example.eldermap.R;
 
 import java.util.ArrayList;
 

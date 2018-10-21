@@ -25,7 +25,17 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <projects_view />
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Client" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
       </state>
     </system>
   </component>
@@ -34,45 +44,42 @@
       <file leaf-file-name="DBQuery.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/eldermap/DBQuery.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8940">
-              <caret line="630" column="47" lean-forward="false" selection-start-line="630" selection-start-column="47" selection-end-line="630" selection-end-column="47" />
+            <state relative-caret-position="-7553">
+              <caret line="119" column="86" lean-forward="false" selection-start-line="119" selection-start-column="86" selection-end-line="119" selection-end-column="86" />
               <folding>
-                <marker date="1540098878000" expanded="true" signature="5149:5364" ph="{...}" />
-                <marker date="1540098878000" expanded="true" signature="5517:6030" ph="{...}" />
-                <marker date="1540098878000" expanded="true" signature="6184:7021" ph="{...}" />
-                <marker date="1540098878000" expanded="true" signature="7184:7962" ph="{...}" />
-                <marker date="1540098878000" expanded="true" signature="8135:9025" ph="{...}" />
-                <marker date="1540098878000" expanded="true" signature="9178:10036" ph="{...}" />
-                <marker date="1540098878000" expanded="true" signature="11209:12054" ph="{...}" />
-                <marker date="1540098878000" expanded="true" signature="12223:14236" ph="{...}" />
-                <marker date="1540098878000" expanded="true" signature="14393:16291" ph="{...}" />
-                <marker date="1540098878000" expanded="true" signature="16452:17740" ph="{...}" />
-                <marker date="1540098878000" expanded="true" signature="17896:18673" ph="{...}" />
-                <marker date="1540098878000" expanded="true" signature="18847:20102" ph="{...}" />
-                <marker date="1540098878000" expanded="true" signature="20311:21046" ph="{...}" />
-                <marker date="1540098878000" expanded="true" signature="21192:21283" ph="{...}" />
-                <marker date="1540098878000" expanded="true" signature="21432:21516" ph="{...}" />
-                <marker date="1540098878000" expanded="true" signature="21871:23117" ph="{...}" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LandmarkListActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/eldermap/NearbyLankmarkPkg/LandmarkListActivity.java">
+      <file leaf-file-name="SettingActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/eldermap/ProfilePkg/SettingActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-383">
+              <caret line="10" column="26" lean-forward="false" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChangeSizeActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/eldermap/ProfilePkg/ChangeSizeActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="36" column="13" lean-forward="false" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+              <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MenuActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/eldermap/NearbyLankmarkPkg/MenuActivity.java">
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/eldermap/ProfilePkg/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="48" column="60" lean-forward="false" selection-start-line="48" selection-start-column="60" selection-end-line="48" selection-end-column="60" />
+            <state relative-caret-position="-1197">
+              <caret line="33" column="45" lean-forward="false" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -91,8 +98,18 @@
       <file leaf-file-name="ChangeDataActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/eldermap/ProfilePkg/ChangeDataActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+            <state relative-caret-position="105">
+              <caret line="7" column="27" lean-forward="false" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppMenuActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/eldermap/AppMenuActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="277">
+              <caret line="21" column="31" lean-forward="false" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -106,7 +123,7 @@
             <state relative-caret-position="113">
               <caret line="60" column="22" lean-forward="false" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <marker date="1540099653000" expanded="true" signature="2951:2954" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -118,34 +135,32 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="43" column="71" lean-forward="false" selection-start-line="43" selection-start-column="71" selection-end-line="43" selection-end-column="71" />
+            <state relative-caret-position="-727">
+              <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1058">
-              <caret line="3" column="14" lean-forward="true" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GPS.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/eldermap/GPSServicePkg/GPS.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+              <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>kallyruan.eldermap</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>eldermap</replace>
+    </replaceStrings>
   </component>
   <component name="GradleLocalSettings">
     <option name="myGradleHomes">
@@ -2163,8 +2178,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/eldermap/DBQuery.java" />
         <option value="$PROJECT_DIR$/app/src/test/java/com/example/eldermap/NavigationPkg/AlarmReceiverTest.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/eldermap/DBQuery.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/eldermap/ProfilePkg/SettingActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/eldermap/ProfilePkg/User.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/eldermap/ProfilePkg/ChangeSizeActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/eldermap/AppMenuActivity.java" />
       </list>
     </option>
   </component>
@@ -2201,17 +2221,6 @@
             </path>
             <path>
               <item name="Client" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="Client" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="eldermap" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Client" type="1abcf292:AndroidViewProjectNode" />
               <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
@@ -2225,7 +2234,7 @@
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="settings.editor.selected.configurable" value="instant.run" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="device.picker.selection" value="9885e650444f4c3534" />
+    <property name="device.picker.selection" value="Nexus_S_API_27" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -2402,15 +2411,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="102" y="61" width="1149" height="735" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3296875" sideWeight="0.50316167" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3296875" sideWeight="0.50316167" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.4968383" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2418,14 +2428,14 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3296875" sideWeight="0.4968383" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.4968383" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Sequence" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24932249" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.4968383" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32971996" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2449,22 +2459,7 @@
         <state relative-caret-position="8940">
           <caret line="607" column="47" lean-forward="false" selection-start-line="607" selection-start-column="47" selection-end-line="607" selection-end-column="47" />
           <folding>
-            <marker date="1540098878000" expanded="true" signature="5149:5364" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="5517:6030" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="6184:7021" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="7184:7962" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="8135:9025" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="9178:10036" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="11209:12054" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="12223:14236" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="14393:16291" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="16452:17740" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="17896:18673" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="18847:20102" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="20311:21046" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="21192:21283" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="21432:21516" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="21871:23117" ph="{...}" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2498,22 +2493,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1540098878000" expanded="true" signature="5149:5364" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="5517:6030" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="6184:7021" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="7184:7962" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="8135:9025" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="9178:10036" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="11209:12054" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="12223:14236" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="14393:16291" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="16452:17740" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="17896:18673" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="18847:20102" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="20311:21046" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="21192:21283" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="21432:21516" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="21871:23117" ph="{...}" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2531,31 +2511,6 @@
         <state relative-caret-position="60">
           <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/eldermap/DBQuery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8940">
-          <caret line="630" column="47" lean-forward="false" selection-start-line="630" selection-start-column="47" selection-end-line="630" selection-end-column="47" />
-          <folding>
-            <marker date="1540098878000" expanded="true" signature="5149:5364" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="5517:6030" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="6184:7021" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="7184:7962" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="8135:9025" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="9178:10036" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="11209:12054" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="12223:14236" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="14393:16291" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="16452:17740" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="17896:18673" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="18847:20102" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="20311:21046" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="21192:21283" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="21432:21516" ph="{...}" />
-            <marker date="1540098878000" expanded="true" signature="21871:23117" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2583,23 +2538,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/eldermap/ProfilePkg/ChangeDataActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/test/java/com/example/eldermap/NavigationPkg/AlarmReceiverTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="113">
           <caret line="60" column="22" lean-forward="false" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1540099653000" expanded="true" signature="2951:2954" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1058">
+          <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2608,17 +2561,63 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="43" column="71" lean-forward="false" selection-start-line="43" selection-start-column="71" selection-end-line="43" selection-end-column="71" />
+        <state relative-caret-position="-727">
+          <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/eldermap/ProfilePkg/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1058">
-          <caret line="3" column="14" lean-forward="true" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+        <state relative-caret-position="-1197">
+          <caret line="33" column="45" lean-forward="false" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/eldermap/ProfilePkg/SettingActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-383">
+          <caret line="10" column="26" lean-forward="false" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/eldermap/DBQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7553">
+          <caret line="119" column="86" lean-forward="false" selection-start-line="119" selection-start-column="86" selection-end-line="119" selection-end-column="86" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/eldermap/ProfilePkg/ChangeSizeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/eldermap/ProfilePkg/ChangeDataActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="27" lean-forward="false" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/eldermap/AppMenuActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="21" column="31" lean-forward="false" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

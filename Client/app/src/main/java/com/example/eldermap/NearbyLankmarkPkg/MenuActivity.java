@@ -10,7 +10,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import com.example.eldermap.ProfilePkg.BaseActivity;
-import com.example.kallyruan.eldermap.R;
+import com.example.eldermap.R;
 
 public class MenuActivity extends BaseActivity {
 

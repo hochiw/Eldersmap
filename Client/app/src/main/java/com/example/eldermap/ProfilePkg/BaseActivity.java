@@ -3,7 +3,7 @@ package com.example.eldermap.ProfilePkg;
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.example.kallyruan.eldermap.R;
+import com.example.eldermap.R;
 
 /**
  * BaseActicity class is to define the text size for all class extending from this class

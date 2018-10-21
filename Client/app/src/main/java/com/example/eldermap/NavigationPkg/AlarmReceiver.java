@@ -10,7 +10,7 @@ import android.content.Intent;
 
 import com.example.eldermap.LocationPkg.FutureActivity;
 import com.example.eldermap.ProfilePkg.User;
-import com.example.kallyruan.eldermap.R;
+import com.example.eldermap.R;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 

@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.example.eldermap.NavigationPkg.DisplayActivity;
 import com.example.eldermap.ProfilePkg.BaseActivity;
 import com.example.eldermap.ProfilePkg.User;
-import com.example.kallyruan.eldermap.R;
+import com.example.eldermap.R;
 
 import java.util.ArrayList;
 

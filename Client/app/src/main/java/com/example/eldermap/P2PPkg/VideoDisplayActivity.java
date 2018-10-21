@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.VideoView;
 
-import com.example.kallyruan.eldermap.R;
+import com.example.eldermap.R;
 
 public class VideoDisplayActivity extends Activity {
     private static String dir;

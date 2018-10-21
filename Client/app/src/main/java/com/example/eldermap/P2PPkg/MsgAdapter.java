@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.kallyruan.eldermap.R;
+import com.example.eldermap.R;
 
 import java.io.File;
 import java.util.List;

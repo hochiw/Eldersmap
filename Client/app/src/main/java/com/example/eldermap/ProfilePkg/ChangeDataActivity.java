@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import com.example.eldermap.DBQuery;
 import com.example.eldermap.MainActivity;
-import com.example.kallyruan.eldermap.R;
+import com.example.eldermap.R;
 
 
 /**

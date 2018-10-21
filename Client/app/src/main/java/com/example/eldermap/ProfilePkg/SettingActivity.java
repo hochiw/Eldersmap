@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import com.example.eldermap.AppMenuActivity;
-import com.example.kallyruan.eldermap.R;
+import com.example.eldermap.R;
 
 
 /**
@@ -44,10 +44,6 @@ public class SettingActivity extends BaseActivity {
         startActivityForResult(i,1);
     }
 
-<<<<<<< HEAD:Client/app/src/main/java/com/example/eldermap/ProfilePkg/SettingActivity.java
-
-=======
->>>>>>> master:app/src/main/java/com/example/kallyruan/eldermap/ProfilePkg/SettingActivity.java
     /**
      * this is the method to re-direct to AppMenuActivity page for App main menu
      * @param view

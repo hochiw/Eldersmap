@@ -1,9 +1,6 @@
 package com.example.eldermap.P2PPkg;
 
 
-import com.example.eldermap.P2PPkg.MsgCoder;
-import com.example.eldermap.P2PPkg.MsgItem;
-
 import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;

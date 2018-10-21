@@ -1,12 +1,11 @@
 package com.example.eldermap.NavigationPkg;
+
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-
-import com.example.eldermap.NavigationPkg.NotificationScheduler;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +17,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.util.Calendar;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({NotificationScheduler.class, PendingIntent.class})
 public class NotificationSchedulerTest {

@@ -1,13 +1,12 @@
 package com.example.eldermap.NearbyLankmarkPkg;
 
 import com.example.eldermap.LocationPkg.Location;
-import com.example.eldermap.NearbyLankmarkPkg.Landmark;
 
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.isA;
-import static org.junit.Assert.*;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 
 public class LandmarkTest {

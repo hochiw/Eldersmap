@@ -1,5 +1,4 @@
 package com.example.eldermap.NavigationPkg;
-import com.example.eldermap.NavigationPkg.Position;
 
 import org.json.JSONArray;
 import org.json.JSONException;

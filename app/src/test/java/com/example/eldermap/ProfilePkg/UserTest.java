@@ -6,13 +6,9 @@ import com.example.eldermap.DBQuery;
 import com.example.eldermap.LocationPkg.FinishedTrip;
 import com.example.eldermap.LocationPkg.ScheduledTrip;
 import com.example.eldermap.NavigationPkg.AlarmReceiver;
-import com.example.eldermap.ProfilePkg.User;
-
-import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -22,6 +18,8 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * A series tests written fro User class
@@ -41,7 +39,10 @@ public class UserTest {
     private static String anotherUserID = null;
     private static int testSize;
 
-
+    /**
+     * SetUp for late usage.
+     * Prepare Static class mock.
+     */
     @Before
     public void setup(){
         PowerMockito.mockStatic(DBQuery.class);
@@ -58,18 +59,29 @@ public class UserTest {
 
     }
 
+    /**
+     * Test getScheduledTripList.
+     * If success, getSchduledTripList should return a scheduledTripArrayList.
+     */
     @Test
     public void getScheduledTripList() {
         Mockito.when(User.getScheduledTripList()).thenReturn(scheduledTripArrayList);
         assertEquals(scheduledTripArrayList,User.getScheduledTripList());
     }
 
+    /**
+     * Test getUserID
+     * If succes, getUserID should return a userID
+     */
     @Test
     public void getUserID() {
         Mockito.when(User.getUserID()).thenReturn(userID);
         assertEquals(userID,User.getUserID());
     }
 
+    /**
+     *
+     */
     @Test
     public void retrieveUserData() {
         int expected = 0;

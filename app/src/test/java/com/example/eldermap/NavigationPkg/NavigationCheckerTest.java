@@ -3,8 +3,6 @@ package com.example.eldermap.NavigationPkg;
 import android.os.AsyncTask;
 
 import com.example.eldermap.LocationPkg.Location;
-import com.example.eldermap.NavigationPkg.NavigationChecker;
-import com.example.eldermap.NavigationPkg.Position;
 import com.example.eldermap.NetworkPkg.HTTPPostRequest;
 
 import org.json.JSONArray;

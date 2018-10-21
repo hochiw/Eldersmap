@@ -1,20 +1,15 @@
 package com.example.eldermap.LocationPkg;
-import com.example.eldermap.LocationPkg.FutureAdapter;
-import com.example.eldermap.LocationPkg.Location;
-import com.example.eldermap.LocationPkg.ScheduledTrip;
-import com.example.eldermap.R;
-
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import org.junit.Test;
 
-import static org.junit.Assert.*;
+import com.example.eldermap.R;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -26,6 +21,14 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.util.ArrayList;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
+/**
+ * This test case includes the test for FutureAdapter.
+ * Mocked objects are Activity, futureTrips and FutureAdapter.ViewHolder.
+ * FutureAdapter is about image setting and most of it is ui setting.
+ */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ScheduledTrip.class, FutureAdapter.class})
 public class FutureAdapterTest {
@@ -40,6 +43,11 @@ public class FutureAdapterTest {
     @InjectMocks
     private FutureAdapter adapter;
 
+    /**
+     * SetUp for later usage.
+     * Elements in ViewHolder.inner class are mocked.
+     * @throws Exception
+     */
     @Before
     public void setup() throws  Exception{
 
@@ -58,8 +66,6 @@ public class FutureAdapterTest {
         viewHolder.tripName = PowerMockito.mock(TextView.class);
         viewHolder.tripDate = PowerMockito.mock(TextView.class);
 
-
-
         LayoutInflater inflater = PowerMockito.mock(LayoutInflater.class);
         PowerMockito.whenNew(LayoutInflater.class).withAnyArguments().thenReturn(inflater);
         View view = PowerMockito.mock(View.class);
@@ -73,12 +79,17 @@ public class FutureAdapterTest {
         PowerMockito.when(view.findViewById(R.id.trip_date)).thenReturn(viewHolder.tripDate);
         PowerMockito.doNothing().when(view).setTag(viewHolder);
 
+        // Initialise all @Mock annotations in the test class
         MockitoAnnotations.initMocks(this);
+        // Initialise the adapter obejct.
         adapter = new FutureAdapter(activity, futureTrips);
-
 
     }
 
+    /**
+     * Test getCount
+     * If success, it should return expected.
+     */
     @Test
     public void getCount() {
         int expected= 0;
@@ -86,17 +97,31 @@ public class FutureAdapterTest {
         assertEquals(expected, adapter.getCount());
     }
 
+    /**
+     * Test getItem
+     * If success, it should return null.
+     */
     @Test
     public void getItem() {
         assertNull(adapter.getItem(0));
     }
 
+    /**
+     * Test getItemId
+     * If success, it should return expected.
+     */
     @Test
     public void getItemId() {
         int expected = 0;
         assertEquals(expected, adapter.getItemId(0));
     }
 
+    /**
+     * Test getView.
+     * It is hard to do a non-instrumented test with ui setting.
+     * So the coverage of the test method is low.
+     * @throws Exception
+     */
     @Test
     public void getView() throws  Exception{
         View view = PowerMockito.mock(View.class);
@@ -126,14 +151,14 @@ public class FutureAdapterTest {
     }
 
     /**
-     * fillImage involves UI setting.
+     * fillImage involves UI setting. Nothing to test.
      */
     @Test
     public void fillImage() {
     }
 
     /**
-     * fillTypeImage involves UI setting.
+     * fillTypeImage involves UI setting. Nothing to test.
      */
     @Test
     public void fillTypeImage() {

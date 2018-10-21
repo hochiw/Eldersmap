@@ -1,21 +1,18 @@
 package com.example.eldermap.NearbyLankmarkPkg;
 
-import org.junit.Test;
-
-import static org.junit.Assert.*;
 import com.example.eldermap.LocationPkg.Location;
-import com.example.eldermap.NearbyLankmarkPkg.Landmark;
-import com.example.eldermap.NearbyLankmarkPkg.SearchAlg;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.modules.junit4.PowerMockRunner;
+
+import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
 @RunWith(PowerMockRunner.class)
 public class SearchAlgTest {
 

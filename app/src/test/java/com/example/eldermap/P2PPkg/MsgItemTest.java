@@ -1,12 +1,11 @@
 package com.example.eldermap.P2PPkg;
-import com.example.eldermap.P2PPkg.MsgItem;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.modules.junit4.PowerMockRunner;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 @RunWith(PowerMockRunner.class)
 public class MsgItemTest {
     private String content = "Hello";

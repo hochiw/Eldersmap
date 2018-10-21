@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.example.eldermap.NearbyLankmarkPkg.ImageAdapter;
 import com.example.eldermap.R;
 
 import org.junit.Before;

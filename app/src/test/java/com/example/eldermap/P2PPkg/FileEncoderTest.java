@@ -2,26 +2,24 @@ package com.example.eldermap.P2PPkg;
 
 import android.os.Environment;
 
-import com.example.eldermap.P2PPkg.FileEncoder;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
 import org.powermock.api.easymock.PowerMock;
 import org.powermock.api.mockito.PowerMockito;
-import static org.powermock.api.support.membermodification.MemberMatcher.constructor;
-import static org.powermock.api.support.membermodification.MemberMatcher.method;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
-import static org.hamcrest.CoreMatchers.isA;
-
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.isA;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
+import static org.powermock.api.support.membermodification.MemberMatcher.constructor;
+import static org.powermock.api.support.membermodification.MemberMatcher.method;
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({FileEncoder.class, Environment.class})
 public class FileEncoderTest {

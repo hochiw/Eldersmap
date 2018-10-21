@@ -1,24 +1,21 @@
 package com.example.eldermap.NearbyLankmarkPkg;
 
 import com.example.eldermap.LocationPkg.Location;
-import com.example.eldermap.NearbyLankmarkPkg.JSONFactory;
 
 import org.json.JSONObject;
-import org.junit.Test;
-
-import static org.junit.Assert.*;
-import static org.powermock.api.easymock.PowerMock.replay;
-import static org.powermock.api.easymock.PowerMock.verify;
-
-import org.powermock.api.easymock.PowerMock;
-
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.powermock.api.easymock.PowerMock;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
+
+import static org.junit.Assert.assertEquals;
+import static org.powermock.api.easymock.PowerMock.replay;
+import static org.powermock.api.easymock.PowerMock.verify;
 
 
 @RunWith(PowerMockRunner.class)

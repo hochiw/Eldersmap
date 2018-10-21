@@ -4,11 +4,6 @@ package com.example.eldermap.P2PPkg;
 // TODO: SocketClient, One more on P2P Tests.
 // TODO: One more DBQuery.(Static)
 // TODO: In total 5 more tests to go...
-import com.example.eldermap.P2PPkg.ChatActivity;
-import com.example.eldermap.P2PPkg.FileEncoder;
-import com.example.eldermap.P2PPkg.MsgCoder;
-import com.example.eldermap.P2PPkg.MsgItem;
-import com.example.eldermap.P2PPkg.SocketClient;
 
 import org.java_websocket.client.WebSocketClient;
 import org.junit.Before;
@@ -25,7 +20,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 import java.io.File;
 import java.net.URI;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.powermock.api.support.membermodification.MemberMatcher.method;
 
 @RunWith(PowerMockRunner.class)

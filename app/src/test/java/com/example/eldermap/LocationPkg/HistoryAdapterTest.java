@@ -1,10 +1,3 @@
-/**
- *  History Adapter is more about setting the UI picture for the user's travelling history.
- *  Only logic part will be tested.
- *  fillNumberImage(ViewHOlder holder, int index)
- *  fillTypeImage(ViewHolder holder, int type)
- *  are not tested.
- * */
 
 package com.example.eldermap.LocationPkg;
 
@@ -14,9 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.eldermap.LocationPkg.FinishedTrip;
-import com.example.eldermap.LocationPkg.FutureAdapter;
-import com.example.eldermap.LocationPkg.HistoryAdapter;
 import com.example.eldermap.R;
 
 import org.junit.Before;
@@ -34,16 +24,20 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import static org.mockito.Mockito.mock;
 
-
+/**
+ *  History Adapter is more about setting the UI picture for the user's travelling history.
+ *  Only logic part will be tested.
+ *  fillNumberImage(ViewHOlder holder, int index)
+ *  fillTypeImage(ViewHolder holder, int type)
+ *  are not tested.
+ * */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({TextView.class, FinishedTrip.class, FutureAdapter.ViewHolder.class
     ,Float.class})
 public class HistoryAdapterTest {
     @Mock
     private Activity mActivity;
-
     @Mock
     private TextView name;
     @Mock
@@ -63,6 +57,10 @@ public class HistoryAdapterTest {
     @InjectMocks
     private HistoryAdapter adapter;
 
+    /**
+     * SetUp for Mock Preparation.
+     * ArrayList is initialised.
+     */
     @Before
     public void setup(){
         mActivity = Mockito.mock(Activity.class);
@@ -79,6 +77,10 @@ public class HistoryAdapterTest {
         MockitoAnnotations.initMocks(this);
     }
 
+    /**
+     * Test getCount.
+     * If success, it should return expected.
+     */
     @Test
     public void getCount() {
         int expected = 0;
@@ -86,21 +88,34 @@ public class HistoryAdapterTest {
         assertEquals(expected, adapter.getCount());
     }
 
+    /**
+     * Test getItem.
+     * If success, it should return null.
+     */
     @Test
     public void getItem() {
         assertNull(adapter.getItem(1));
     }
 
+    /**
+     * Test getItemId.
+     * If success, itshould return expected.
+     */
     @Test
     public void getItemId() {
         assertEquals((long)0, adapter.getItemId(0));
     }
 
+    /**
+     * Test the behaviour of ui settings. This is not a good example
+     * of ui tesing using PowerMockito.
+     * Every setting action and findView action are checked by
+     * verifying if it is called.
+     */
     @Test
     public void getView() {
         int position = 0;
         LayoutInflater inflater = Mockito.mock(LayoutInflater.class);
-        //View view = Mockito.mock(View.class);
         Mockito.when(mActivity.getLayoutInflater()).thenReturn(inflater);
         Mockito.when(inflater.inflate(R.layout.history_list_row,null)).
                 thenReturn(view);
@@ -114,14 +129,9 @@ public class HistoryAdapterTest {
 
         Mockito.when(history.get(position)).thenReturn(mockTrip);
 
-
         Mockito.when(mockTrip.getdestinationMark()).thenReturn(0.0f);
         Mockito.when(mockTrip.getDate()).thenReturn("Hello");
         Mockito.when(mockTrip.getTripMark()).thenReturn(0.0f);
-
-        View mockView = mock(View.class);
-
-        // NullPointerException: holder.name.setText();
 
         final FinishedTrip trip = PowerMockito.mock(FinishedTrip.class);
         Mockito.when(history.get(position)).thenReturn(trip);
@@ -130,14 +140,12 @@ public class HistoryAdapterTest {
         Mockito.when(trip.getdestinationMark()).thenReturn(destinationMark);
         PowerMockito.mockStatic(Float.class);
         Mockito.when(Float.toString(destinationMark)).thenReturn(destinationMarkString);
-
-
+        // Mock the behaviour of setting ui.
         navigationMark.setText(Float.toString(mockTrip.getdestinationMark()));
         locationMark.setText(Float.toString(mockTrip.getdestinationMark()));
         date.setText(mockTrip.getDate());
         name.setText(Float.toString(mockTrip.getdestinationMark()));
-
-
+        // Verify the behaviours.
         Mockito.verify(navigationMark).setText(Float.toString(mockTrip.getTripMark()));
         Mockito.verify(locationMark).setText(Float.toString(mockTrip.getdestinationMark()));
         Mockito.verify(date).setText(mockTrip.getDate());

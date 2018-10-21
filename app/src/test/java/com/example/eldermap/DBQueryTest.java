@@ -2,17 +2,16 @@ package com.example.eldermap;
 
 import android.os.AsyncTask;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import com.example.eldermap.DBQuery;
 import com.example.eldermap.LocationPkg.FinishedTrip;
 import com.example.eldermap.LocationPkg.Location;
 import com.example.eldermap.LocationPkg.ScheduledTrip;
 import com.example.eldermap.NetworkPkg.HTTPPostRequest;
 import com.example.eldermap.ProfilePkg.BaseActivity;
 import com.example.eldermap.ProfilePkg.User;
+
 import org.json.JSONObject;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -23,7 +22,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({DBQuery.class,User.class, AsyncTask.class})

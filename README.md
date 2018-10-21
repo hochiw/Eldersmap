@@ -54,6 +54,5 @@ The WebSocket Server handles all the chat connections, including id generation, 
 Unit Tests are located in Eldermap.test.<br/>
 Tests are based on PowerMockito(1.7.0) and Mockito(2.8.0) for the purpose of complicated testing.<br/>
 Tests include all classes in the project, except for activities(with ui setting) or adapters(with image setting). GPS class which is from Google services is not tested either. <br/>
-[More Usage about PowerMockito and Mockito]
-(https://github.com/powermock/powermock/wiki)
+[Usage and Intro about PowerMockito](https://github.com/powermock/powermock/wiki)
 

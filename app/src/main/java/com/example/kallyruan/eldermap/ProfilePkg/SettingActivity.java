@@ -43,15 +43,6 @@ public class SettingActivity extends BaseActivity {
     }
 
     /**
-     * this is the method to re-direct to ChangePrivilegeActivity page for user privilege request
-     * @param view
-     */
-    public void changePrivilege(View view){
-        Intent i = new Intent(getApplicationContext(), ChangePrivilegeActivity.class);
-        startActivityForResult(i,1);
-    }
-
-    /**
      * this is the method to re-direct to AppMenuActivity page for App main menu
      * @param view
      */

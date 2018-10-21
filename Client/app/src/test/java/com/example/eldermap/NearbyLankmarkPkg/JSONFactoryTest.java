@@ -1,26 +1,26 @@
 package com.example.eldermap.NearbyLankmarkPkg;
 
 import com.example.eldermap.LocationPkg.Location;
-import com.example.eldermap.NearbyLankmarkPkg.JSONFactory;
 
 import org.json.JSONObject;
-import org.junit.Test;
-
-import static org.junit.Assert.*;
-import static org.powermock.api.easymock.PowerMock.replay;
-import static org.powermock.api.easymock.PowerMock.verify;
-
-import org.powermock.api.easymock.PowerMock;
-
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.powermock.api.easymock.PowerMock;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+import static org.junit.Assert.assertEquals;
+import static org.powermock.api.easymock.PowerMock.replay;
+import static org.powermock.api.easymock.PowerMock.verify;
 
+/**
+ * JSONFactory class should hold the responsibility to parse user data(Location, LandMarkType)
+ * to a JSONObject. It works as a Singleton.
+ */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({JSONFactory.class, JSONObject.class})
 public class JSONFactoryTest {
@@ -30,6 +30,10 @@ public class JSONFactoryTest {
 
     String landmarkType = "HelloWorld";
 
+    /**
+     * The class uses static method, so prepare the test by making the mock static.
+     * @throws Exception
+     */
     @Before
     public void setup() throws  Exception{
         PowerMockito.mockStatic(JSONFactory.class);
@@ -41,6 +45,12 @@ public class JSONFactoryTest {
 
     }
 
+    /**
+     * Test userDataJSONMaker.
+     * Since the actions are defined by JSONObject, we just need to test if the
+     * call are indeed called.
+     * @throws Exception
+     */
     @Test
     public void userDataJSONMaker() throws  Exception{
 

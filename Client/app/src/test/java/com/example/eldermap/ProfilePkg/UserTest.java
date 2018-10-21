@@ -6,13 +6,9 @@ import com.example.eldermap.DBQuery;
 import com.example.eldermap.LocationPkg.FinishedTrip;
 import com.example.eldermap.LocationPkg.ScheduledTrip;
 import com.example.eldermap.NavigationPkg.AlarmReceiver;
-import com.example.eldermap.ProfilePkg.User;
-
-import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -22,6 +18,8 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * A series tests written fro User class
@@ -41,13 +39,18 @@ public class UserTest {
     private static String anotherUserID = null;
     private static int testSize;
 
-
+    /**
+     * Setup for later test usage.
+     * DBQuery and User will be mock static.
+     */
     @Before
     public void setup(){
         PowerMockito.mockStatic(DBQuery.class);
         PowerMockito.mockStatic(User.class);
 
+        // Initialise all mock objects above.
         MockitoAnnotations.initMocks(this);
+
         ScheduledTrip scheduledTrip = Mockito.mock(ScheduledTrip.class);
         FinishedTrip finishedTrip = Mockito.mock(FinishedTrip.class);
 
@@ -58,18 +61,31 @@ public class UserTest {
 
     }
 
+    /**
+     * Test getScheduledTripList.
+     * If success, it should return scheduledTripArrayList as expected.
+     */
     @Test
     public void getScheduledTripList() {
         Mockito.when(User.getScheduledTripList()).thenReturn(scheduledTripArrayList);
         assertEquals(scheduledTripArrayList,User.getScheduledTripList());
     }
 
+    /**
+     * Test getUserID.
+     * Request to MainActivity to request for Device Unique ID.
+     * IF success, it should return a userID as expected.
+     */
     @Test
     public void getUserID() {
         Mockito.when(User.getUserID()).thenReturn(userID);
         assertEquals(userID,User.getUserID());
     }
 
+    /**
+     * Interact with the DataBase.
+     * If success, it should retrieve user data.
+     */
     @Test
     public void retrieveUserData() {
         int expected = 0;
@@ -89,6 +105,10 @@ public class UserTest {
         assertEquals(false, User.retrieveUserData());
     }
 
+    /**
+     * Test notifytextSizeChange.
+     * if it successfully update the latest textsize based on users choice.
+     */
     @Test
     public void notifytextSizeChange() {
         int textSizePreference = 0;
@@ -99,6 +119,10 @@ public class UserTest {
         PowerMockito.verifyStatic();
     }
 
+    /**
+     * test notifyPermissionChange.
+     * If it successfully update user permission preference to db.
+     */
     @Test
     public void notifyPermissionChange() {
         boolean permissionPreference = true;
@@ -108,6 +132,10 @@ public class UserTest {
         PowerMockito.verifyStatic();
     }
 
+    /**
+     * test notifyWalkingChange.
+     * If it successfully update the walking to database.
+     */
     @Test
     public void notifyWalkingChange() {
         boolean result = true;
@@ -118,6 +146,10 @@ public class UserTest {
         PowerMockito.verifyStatic();
     }
 
+    /**
+     * Test addScheduledTrip.
+     * test if  addding a ScheduledTrip to the scheduledTripList ArrayList and database
+     */
     @Test
     public void addScheduledTrip() {
         boolean result = true;
@@ -127,6 +159,11 @@ public class UserTest {
         PowerMockito.verifyStatic();
     }
 
+    /**
+     * Test deleteScheduledTrip.
+     * delete a planned future trip plan from user database
+     * @throws Exception
+     */
     @Test
     public void deleteScheduledTrip() throws Exception{
         boolean nextID = false;
@@ -143,6 +180,10 @@ public class UserTest {
         PowerMockito.verifyStatic();
     }
 
+    /**
+     * Test addUserHitory
+     * test if adding a finished trip plan to user database history
+     */
     @Test
     public void addUserHistory() {
         Context context = PowerMockito.mock(Context.class);
@@ -154,18 +195,31 @@ public class UserTest {
         PowerMockito.verifyStatic();
 
     }
+
+    /**
+     * Test getUserPlan
+     * If success, it should return a list of scheduledTripArrayList as expected.
+     */
     @Test
     public void getUserPlan() {
         PowerMockito.when(User.getUserPlan()).thenReturn(scheduledTripArrayList);
         assertEquals(scheduledTripArrayList,User.getUserPlan());
     }
 
+    /**
+     * Test getUserHistory
+     * IF success, it should return a list of historyTripList as expected.
+     */
     @Test
     public void getUserHistory() {
         PowerMockito.when(User.getUserHistory()).thenReturn(historyTripList);
         assertEquals(historyTripList, User.getUserHistory());
     }
 
+    /**
+     * Test updateHistoryReview.
+     * update the ratings of a specific history trip of a user
+     */
     @Test
     public void updateHistoryReview() {
         Context context = PowerMockito.mock(Context.class);
@@ -178,6 +232,11 @@ public class UserTest {
         User.updateHistoryReview(context, tripID, tripIndex, destinationMark, navigationMark);
     }
 
+    /**
+     * Test cechkAddComingTripID
+     * When there is a deletion or addition to the previous scheduledTripList.
+     * @throws Exception
+     */
     @Test
     public void checkAddComingTripID() throws Exception{
         int tripID = 0;
@@ -189,6 +248,11 @@ public class UserTest {
         PowerMockito.verifyStatic();
     }
 
+    /**
+     * Test updateComingTripID
+     * when the the notification of lastID trip is already popped up, and
+     * hence need to find the next trip for reminding
+     */
     @Test
     public void updateComingTripID() {
         int lastID = 0;
@@ -198,6 +262,10 @@ public class UserTest {
         PowerMockito.verifyStatic();
     }
 
+    /**
+     * Test getTextSize.
+     * If success, it should return textSize as expected.
+     */
     @Test
     public void getTextSize() {
         testSize = 0;

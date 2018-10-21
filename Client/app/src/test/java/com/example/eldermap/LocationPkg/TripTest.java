@@ -1,19 +1,19 @@
 package com.example.eldermap.LocationPkg;
 
-import com.example.eldermap.LocationPkg.Location;
-import com.example.eldermap.LocationPkg.Trip;
-
-import org.junit.Test;
-
-import static org.junit.Assert.*;
-
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+import static org.junit.Assert.assertEquals;
+
+/**
+ * TripTest class contains the unit test for Trip class.
+ * The Trip class has mainly getters and setters.
+ */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(Location.class)
 public class TripTest {
@@ -21,13 +21,16 @@ public class TripTest {
     private int targetDay = 0;
     private int targetMonth = 0;
     private int targetYear = 0;
-
+    // Mock a Location object.
     @Mock
     private Location location;
 
     private String name = "Hello";
     private Trip trip ;
 
+    /**
+     * SetUp for the test. Every method will have a fresh new Trip object.
+     */
     @Before
     public void setup(){
         location = PowerMockito.mock(Location.class);
@@ -35,11 +38,19 @@ public class TripTest {
                 location,name);
     }
 
+    /**
+     * Test getTargetDay.
+     * If success, it should return targetDay.
+     */
     @Test
     public void getTargetDay() {
         assertEquals(targetDay, trip.getTargetDay());
     }
 
+    /**
+     * Test setTargetDay.
+     * If success, it should return expected.
+     */
     @Test
     public void setTargetDay() {
         int expected = 10;
@@ -47,11 +58,19 @@ public class TripTest {
         assertEquals(expected,trip.getTargetDay());
     }
 
+    /**
+     * Test getTargetMonth.
+     * If success, it should return targetMonth.
+     */
     @Test
     public void getTargetMonth() {
         assertEquals(targetMonth, trip.getTargetMonth());
     }
 
+    /**
+     * Test setTargetMonth.
+     * If success, it should return expected.
+     */
     @Test
     public void setTargetMonth() {
         int expected = 10;
@@ -59,6 +78,10 @@ public class TripTest {
         assertEquals(expected,trip.getTargetMonth());
     }
 
+    /**
+     * Test getTargetYear.
+     * If success, it should return targetYear.
+     */
     @Test
     public void getTargetYear() {
         assertEquals(targetYear, trip.getTargetYear());
@@ -71,11 +94,19 @@ public class TripTest {
         assertEquals(expected,trip.getTargetYear());
     }
 
+    /**
+     * Test getDestination.
+     * If success, it should return location.
+     */
     @Test
     public void getDestination() {
         assertEquals(location,trip.getDestination());
     }
 
+    /**
+     * Test setDestination.
+     * If success, it should return a new location.
+     */
     @Test
     public void setDestination() {
         Location location1 = new Location(0.0,0.0);
@@ -83,11 +114,19 @@ public class TripTest {
         assertEquals(location1,trip.getDestination());
     }
 
+    /**
+     * Test getName.
+     * If success, it should return name.
+     */
     @Test
     public void getName() {
         assertEquals(name, trip.getName());
     }
 
+    /**
+     * Test setName.
+     * If success, it should return a new setted name.
+     */
     @Test
     public void setName() {
         String mockName = "Hello";
@@ -95,6 +134,10 @@ public class TripTest {
         assertEquals(mockName,trip.getName());
     }
 
+    /**
+     * Test getDate.
+     * If success, it should return a date.
+     */
     @Test
     public void getDate() {
         String mockString = String.format("%2d/%2d/%4d",
@@ -102,11 +145,19 @@ public class TripTest {
         assertEquals(mockString,trip.getDate());
     }
 
+    /**
+     * Test getTripID
+     * If success, it should return a TripID.
+     */
     @Test
     public void getTripID() {
         assertEquals(tripID,trip.getTripID());
     }
 
+    /**
+     * Test setTripID.
+     * If success, it should return a tripID.
+     */
     @Test
     public void setTripID() {
         int expected = 10;

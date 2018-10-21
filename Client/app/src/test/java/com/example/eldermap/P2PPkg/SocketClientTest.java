@@ -4,11 +4,6 @@ package com.example.eldermap.P2PPkg;
 // TODO: SocketClient, One more on P2P Tests.
 // TODO: One more DBQuery.(Static)
 // TODO: In total 5 more tests to go...
-import com.example.eldermap.P2PPkg.ChatActivity;
-import com.example.eldermap.P2PPkg.FileEncoder;
-import com.example.eldermap.P2PPkg.MsgCoder;
-import com.example.eldermap.P2PPkg.MsgItem;
-import com.example.eldermap.P2PPkg.SocketClient;
 
 import org.java_websocket.client.WebSocketClient;
 import org.junit.Before;
@@ -25,9 +20,13 @@ import org.powermock.modules.junit4.PowerMockRunner;
 import java.io.File;
 import java.net.URI;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.powermock.api.support.membermodification.MemberMatcher.method;
 
+/**
+ * SocketClient Test.
+ * Including sendFile, run, getInstance, getStatus.
+ */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({URI.class,FileEncoder.class, MsgCoder.class})
 public class SocketClientTest {
@@ -40,6 +39,9 @@ public class SocketClientTest {
     @InjectMocks
     private SocketClient socketClient;
 
+    /**
+     * Setup for later test usage.
+     */
     @Before
     public void setup(){
         MockitoAnnotations.initMocks(this);
@@ -48,18 +50,27 @@ public class SocketClientTest {
         socketClient = new SocketClient(address, ca);
     }
 
+    /**
+     * Test sendFile.
+     * @throws Exception
+     */
     @Test
     public void sendFile() throws Exception{
         String path = "Hello";
+        int type= 0;
         File file = PowerMockito.mock(File.class);
         PowerMockito.whenNew(File.class).withAnyArguments().thenReturn(file);
         PowerMockito.mockStatic(FileEncoder.class);
         byte[] data = new byte[] {123};
         PowerMockito.when(FileEncoder.convertFileToByte(file)).
                 thenReturn(data);
-        socketClient.sendFile(path);
+        socketClient.sendFile(path,type);
     }
 
+    /**
+     * Test run.
+     * @throws Exception
+     */
     @Test
     public void run() throws Exception{
         String message = "HelloWorld";
@@ -73,11 +84,17 @@ public class SocketClientTest {
         socketClient.run();
     }
 
+    /**
+     * Test getInstance as expected.
+     */
     @Test
     public void getInstance() {
         assertEquals(null, socketClient.getInstance());
     }
 
+    /**
+     * Test getStatus as expected.
+     */
     @Test
     public void getStatus() {
         boolean expected = false;

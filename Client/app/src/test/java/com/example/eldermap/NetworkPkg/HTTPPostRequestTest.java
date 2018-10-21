@@ -1,12 +1,15 @@
 package com.example.eldermap.NetworkPkg;
-/**
- * No idea hwo to wirte about creation of objects in a loop.....
- * */
-
-
-import com.example.eldermap.NetworkPkg.HTTPPostRequest;
 
 import org.json.JSONObject;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.powermock.api.easymock.PowerMock;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -14,17 +17,10 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import org.junit.Test;
-
-import org.powermock.api.easymock.PowerMock;
-
-import org.junit.Before;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
+/**
+ * HTTPPostRequest is the class holding the responsbility to communicate with the api server.
+ * Test cases include doInBackground.
+ */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({OutputStreamWriter.class, URL.class, StringBuilder.class,
         BufferedReader.class, InputStreamReader.class, HttpURLConnection.class})
@@ -34,12 +30,20 @@ public class HTTPPostRequestTest {
     private HTTPPostRequest request;
     @Mock
     private URL _url;
+
+    /**
+     * SetUp before the test.
+     */
     @Before
     public void setup(){
         //_url = PowerMockito.mock(URL.class);
         request = new HTTPPostRequest(url);
     }
 
+    /**
+     * Test doInBackground.
+     * @throws Exception
+     */
     @Test
     public void doInBackground() throws Exception{
         // We can't use Mockito.mock() for URL.class since URL.class is a final class.

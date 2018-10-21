@@ -1,12 +1,5 @@
-/**
- * Unit test for FinishedTrip class.
- * Methods tested are:
- * getdestinationMark() and getTripMark()
- * */
-package com.example.eldermap.LocationPkg;
 
-import com.example.eldermap.LocationPkg.FinishedTrip;
-import com.example.eldermap.LocationPkg.Location;
+package com.example.eldermap.LocationPkg;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +7,11 @@ import org.mockito.Mock;
 import org.powermock.api.easymock.PowerMock;
 
 import static org.junit.Assert.assertEquals;
-
+/**
+ * Unit test for FinishedTrip class.
+ * Methods tested are:
+ * getdestinationMark() and getTripMark()
+ * */
 public class FinishedTripTest {
     private float destinationMark = 0.0f;
     private float navigationMark = 0.0f;
@@ -38,14 +35,16 @@ public class FinishedTripTest {
 
     /**
      * Test for getdestinationMark.
+     * If success, it should return destinationMark.
      */
     @Test
     public void getdestinationMark() {
-        assertEquals(destinationMark,trip.getdestinationMark(), 1.0f);
+        assertEquals(destinationMark,trip.getDestinationMark(), 1.0f);
     }
 
     /**
      * Test for geTripMark.
+     * If success, it should return navigationMark.
      */
     @Test
     public void getTripMark() {

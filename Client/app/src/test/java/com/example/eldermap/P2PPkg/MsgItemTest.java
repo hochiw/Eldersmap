@@ -51,13 +51,6 @@ public class MsgItemTest {
     }
 
     @Test
-    public void setContentType() {
-        int expected = 100;
-        item.setContentType(expected);
-        assertEquals(expected, item.getContentType());
-    }
-
-    @Test
     public void setFileName() {
         String expected = "WorldHello";
         item.setFileName(expected);

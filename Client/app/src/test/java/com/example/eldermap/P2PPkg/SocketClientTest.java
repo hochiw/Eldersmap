@@ -51,13 +51,14 @@ public class SocketClientTest {
     @Test
     public void sendFile() throws Exception{
         String path = "Hello";
+        int type= 0;
         File file = PowerMockito.mock(File.class);
         PowerMockito.whenNew(File.class).withAnyArguments().thenReturn(file);
         PowerMockito.mockStatic(FileEncoder.class);
         byte[] data = new byte[] {123};
         PowerMockito.when(FileEncoder.convertFileToByte(file)).
                 thenReturn(data);
-        socketClient.sendFile(path);
+        socketClient.sendFile(path,type);
     }
 
     @Test

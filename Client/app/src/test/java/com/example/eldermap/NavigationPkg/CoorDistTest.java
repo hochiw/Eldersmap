@@ -35,11 +35,6 @@ public class CoorDistTest {
         PowerMockito.when(CoorDist.getDist(userLat,userLon,destLat,destLon)).thenReturn(3034407.101993954);
         assertEquals(expected, CoorDist.getDist(userLat,userLon,destLat,destLon),1.0);
     }
-    @Test
-    public void getAngle(){
-        double expected = 293.9818667421665;
-        PowerMockito.when(CoorDist.getAngle(userLat,userLon,destLat,destLon)).thenReturn(293.9818667421665);
-        assertEquals(expected, CoorDist.getAngle(userLat,userLon,destLat,destLon), 1.0);
-    }
+
 }
 

@@ -81,7 +81,7 @@ public class AlarmReceiverTest {
                 Activity.class));
         PowerMockito.suppress(method(User.class, "updateComingTripID"));
         PowerMockito.suppress(constructor(Notification.Builder.class,Context.class));
-        PowerMockito.suppress(method(AlarmReceiver.class, "setUpNotificationContent"));
+//        PowerMockito.suppress(method(AlarmReceiver.class, "setUpNotificationContent"));
         alarmReceiver.onReceive(context, i);
 
     }

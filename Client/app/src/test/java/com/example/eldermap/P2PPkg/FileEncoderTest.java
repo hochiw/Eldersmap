@@ -73,7 +73,7 @@ public class FileEncoderTest {
 
         byte[] data = new byte[2];
         PowerMock.suppress(constructor(FileOutputStream.class, File.class));
-        PowerMockito.suppress(method(FileEncoder.class, "write"));
+//        PowerMockito.suppress(method(FileEncoder.class, "write"));
         FileEncoder.writeToFile(data, fileName);
         assertNull(FileEncoder.writeToFile(data,fileName));
     }

@@ -1,5 +1,5 @@
 # ElderMaps
-COMP30022 - Team ElderMaps<br/>
+COMP30022 - Team ElderMaps - Matt De Bono Wednesday 9 am group <br/>
 Kah Chun Lee  860318    kahl2@student.unimelb.edu.au <br/>
 Ho Chi Wong    860302   how4@student.unimelb.edu.au<br/>
 Huiyi Ruan        860324   ruanh@student.unimelb.edu.au<br/>
